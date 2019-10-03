@@ -12,6 +12,32 @@ brew install git
 brew install texlive-full
 ```
 
+## Guides
+
+Multiple scripts were coded and introduced below according to scripts' alphabetical order.  
+
+### Code/CompileLaTeX.sh
+
+### Code/ConcatenateTwoFiles.sh
+
+### Code/CountLines.sh
+
+### csvtospace.sh
+
+### FirstExample.tex
+
+### myboilerplate.sh
+
+### MyExampleScript.sh
+
+### tabtocsv.sh
+
+### tiff2png.sh
+
+### UnixPrac1.txt
+
+### variables.sh
+
 ## Reference
 
 [https://docs.readme.com/docs/best-practices][https://docs.readme.com/docs/best-practices]  
