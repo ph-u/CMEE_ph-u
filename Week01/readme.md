@@ -1,3 +1,21 @@
+![alt text] (https://unichoices.co.uk/wp-content/uploads/2015/09/Imperial-College-London.jpg)
+
+# MRes CMEE Coursework Week 1
+
+This week's foci were on getting started and submerged into coding environments, including Unix, git and LaTeX.  
+
+## Getting started
+
+Intended OS: MacOS Mojave (ver10.14.6)  
+```{bash}
+brew install git
+brew install texlive-full
+```
+
+Code/CompileLaTeX.sh
+    Desc:
+    Input:
+    Output:
 Code/ConcatenateTwoFiles.sh
     Desc: bash end-to-head merge two files in sequence
     Input: infile_1 infile_2 outfile
