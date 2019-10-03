@@ -15,8 +15,9 @@ brew install texlive-full
 ## Guides
 
 Multiple scripts were coded and introduced below in filename alphabetical order.  
+All scripts are stored in Code/ folder
 
-### Code/CompileLaTeX.sh
+### CompileLaTeX.sh
 
 #### Features
 
@@ -26,7 +27,7 @@ Multiple scripts were coded and introduced below in filename alphabetical order.
 
 *****
 
-### Code/ConcatenateTwoFiles.sh
+### ConcatenateTwoFiles.sh
 
 #### Features
 
@@ -47,7 +48,7 @@ terminal output of whole outfile file content
 
 *****
 
-### Code/CountLines.sh
+### CountLines.sh
 
 #### Features
 
@@ -66,7 +67,7 @@ terminal output on number of lines in infile
 
 *****
 
-### Code/csvtospace.sh
+### csvtospace.sh
 
 #### Features
 
@@ -85,7 +86,7 @@ substitute commas in the file with space
 
 *****
 
-### Code/FirstExample.tex
+### FirstExample.tex
 
 #### Features
 
@@ -95,7 +96,7 @@ substitute commas in the file with space
 
 *****
 
-### Code/myboilerplate.sh
+### myboilerplate.sh
 
 #### Features
 
@@ -112,7 +113,7 @@ bash with one-lined output printing a sentence with upper & lower empty lines
 one-lined print wrapped by empty lines
 *****
 
-### Code/MyExampleScript.sh
+### MyExampleScript.sh
 
 #### Features
 
@@ -130,7 +131,7 @@ two-lined duplicated "Hello" messages under two coding methods
 
 *****
 
-### Code/tabtocsv.sh
+### tabtocsv.sh
 
 #### Features
 
@@ -148,7 +149,7 @@ tab_file.csv in same directory with source tab-delimited file
 
 *****
 
-### Code/tiff2png.sh
+### tiff2png.sh
 
 #### Features
 
@@ -166,7 +167,7 @@ tif_image.png
 
 *****
 
-### Code/UnixPrac1.txt
+### UnixPrac1.txt
 
 #### Features
 
@@ -188,7 +189,7 @@ multi-lined terminal output on 5 questions:
 
 *****
 
-### Code/variables.sh
+### variables.sh
 
 #### Features
 
