@@ -105,7 +105,7 @@ substitute commas in the file with space
 #### Features
 
 `LaTeX` file fulfilling assignment needs  
-act as input file for testing usability of `CompileLaTeX.sh`
+as `infile` for testing usability of `CompileLaTeX.sh`
 
 #### Input
 
