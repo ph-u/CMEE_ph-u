@@ -172,7 +172,7 @@ Unix-coding homework containing answers to 5 questions
 
 #### Input
 
-none
+none (this is not a `shell` script but a text file containing commands)
 
 #### Output
 
@@ -196,8 +196,8 @@ bash with two-layered interactive text-/number-handling script
 
 ```
 ./variables.sh
-text_1 ## 1st layer
-num_1 num_2 ## 2nd layer
+<text_1> ## 1st layer
+<num_1> <num_2> ## 2nd layer
 ```
 
 #### Output
