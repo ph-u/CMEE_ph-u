@@ -25,10 +25,19 @@ All scripts are stored in `Code` directory
 
 #### Features
 
+bash script for running `TeX` scripts with `bib` bibliography file  
+`TeX` and `bib` files must have same filename
+
 #### Input
+
+```
+./CompileLaTeX.sh <infile>
+```
+`infile`: `TeX` filename **without** .tex extension
 
 #### Output
 
+one `pdf` main output and two associated bibliography intermediate files
 *****
 
 ### ConcatenateTwoFiles.sh
