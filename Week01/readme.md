@@ -235,8 +235,8 @@ bash with two-layered interactive text-/number-handling script
 
 ## Reference
 
-[https://docs.readme.com/docs/best-practices][https://docs.readme.com/docs/best-practices]  
-[https://github.com/jehna/readme-best-practices/blob/master/README-default.md][https://github.com/jehna/readme-best-practices/blob/master/README-default.md]  
+[https://docs.readme.com/docs/best-practices][01]  
+[https://github.com/jehna/readme-best-practices/blob/master/README-default.md][02]  
 
-[https://docs.readme.com/docs/best-practices]:https://docs.readme.com/docs/best-practices
-[https://github.com/jehna/readme-best-practices/blob/master/README-default.md]:https://github.com/jehna/readme-best-practices/blob/master/README-default.md
+[01]:https://docs.readme.com/docs/best-practices
+[02]:https://github.com/jehna/readme-best-practices/blob/master/README-default.md
