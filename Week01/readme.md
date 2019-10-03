@@ -24,6 +24,8 @@ Multiple scripts were coded and introduced below according to scripts' alphabeti
 
 #### Output
 
+*****
+
 ### Code/ConcatenateTwoFiles.sh
 
 #### Features
@@ -49,9 +51,18 @@ terminal output of whole outfile file content
 
 #### Features
 
+bash count number of lines within input file
+
 #### Input
 
+```
+./CountLines.sh <infile>
+```
+infile: file that would need line counting
+
 #### Output
+
+terminal output on number of lines in infile
 
 *****
 
@@ -59,9 +70,18 @@ terminal output of whole outfile file content
 
 #### Features
 
+substitute commas in the file with space
+
 #### Input
 
+```
+./csvtospace.sh
+```
+
 #### Output
+
+1. txt files with basename same with identified csv in Data/ subfolder  
+2. each csv input file would be converted into one txt file
 
 *****
 
@@ -79,19 +99,32 @@ terminal output of whole outfile file content
 
 #### Features
 
+bash with one-lined output printing a sentence with upper & lower empty lines
+
 #### Input
+
+```
+./myboilerplate.sh
+```
 
 #### Output
 
+one-lined print wrapped by empty lines
 *****
 
 ### Code/MyExampleScript.sh
 
 #### Features
 
+bash print "Hello (username)" in two variable-coding methods
+
 #### Input
 
+none
+
 #### Output
+
+two-lined duplicated "Hello" messages under two coding methods
 
 *****
 
@@ -99,9 +132,17 @@ terminal output of whole outfile file content
 
 #### Features
 
+bash transform a tab-delimited file into a comma-delimited file
+
 #### Input
 
+```
+./tabtocsv.sh tab_file
+```
+
 #### Output
+
+tab_file.csv in same directory with source tab-delimited file
 
 *****
 
@@ -109,9 +150,17 @@ terminal output of whole outfile file content
 
 #### Features
 
+bash convert a tiff image into a png image
+
 #### Input
 
+```
+./tiff2png.sh tif_image
+```
+
 #### Output
+
+tif_image.png
 
 *****
 
@@ -119,9 +168,21 @@ terminal output of whole outfile file content
 
 #### Features
 
+Unix-coding homework containing answers to 5 questions
+
 #### Input
 
+none
+
 #### Output
+
+multi-lined terminal output on 5 questions:  
+
+1. three-lined output: line-count of three fasta files in Data/ subfolder  
+2. multi-lined terminal output on whole E.coli genome (source in Data/subfolder)  
+3. one number terminal output on whole E.coli genome length (source in Data/subfolder)  
+4. one number terminal output on number of pattern "ATCG" within whole E.coli genome (source in Data/subfolder)  
+5. a number rounded to 2-decimal places showing AT:GC ratio of whole E.coli genome (source in Data/subfolder)  
 
 *****
 
@@ -129,9 +190,20 @@ terminal output of whole outfile file content
 
 #### Features
 
+bash with two-layered interactive text-/number-handling script
+
 #### Input
 
+```
+./variables.sh
+text_1 ## 1st layer
+num_1 num_2 ## 2nd layer
+```
+
 #### Output
+
+1st layer: one-lined terminal output showing input text  
+2nd layer: one-lined terminal output showing sum of input numbers  
 
 *****
 
@@ -139,51 +211,6 @@ terminal output of whole outfile file content
 
 [https://docs.readme.com/docs/best-practices][https://docs.readme.com/docs/best-practices]  
 [https://github.com/jehna/readme-best-practices/blob/master/README-default.md][https://github.com/jehna/readme-best-practices/blob/master/README-default.md]  
-
-Code/CountLines.sh
-    Desc: bash count number of lines within input file
-    Input: infile
-        infile: file that would need line counting
-    Output: terminal output on number of lines in infile
-Code/MyExampleScript.sh
-    Desc: bash print "Hello (username)" in two variable-coding methods
-    Input: none
-    Output: two-lined duplicated "Hello" messages under two coding methods
-Code/UnixPrac1.txt
-    Desc: Unix-coding homework containing answers to 5 questions
-    Input: none
-    Output: multi-lined terminal output on 5 questions
-        1. three-lined output: line-count of three fasta files in Data/ subfolder
-        2. multi-lined terminal output on whole E.coli genome (source in Data/subfolder)
-        3. one number terminal output on whole E.coli genome length (source in Data/subfolder)
-        4. one number terminal output on number of pattern "ATCG" within whole E.coli genome (source in Data/subfolder)
-        5. a number rounded to 2-decimal places showing AT:GC ratio of whole E.coli genome (source in Data/subfolder)
-Code/myboilerplate.sh
-    Desc: bash with one-lined output printing a sentence with upper & lower empty lines
-    Input: none
-    Output: one-lined print wrapped by empty lines
-Code/tabtocsv.sh
-    Desc: bash transform a tab-delimited file into a comma-delimited file
-    Input: tab_file
-    Output: tab_file.csv in same directory with source tab-delimited file
-Code/tiff2png.sh
-    Desc: bash convert a tiff image into a png image
-    Input: tif_image
-    Output: tif_image.png
-Code/variables.sh
-    Desc: bash with two-layered interactive text-/number-handling script
-    Input:
-        1st layer: text_1
-        2nd layer: num_1 num_2
-    Output:
-        1st layer: one-lined terminal output showing input text
-        2nd layer: one-lined terminal output showing sum of input numbers
-Code/csvtospace.sh
-    Desc: substitute commas in the file with space
-    Input: none
-    Output:
-        txt files with basename same with identified csv in Data/ subfolder
-        each csv input file would be converted into one txt file  
 
 [https://docs.readme.com/docs/best-practices]:https://docs.readme.com/docs/best-practices
 [https://github.com/jehna/readme-best-practices/blob/master/README-default.md]:https://github.com/jehna/readme-best-practices/blob/master/README-default.md
