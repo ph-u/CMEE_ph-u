@@ -43,6 +43,8 @@ outfile: relative path & filename determined by user
 outfile file in user-designated directory  
 terminal output of whole outfile file content  
 
+*****
+
 ### Code/CountLines.sh
 
 #### Features
@@ -50,6 +52,8 @@ terminal output of whole outfile file content
 #### Input
 
 #### Output
+
+*****
 
 ### Code/csvtospace.sh
 
@@ -59,6 +63,8 @@ terminal output of whole outfile file content
 
 #### Output
 
+*****
+
 ### Code/FirstExample.tex
 
 #### Features
@@ -66,6 +72,8 @@ terminal output of whole outfile file content
 #### Input
 
 #### Output
+
+*****
 
 ### Code/myboilerplate.sh
 
@@ -75,6 +83,8 @@ terminal output of whole outfile file content
 
 #### Output
 
+*****
+
 ### Code/MyExampleScript.sh
 
 #### Features
@@ -82,6 +92,8 @@ terminal output of whole outfile file content
 #### Input
 
 #### Output
+
+*****
 
 ### Code/tabtocsv.sh
 
@@ -91,6 +103,8 @@ terminal output of whole outfile file content
 
 #### Output
 
+*****
+
 ### Code/tiff2png.sh
 
 #### Features
@@ -98,6 +112,8 @@ terminal output of whole outfile file content
 #### Input
 
 #### Output
+
+*****
 
 ### Code/UnixPrac1.txt
 
@@ -107,6 +123,8 @@ terminal output of whole outfile file content
 
 #### Output
 
+*****
+
 ### Code/variables.sh
 
 #### Features
@@ -114,6 +132,8 @@ terminal output of whole outfile file content
 #### Input
 
 #### Output
+
+*****
 
 ## Reference
 
