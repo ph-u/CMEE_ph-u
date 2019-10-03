@@ -7,14 +7,14 @@ This week's foci were on getting started and submerged into coding environments,
 ## Getting started
 
 Intended OS: MacOS Mojave (ver10.14.6)  
-```{bash}
+```
 brew install git
 brew install texlive-full
 ```
 
 ## Reference
 
-[https://docs.readme.com/docs/best-practices][https://docs.readme.com/docs/best-practices]
+[https://docs.readme.com/docs/best-practices][https://docs.readme.com/docs/best-practices]  
 [https://github.com/jehna/readme-best-practices/blob/master/README-default.md][https://github.com/jehna/readme-best-practices/blob/master/README-default.md]  
 
 Code/CompileLaTeX.sh
