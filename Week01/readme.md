@@ -73,3 +73,5 @@ Code/csvtospace.sh
     Output:
         txt files with basename same with identified csv in Data/ subfolder
         each csv input file would be converted into one txt file
+[https://docs.readme.com/docs/best-practices]:https://docs.readme.com/docs/best-practices
+[https://github.com/jehna/readme-best-practices/blob/master/README-default.md]:https://github.com/jehna/readme-best-practices/blob/master/README-default.md
