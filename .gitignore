@@ -1,5 +1,5 @@
 *~ 
 *.tmp
-.fasta
-.csv
-._
+*.fasta
+*.csv
+._*
