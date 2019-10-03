@@ -76,7 +76,7 @@ bash count number of lines within input file
 
 #### Output
 
-terminal output on number of lines in infile
+terminal output on number of lines in `infile`
 
 *****
 
@@ -89,12 +89,13 @@ substitute commas in the file with space
 #### Input
 
 ```
-./csvtospace.sh
+./csvtospace.sh <infile>
 ```
+`infile`: .csv file
 
 #### Output
 
-1. txt files with basename same with identified csv in `Data` subdirectory  
+1. txt files with filename same with identified csv in `Data` subdirectory  
 2. each csv input file would be converted into one txt file
 
 *****
@@ -160,12 +161,13 @@ bash transform a tab-delimited file into a comma-delimited file
 #### Input
 
 ```
-./tabtocsv.sh <tab_file>
+./tabtocsv.sh <infile>
 ```
+`infile`: tab-delimited file
 
 #### Output
 
-tab_file.csv in same directory with source tab-delimited file
+a .csv (of same filename) in same directory with `infile`
 
 *****
 
@@ -178,12 +180,13 @@ bash convert a tiff image into a png image
 #### Input
 
 ```
-./tiff2png.sh <tif_image>
+./tiff2png.sh <infile>
 ```
+`infile`: .tif / .tiff file
 
 #### Output
 
-tif_image.png
+a .png (of same filename) in same directory with `infile`
 
 *****
 
