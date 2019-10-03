@@ -15,7 +15,7 @@ brew install texlive-full
 ## Guides
 
 Multiple scripts were coded and introduced below in filename alphabetical order.  
-All scripts are stored in Code/ folder
+All scripts are stored in `Code/` folder
 
 ### CompileLaTeX.sh
 
@@ -38,9 +38,9 @@ bash end-to-head merge two files in sequence
 ```
 ./ConcatenateTwoFiles.sh <infile_1> <infile_2> <outfile>
 ```
-infile_1: first concatenated file  
-infile_2: second concatenated file  
-outfile: relative path & filename determined by user  
+`infile_1`: first concatenated file  
+`infile_2`: second concatenated file  
+`outfile`: relative path & filename determined by user  
 
 #### Output
 outfile file in user-designated directory  
@@ -59,7 +59,7 @@ bash count number of lines within input file
 ```
 ./CountLines.sh <infile>
 ```
-infile: file that would need line counting
+`infile`: file that would need line counting
 
 #### Output
 
@@ -181,11 +181,11 @@ none (this is not a `shell` script but a text file containing commands)
 
 multi-lined terminal output on 5 questions:  
 
-1. three-lined output: line-count of three fasta files in Data/ subfolder  
-2. multi-lined terminal output on whole E.coli genome (source in Data/subfolder)  
-3. one number terminal output on whole E.coli genome length (source in Data/subfolder)  
-4. one number terminal output on number of pattern "ATCG" within whole E.coli genome (source in Data/subfolder)  
-5. a number rounded to 2-decimal places showing AT:GC ratio of whole E.coli genome (source in Data/subfolder)  
+1. three-lined output: line-count of three fasta files in `Data/` subfolder  
+2. multi-lined terminal output on whole E.coli genome (source in `Data/` subfolder)  
+3. one number terminal output on whole E.coli genome length (source in `Data/` subfolder)  
+4. one number terminal output on number of pattern "ATCG" within whole E.coli genome (source in `Data/` subfolder)  
+5. a number rounded to 2-decimal places showing AT:GC ratio of whole E.coli genome (source in `Data/` subfolder)  
 
 *****
 
