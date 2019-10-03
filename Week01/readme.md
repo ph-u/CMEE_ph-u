@@ -1,4 +1,4 @@
-![alt text] (https://unichoices.co.uk/wp-content/uploads/2015/09/Imperial-College-London.jpg)
+![alt text] (https://raw.githubusercontent.com/ph-u/CMEECourseWork_pmH/Imperial-College-London.jpg)
 
 # MRes CMEE Coursework Week 1
 
