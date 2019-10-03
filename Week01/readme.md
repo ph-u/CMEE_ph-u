@@ -4,6 +4,10 @@
 
 This week's foci were on getting started and submerged into coding environments, including Unix, git and LaTeX.  
 
+## License
+
+none
+
 ## Getting started
 
 Intended OS: MacOS Mojave (ver10.14.6)  
@@ -15,7 +19,7 @@ brew install texlive-full
 ## Guides
 
 Multiple scripts were coded and introduced below in filename alphabetical order.  
-All scripts are stored in `Code/` folder
+All scripts are stored in `Code` directory
 
 ### CompileLaTeX.sh
 
@@ -43,8 +47,8 @@ bash end-to-head merge two files in sequence
 `outfile`: relative path & filename determined by user  
 
 #### Output
-outfile file in user-designated directory  
-terminal output of whole outfile file content  
+`outfile` in user-designated directory  
+terminal output of whole `outfile` content  
 
 *****
 
@@ -81,7 +85,7 @@ substitute commas in the file with space
 
 #### Output
 
-1. txt files with basename same with identified csv in Data/ subfolder  
+1. txt files with basename same with identified csv in `Data` subdirectory  
 2. each csv input file would be converted into one txt file
 
 *****
@@ -181,11 +185,11 @@ none (this is not a `shell` script but a text file containing commands)
 
 multi-lined terminal output on 5 questions:  
 
-1. three-lined output: line-count of three fasta files in `Data/` subfolder  
-2. multi-lined terminal output on whole E.coli genome (source in `Data/` subfolder)  
-3. one number terminal output on whole E.coli genome length (source in `Data/` subfolder)  
-4. one number terminal output on number of pattern "ATCG" within whole E.coli genome (source in `Data/` subfolder)  
-5. a number rounded to 2-decimal places showing AT:GC ratio of whole E.coli genome (source in `Data/` subfolder)  
+1. three-lined output: line-count of three fasta files in `Data` sub-directory  
+2. multi-lined terminal output on whole E.coli genome (source in `Data` sub-directory)  
+3. one number terminal output on whole E.coli genome length (source in `Data` sub-directory)  
+4. one number terminal output on number of pattern "ATCG" within whole E.coli genome (source in `Data` sub-directory)  
+5. a number rounded to 2-decimal places showing AT:GC ratio of whole E.coli genome (source in `Data` sub-directory)  
 
 *****
 
