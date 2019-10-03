@@ -18,44 +18,108 @@ Multiple scripts were coded and introduced below according to scripts' alphabeti
 
 ### Code/CompileLaTeX.sh
 
+#### Features
+
+#### Input
+
+#### Output
+
 ### Code/ConcatenateTwoFiles.sh
+
+#### Features
+
+bash end-to-head merge two files in sequence  
+
+#### Input
+
+```
+./ConcatenateTwoFiles.sh infile_1 infile_2 outfile
+```
+infile_1: first concatenated file  
+infile_2: second concatenated file  
+outfile: relative path & filename determined by user  
+
+#### Output
+outfile file in user-designated directory  
+terminal output of whole outfile file content  
 
 ### Code/CountLines.sh
 
-### csvtospace.sh
+#### Features
 
-### FirstExample.tex
+#### Input
 
-### myboilerplate.sh
+#### Output
 
-### MyExampleScript.sh
+### Code/csvtospace.sh
 
-### tabtocsv.sh
+#### Features
 
-### tiff2png.sh
+#### Input
 
-### UnixPrac1.txt
+#### Output
 
-### variables.sh
+### Code/FirstExample.tex
+
+#### Features
+
+#### Input
+
+#### Output
+
+### Code/myboilerplate.sh
+
+#### Features
+
+#### Input
+
+#### Output
+
+### Code/MyExampleScript.sh
+
+#### Features
+
+#### Input
+
+#### Output
+
+### Code/tabtocsv.sh
+
+#### Features
+
+#### Input
+
+#### Output
+
+### Code/tiff2png.sh
+
+#### Features
+
+#### Input
+
+#### Output
+
+### Code/UnixPrac1.txt
+
+#### Features
+
+#### Input
+
+#### Output
+
+### Code/variables.sh
+
+#### Features
+
+#### Input
+
+#### Output
 
 ## Reference
 
 [https://docs.readme.com/docs/best-practices][https://docs.readme.com/docs/best-practices]  
 [https://github.com/jehna/readme-best-practices/blob/master/README-default.md][https://github.com/jehna/readme-best-practices/blob/master/README-default.md]  
 
-Code/CompileLaTeX.sh
-    Desc:
-    Input:
-    Output:
-Code/ConcatenateTwoFiles.sh
-    Desc: bash end-to-head merge two files in sequence
-    Input: infile_1 infile_2 outfile
-        infile_1: first concatenated file
-        infile_2: second concatenated file
-        outfile: relative path & filename determined by user
-    Output:
-        outfile file in user-designated directory
-        terminal output of whole outfile file content
 Code/CountLines.sh
     Desc: bash count number of lines within input file
     Input: infile
