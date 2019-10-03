@@ -19,7 +19,7 @@ brew install texlive-full
 ## Guides
 
 Multiple scripts were coded and introduced below in filename alphabetical order.  
-All scripts are stored in `Code` directory
+All scripts are in `Code` directory
 
 ### CompileLaTeX.sh
 
@@ -103,9 +103,16 @@ substitute commas in the file with space
 
 #### Features
 
+`LaTeX` file fulfilling assignment needs  
+act as input file for testing usability of `CompileLaTeX.sh`
+
 #### Input
 
+none
+
 #### Output
+
+none
 
 *****
 
@@ -194,11 +201,11 @@ none (this is not a `shell` script but a text file containing commands)
 
 multi-lined terminal output on 5 questions:  
 
-1. three-lined output: line-count of three fasta files in `Data` sub-directory  
-2. multi-lined terminal output on whole E.coli genome (source in `Data` sub-directory)  
-3. one number terminal output on whole E.coli genome length (source in `Data` sub-directory)  
-4. one number terminal output on number of pattern "ATCG" within whole E.coli genome (source in `Data` sub-directory)  
-5. a number rounded to 2-decimal places showing AT:GC ratio of whole E.coli genome (source in `Data` sub-directory)  
+1. three-lined output: line-count of three fasta files in `Data` subdirectory  
+2. multi-lined terminal output on whole E.coli genome (source in `Data` subdirectory)  
+3. one number terminal output on whole E.coli genome length (source in `Data` subdirectory)  
+4. one number terminal output on number of pattern "ATCG" within whole E.coli genome (source in `Data` subdirectory)  
+5. a number rounded to 2-decimal places showing AT:GC ratio of whole E.coli genome (source in `Data` subdirectory)  
 
 *****
 
