@@ -143,15 +143,12 @@ bash print "Hello (username)" in two variable-coding methods
 #### Input
 
 ```
-./MyExampleScript.sh <text_1> <text_2>
+./MyExampleScript.sh
 ```
-`text_1`: "Hello" or other text  
-`text_2`: a name or other text
 
 #### Output
 
-if username = input name: two-lined duplicated "Hello" messages under two coding methods  
-else: two different terminal "Hello" messages
+two-lined duplicated "Hello" messages under two coding methods
 
 *****
 
