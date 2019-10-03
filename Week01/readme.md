@@ -14,7 +14,7 @@ brew install texlive-full
 
 ## Guides
 
-Multiple scripts were coded and introduced below according to scripts' alphabetical order.  
+Multiple scripts were coded and introduced below in filename alphabetical order.  
 
 ### Code/CompileLaTeX.sh
 
@@ -35,7 +35,7 @@ bash end-to-head merge two files in sequence
 #### Input
 
 ```
-./ConcatenateTwoFiles.sh infile_1 infile_2 outfile
+./ConcatenateTwoFiles.sh <infile_1> <infile_2> <outfile>
 ```
 infile_1: first concatenated file  
 infile_2: second concatenated file  
@@ -120,7 +120,9 @@ bash print "Hello (username)" in two variable-coding methods
 
 #### Input
 
-none
+```
+./MyExampleScript.sh
+```
 
 #### Output
 
@@ -137,7 +139,7 @@ bash transform a tab-delimited file into a comma-delimited file
 #### Input
 
 ```
-./tabtocsv.sh tab_file
+./tabtocsv.sh <tab_file>
 ```
 
 #### Output
@@ -155,7 +157,7 @@ bash convert a tiff image into a png image
 #### Input
 
 ```
-./tiff2png.sh tif_image
+./tiff2png.sh <tif_image>
 ```
 
 #### Output
