@@ -11,4 +11,4 @@ tail -n +2 ../Data/E.coli.fasta|tr -d "\n"|wc -c ## extract genome, pipe through
 tail -n +2 ../Data/E.coli.fasta|tr -d "\n"|grep -o "ATCG"|wc -l ## after pipe through new-line char, pipe to list all pattern presence, pipe through counting list length
 
 ## compute AT:GC
-a=`tail -n +2 ../Data/E.coli.fasta|tr -d "\n"|grep -o "A"|wc -l`&&t=`tail -n +2 ../Data/E.coli.fasta|tr -d "\n"|grep -o "T"|wc -l`&&c=`tail -n +2 ../Data/E.coli.fasta|tr -d "\n"|grep -o "C"|wc -l`&&g=`tail -n +2 ../Data/E.coli.fasta|tr -d "\n"|grep -o "G"|wc -l`&&echo "scale=2;" "(${a}+${t})/(${c}+${g})"|bc -l ## extract & save the four components as variables, then apply the equation (A+T)/(G+C)
+a=`tail -n +2 ../Data/E.coli.fasta|tr -d "\n"|grep -o "A\|T"|wc -l`&&c=`tail -n +2 ../Data/E.coli.fasta|tr -d "\n"|grep -o "C\|G"|wc -l`&&echo "scale=2;" "${a}/${c}"|bc -l ## extract & save the four components as 2 variables (numerator & denominator respectively), then apply the equation (A+T)/(G+C)
