@@ -7,6 +7,7 @@
 # Date: Oct 2019
 
 echo "Creating a comma delimited version of $1"
-cat $1 | tr -s "\t" "," >> $1.csv
+a=`basename $1|cut -f 1 -d "."`
+cat $1 | tr -s "\t" "," > ../Data/${a}.csv
 echo "Done!"
 exit

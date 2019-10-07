@@ -2,6 +2,6 @@
 
 for f in *.tif;do
 	echo "Converting $f"
-	convert $f "$(basename $f).png"
+	convert $f "../Data/$(basename $f).png"
 	# convert "$f" "$(basename "$f" .tif).png"
 done

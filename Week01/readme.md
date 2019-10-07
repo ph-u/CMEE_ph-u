@@ -167,7 +167,7 @@ bash transform a tab-delimited file into a comma-delimited file
 
 #### Output
 
-a .csv (of same filename) in same directory with `infile`
+a .csv (of same filename) in `Data` subdirectory
 
 *****
 

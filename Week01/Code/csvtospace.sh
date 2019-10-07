@@ -9,7 +9,7 @@
 
 for i in `ls ../Data/*.csv`;do
 	a=`basename ${i} | cut -f 1 -d "."`
-	sed -e "s/,/ /g" ${i} > ${a}.txt
+	sed -e "s/,/ /g" ${i} > ../Data/${a}.txt
 done
 
 exit
