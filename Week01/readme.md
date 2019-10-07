@@ -186,7 +186,7 @@ bash convert a tiff image into a png image
 
 #### Output
 
-a .png (of same filename) in same directory with `infile`
+a .png (of same filename) in `Data` subdirectory
 
 *****
 
