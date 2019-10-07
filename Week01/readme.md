@@ -25,7 +25,7 @@ All scripts are in `Code` directory
 
 #### Features
 
-bash script for running `TeX` scripts with `bib` bibliography file  
+bash script for running `TeX` scripts with `bib` bibliography file and save the resultant pdf in `Data` subdirectory  
 `TeX` and `bib` files must have same filename
 
 #### Input
@@ -37,7 +37,7 @@ bash script for running `TeX` scripts with `bib` bibliography file
 
 #### Output
 
-one `pdf` main output and two associated bibliography intermediate files
+one `pdf` main output in `Data` subdirectory
 *****
 
 ### ConcatenateTwoFiles.sh

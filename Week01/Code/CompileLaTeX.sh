@@ -15,3 +15,8 @@ rm *.nav
 rm *.out
 rm *.snm
 rm *.toc
+
+rm *.bbl
+rm *.blg
+
+mv *.pdf ../Data/
