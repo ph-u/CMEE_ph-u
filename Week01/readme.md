@@ -17,7 +17,7 @@ All scripts are in `Code` directory
 
 #### Features
 
-make LaTeX script (with `bib` bibliography file) into pdf  `TeX` and `bib` files must have same filename
+make LaTeX script (with `bib` bibliography file) into pdf  n`TeX` and `bib` files must have same filename
 
 #### Input
 
@@ -44,7 +44,7 @@ end-to-head merge two files in sequence
 
 #### Output
 
-saves the output into an `outfile` in designated subdirectory  terminal output of `outfile` content
+saves the output into an `outfile` in designated subdirectory  nterminal output of `outfile` content
 *****
 
 ### CountLines.sh

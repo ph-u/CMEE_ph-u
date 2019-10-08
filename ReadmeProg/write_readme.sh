@@ -36,21 +36,21 @@ for i in `ls *|grep -v "bib\|txt"`;do
 	echo "" >> ../README.md
 	echo "#### Features" >> ../README.md
 	echo "" >> ../README.md
-	grep "Desc" ${i}|cut -f 2 -d ":"|sed -e "s/ //1" >> ../README.md
+	grep "Desc" ${i}|cut -f 2 -d ":"|sed -e "s/ //1"|sed -e "s/; /  \n/g" >> ../README.md
 
 	## Script Sample Input
 	echo "" >> ../README.md
 	echo "#### Input" >> ../README.md
 	echo "" >> ../README.md
 	head -n 24 $5/ReadmeProg/tmp_readme.md|tail -n 1 >> ../README.md
-	grep "Input" ${i}|cut -f 2 -d ":"|sed -e "s/ //1" >> ../README.md
+	grep "Input" ${i}|cut -f 2 -d ":"|sed -e "s/ //1"|sed -e "s/; /  \n/g" >> ../README.md
 	head -n 26 $5/ReadmeProg/tmp_readme.md|tail -n 1 >> ../README.md
 
 	## Script Sample Output
 	echo "" >> ../README.md
 	echo "#### Output" >> ../README.md
 	echo "" >> ../README.md
-	grep "Output" ${i}|cut -f 2 -d ":"|sed -e "s/ //1" >> ../README.md
+	grep "Output" ${i}|cut -f 2 -d ":"|sed -e "s/ //1"|sed -e "s/; /  \n/g" >> ../README.md
 
 	echo "*****" >> ../README.md
 done
