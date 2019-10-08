@@ -29,7 +29,7 @@ dir=`pwd` ## fix base dir for all weekly README.md
 for i in `ls|grep "Week*"`;do ## Identify Weeks of consideration
 	a=`ls ${i}/Code/*|wc -l` ## count num of scripts in designated Week directory Code subdirectory
 	if [ ${a} -gt 0 ];then
-		./ReadmeProg/write_readme.sh $1 $2 $3 $4 ${dir} ${i}
+		${dir}/ReadmeProg/write_readme.sh $1 $2 $3 $4 ${dir} ${i}
 		# nohup ./write_readme.sh $1 $2 $3 $4 ${dir} ${i} & ## call README writer script, run in background
 	fi
 	if [ ${a} -eq 0 ];then ## if subdirectory Code/ have no script

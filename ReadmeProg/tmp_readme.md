@@ -47,3 +47,11 @@ hi
 #### Output
 hi
 *****
+
+## Reference
+
+[https://docs.readme.com/docs/best-practices][01]  
+[https://github.com/jehna/readme-best-practices/blob/master/README-default.md][02]  
+
+[01]:https://docs.readme.com/docs/best-practices
+[02]:https://github.com/jehna/readme-best-practices/blob/master/README-default.md
