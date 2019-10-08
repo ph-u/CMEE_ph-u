@@ -8,11 +8,6 @@ This week's foci were on getting started and submerged into more coding environm
 
 none
 
-## Getting started
-
-Intended OS: MacOS Mojave (ver10.14.6)  
-Python 3.7.3
-
 ## Guides
 
 Multiple scripts were coded and introduced below in filename alphabetical order.  
