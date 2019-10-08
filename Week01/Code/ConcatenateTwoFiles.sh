@@ -4,7 +4,7 @@
 # Script: ConcatenateTwoFiles.sh
 # Desc: end-to-head merge two files in sequence
 # Input: ./ConcatenateTwoFiles.sh <infile_1> <infile_2> <outfile>
-# Output: saves the output into an `outfile` in designated subdirectory; terminal output of `outfile` content
+# Output: 1. saves the output into an `outfile` in designated subdirectory; 2. terminal output of `outfile` content
 # Arguments: 1
 # Date: Oct 2019
 

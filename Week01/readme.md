@@ -17,7 +17,7 @@ All scripts are in `Code` directory
 
 #### Features
 
-make LaTeX script (with `bib` bibliography file) into pdf; `TeX` and `bib` files must have same filename
+1. make LaTeX script (with `bib` bibliography file) into pdf; 2. `TeX` and `bib` files must have same filename
 
 #### Input
 
@@ -44,49 +44,58 @@ end-to-head merge two files in sequence
 
 #### Output
 
-saves the output into an `outfile` in designated subdirectory; terminal output of `outfile` content
+1. saves the output into an `outfile` in designated subdirectory; 2. terminal output of `outfile` content
 *****
 
 ### CountLines.sh
 
 #### Features
 
+count number of lines within input file
 
 #### Input
 
 ```
+./CountLines.sh <infile>
 ```
 
 #### Output
 
+terminal output on number of lines in `infile`
 *****
 
 ### FirstExample.tex
 
 #### Features
 
+1. `LaTeX` file fulfilling assignment needs; 2. as `infile` for testing usability of `CompileLaTeX.sh`
 
 #### Input
 
 ```
+none
 ```
 
 #### Output
 
+none
 *****
 
 ### MyExampleScript.sh
 
 #### Features
 
+print "Hello (username)" in two variable-coding methods
 
 #### Input
 
 ```
+./MyExampleScript.sh
 ```
 
 #### Output
 
+two-lined duplicated "Hello" messages under two coding methods
 *****
 
 ### csvtospace.sh
