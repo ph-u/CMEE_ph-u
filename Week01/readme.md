@@ -17,28 +17,34 @@ All scripts are in `Code` directory
 
 #### Features
 
+make LaTeX script (with `bib` bibliography file) into pdf  `TeX` and `bib` files must have same filename
 
 #### Input
 
 ```
+./CompileLaTeX.sh <tex without extension>
 ```
 
 #### Output
 
+saves the output into a .pdf file in `Data` subdirectory
 *****
 
 ### ConcatenateTwoFiles.sh
 
 #### Features
 
+end-to-head merge two files in sequence
 
 #### Input
 
 ```
+./ConcatenateTwoFiles.sh <infile_1> <infile_2> <outfile>
 ```
 
 #### Output
 
+saves the output into an `outfile` in designated subdirectory  terminal output of `outfile` content
 *****
 
 ### CountLines.sh
@@ -92,10 +98,12 @@ substitute the commas in the file with space
 #### Input
 
 ```
+./csvtospace.sh <csv>
 ```
 
 #### Output
 
+saves the output into a .txt file in `Data` subdirectory
 *****
 
 ### myboilerplate.sh
