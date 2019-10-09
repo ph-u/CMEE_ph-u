@@ -19,7 +19,7 @@ All scripts are in `Code` directory
 
 hi
 
-#### Input
+#### Suggested input
 
 ```
 hi

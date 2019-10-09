@@ -7,12 +7,19 @@
 # Input: FirstName LastName year MSc/MRes base_dir Week_Num
 # Date: Oct 2019
 
+## check if readme_final.md exist, replace readme.md scripting if finalized
+if [ `ls $5/$6/readme_final.md|wc -l` -gt 0 ];then
+	cp $5/$6/readme_final.md $5/$6/readme.md
+	echo "copied finalized version to true readme.md in $6"
+	exit
+fi
+
 ## README.md formatting & heading
-echo "Start writing $5/$6/README.md"
-touch $5/$6/README.md
-head -n 2 $5/ReadmeProg/tmp_readme.md > $5/$6/README.md
-echo -e "# $3 $1 $2 $4 CMEE Coursework $6" >> $5/$6/README.md
-echo >> $5/$6/README.md
+echo "Start writing $5/$6/readme.md"
+touch $5/$6/readme.md
+head -n 2 $5/ReadmeProg/tmp_readme.md > $5/$6/readme.md
+echo -e "# $3 $1 $2 $4 CMEE Coursework $6" >> $5/$6/readme.md
+echo >> $5/$6/readme.md
 
 ## Grammar for week's description
 list=`ls $6/Code/*|cut -f 2 -d "."|sort|uniq|grep -v "bib\|txt"|wc -l`
@@ -24,38 +31,38 @@ fi
 
 ## Week's description
 lsout=`ls $6/Code/*|cut -f 2 -d "."|sort|uniq|grep -v "bib\|txt"|tr -s "\n" " "`
-echo "This week's ${gram} on: ${lsout}" >> $5/$6/README.md
-head -n 14 $5/ReadmeProg/tmp_readme.md|tail -n 9 >> $5/$6/README.md
+echo "This week's ${gram} on: ${lsout}" >> $5/$6/readme.md
+head -n 14 $5/ReadmeProg/tmp_readme.md|tail -n 9 >> $5/$6/readme.md
 
 ## Scripts description
 cd $5/$6/Code/
 for i in `ls *|grep -v "bib\|txt"`;do
 	## Script title & Function
-	echo "" >> ../README.md
-	echo "### ${i}" >> ../README.md
-	echo "" >> ../README.md
-	echo "#### Features" >> ../README.md
-	echo "" >> ../README.md
-	grep "Desc" ${i}|cut -f 2 -d ":"|sed -e "s/ //1" >> ../README.md
+	echo "" >> ../readme.md
+	echo "### ${i}" >> ../readme.md
+	echo "" >> ../readme.md
+	echo "#### Features" >> ../readme.md
+	echo "" >> ../readme.md
+	grep "Desc" ${i}|cut -f 2 -d ":"|sed -e "s/ //1" >> ../readme.md
 
 	## Script Sample Input
-	echo "" >> ../README.md
-	echo "#### Input" >> ../README.md
-	echo "" >> ../README.md
-	head -n 24 $5/ReadmeProg/tmp_readme.md|tail -n 1 >> ../README.md
-	grep "Input" ${i}|cut -f 2 -d ":"|sed -e "s/ //1" >> ../README.md
-	head -n 26 $5/ReadmeProg/tmp_readme.md|tail -n 1 >> ../README.md
+	echo "" >> ../readme.md
+	echo "#### Input" >> ../readme.md
+	echo "" >> ../readme.md
+	head -n 24 $5/ReadmeProg/tmp_readme.md|tail -n 1 >> ../readme.md
+	grep "Input" ${i}|cut -f 2 -d ":"|sed -e "s/ //1" >> ../readme.md
+	head -n 26 $5/ReadmeProg/tmp_readme.md|tail -n 1 >> ../readme.md
 
 	## Script Sample Output
-	echo "" >> ../README.md
-	echo "#### Output" >> ../README.md
-	echo "" >> ../README.md
-	grep "Output" ${i}|cut -f 2 -d ":"|sed -e "s/ //1" >> ../README.md
+	echo "" >> ../readme.md
+	echo "#### Output" >> ../readme.md
+	echo "" >> ../readme.md
+	grep "Output" ${i}|cut -f 2 -d ":"|sed -e "s/ //1" >> ../readme.md
 
-	echo "*****" >> ../README.md
+	echo "*****" >> ../readme.md
 done
 
 ## README ending References
-tail -n 8 $5/ReadmeProg/tmp_readme.md >> ../README.md
-echo "done writing $5/$6/README.md"
+tail -n 8 $5/ReadmeProg/tmp_readme.md >> ../readme.md
+echo "done writing $5/$6/readme.md"
 exit
