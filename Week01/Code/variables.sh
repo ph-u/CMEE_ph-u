@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: variables.sh
+# Desc: test out interactive variables usage
+# Input: ./variables.sh
+# Output: terminal outputs in interactive mode
+# Arguments: interactive
+# Date: Oct 2019
+
 # Shows the use of variables
 MyVar="some string"
 echo "the current value of the variable is" $MyVar

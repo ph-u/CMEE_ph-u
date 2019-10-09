@@ -139,38 +139,46 @@ substitute the tabs in the files with commas
 #### Input
 
 ```
+./tabtocsv.sh <txt>
 ```
 
 #### Output
 
+saves the output into a .csv file in `Data` subdirectory
 *****
 
 ### tiff2png.sh
 
 #### Features
 
+transform a tiff to png format
 
 #### Input
 
 ```
+./tiff2png.sh <tiff>
 ```
 
 #### Output
 
+saves the output into a .png file in `Data` subdirectory
 *****
 
 ### variables.sh
 
 #### Features
 
+test out interactive variables usage
 
 #### Input
 
 ```
+./variables.sh
 ```
 
 #### Output
 
+terminal outputs in interactive mode
 *****
 
 ## Reference
