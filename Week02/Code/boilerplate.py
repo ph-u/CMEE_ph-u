@@ -22,4 +22,5 @@ def main(argv):
 if __name__ == "__main__":
 	"""Makes sure the 'main' function is called from command Line"""
 	status=main(sys.argv)
+	sys.exit("I'm exiting right now")
 	sys.exit(status)
