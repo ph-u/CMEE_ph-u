@@ -1,3 +1,13 @@
+#!/bin/env python3
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: basic_io.py
+# Desc: 1. python interpretor output an input `csv` file; 2. print a list of numbers into `txt` file; 3. save a python dictionary into binary file, then read and print in python interpretor
+# Input: python3 basic_io.py
+# Output: 1. python interpretor output; 2. saves the output into a `txt` file (`testout.txt`) in `Sandbox` subdirectory; 3. save a binary file (`testp.p`) in `Sandbox` subdirectory & python interpretor output
+# Arguments: 0
+# Date: Oct 2019
+
 #################################
 # FILE INPUT
 #################################

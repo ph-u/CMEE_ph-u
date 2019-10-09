@@ -1,3 +1,13 @@
+#!/bin/env python3
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: basic_csv.py
+# Desc: 1. python interpretor read `csv` file and extract first element (species); 2. copy specific column "bodymass" from `testcsv.csv` file to a new `csv` file (`bodymass.csv`)
+# Input: python3 basic_csv.py
+# Output: 1. python interpretor output; 2. saves the output into a `csv` file in `Data` subdirectory
+# Arguments: 0
+# Date: Oct 2019
+
 import csv
 
 # Read a file containing:

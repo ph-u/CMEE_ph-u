@@ -1,3 +1,13 @@
+#!/bin/env python3
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: dictionary.py
+# Desc: python homework
+# Input: None
+# Output: None
+# Arguments: 0
+# Date: Oct 2019
+
 taxa = [ ('Myotis lucifugus','Chiroptera'),
          ('Gerbillus henleyi','Rodentia',),
          ('Peromyscus crinitus', 'Rodentia'),

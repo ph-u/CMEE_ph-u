@@ -1,3 +1,13 @@
+#!/bin/env python3
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: basic_io1.py
+# Desc: first of three basic_io.py sections -- python interpretor output an input `csv` file
+# Input: python3 basic_io1.py
+# Output: python interpretor output
+# Arguments: 0
+# Date: Oct 2019
+
 #################################
 # FILE INPUT
 #################################

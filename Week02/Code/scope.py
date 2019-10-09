@@ -1,5 +1,12 @@
 #!/bin/env python3
 
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: scope.py
+# Desc: 5 blocks testing usage of global and local variable namespaces
+# Input: python3 scope.py
+# Output: five blocks of python interpretor output
+# Arguments: 0
+# Date: Oct 2019
 
 ## 1st
 _a_global = 10 # a global variable

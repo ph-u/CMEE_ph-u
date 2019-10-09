@@ -1,5 +1,13 @@
 #!/bin/env python3
 
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: oaks.py
+# Desc: five data-handling minimal examples
+# Input: python3 oaks.py
+# Output: four-lined python interpretor output
+# Arguments: 0
+# Date: Oct 2019
+
 ## Finds just those taxa that are oak trees from a list of species
 
 taxa=['Quercus robur',"Fraxinus excelsior","Pinus sylvestris","Quercus cerris","Quercus petraea"]

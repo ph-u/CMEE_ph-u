@@ -1,3 +1,13 @@
+#!/bin/env python3
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: lc2.py
+# Desc: python homework
+# Input: python3 lc2.py
+# Output: 2 sets of duplicated python interpretor output
+# Arguments: 0
+# Date: Oct 2019
+
 # Average UK Rainfall (mm) for 1910 by month
 # http://www.metoffice.gov.uk/climate/uk/datasets
 rainfall = (('JAN',111.4),

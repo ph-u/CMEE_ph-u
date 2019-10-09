@@ -1,5 +1,13 @@
 #!/bin/env python3
 
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: cfexercises2.py
+# Desc: loop testing with different "hello" versions
+# Input: python3 cfexercises2.py
+# Output: 22-lined hellos
+# Arguments: 0
+# Date: Oct 2019
+
 for j in range(12):
 	if j % 3 == 0:
 		print(j,'j0_hello')

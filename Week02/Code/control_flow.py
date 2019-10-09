@@ -1,5 +1,13 @@
 #!/bin/env python3
 
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: control_flow.py
+# Desc: five importable functions
+# Input: python3 boilerplate.py
+# Output: 109-lined python interpretor output
+# Arguments: 0
+# Date: Oct 2019
+
 """Some functions exemplifying the use of control statements"""
 ## docstrings are considered part of the running code (normal comments are stripped).  Hence, you can access your docstrings at runtime.
 __author__="Samraat Pawar (s.pawar@imperial.ac.uk)"

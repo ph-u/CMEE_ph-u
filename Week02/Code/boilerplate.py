@@ -1,5 +1,13 @@
 #!/bin/env python3
 
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: boilerplate.py
+# Desc: minimal python script sample
+# Input: python3 boilerplate.py
+# Output: two-lined python interpretor output
+# Arguments: 0
+# Date: Oct 2019
+
 """Description of this program or application.
 You can use several lines"""
 
@@ -23,4 +31,4 @@ if __name__ == "__main__":
 	"""Makes sure the 'main' function is called from command Line"""
 	status=main(sys.argv)
 	sys.exit("I'm exiting right now")
-	sys.exit(status)
+	# sys.exit(status)

@@ -2,11 +2,20 @@
 
 # 2019 PokMan HO MRes CMEE Coursework Week01
 
-This week's foci were on: sh tex 
+This week's foci were on: sh tex git
 
 ## License
 
 none
+
+## Getting started
+
+Intended OS: MacOS Mojave (ver10.14.6)
+```
+brew install git
+brew install texlive-full
+brew install imagemagick
+```
 
 ## Guides
 
@@ -17,7 +26,8 @@ All scripts are in `Code` directory
 
 #### Features
 
-1. make LaTeX script (with `bib` bibliography file) into pdf; 2. `TeX` and `bib` files must have same filename
+1. make LaTeX script (with `bib` bibliography file) into pdf
+2. `TeX` and `bib` files must have same filename
 
 #### Input
 
@@ -44,7 +54,9 @@ end-to-head merge two files in sequence
 
 #### Output
 
-1. saves the output into an `outfile` in designated subdirectory; 2. terminal output of `outfile` content
+1. saves the output into an `outfile` in designated subdirectory
+2. terminal output of `outfile` content
+
 *****
 
 ### CountLines.sh
@@ -68,7 +80,8 @@ terminal output on number of lines in `infile`
 
 #### Features
 
-1. `LaTeX` file fulfilling assignment needs; 2. as `infile` for testing usability of `CompileLaTeX.sh`
+1. `LaTeX` file fulfilling assignment needs
+2. as `infile` for testing usability of `CompileLaTeX.sh`
 
 #### Input
 
@@ -98,6 +111,28 @@ print "Hello (username)" in two variable-coding methods
 two-lined duplicated "Hello" messages under two coding methods
 *****
 
+### UnixPrac1.txt
+
+#### Features
+
+Unix-coding homework containing answers to 5 questions
+
+#### Input
+
+none (this is not a `shell` script but a text file containing commands)
+
+#### Output
+
+multi-lined terminal output on 5 questions:  
+
+1. three-lined output: line-count of three fasta files in `Data` subdirectory  
+2. multi-lined terminal output on whole E.coli genome (source in `Data` subdirectory)  
+3. one number terminal output on whole E.coli genome length (source in `Data` subdirectory)  
+4. one number terminal output on number of pattern "ATCG" within whole E.coli genome (source in `Data` subdirectory)  
+5. a number rounded to 2-decimal places showing AT:GC ratio of whole E.coli genome (source in `Data` subdirectory)  
+
+*****
+
 ### csvtospace.sh
 
 #### Features
@@ -124,9 +159,12 @@ simple boilerplate for shell scripts
 #### Input
 
 ```
+none
 ```
 
 #### Output
+
+one-lined terminal output
 
 *****
 

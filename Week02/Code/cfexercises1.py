@@ -1,5 +1,13 @@
 #!/bin/env python3
 
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: cfexercises1.py
+# Desc: five importable and self-testable functions
+# Input: python3 cfexercises1.py
+# Output: 1. no output if import to python; 2. python interpretor output of self-test result
+# Arguments: 0
+# Date: Oct 2019
+
 import sys
 import doctest
 

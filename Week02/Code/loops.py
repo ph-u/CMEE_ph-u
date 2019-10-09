@@ -1,5 +1,13 @@
 #!/bin/env python3
 
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: loops.py
+# Desc: loops testing
+# Input: python3 loops.py
+# Output: 1. python print range; 2. python print stuff; 3. python print summation results; 4. pytphon print accending numbers until 99; 5. infinite printing while-loop
+# Arguments: 0
+# Date: Oct 2019
+
 ## FOR loops in Python
 for i in range(5):
 	print(i)

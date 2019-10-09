@@ -1,3 +1,13 @@
+#!/bin/env python3
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: basic_io2.py
+# Desc: second of three basic_io.py sections -- print a list of numbers into `txt` file
+# Input: python3 basic_io2.py
+# Output: saves the output into a `txt` file (`testout.txt`) in `Sandbox` subdirectory
+# Arguments: 0
+# Date: Oct 2019
+
 ##################################
 # FILE OUTPUT
 ##################################

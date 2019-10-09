@@ -1,3 +1,13 @@
+#!/bin/env python3
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: lc1.py
+# Desc: python homework
+# Input: python3 lc1.py
+# Output: 3 sets of duplicated python interpretor output
+# Arguments: 0
+# Date: Oct 2019
+
 birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Delichon urbica','House martin',19),
           ('Junco phaeonotus','Yellow-eyed junco',19.5),
@@ -22,7 +32,7 @@ C=[] ## Q2
 for i in range(len(birds)):
     C.append(str(birds[i][1]))
 print(C)
-C=[str(birds[i][0]) for i in range(len(birds))];print(C) ## Q1
+C=[str(birds[i][1]) for i in range(len(birds))];print(C) ## Q1
 
 ## body mass list
 B=[] ## Q3
