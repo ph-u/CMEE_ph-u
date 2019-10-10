@@ -2,7 +2,7 @@
 
 # 2019 PokMan HO MRes CMEE Coursework Week02
 
-This week's foci were on:  Week02/Code/__pycache__: cpython-37 py 
+This week's foci were on:  cpython-37 py 
 
 ## License
 
