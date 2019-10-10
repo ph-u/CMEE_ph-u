@@ -1,52 +1,28 @@
 ![alt text](https://unichoices.co.uk/wp-content/uploads/2015/09/Imperial-College-London.jpg)
 
-# MRes CMEE Coursework Week 2
+# 2019 PokMan HO's MRes CMEE Coursework
 
-This week's foci were on getting started and submerged into more coding environments, including Python3.  
+This repository is the collection of scripts, programs and classwork files during lecture months.
 
 ## License
 
 Apache-2.0
 
+## Getting started
+
+Intended OS: MacOS Mojave (ver10.14.6)  
+bash version: 3.2.57(1)-release  
+python3 version: 3.7.3  
+r version: 3.5.1
+
 ## Guides
 
 Multiple scripts were coded and introduced below in filename alphabetical order.  
-All scripts are in `Code` directory
+All scripts are in `Week??/Code` directory
 
-### hi
+## Features
 
-#### Features
-
-hi
-
-#### Suggested input
-
-```
-hi
-```
-hi
-
-#### Output
-
-hi
-*****
-
-### hi
-
-#### Features
-
-hi
-
-#### Input
-
-```
-hi
-```
-hi
-
-#### Output
-hi
-*****
+Writing readme.md for each week was mainly automated, followed by manual modifications
 
 ## Reference
 
