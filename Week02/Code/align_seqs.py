@@ -64,7 +64,7 @@ def calculate_score(s1, s2, l1, l2, startpoint):
     print("." * startpoint + s2)
     print(s1)
     print(score) 
-    print(" ")
+    print("cal: pos ",i," with ",z)
 
     return score
 
@@ -77,20 +77,23 @@ def calculate_score(s1, s2, l1, l2, startpoint):
 my_best_align = None
 my_best_score = -1
 
+print("Slave is writing your best results into report...")
+f=open("../Data/result.txt","w")
+
 for i in range(l1): # Note that you just take the last alignment with the highest score
     # import ipdb; ipdb.set_trace() ## debug breakpoint added
     z = calculate_score(s1, s2, l1, l2, i)
-    if z > my_best_score:
+    if z >= my_best_score:
         my_best_align = "." * i + s2 # think about what this is doing!
         my_best_score = z 
-print(my_best_align)
-print(s1)
-print("Best score:", my_best_score)
 
-print("Slave is writing your best results into report...")
-f=open("../Data/result.txt","w")
-f.write(my_best_align+"\n")
-f.write(s1+"\n")
-f.write("Best score:"+str(my_best_score))
+
+        f.write(my_best_align+"\n")
+        f.write(s1+"\n")
+        f.write("Best score:"+str(my_best_score)+"\n\n")
+        print(my_best_align)
+        print(s1)
+        print("Best score:", my_best_score)
+
 f.close()
 print("Slave finishes its report")

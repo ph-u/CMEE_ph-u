@@ -29,4 +29,9 @@ birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
 # Hints: use the "print" command! You can use list comprehensions!
 
 for i in range(len(birds)):
-    print(str(birds[i][:]))
+    for j in range(len(birds[i][:])):
+        if j > 1: k="Mass: "
+        elif j<1: k="Latin name: "
+        else: k="Common name: "
+        print(k,str(birds[i][j]))
+    print("")
