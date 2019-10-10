@@ -28,3 +28,8 @@ Rodentia=set(str(taxa[i][0]) for i in range(len(taxa)) if taxa[i][1] == "Rodenti
 Afrosoricida=set(str(taxa[i][0]) for i in range(len(taxa)) if taxa[i][1] == "Afrosoricida")
 Carnivora=set(str(taxa[i][0]) for i in range(len(taxa)) if taxa[i][1] == "Carnivora")
 taxa_dic={'Chiroptera': Chiroptera,'Rodentia': Rodentia,'Afrosoricida': Afrosoricida,'Carnivora': Carnivora}
+
+print("Start dictionary printing:\n")
+for i,v in taxa_dic.items():
+        print("Content in",i,":",v,"\n")
+print("Finish printing dictionary")
