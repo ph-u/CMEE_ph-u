@@ -17,9 +17,18 @@ __author__="PMH"
 __version__="0.0.1"
 __license__="None"
 
+## imports
+import sys
+
+## input
+f=open('../Data/seq.csv',"r")
+seq2=f.readline().strip()
+seq1=f.readline().strip()
+f.close()
+
 # Two example sequences to match
-seq2 = "ATCGCCGGATTACGGG"
-seq1 = "CAATTCGGAT"
+# seq2 = "ATCGCCGGATTACGGG"
+# seq1 = "CAATTCGGAT"
 
 # Assign the longer sequence s1, and the shorter to s2
 # l1 is length of the longest, l2 that of the shortest
@@ -34,15 +43,14 @@ else:
     s2 = seq1
     l1, l2 = l2, l1 # swap the two lengths
 
-# A function that computes a score by returning the number of matches starting
-# from arbitrary startpoint (chosen by user)
+# A function that computes a score by returning the number of matches starting from arbitrary startpoint (chosen by user)
+
 def calculate_score(s1, s2, l1, l2, startpoint):
     matched = "" # to hold string displaying alignements
     score = 0
     for i in range(l2):
 
-	## debug breakpoint added
-#	import ipdb; ipdb.set_trace()
+#	import ipdb; ipdb.set_trace() ## debug breakpoint added
 
         if (i + startpoint) < l1:
             if s1[i + startpoint] == s2[i]: # if the bases match
@@ -70,6 +78,7 @@ my_best_align = None
 my_best_score = -1
 
 for i in range(l1): # Note that you just take the last alignment with the highest score
+    # import ipdb; ipdb.set_trace() ## debug breakpoint added
     z = calculate_score(s1, s2, l1, l2, i)
     if z > my_best_score:
         my_best_align = "." * i + s2 # think about what this is doing!
@@ -77,3 +86,11 @@ for i in range(l1): # Note that you just take the last alignment with the highes
 print(my_best_align)
 print(s1)
 print("Best score:", my_best_score)
+
+print("Slave is writing your best results into report...")
+f=open("../Data/result.txt","w")
+f.write(my_best_align+"\n")
+f.write(s1+"\n")
+f.write("Best score:"+str(my_best_score))
+f.close()
+print("Slave finishes its report")

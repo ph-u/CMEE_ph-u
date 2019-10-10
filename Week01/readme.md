@@ -128,7 +128,7 @@ multi-lined terminal output on 5 questions:
 1. three-lined output: line-count of three fasta files in `Data` subdirectory  
 2. multi-lined terminal output on whole E.coli genome (source in `Data` subdirectory)  
 3. one number terminal output on whole E.coli genome length (source in `Data` subdirectory)  
-4. one number terminal output on number of pattern "ATCG" within whole E.coli genome (source in `Data` subdirectory)  
+4. one number terminal output on number of pattern "ATGC" within whole E.coli genome (source in `Data` subdirectory)  
 5. a number rounded to 2-decimal places showing AT:GC ratio of whole E.coli genome (source in `Data` subdirectory)  
 
 *****
