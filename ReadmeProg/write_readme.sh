@@ -22,7 +22,7 @@ echo -e "# $3 $1 $2 $4 CMEE Coursework $6" >> $5/$6/readme.md
 echo >> $5/$6/readme.md
 
 ## Grammar for week's description
-list=`ls $6/Code/*|cut -f 2 -d "."|sort|uniq|grep -v "bib\|txt\|pyc\|cpy*"|wc -l`
+list=`ls $6/Code/*|cut -f 2 -d "."|sort|uniq|grep -v "bib\|txt\|pyc\|cpy*\|^$"|wc -l`
 if [ ${list} -eq 1 ];then
 	gram=`echo "focus was"`
 else
@@ -30,7 +30,7 @@ else
 fi
 
 ## Week's description
-lsout=`ls $6/Code/*|cut -f 2 -d "."|sort|uniq|grep -v "bib\|txt\|pyc\|cpy*"|tr -s "\n" " "`
+lsout=`ls $6/Code/*|cut -f 2 -d "."|sort|uniq|grep -v "bib\|txt\|pyc\|cpy*\|^$"|tr -s "\n" " "`
 echo "This week's ${gram} on: ${lsout}" >> $5/$6/readme.md
 head -n 14 $5/ReadmeProg/tmp_readme.md|tail -n 9 >> $5/$6/readme.md
 
