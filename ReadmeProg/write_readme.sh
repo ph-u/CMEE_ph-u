@@ -47,7 +47,7 @@ for i in `ls *|grep -v "bib\|txt\|pyc\|cpy*\|^$"`;do
 
 	## Script Sample Input
 	echo "" >> ../readme.md
-	echo "#### Input" >> ../readme.md
+	echo "#### Suggested input" >> ../readme.md
 	echo "" >> ../readme.md
 	head -n 24 $5/ReadmeProg/tmp_readme.md|tail -n 1 >> ../readme.md
 	grep "Input" ${i}|cut -f 2 -d ":"|sed -e "s/ //1" >> ../readme.md
