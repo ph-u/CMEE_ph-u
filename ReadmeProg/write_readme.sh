@@ -36,7 +36,7 @@ head -n 14 $5/ReadmeProg/tmp_readme.md|tail -n 9 >> $5/$6/readme.md
 
 ## Scripts description
 cd $5/$6/Code/
-for i in `ls *|grep -v "bib\|txt"`;do
+for i in `ls *|grep -v "bib\|txt\|pyc\|cpy*\|^$"`;do
 	## Script title & Function
 	echo "" >> ../readme.md
 	echo "### ${i}" >> ../readme.md
