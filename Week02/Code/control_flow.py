@@ -3,7 +3,7 @@
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: control_flow.py
 # Desc: five importable functions
-# Input: python3 boilerplate.py
+# Input: python3 control_flow.py
 # Output: 109-lined python interpretor output
 # Arguments: 0
 # Date: Oct 2019

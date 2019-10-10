@@ -159,7 +159,7 @@ five importable functions
 #### Input
 
 ```
-python3 boilerplate.py
+python3 control_flow.py
 ```
 
 #### Output
@@ -286,6 +286,23 @@ python3 sysargv.py <var_1> <var_2> <var_3> ...
 three-lined python interpretor output
 *****
 
+### test_control_flow.py
+
+#### Features
+
+five importable functions
+
+#### Input
+
+```
+python3 test_control_flow.py
+```
+
+#### Output
+
+109-lined python interpretor output
+*****
+
 ### tuple.py
 
 #### Features
@@ -363,6 +380,20 @@ one-lined python interpretor output
 *****
 
 ### control_flow.cpython-37.pyc
+
+#### Features
+
+
+#### Input
+
+```
+```
+
+#### Output
+
+*****
+
+### test_control_flow.cpython-37.pyc
 
 #### Features
 
