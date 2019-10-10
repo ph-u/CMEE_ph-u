@@ -159,7 +159,7 @@ simple boilerplate for shell scripts
 #### Input
 
 ```
-none
+./myboilerplate.sh
 ```
 
 #### Output

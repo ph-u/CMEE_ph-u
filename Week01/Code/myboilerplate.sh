@@ -2,7 +2,7 @@
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: boilerplate.sh
 # Desc: simple boilerplate for shell scripts
-# Input: none
+# Input: ./myboilerplate.sh
 # Output: one-lined terminal output
 # Arguments: 0
 # Date: Oct 2019
