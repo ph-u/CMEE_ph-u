@@ -19,7 +19,7 @@ All scripts are in `Code` directory
 
 python homework -- genetic alignment module program
 
-#### Input
+#### Suggested input
 
 ```
 python3 align_seqs.py <seq_1> <seq_2>
@@ -36,7 +36,7 @@ python interpretor output -- all alignment possibilities, raw sequences and best
 
 1. python interpretor read `csv` file and extract first element (species); 2. copy specific column "bodymass" from `testcsv.csv` file to a new `csv` file (`bodymass.csv`)
 
-#### Input
+#### Suggested input
 
 ```
 python3 basic_csv.py
@@ -53,7 +53,7 @@ python3 basic_csv.py
 
 1. python interpretor output an input `csv` file; 2. print a list of numbers into `txt` file; 3. save a python dictionary into binary file, then read and print in python interpretor
 
-#### Input
+#### Suggested input
 
 ```
 python3 basic_io.py
@@ -70,7 +70,7 @@ python3 basic_io.py
 
 first of three basic_io.py sections -- python interpretor output an input `csv` file
 
-#### Input
+#### Suggested input
 
 ```
 python3 basic_io1.py
@@ -87,7 +87,7 @@ python interpretor output
 
 second of three basic_io.py sections -- print a list of numbers into `txt` file
 
-#### Input
+#### Suggested input
 
 ```
 python3 basic_io2.py
@@ -104,7 +104,7 @@ saves the output into a `txt` file (`testout.txt`) in `Sandbox` subdirectory
 
 third of three basic_io.py sections -- save a python dictionary into binary file, then read and print in python interpretor
 
-#### Input
+#### Suggested input
 
 ```
 python3 basic_io3.py
@@ -122,7 +122,7 @@ save a binary file (`testp.p`) in `Sandbox` subdirectory & python interpretor ou
 minimal python script sample
 """Descriptionof this program or application.
 
-#### Input
+#### Suggested input
 
 ```
 python3 boilerplate.py
@@ -139,7 +139,7 @@ two-lined python interpretor output
 
 five importable and self-testable functions
 
-#### Input
+#### Suggested input
 
 ```
 python3 cfexercises1.py
@@ -156,7 +156,7 @@ python3 cfexercises1.py
 
 loop testing with different "hello" versions
 
-#### Input
+#### Suggested input
 
 ```
 python3 cfexercises2.py
@@ -173,7 +173,7 @@ python3 cfexercises2.py
 
 five importable functions
 
-#### Input
+#### Suggested input
 
 ```
 python3 control_flow.py
@@ -190,7 +190,7 @@ python3 control_flow.py
 
 testing %ipdb by creating a bug
 
-#### Input
+#### Suggested input
 
 ```
 python3 debugme.py
@@ -207,7 +207,7 @@ hault at break point and go into python3 debug mode
 
 python homework, create and print dictionary line-by-line
 
-#### Input
+#### Suggested input
 
 ```
 python3 dictionary.py
@@ -224,7 +224,7 @@ print the dictionary line-by-line
 
 python homework
 
-#### Input
+#### Suggested input
 
 ```
 python3 lc1.py
@@ -241,7 +241,7 @@ python3 lc1.py
 
 python homework
 
-#### Input
+#### Suggested input
 
 ```
 python3 lc2.py
@@ -258,7 +258,7 @@ python3 lc2.py
 
 loops testing
 
-#### Input
+#### Suggested input
 
 ```
 python3 loops.py
@@ -275,7 +275,7 @@ python3 loops.py
 
 five data-handling minimal examples
 
-#### Input
+#### Suggested input
 
 ```
 python3 oaks.py
@@ -292,7 +292,7 @@ four-lined python interpretor output
 
 5 blocks testing usage of global and local variable namespaces
 
-#### Input
+#### Suggested input
 
 ```
 python3 scope.py
@@ -309,7 +309,7 @@ five blocks of python interpretor output
 
 get familiarize with system arguments in python scripts
 
-#### Input
+#### Suggested input
 
 ```
 python3 sysargv.py <var_1> <var_2> <var_3> ...
@@ -326,7 +326,7 @@ three-lined python interpretor output
 
 five importable functions
 
-#### Input
+#### Suggested input
 
 ```
 python3 test_control_flow.py
@@ -343,7 +343,7 @@ python3 test_control_flow.py
 
 python homework
 
-#### Input
+#### Suggested input
 
 ```
 python3 tuple.py
@@ -360,7 +360,7 @@ five-lined python interpretor output
 
 minimal python importable script sample
 
-#### Input
+#### Suggested input
 
 ```
 python3 using_name.py
