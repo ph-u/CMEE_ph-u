@@ -4,7 +4,7 @@
 # Script: align_seqs.py
 # Desc: python homework -- genetic alignment module program
 # Input: python3 align_seqs.py <seq_1> <seq_2>
-# Output: python interpretor output -- all alignment possibilities, raw sequences and best alignment score
+# Output: 1. python interpretor output -- all alignment possibilities, raw sequences and best alignment score; 2. output best alignments and its/their score(s) to a txt file in `Data` subdirectory
 # Arguments: 0
 # Date: Oct 2019
 

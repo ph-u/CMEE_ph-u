@@ -24,7 +24,7 @@ import sys ## module to interface our program with the operating system
 ## functions ##
 def main(argv):
 	"""Main entry point of the program"""
-	print("This is a boilerplate") ## NOTE: idented using two tabs or 4 species
+	print("This is a boilerplate") ## NOTE: indented using two tabs or 4 species
 	return 0
 
 if __name__ == "__main__":
