@@ -6,7 +6,7 @@ This week's foci were on getting started and submerged into more coding environm
 
 ## License
 
-none
+Apache-2.0
 
 ## Guides
 

@@ -6,7 +6,7 @@ This week's foci were on: sh tex git
 
 ## License
 
-none
+Apache-2.0
 
 ## Getting started
 

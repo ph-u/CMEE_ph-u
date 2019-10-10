@@ -6,7 +6,7 @@ This week's focus was on: py
 
 ## License
 
-none
+Apache-2.0
 
 ## Guides
 
