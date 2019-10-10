@@ -8,6 +8,15 @@
 # Arguments: 0
 # Date: Oct 2019
 
+"""
+5 blocks testing usage of global and local variable namespaces
+"""
+
+__appname__="scope.py"
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 ## 1st
 _a_global = 10 # a global variable
 

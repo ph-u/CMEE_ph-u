@@ -8,6 +8,16 @@
 # Arguments: 0
 # Date: Oct 2019
 
+
+"""
+loops testing
+"""
+
+__appname__="loops.py"
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 ## FOR loops in Python
 for i in range(5):
 	print(i)

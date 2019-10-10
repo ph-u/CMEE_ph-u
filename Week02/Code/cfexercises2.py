@@ -8,6 +8,15 @@
 # Arguments: 0
 # Date: Oct 2019
 
+"""
+loop testing with different "hello" versions
+"""
+
+__appname__="cfexercises2.py"
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 for j in range(12):
 	if j % 3 == 0:
 		print(j,'j0_hello')

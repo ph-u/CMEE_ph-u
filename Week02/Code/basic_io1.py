@@ -8,6 +8,15 @@
 # Arguments: 0
 # Date: Oct 2019
 
+"""
+first of three basic_io.py sections -- python interpretor output an input `csv` file
+"""
+
+__appname__="basic_io1.py"
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 #################################
 # FILE INPUT
 #################################

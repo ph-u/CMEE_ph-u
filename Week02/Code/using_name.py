@@ -8,6 +8,15 @@
 # Arguments: 0
 # Date: Oct 2019
 
+"""
+minimal python importable script sample
+"""
+
+__appname__="using_name.py"
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 ## Filename: using_name.py
 
 if __name__=="__main__":

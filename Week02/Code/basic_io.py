@@ -8,6 +8,17 @@
 # Arguments: 0
 # Date: Oct 2019
 
+"""
+1. python interpretor output an input `csv` file
+2. print a list of numbers into `txt` file
+3. save a python dictionary into binary file, then read and print in python interpretor
+"""
+
+__appname__="basic_io.py"
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 #################################
 # FILE INPUT
 #################################

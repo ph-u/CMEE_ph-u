@@ -2,11 +2,20 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: dictionary.py
-# Desc: python homework
-# Input: None
-# Output: None
+# Desc: python homework, create and print dictionary line-by-line
+# Input: python3 dictionary.py
+# Output: print the dictionary line-by-line
 # Arguments: 0
 # Date: Oct 2019
+
+"""
+python homework, create and print dictionary line-by-line
+"""
+
+__appname__="dictionary.py"
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
 
 taxa = [ ('Myotis lucifugus','Chiroptera'),
          ('Gerbillus henleyi','Rodentia',),

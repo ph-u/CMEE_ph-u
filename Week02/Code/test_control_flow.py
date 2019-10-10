@@ -10,8 +10,10 @@
 
 """Some functions exemplifying the use of control statements"""
 ## docstrings are considered part of the running code (normal comments are stripped).  Hence, you can access your docstrings at runtime.
+__appname__="test_control_flow.py"
 __author__="Samraat Pawar (s.pawar@imperial.ac.uk)"
 __version__="0.0.1"
+__license__="None"
 
 import sys
 import doctest # Import the doctest module

@@ -13,6 +13,23 @@ Apache-2.0
 Multiple scripts were coded and introduced below in filename alphabetical order.  
 All scripts are in `Code` directory
 
+### align_seqs.py
+
+#### Features
+
+python homework -- genetic alignment module program
+
+#### Input
+
+```
+python3 align_seqs.py <seq_1> <seq_2>
+```
+
+#### Output
+
+python interpretor output -- all alignment possibilities, raw sequences and best alignment score
+*****
+
 ### basic_csv.py
 
 #### Features
@@ -167,21 +184,38 @@ python3 control_flow.py
 109-lined python interpretor output
 *****
 
-### dictionary.py
+### debugme.py
 
 #### Features
 
-python homework
+testing %ipdb by creating a bug
 
 #### Input
 
 ```
-None
+python3 debugme.py
 ```
 
 #### Output
 
-None
+hault at break point and go into python3 debug mode
+*****
+
+### dictionary.py
+
+#### Features
+
+python homework, create and print dictionary line-by-line
+
+#### Input
+
+```
+python3 dictionary.py
+```
+
+#### Output
+
+print the dictionary line-by-line
 *****
 
 ### lc1.py

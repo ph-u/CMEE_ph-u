@@ -8,6 +8,15 @@
 # Arguments: 0
 # Date: Oct 2019
 
+"""
+five data-handling minimal examples
+"""
+
+__appname__="oaks.py"
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 ## Finds just those taxa that are oak trees from a list of species
 
 taxa=['Quercus robur',"Fraxinus excelsior","Pinus sylvestris","Quercus cerris","Quercus petraea"]

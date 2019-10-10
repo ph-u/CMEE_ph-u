@@ -8,6 +8,15 @@
 # Arguments: 0
 # Date: Oct 2019
 
+"""
+five importable and self-testable functions
+"""
+
+__appname__="cfexercises1.py"
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 import sys
 import doctest
 
