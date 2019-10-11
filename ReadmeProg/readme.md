@@ -3,12 +3,12 @@
 
 ## Getting started
 
-bash version >=3.2.57
+bash version >=3.2.57  
 Mac / Linux OS
 
 ## License
 
-GPL-3.0
+Apache-2.0
 
 ## Guides
 
