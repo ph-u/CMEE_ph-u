@@ -21,20 +21,23 @@ __license__="None"
 import sys
 
 ## input
-f1=open(sys.argv[1],"r")
-f2=open(sys.argv[2],"r")
-f1.readlines()[1:]
-for i in f1 f2:
-    for l in i:
-        num_l += 1
-    if num_l > 2:
-        print("big")
-    else:
-        print("small")
+def file_len(fname):
+    with open(fname) as r:
+        for i,l in enumerate(r):
+            pass
+    return i+1
+
+for i in range(1,2+1):
+    f=list(open(str(sys.argv[i]),"r"))
+    del f[0]
+    for i in range(len(f)):
+        f[i]=f[i].strip
+    
+    for j in range(1,file_len(sys.argv[i])+1):
+
 seq2=
 seq1=
-f1.close()
-f2.close()
+
 # f=open('../Data/seq.csv',"r")
 # seq2=f.readline().strip()
 # seq1=f.readline().strip()
