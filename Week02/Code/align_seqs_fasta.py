@@ -1,9 +1,9 @@
 #!/bin/env python3
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
-# Script: align_seqs.py
+# Script: align_seqs_fasta.py
 # Desc: python homework -- genetic alignment module program
-# Input: python3 align_seqs.py <seq_1> <seq_2>
+# Input: python3 align_seqs_fasta.py <seq_1> <seq_2>
 # Output: 1. python interpretor output -- all alignment possibilities, raw sequences and best alignment score; 2. output best alignments and its/their score(s) to a txt file in `Data` subdirectory
 # Arguments: 0
 # Date: Oct 2019
@@ -21,10 +21,24 @@ __license__="None"
 import sys
 
 ## input
-f=open('../Data/seq.csv',"r")
-seq2=f.readline().strip()
-seq1=f.readline().strip()
-f.close()
+f1=open(sys.argv[1],"r")
+f2=open(sys.argv[2],"r")
+f1.readlines()[1:]
+for i in f1 f2:
+    for l in i:
+        num_l += 1
+    if num_l > 2:
+        print("big")
+    else:
+        print("small")
+seq2=
+seq1=
+f1.close()
+f2.close()
+# f=open('../Data/seq.csv',"r")
+# seq2=f.readline().strip()
+# seq1=f.readline().strip()
+# f.close()
 
 # Two example sequences to match
 # seq2 = "ATCGCCGGATTACGGG"
