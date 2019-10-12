@@ -12,7 +12,7 @@
 python homework -- genetic alignment module program
 """
 
-__appname__="align_seqs.py"
+__appname__="align_seqs_fasta.py"
 __author__="PMH"
 __version__="0.0.1"
 __license__="None"
@@ -30,13 +30,9 @@ def file_len(fname):
 for i in range(1,2+1):
     f=list(open(str(sys.argv[i]),"r"))
     del f[0]
-    for i in range(len(f)):
-        f[i]=f[i].strip
-    
-    for j in range(1,file_len(sys.argv[i])+1):
-
-seq2=
-seq1=
+    f=[i.strip() for i in f]
+    if i == 1: seq2="".join(f)
+    else: seq1="".join(f)
 
 # f=open('../Data/seq.csv',"r")
 # seq2=f.readline().strip()
