@@ -1,9 +1,9 @@
 #!/bin/env python3
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
-# Script: align_seqs_fasta.py
+# Script: align_seqs_better.py
 # Desc: python homework -- genetic alignment module program
-# Input: python3 align_seqs_fasta.py <seq_1> <seq_2>
+# Input: python3 align_seqs_better.py <seq_1> <seq_2>
 # Output: 1. python interpretor output -- alignment process; 2. output best alignment(s) and its/their score(s) to a txt file in `Data` subdirectory
 # Arguments: 0
 # Date: Oct 2019
@@ -12,7 +12,7 @@
 python homework -- genetic alignment module program
 """
 
-__appname__="align_seqs_fasta.py"
+__appname__="align_seqs_better.py"
 __author__="PMH"
 __version__="0.0.1"
 __license__="None"
@@ -21,6 +21,7 @@ __license__="None"
 import sys
 from os import listdir
 from os.path import isfile, join
+import pickle
 
 ## input
 if len(sys.argv) ==1:
@@ -99,7 +100,7 @@ my_best_align = None
 my_best_score = -1
 
 print("Slave is writing your best results into report...")
-f=open("../Data/result_f.txt","w")
+f=open("../Data/result_b.p","wb")
 
 for i in range(l1): # Note that you just take the last alignment with the highest score
     # import ipdb; ipdb.set_trace() ## debug breakpoint added
@@ -113,9 +114,9 @@ for i in range(l1): # Note that you just take the last alignment with the highes
         my_best_score = z 
 
 
-        f.write(my_best_align+"\n")
-        f.write(s1+"\n")
-        f.write("Best score:"+str(my_best_score)+"\n\n")
+        pickle.dump(my_best_align+"\n") # f.write(my_best_align+"\n")
+        pickle.dump(s1+"\n") # f.write(s1+"\n")
+        pickle.dump("Best score:"+str(my_best_score)+"\n\n") # f.write("Best score:"+str(my_best_score)+"\n\n")
         # print(my_best_align)
         # print(s1)
         # print("Best score:", my_best_score)
@@ -123,15 +124,15 @@ for i in range(l1): # Note that you just take the last alignment with the highes
     elif z > my_best_score:
         ## reset best output
         f.close()
-        f=open("../Data/result_f.txt","w")
+        f=open("../Data/result_b.p","wb")
 
         my_best_align = "." * i + s2 # think about what this is doing!
         my_best_score = z 
 
 
-        f.write(my_best_align+"\n")
-        f.write(s1+"\n")
-        f.write("Best score:"+str(my_best_score)+"\n\n")
+        pickle.dump(my_best_align+"\n") # f.write(my_best_align+"\n")
+        pickle.dump(s1+"\n") # f.write(s1+"\n")
+        pickle.dump("Best score:"+str(my_best_score)+"\n\n") # f.write("Best score:"+str(my_best_score)+"\n\n")
         print("cal: pos ",i," with score ",z)
         # print(my_best_align)
         # print(s1)
