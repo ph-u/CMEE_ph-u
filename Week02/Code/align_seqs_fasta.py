@@ -4,7 +4,7 @@
 # Script: align_seqs_fasta.py
 # Desc: python homework -- genetic alignment module program
 # Input: python3 align_seqs_fasta.py <seq_1> <seq_2>
-# Output: 1. python interpretor output -- all alignment possibilities, raw sequences and best alignment score; 2. output best alignments and its/their score(s) to a txt file in `Data` subdirectory
+# Output: 1. python interpretor output -- alignment process; 2. output best alignment(s) and its/their score(s) to a txt file in `Data` subdirectory
 # Arguments: 0
 # Date: Oct 2019
 
@@ -42,7 +42,7 @@ else:
         f=[i.strip() for i in f]
         if i == 1: seq2="".join(f)
         else: seq1="".join(f)
-
+del f
 # f=open('../Data/seq.csv',"r")
 # seq2=f.readline().strip()
 # seq1=f.readline().strip()
