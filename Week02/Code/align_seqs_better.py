@@ -99,7 +99,7 @@ def calculate_score(s1, s2, l1, l2, startpoint):
 my_best_align = None
 my_best_score = -1
 
-print("Slave is writing your best results into report...")
+print("Slave is writing your best results into binary report...")
 f=open("../Data/result_b.p","wb")
 
 for i in range(l1): # Note that you just take the last alignment with the highest score
@@ -139,4 +139,7 @@ for i in range(l1): # Note that you just take the last alignment with the highes
         # print("Best score:", my_best_score)
 
 f.close()
-print("Slave finishes its report")
+print("Slave finishes its report in binary")
+
+## Load report in python3
+# with open("../Data/result_b.p","rb") as f: print(pickle.load(f))
