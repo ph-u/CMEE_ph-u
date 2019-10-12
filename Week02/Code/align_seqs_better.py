@@ -114,9 +114,9 @@ for i in range(l1): # Note that you just take the last alignment with the highes
         my_best_score = z 
 
 
-        pickle.dump(my_best_align+"\n") # f.write(my_best_align+"\n")
-        pickle.dump(s1+"\n") # f.write(s1+"\n")
-        pickle.dump("Best score:"+str(my_best_score)+"\n\n") # f.write("Best score:"+str(my_best_score)+"\n\n")
+        pickle.dump(my_best_align+"\n",f) # f.write(my_best_align+"\n")
+        pickle.dump(s1+"\n",f) # f.write(s1+"\n")
+        pickle.dump("Best score:"+str(my_best_score)+"\n\n",f) # f.write("Best score:"+str(my_best_score)+"\n\n")
         # print(my_best_align)
         # print(s1)
         # print("Best score:", my_best_score)
@@ -130,9 +130,9 @@ for i in range(l1): # Note that you just take the last alignment with the highes
         my_best_score = z 
 
 
-        pickle.dump(my_best_align+"\n") # f.write(my_best_align+"\n")
-        pickle.dump(s1+"\n") # f.write(s1+"\n")
-        pickle.dump("Best score:"+str(my_best_score)+"\n\n") # f.write("Best score:"+str(my_best_score)+"\n\n")
+        pickle.dump(my_best_align+"\n",f) # f.write(my_best_align+"\n")
+        pickle.dump(s1+"\n",f) # f.write(s1+"\n")
+        pickle.dump("Best score:"+str(my_best_score)+"\n\n",f) # f.write("Best score:"+str(my_best_score)+"\n\n")
         print("cal: pos ",i," with score ",z)
         # print(my_best_align)
         # print(s1)
