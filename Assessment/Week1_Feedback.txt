@@ -1,0 +1,65 @@
+Starting weekly assessment for Pok Man, Week1
+
+Current Points = 100
+
+Note that: 
+(1) Major sections begin with a double "====" line 
+(2) Subsections begin with a single "====" line 
+(3) Code output or text file content are printed within single "*****" lines 
+
+======================================================================
+======================================================================
+Your Git repo size this week is about 16.47 MiB on disk 
+
+PART 1: Checking project workflow...
+
+Found the following directories in parent directory: Week09, Assessment, Week04, seminar, Week03, Week07, Week06, Week08, .git, Week01, ReadmeProg, Week05, Week02
+
+Found the following files in parent directory: README.txt, LICENSE, .gitignore, readme.md
+
+Checking for key files in parent directory...
+
+Found .gitignore in parent directory, great! 
+
+Printing contents of .gitignore:
+**********************************************************************
+*~ 
+*.tmp
+*.fasta
+*.csv
+._*
+*.tmp
+*.swp
+nohup*
+.Rhistory
+readme_final.md
+*.odt#
+**********************************************************************
+
+Found README in parent directory, named: README.txt
+
+Printing contents of README.txt:
+**********************************************************************
+PokMan Ho CMEE Coursework Repository
+Do I like this better?
+**********************************************************************
+
+======================================================================
+Looking for the weekly directories...
+
+Found 9 weekly directories: Week01, Week02, Week03, Week04, Week05, Week06, Week07, Week08, Week09
+
+The Week1 directory will be assessed 
+
+======================================================================
+======================================================================
+PART 2: Checking weekly code and workflow...
+
+======================================================================
+======================================================================
+
+FINISHED WEEKLY ASSESSMENT
+
+Current Points for the Week = 100
+
+NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!
