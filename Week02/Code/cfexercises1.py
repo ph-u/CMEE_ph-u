@@ -97,4 +97,17 @@ def foo_6(x): ## calculate the factorial of x in a different way
 		x=x-1
 	return facto
 
+def main(argv):
+	print(foo_1(4))
+	print(foo_2(5,4))
+	print(foo_3(2,1,3))
+	print(foo_4(5))
+	print(foo_5(5))
+	print(foo_6(5))
+	return 0
+
+if(__name__=="__main__"):
+	status=main(sys.argv)
+	sys.exit(status)
+
 doctest.testmod()
