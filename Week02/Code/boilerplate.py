@@ -4,7 +4,7 @@
 # Script: boilerplate.py
 # Desc: minimal python script sample
 # Input: python3 boilerplate.py
-# Output: two-lined python interpretor output
+# Output: two-lined python interpreter output
 # Arguments: 0
 # Date: Oct 2019
 

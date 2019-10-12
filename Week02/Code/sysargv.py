@@ -4,7 +4,7 @@
 # Script: sysargv.py
 # Desc: get familiarize with system arguments in python scripts
 # Input: python3 sysargv.py <var_1> <var_2> <var_3> ...
-# Output: three-lined python interpretor output
+# Output: three-lined python interpreter output
 # Arguments: variable
 # Date: Oct 2019
 

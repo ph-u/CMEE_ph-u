@@ -2,14 +2,14 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: cfexercises1.py
-# Desc: five importable and self-testable functions
+# Desc: six importable and self-testable functions with logic bug at foo_3
 # Input: python3 cfexercises1.py
-# Output: 1. no output if import to python; 2. python interpretor output of self-test result
+# Output: python interpreter output -- each module a line
 # Arguments: 0
 # Date: Oct 2019
 
 """
-five importable and self-testable functions
+six importable and self-testable functions with logic bug at foo_3
 """
 
 __appname__="cfexercises1.py"

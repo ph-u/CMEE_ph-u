@@ -4,7 +4,7 @@
 # Script: tuple.py
 # Desc: python homework
 # Input: python3 tuple.py
-# Output: five-lined python interpretor output
+# Output: python interpreter output five blocks with three-lined each
 # Arguments: 0
 # Date: Oct 2019
 

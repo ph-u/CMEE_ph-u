@@ -2,14 +2,14 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: oaks.py
-# Desc: five data-handling minimal examples
+# Desc: test data output methods
 # Input: python3 oaks.py
-# Output: four-lined python interpretor output
+# Output: four-lined python interpreter output
 # Arguments: 0
 # Date: Oct 2019
 
 """
-five data-handling minimal examples
+test data output methods
 """
 
 __appname__="oaks.py"

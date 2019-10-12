@@ -2,14 +2,14 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: basic_io3.py
-# Desc: third of three basic_io.py sections -- save a python dictionary into binary file, then read and print in python interpretor
+# Desc: third of three basic_io.py sections -- save a python dictionary into binary file, then read and print in python interpreter
 # Input: python3 basic_io3.py
-# Output: save a binary file (`testp.p`) in `Sandbox` subdirectory & python interpretor output
+# Output: save a binary file (`testp.p`) in `Sandbox` subdirectory & python interpreter output
 # Arguments: 0
 # Date: Oct 2019
 
 """
-third of three basic_io.py sections -- save a python dictionary into binary file, then read and print in python interpretor
+third of three basic_io.py sections -- save a python dictionary into binary file, then read and print in python interpreter
 """
 
 __appname__="basic_io3.py"

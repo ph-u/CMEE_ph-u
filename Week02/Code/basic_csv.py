@@ -2,15 +2,15 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: basic_csv.py
-# Desc: 1. python interpretor read `csv` file and extract first element (species); 2. copy specific column "bodymass" from `testcsv.csv` file to a new `csv` file (`bodymass.csv`)
+# Desc: 1. python interpreter read `csv` file and extract first element (species); 2. copy specific column "bodymass" from `testcsv.csv` file to a new `csv` file (`bodymass.csv`)
 # Input: python3 basic_csv.py
-# Output: 1. python interpretor output; 2. saves the output into a `csv` file in `Data` subdirectory
+# Output: 1. 30-lined python interpreter output; 2. saves the output into a `csv` file in `Data` subdirectory
 # Arguments: 0
 # Date: Oct 2019
 
 """
-1. python interpretor read `csv` file and extract first element (species)
-2. copy specific column "bodymass" from `testcsv.csv` file to a new `csv` file (`bodymass.csv`)
+1. python interpretor read csv file and extract first element (species)
+2. copy specific column "bodymass" from testcsv.csv file to a new csv file (bodymass.csv)
 """
 
 __appname__="basic_csv.py"

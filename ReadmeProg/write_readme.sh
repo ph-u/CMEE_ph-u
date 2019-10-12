@@ -43,7 +43,7 @@ for i in `ls *|grep -v "bib\|txt\|pyc\|cpy*\|^$"`;do
 	echo "" >> ../readme.md
 	echo "#### Features" >> ../readme.md
 	echo "" >> ../readme.md
-	grep "Desc" ${i}|cut -f 2 -d ":"|sed -e "s/ //1" >> ../readme.md
+	grep "Desc:" ${i}|cut -f 2 -d ":"|sed -e "s/ //1" >> ../readme.md
 
 	## Script Sample Input
 	echo "" >> ../readme.md

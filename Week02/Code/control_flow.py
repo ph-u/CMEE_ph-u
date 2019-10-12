@@ -4,7 +4,7 @@
 # Script: control_flow.py
 # Desc: five importable functions
 # Input: python3 control_flow.py
-# Output: 109-lined python interpretor output
+# Output: 109-lined python interpreter output
 # Arguments: 0
 # Date: Oct 2019
 

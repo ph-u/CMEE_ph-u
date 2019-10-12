@@ -2,14 +2,14 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: dictionary.py
-# Desc: python homework, create and print dictionary line-by-line
+# Desc: python homework -- create and print dictionary line-by-line
 # Input: python3 dictionary.py
-# Output: print the dictionary line-by-line
+# Output: print the dictionary keys and content line-by-line
 # Arguments: 0
 # Date: Oct 2019
 
 """
-python homework, create and print dictionary line-by-line
+python homework -- create and print dictionary line-by-line
 """
 
 __appname__="dictionary.py"

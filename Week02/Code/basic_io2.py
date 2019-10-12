@@ -9,7 +9,7 @@
 # Date: Oct 2019
 
 """
-second of three basic_io.py sections -- print a list of numbers into `txt` file
+second of three basic_io.py sections -- print a list of numbers into txt file
 """
 
 __appname__="basic_io2.py"

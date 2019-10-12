@@ -2,16 +2,16 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: basic_io.py
-# Desc: 1. python interpretor output an input `csv` file; 2. print a list of numbers into `txt` file; 3. save a python dictionary into binary file, then read and print in python interpretor
+# Desc: 1. first of three basic_io.py sections -- output lines from `txt` file; 2. print a list of numbers into `txt` file; 3. save a python dictionary into binary file, then read and print in python interpreter
 # Input: python3 basic_io.py
-# Output: 1. python interpretor output; 2. saves the output into a `txt` file (`testout.txt`) in `Sandbox` subdirectory; 3. save a binary file (`testp.p`) in `Sandbox` subdirectory & python interpretor output
+# Output: 1. 22-lined python interpreter output; 2. saves the output into a `txt` file (`testout.txt`) in `Sandbox` subdirectory; 3. save a binary file (`testp.p`) in `Sandbox` subdirectory & python interpreter output
 # Arguments: 0
 # Date: Oct 2019
 
 """
-1. python interpretor output an input `csv` file
-2. print a list of numbers into `txt` file
-3. save a python dictionary into binary file, then read and print in python interpretor
+1. first of three basic_io.py sections -- output lines from txt file
+2. print a list of numbers into txt file
+3. save a python dictionary into binary file, then read and print in python interpreter
 """
 
 __appname__="basic_io.py"

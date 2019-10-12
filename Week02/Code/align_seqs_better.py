@@ -2,14 +2,14 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: align_seqs_better.py
-# Desc: python homework -- genetic alignment module program
-# Input: python3 align_seqs_better.py <seq_1> <seq_2>
-# Output: 1. python interpretor output -- alignment process; 2. output best alignment(s) and its/their score(s) to a txt file in `Data` subdirectory
-# Arguments: 0
+# Desc: python homework -- genetic alignment program
+# Input: python3 align_seqs_better.py <fasta_1> <fasta_2>
+# Output: 1. python interpreter output -- alignment process; 2. output best alignment(s) and its/their score(s) to a binary file in `results` subdirectory
+# Arguments: 0 or 2
 # Date: Oct 2019
 
 """
-python homework -- genetic alignment module program
+python homework -- genetic alignment program
 """
 
 __appname__="align_seqs_better.py"

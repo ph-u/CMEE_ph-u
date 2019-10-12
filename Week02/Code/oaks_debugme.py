@@ -1,3 +1,22 @@
+#!/bin/env python3
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: oaks_debugme.py
+# Desc: python homework -- identify oaks from list of species names with typo flexibilities
+# Input: python3 oaks_debugme.py
+# Output: python interpreter output from id genus "Quercus" with typo flexibilities
+# Arguments: 0
+# Date: Oct 2019
+
+"""
+python homework -- identify oaks from list of species names with typo flexibilities
+"""
+
+__appname__="oaks_debugme.py"
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 import csv
 import sys
 import ipdb

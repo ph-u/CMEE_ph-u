@@ -4,7 +4,7 @@
 # Script: lc1.py
 # Desc: python homework
 # Input: python3 lc1.py
-# Output: 3 sets of duplicated python interpretor output
+# Output: 3 sets of duplicated python interpreter output
 # Arguments: 0
 # Date: Oct 2019
 

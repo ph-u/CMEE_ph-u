@@ -4,7 +4,7 @@
 # Script: using_name.py
 # Desc: minimal python importable script sample
 # Input: python3 using_name.py
-# Output: one-lined python interpretor output
+# Output: one-lined python interpreter output
 # Arguments: 0
 # Date: Oct 2019
 

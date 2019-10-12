@@ -4,7 +4,7 @@
 # Script: loops.py
 # Desc: loops testing
 # Input: python3 loops.py
-# Output: 1. python print range; 2. python print stuff; 3. python print summation results; 4. pytphon print accending numbers until 99; 5. infinite printing while-loop
+# Output: 1. python print range; 2. python print stuff; 3. python print summation results; 4. python print ascending numbers until 99; 5. infinite printing while-loop
 # Arguments: 0
 # Date: Oct 2019
 

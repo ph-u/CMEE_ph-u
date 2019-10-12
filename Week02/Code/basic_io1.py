@@ -2,14 +2,14 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: basic_io1.py
-# Desc: first of three basic_io.py sections -- python interpretor output an input `csv` file
+# Desc: first of three basic_io.py sections -- output lines from `txt` file
 # Input: python3 basic_io1.py
-# Output: python interpretor output
+# Output: 22-lined python interpreter output
 # Arguments: 0
 # Date: Oct 2019
 
 """
-first of three basic_io.py sections -- python interpretor output an input `csv` file
+first of three basic_io.py sections -- output lines from txt file
 """
 
 __appname__="basic_io1.py"

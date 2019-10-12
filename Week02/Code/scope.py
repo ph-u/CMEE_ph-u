@@ -4,7 +4,7 @@
 # Script: scope.py
 # Desc: 5 blocks testing usage of global and local variable namespaces
 # Input: python3 scope.py
-# Output: five blocks of python interpretor output
+# Output: five blocks of python interpreter output
 # Arguments: 0
 # Date: Oct 2019
 

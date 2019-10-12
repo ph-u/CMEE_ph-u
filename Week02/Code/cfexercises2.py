@@ -4,7 +4,7 @@
 # Script: cfexercises2.py
 # Desc: loop testing with different "hello" versions
 # Input: python3 cfexercises2.py
-# Output: 22-lined hellos
+# Output: python interpreter output 22-lined hello with minor variations
 # Arguments: 0
 # Date: Oct 2019
 

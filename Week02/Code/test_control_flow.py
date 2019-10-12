@@ -2,13 +2,13 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: test_control_flow.py
-# Desc: five importable functions
-# Input: python3 test_control_flow.py
-# Output: 109-lined python interpretor output
+# Desc: try out `doctest` usage
+# Input: python3 -m doctest -v test_control_flow.py
+# Output: python3 test terminal report
 # Arguments: 0
 # Date: Oct 2019
 
-"""Some functions exemplifying the use of control statements"""
+"""try out doctest usage"""
 ## docstrings are considered part of the running code (normal comments are stripped).  Hence, you can access your docstrings at runtime.
 __appname__="test_control_flow.py"
 __author__="Samraat Pawar (s.pawar@imperial.ac.uk)"
