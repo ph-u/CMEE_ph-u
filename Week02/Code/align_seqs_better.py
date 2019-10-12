@@ -100,7 +100,7 @@ my_best_align = None
 my_best_score = -1
 
 print("Slave is writing your best results into binary report...")
-f=open("../Data/result_b.p","wb")
+f=open("../results/result_b.p","wb")
 
 for i in range(l1): # Note that you just take the last alignment with the highest score
     # import ipdb; ipdb.set_trace() ## debug breakpoint added
@@ -113,10 +113,16 @@ for i in range(l1): # Note that you just take the last alignment with the highes
         my_best_align = "." * i + s2 # think about what this is doing!
         my_best_score = z 
 
-
-        pickle.dump(my_best_align+"\n",f) # f.write(my_best_align+"\n")
-        pickle.dump(s1+"\n",f) # f.write(s1+"\n")
-        pickle.dump("Best score:"+str(my_best_score)+"\n\n",f) # f.write("Best score:"+str(my_best_score)+"\n\n")
+        t=[]
+        t.append(my_best_align)
+        t.append(s1)
+        t.append("Best score:"+str(my_best_score))
+        t.append("")
+        pickle.dump(t,f)
+        del t
+        # f.write(my_best_align+"\n")
+        # f.write(s1+"\n")
+        # f.write("Best score:"+str(my_best_score)+"\n\n")
         # print(my_best_align)
         # print(s1)
         # print("Best score:", my_best_score)
@@ -124,15 +130,21 @@ for i in range(l1): # Note that you just take the last alignment with the highes
     elif z > my_best_score:
         ## reset best output
         f.close()
-        f=open("../Data/result_b.p","wb")
+        f=open("../results/result_b.p","wb")
 
         my_best_align = "." * i + s2 # think about what this is doing!
         my_best_score = z 
 
-
-        pickle.dump(my_best_align+"\n",f) # f.write(my_best_align+"\n")
-        pickle.dump(s1+"\n",f) # f.write(s1+"\n")
-        pickle.dump("Best score:"+str(my_best_score)+"\n\n",f) # f.write("Best score:"+str(my_best_score)+"\n\n")
+        t=[]
+        t.append(my_best_align)
+        t.append(s1)
+        t.append("Best score:"+str(my_best_score))
+        t.append("")
+        pickle.dump(t,f)
+        del t
+        # f.write(my_best_align+"\n")
+        # f.write(s1+"\n")
+        # f.write("Best score:"+str(my_best_score)+"\n\n")
         print("cal: pos ",i," with score ",z)
         # print(my_best_align)
         # print(s1)
@@ -142,4 +154,6 @@ f.close()
 print("Slave finishes its report in binary")
 
 ## Load report in python3
-# with open("../Data/result_b.p","rb") as f: print(pickle.load(f))
+# with open("../results/result_b.p","rb") as f:
+#     a=pickle.load(f)
+#     for i in range(len(a)): print(a[i])
