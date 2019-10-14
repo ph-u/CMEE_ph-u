@@ -37,7 +37,7 @@ def is_an_oak(name):
     True
     >>> is_an_oak("alaufsadfrasdfuafdefddasfrasdfufdascdfasdq")
     False
-    >>> is_an_oak("qalaufsadfrasdfuafdefddasfrasdfufdascdfasdq")
+    >>> is_an_oak("qalauf")
     False
     """
     if all( [len(set(list(name)) & set(list("quercus"))) >=4,
