@@ -18,3 +18,7 @@ TreeHeight <- function(degrees, distance){
 }
 ## TreeHeight(37,40)
 # args=(commandArgs(T))
+a<-read.csv("../Data/trees.csv",header = T)
+a.0<-data.frame(a,TreeHeight(a$Angle.degrees,a$Distance.m))
+colnames(a.0)[dim(a.0)[2]]="Tree.Height.m"
+write.csv(a.0,"../results/TreeHts.csv",quote = F,row.names = F)

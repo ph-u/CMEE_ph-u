@@ -39,9 +39,11 @@ def is_an_oak(name):
     False
     >>> is_an_oak("qalauf")
     False
+    >>> is_an_oak("qreusci albati")
+    False
     """
     if all( [len(set(list(name)) & set(list("quercus"))) >=4,
-    name.lower().startswith('q'),
+    name.lower().startswith('qu'),
     len(name.split( )[0]) <=9] ): return True
     return False #name.lower().startswith('quercus')
 
@@ -54,7 +56,7 @@ def main(argv):
     g = open('../data/JustOaksData.csv','w')
     taxa = csv.reader(f)
     csvwrite = csv.writer(g)
-    oaks = set()
+    # oaks = set() ## useless thing
     for row in taxa:
 #        ipdb.set_trace()
         if row[0] != 'Genus':
