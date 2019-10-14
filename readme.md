@@ -24,6 +24,12 @@ All scripts are in `Week??/Code` directory
 
 Writing readme.md for each week was mainly automated, followed by manual modifications
 
+## Weekly Focus / Foci
+
+`Week01`: bash, git, LaTeX  
+`Week02`: python3  
+`Week03`: R
+
 ## Reference
 
 [https://docs.readme.com/docs/best-practices][01]  
