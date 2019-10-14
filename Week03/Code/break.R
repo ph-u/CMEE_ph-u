@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: break.R
+# Desc: test in-script breakpoint in `while` loop
+# Input: Rscript break.R
+# Output: 20-lined terminal output
+# Arguments: 0
+# Date: Oct 2019
+
 i<-0## initialize i
 while(i<Inf){
   if(i==20){

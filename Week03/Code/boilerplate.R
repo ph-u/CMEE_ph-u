@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: boilerplate.R
+# Desc: minimal R function with two in-script tests
+# Input: Rscript boilerplate.R
+# Output: two-lined terminal output
+# Arguments: 0
+# Date: Oct 2019
+
 ## a boilerplate R script
 
 MyFunction<-function(Arg1, arg2){

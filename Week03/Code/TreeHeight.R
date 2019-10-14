@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: TreeHeight.R
+# Desc: tree height calculation program with given sample data set
+# Input: Rscript TreeHeight.R
+# Output: `TreeHts.csv` in `results` subdirectory
+# Arguments: 0
+# Date: Oct 2019
+
 ## This function calculates heights of trees given distance of each tree from its base and angle to its top, using the trigonometric formula
 
 ## height = distance * tan(radians)

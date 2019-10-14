@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: sample.R
+# Desc: test two methods of random sampling from a population
+# Input: Rscript sample.R
+# Output: 200-lined terminal output
+# Arguments: 0
+# Date: Oct 2019
+
 ## run a simulation that involves sampling form a popuation
 x<-rnorm(50) # Generate your population
 doit<-function(x){
@@ -8,6 +18,8 @@ doit<-function(x){
 }
 ## run 100 iterations using vectorization:
 result<-lapply(1:100,function(i) doit(x))
+
+# print("that's enough")
 
 ## using a for loop:
 result<-vector("list",100)## preallocate/Initialize

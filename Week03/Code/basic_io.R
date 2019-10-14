@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: basic_io.R
+# Desc: test R I/O ability & grammar
+# Input: Rscript basic_io.R
+# Output: output `MyData.csv` in `results` subdirectory
+# Arguments: 0
+# Date: Oct 2019
+
 ## a simple script to illustrate R input-output
 ## run line by line and check inputs outputs to understand what is happening
 
