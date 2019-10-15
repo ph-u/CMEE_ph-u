@@ -11,8 +11,8 @@ SumAllElements<-function(M){
   return(Tot)
 }
 
-print("Using loops, the time taken is:")
-print(system.time(SumAllElements(M)))
+cat("Using loops, the time taken is:\n")
+cat(paste0(round(unname(system.time(SumAllElements(M))[1]),3),"\n"))
 
-print("Using the built vectorized function, the time taken is:")
-print(system.time(sum(M)))
+cat("Using the built vectorized function, the time taken is:\n")
+cat(paste0(round(unname(system.time(sum(M))[1]),3),"\n"))
