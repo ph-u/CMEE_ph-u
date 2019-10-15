@@ -30,11 +30,11 @@ def is_an_oak(name):
     >>> is_an_oak("Quercus robur")
     True
     >>> is_an_oak("Quercuss robur")
-    True
+    False
     >>> is_an_oak("Quaercus robur")
-    True
+    False
     >>> is_an_oak("Qurcus robur")
-    True
+    False
     >>> is_an_oak("alaufsadfrasdfuafdefddasfrasdfufdascdfasdq")
     False
     >>> is_an_oak("qalauf")
@@ -42,9 +42,8 @@ def is_an_oak(name):
     >>> is_an_oak("qreusci albati")
     False
     """
-    if all( [len(set(list(name)) & set(list("quercus"))) >=4,
-    name.lower().startswith('qu'),
-    len(name.split( )[0]) <=9] ): return True
+    # if all( [len(set(list(name)) & set(list("quercus"))) >=4,name.lower().startswith('qu'),len(name.split( )[0]) <=9] ): return True
+    if all( [name.lower().startswith('quercus'), len(name.split( )[0]) ==7] ): return True
     return False #name.lower().startswith('quercus')
 
     # Find first word using split
