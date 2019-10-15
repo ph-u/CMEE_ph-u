@@ -24,7 +24,7 @@ All scripts are in `Week??/Code` directory
 
 Writing readme.md for each week was mainly automated, followed by manual modifications
 
-## Weekly Focus / Foci
+## Weekly Dominant Focus / Foci
 
 `Week01`: bash, git, LaTeX  
 `Week02`: python3  
