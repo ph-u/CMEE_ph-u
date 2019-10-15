@@ -1,28 +1,49 @@
-#!/bin/env Rscript
+##### Functions #####
 
-# Author: PokMan Ho pok.ho19@imperial.ac.uk
-# Script: sample.R
-# Desc: test two methods of random sampling from a population
-# Input: Rscript sample.R
-# Output: 200-lined terminal output
-# Arguments: 0
-# Date: Oct 2019
+## a function to take a sample of size n from a population "popn" and return its mean
+myexperiment<-function(popn,n){
+  pop_sample<-sample(popn,n,replace = F)
+  return(mean(pop_sample))
+}
 
-## run a simulation that involves sampling form a popuation
-x<-rnorm(50) # Generate your population
-doit<-function(x){
-  x<-sample(x,replace = T)
-  if(length(unique(x))>30){## only take mean if sample was sufficient
-    print(paste("Mean of this sample was:",as.character(mean(x))))
+## calculate means using a for loop without preallocation:
+loopy_sample1<-function(popn,n,num){
+  result1<-vector() ## initialize empty vector of size 1
+  for(i in 1:num){
+    result1<-c(result1,myexperiment(popn,n))
   }
+  return(result1)
 }
-## run 100 iterations using vectorization:
-result<-lapply(1:100,function(i) doit(x))
 
-# print("that's enough")
-
-## using a for loop:
-result<-vector("list",100)## preallocate/Initialize
-for(i in 1:100){
-  result[[i]]<-doit(x)
+## to run "num" iterations of the experiment using a for loop on a vector with preallocation:
+loopy_sample2<-function(popn,n,num){
+  result2<-vector(,num) ## preallocate expected size
+  for(i in 1:num){
+    result2[i]<-myexperiment(popn,n)
+  }
+  return(result2)
 }
+
+## to run "num" iterations of the experiment using a for loop on a list with preallocation:
+loopy_sample3<-function(popn,n,num){
+  result3<-vector("list",num) ## preallocate expected size
+  for(i in 1:num){
+    result3[i]<-myexperiment(popn,n)
+  }
+  return(result3)
+}
+
+## to run "num" iterations of the experiment using vectorization with lapply:
+lapply_sample<-function(popn,n,num){
+  result4<-lapply(1:num,function(i) myexperiment(popn,n))
+  return(result4)
+}
+
+## to run "num" iterations of the experiment using vectorization with lapply:
+sapply_sample<-function (popn,n,num){
+  result5<-sapply(1:num,function(i) myexperiment(popn,n))
+  return(result5)
+}
+
+popn<-rnorm(1e3) ## generate the population
+hist(popn)
