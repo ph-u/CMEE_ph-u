@@ -13,6 +13,6 @@
 
 MyData<-read.csv("../data/trees.csv",header = T)## import with headers
 write.csv(MyData,"../results/MyData.csv")## write it out as a new file
-write.table(MyData[1,],"../results/MyData.csv".append=T)## append to it
+write.table(MyData[1,],"../results/MyData.csv",append=T)## append to it
 write.csv(MyData,"../results/MyData.csv",row.names = T)## write row names
-write.table(MyData,"../results/MyData.csv",col.names = F)## ignore column names
+write.table(MyData,"../results/MyData.csv",sep=",",col.names = F)## ignore column names

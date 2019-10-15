@@ -102,6 +102,7 @@ my_best_score = -1
 print("Slave is writing your best results into binary report...")
 f=open("../results/result_b.p","wb")
 
+t=[]
 for i in range(l1): # Note that you just take the last alignment with the highest score
     # import ipdb; ipdb.set_trace() ## debug breakpoint added
     z = calculate_score(s1, s2, l1, l2, i)
@@ -113,13 +114,10 @@ for i in range(l1): # Note that you just take the last alignment with the highes
         my_best_align = "." * i + s2 # think about what this is doing!
         my_best_score = z 
 
-        t=[]
         t.append(my_best_align)
         t.append(s1)
         t.append("Best score:"+str(my_best_score))
         t.append("")
-        pickle.dump(t,f)
-        del t
         # f.write(my_best_align+"\n")
         # f.write(s1+"\n")
         # f.write("Best score:"+str(my_best_score)+"\n\n")
@@ -129,19 +127,14 @@ for i in range(l1): # Note that you just take the last alignment with the highes
         print("cal: pos ",i," with score ",z," (equal)")
     elif z > my_best_score:
         ## reset best output
-        f.close()
-        f=open("../results/result_b.p","wb")
-
         my_best_align = "." * i + s2 # think about what this is doing!
-        my_best_score = z 
+        my_best_score = z
 
         t=[]
         t.append(my_best_align)
         t.append(s1)
         t.append("Best score:"+str(my_best_score))
         t.append("")
-        pickle.dump(t,f)
-        del t
         # f.write(my_best_align+"\n")
         # f.write(s1+"\n")
         # f.write("Best score:"+str(my_best_score)+"\n\n")
@@ -150,6 +143,7 @@ for i in range(l1): # Note that you just take the last alignment with the highes
         # print(s1)
         # print("Best score:", my_best_score)
 
+pickle.dump(t,f)
 f.close()
 print("Slave finishes its report in binary")
 
