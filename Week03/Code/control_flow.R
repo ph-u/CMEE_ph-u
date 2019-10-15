@@ -1,9 +1,9 @@
 #!/bin/env Rscript
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
-# Script: control.R
+# Script: control_flow.R
 # Desc: test conditionals, `for` loops and `while` loops
-# Input: Rscript control.R
+# Input: Rscript control_flow.R
 # Output: terminal output -- 1. 1-lined text string; 2. 100-lined text strings showing squared number results; 3. 3-lined text strings showing species names; 4. 3-lined text strings showing alphabet chain; 5. 100-lined numbers showing squared number results
 # Arguments: 0
 # Date: Oct 2019
