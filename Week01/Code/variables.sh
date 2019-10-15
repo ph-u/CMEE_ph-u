@@ -18,5 +18,7 @@ echo "the current value of the variable is" $MyVar
 ## Reading multiple values
 echo "Enter two numbers separated by space(s)"
 read a b
+a=${a:-0}
+b=${b:-0}
 mysum=`expr $a + $b`
 echo "you entered $a" and "$b".  "Their sum is:" $mysum
