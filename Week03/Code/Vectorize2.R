@@ -26,7 +26,7 @@ stochrick.m<-function(p0=runif(1000,.5,1.5),r=1.2,K=1,sigma=0.2,numyears=100)
   N<-as.data.frame(matrix(NA,numyears,length(p0))) ## content, row, col
   N[1,]<-p0
   for(i in 2:numyears){
-    N[i,]<-apply(N[i-1,],2,sum)
+    N[i,]<-apply(N[i-1,],2,function(x,r=1.2,K=1,sigma=0.2){x*exp(r*(1-x/K)+rnorm(1,0,sigma))})
   }
   # for (pop in 1:length(p0)) #loop through the populations
   # {
