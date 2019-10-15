@@ -17,5 +17,5 @@ sf<-function(p){
   print(object.size(a))
 }
 
-print(paste("Not pre-allocated:",system.time(ss(1e4))))
-print(paste("Pre-allocated:",system.time(sf(1e4))))
+print("Not pre-allocated:");print(system.time(ss(1e4)))
+print("Pre-allocated:");print(system.time(sf(1e4)))

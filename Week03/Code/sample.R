@@ -46,4 +46,13 @@ sapply_sample<-function (popn,n,num){
 }
 
 popn<-rnorm(1e3) ## generate the population
-hist(popn)
+# hist(popn)
+
+n<-20 ## sample size for each experiment
+num<-1e3 ## number of times to rerun the experiment
+
+print("The loopy, non-preallocation approach takes:");print(system.time(loopy_sample1(popn,n,num)))
+print("The loopy, preallocation approach takes:");print(system.time(loopy_sample2(popn,n,num)))
+print("The loopy, non-preallocation approach takes:");print(system.time(loopy_sample3(popn,n,num)))
+print("The vectorized sapply approach takes:");print(system.time(sapply_sample(popn,n,num)))
+print("The vectorized lapply approach takes:");print(system.time(lapply_sample(popn,n,num)))
