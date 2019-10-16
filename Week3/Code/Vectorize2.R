@@ -41,10 +41,10 @@ stochrick.m<-function(p0=1e3,r=1.2,K=1,sigma=0.2,numyears=100){
 ## comparison
 a<-system.time(res2<-stochrick())
 b<-system.time(res3<-stochrick.m())
-cat("Vectorized Stochastic Ricker takes:\n")
-cat(paste0(round(unname(a[1]),3),"\n"))
 print("My Vectorized Stochastic Ricker takes:\n")
 cat(paste0(round(unname(b[1]),3),"\n"))
+cat("Vectorized Stochastic Ricker takes:\n")
+cat(paste0(round(unname(a[1]),3),"\n"))
 # print(paste("My solution is faster than target by",round(unname(b[1])-unname(a[1]),4),"sec"))
 
 ## stat cal
