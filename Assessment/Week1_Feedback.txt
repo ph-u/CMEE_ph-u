@@ -13,7 +13,7 @@ Your Git repo size this week is about 17.85 MiB on disk
 
 PART 1: Checking project workflow...
 
-Found the following directories in parent directory: .git, Week03, Week01, Week08, Week02, ReadmeProg, Week09, Week07, seminar, Week05, Week06, Assessment, Week04
+Found the following directories in parent directory: .git, Week03, Week08, ReadmeProg, Week1, Week09, Week07, seminar, Week05, Week06, Week2, Assessment, Week04
 
 Found the following files in parent directory: LICENSE, readme.md, .gitignore, README.txt
 
@@ -83,13 +83,730 @@ Writing readme.md for each week was mainly automated, followed by manual modific
 ======================================================================
 Looking for the weekly directories...
 
-Found 9 weekly directories: Week01, Week02, Week03, Week04, Week05, Week06, Week07, Week08, Week09
+Found 9 weekly directories: Week03, Week04, Week05, Week06, Week07, Week08, Week09, Week1, Week2
 
 The Week1 directory will be assessed 
 
 ======================================================================
 ======================================================================
 PART 2: Checking weekly code and workflow...
+
+======================================================================
+Assessing WEEK1...
+
+Found the following directories: Data, Code, Sandbox
+
+Found the following files: FirstExample.pdf, readme_hand.md, readme.md
+
+Checking for readme file in weekly directory...
+
+Found README in parent directory, named: readme_hand.md
+
+Printing contents of readme_hand.md:
+**********************************************************************
+![alt text](https://unichoices.co.uk/wp-content/uploads/2015/09/Imperial-College-London.jpg)
+
+# MRes CMEE Coursework Week 1
+
+This week's foci were on getting started and submerged into coding environments, including Unix, git and LaTeX.  
+
+## License
+
+none
+
+## Getting started
+
+Intended OS: MacOS Mojave (ver10.14.6)  
+```
+brew install git
+brew install texlive-full
+```
+
+## Guides
+
+Multiple scripts were coded and introduced below in filename alphabetical order.  
+All scripts are in `Code` directory
+
+### CompileLaTeX.sh
+
+#### Features
+
+bash script for running `TeX` scripts with `bib` bibliography file and save the resultant pdf in `Data` subdirectory  
+`TeX` and `bib` files must have same filename
+
+#### Input
+
+```
+./CompileLaTeX.sh <infile>
+```
+`infile`: `TeX` filename **without** .tex extension
+
+#### Output
+
+one `pdf` main output in `Data` subdirectory
+*****
+
+### ConcatenateTwoFiles.sh
+
+#### Features
+
+bash end-to-head merge two files in sequence  
+
+#### Input
+
+```
+./ConcatenateTwoFiles.sh <infile_1> <infile_2> <outfile>
+```
+`infile_1`: first concatenated file  
+`infile_2`: second concatenated file  
+`outfile`: relative path & filename determined by user  
+
+#### Output
+`outfile` in user-designated directory  
+terminal output of whole `outfile` content  
+
+*****
+
+### CountLines.sh
+
+#### Features
+
+bash count number of lines within input file
+
+#### Input
+
+```
+./CountLines.sh <infile>
+```
+`infile`: file that would need line counting
+
+#### Output
+
+terminal output on number of lines in `infile`
+
+*****
+
+### csvtospace.sh
+
+#### Features
+
+substitute commas in the file with space
+
+#### Input
+
+```
+./csvtospace.sh <infile>
+```
+`infile`: .csv file
+
+#### Output
+
+1. txt files with filename same with identified csv in `Data` subdirectory  
+2. each csv input file would be converted into one txt file
+
+*****
+
+### FirstExample.tex
+
+#### Features
+
+`LaTeX` file fulfilling assignment needs  
+as `infile` for testing usability of `CompileLaTeX.sh`
+
+#### Input
+
+none
+
+#### Output
+
+none
+
+*****
+
+### myboilerplate.sh
+
+#### Features
+
+bash with one-lined output printing a sentence with upper & lower empty lines
+
+#### Input
+
+```
+./myboilerplate.sh
+```
+
+#### Output
+
+one-lined print wrapped by empty lines
+*****
+
+### MyExampleScript.sh
+
+#### Features
+
+bash print "Hello (username)" in two variable-coding methods
+
+#### Input
+
+```
+./MyExampleScript.sh
+```
+
+#### Output
+
+two-lined duplicated "Hello" messages under two coding methods
+
+*****
+
+### tabtocsv.sh
+
+#### Features
+
+bash transform a tab-delimited file into a comma-delimited file
+
+#### Input
+
+```
+./tabtocsv.sh <infile>
+```
+`infile`: tab-delimited file
+
+#### Output
+
+a .csv (of same filename) in `Data` subdirectory
+
+*****
+
+### tiff2png.sh
+
+#### Features
+
+bash convert a tiff image into a png image
+
+#### Input
+
+```
+./tiff2png.sh <infile>
+```
+`infile`: .tif / .tiff file
+
+#### Output
+
+a .png (of same filename) in `Data` subdirectory
+
+*****
+
+### UnixPrac1.txt
+
+#### Features
+
+Unix-coding homework containing answers to 5 questions
+
+#### Input
+
+none (this is not a `shell` script but a text file containing commands)
+
+#### Output
+
+multi-lined terminal output on 5 questions:  
+
+1. three-lined output: line-count of three fasta files in `Data` subdirectory  
+2. multi-lined terminal output on whole E.coli genome (source in `Data` subdirectory)  
+3. one number terminal output on whole E.coli genome length (source in `Data` subdirectory)  
+4. one number terminal output on number of pattern "ATCG" within whole E.coli genome (source in `Data` subdirectory)  
+5. a number rounded to 2-decimal places showing AT:GC ratio of whole E.coli genome (source in `Data` subdirectory)  
+
+*****
+
+### variables.sh
+
+#### Features
+
+bash with two-layered interactive text-/number-handling script
+
+#### Input
+
+```
+./variables.sh
+<text_1> ## 1st layer
+<num_1> <num_2> ## 2nd layer
+```
+
+#### Output
+
+1st layer: one-lined terminal output showing input text  
+2nd layer: one-lined terminal output showing sum of input numbers  
+
+*****
+
+## Reference
+
+[https://docs.readme.com/docs/best-practices][01]  
+[https://github.com/jehna/readme-best-practices/blob/master/README-default.md][02]  
+
+[01]:https://docs.readme.com/docs/best-practices
+[02]:https://github.com/jehna/readme-best-practices/blob/master/README-default.md**********************************************************************
+
+Results directory missing!
+
+Creating Results directory...
+
+Found 12 code files: tiff2png.sh, CountLines.sh, FirstBiblio.bib, tabtocsv.sh, variables.sh, FirstExample.tex, csvtospace.sh, ConcatenateTwoFiles.sh, myboilerplate.sh, UnixPrac1.txt, CompileLaTeX.sh, MyExampleScript.sh
+
+======================================================================
+Testing script/code files...
+
+======================================================================
+Inspecting script file tiff2png.sh...
+
+File contents are:
+**********************************************************************
+#!/bin/bash
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: tiff2png.sh
+# Desc: transform a tiff to png format
+# Input: ./tiff2png.sh <tiff>
+# Output: saves the output into a .png file in `Data` subdirectory
+# Arguments: 1
+# Date: Oct 2019
+
+for f in `ls ../Data/*.tif*`;do
+	echo "Converting $f"
+	convert "$f" "../Data/$(basename $f|cut -f 1 -d ".").png"
+# 	convert "$f" "$(basename "$f" .tif).png"
+done
+**********************************************************************
+
+Testing tiff2png.sh...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+Converting ../Data/test2.tiff
+Converting ../Data/test.tiff
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 2.32366s
+
+======================================================================
+Inspecting script file CountLines.sh...
+
+File contents are:
+**********************************************************************
+#!/bin/bash
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: CountLines.sh
+# Desc: count number of lines within input file
+# Input: ./CountLines.sh <infile>
+# Output: terminal output on number of lines in `infile`
+# Arguments: 1
+# Date: Oct 2019
+
+NumLines=`wc -l < $1`
+echo "The file $1 has $NumLines lines"
+echo
+**********************************************************************
+
+Testing CountLines.sh...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+The file  has  lines
+
+
+**********************************************************************
+
+Encountered error (or warning):
+CountLines.sh: line 11: $1: ambiguous redirect
+
+======================================================================
+Inspecting script file FirstBiblio.bib...
+
+File contents are:
+**********************************************************************
+@article{einstein1905does,
+  title={Does the inertia of a body depend upon its energy-content},
+  author={Einstein, Albert},
+  journal={Annalen der Physik},
+  volume={18},
+  number={13},
+  pages={639--41},
+  year={1905}
+}
+**********************************************************************
+
+Testing FirstBiblio.bib...
+
+======================================================================
+Inspecting script file tabtocsv.sh...
+
+File contents are:
+**********************************************************************
+#!/bin/bash
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: tabtocsv.sh
+# Desc: substitute the tabs in the files with commas
+# Input: ./tabtocsv.sh <txt>
+# Output: saves the output into a .csv file in `Data` subdirectory
+# Arguments: 1
+# Date: Oct 2019
+
+echo "Creating a comma delimited version of $1"
+a=`basename $1|cut -f 1 -d "."`
+cat $1 | tr -s "\t" "," > ../Data/${a}.csv
+echo "Done!"
+exit
+**********************************************************************
+
+Testing tabtocsv.sh...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+Creating a comma delimited version of 
+Done!
+
+**********************************************************************
+
+Encountered error (or warning):
+basename: missing operand
+Try 'basename --help' for more information.
+
+======================================================================
+Inspecting script file variables.sh...
+
+File contents are:
+**********************************************************************
+#!/bin/bash
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: variables.sh
+# Desc: test out interactive variables usage
+# Input: ./variables.sh
+# Output: terminal outputs in interactive mode
+# Arguments: interactive
+# Date: Oct 2019
+
+# Shows the use of variables
+MyVar="some string"
+echo "the current value of the variable is" $MyVar
+echo "Please enter a new string"
+read MyVar
+echo "the current value of the variable is" $MyVar
+
+## Reading multiple values
+echo "Enter two numbers separated by space(s)"
+read a b
+a=${a:-0}
+b=${b:-0}
+mysum=`expr $a + $b`
+echo "you entered $a" and "$b".  "Their sum is:" $mysum
+**********************************************************************
+
+Testing variables.sh...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+the current value of the variable is some string
+Please enter a new string
+the current value of the variable is
+Enter two numbers separated by space(s)
+you entered 0 and 0. Their sum is: 0
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.00424s
+
+======================================================================
+Inspecting script file FirstExample.tex...
+
+File contents are:
+**********************************************************************
+
+% Author: PokMan Ho pok.ho19@imperial.ac.uk
+% Script: FirstExample.tex
+% Desc: 1. `LaTeX` file fulfilling assignment needs; 2. as `infile` for testing usability of `CompileLaTeX.sh`
+% Input: none
+% Output: none
+% Arguments: 0
+% Date: Oct 2019
+
+\documentclass[12pt]{article}
+\title{A Simple Document}
+\author{PokMan Ho}
+\date{}
+\begin{document}
+	\maketitle
+	\begin{abstract}
+		This paper must be cool!
+	\end{abstract}
+	\section{Introduction}
+		Blah Blah!
+	\section{Materials \& Methods}
+	One of the most famous equations is:
+	\begin{equation}
+		E = mc^2
+	\end{equation}
+	This equation was first proposed by Einstein in 1905\cite{einstein1905does}.
+
+	\bibliographystyle{plain}
+	\bibliography{FirstBiblio}
+\end{document}
+**********************************************************************
+
+Testing FirstExample.tex...
+
+======================================================================
+Inspecting script file csvtospace.sh...
+
+File contents are:
+**********************************************************************
+#!/bin/bash
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: csvtospace.sh
+# Desc: substitute the commas in the file with space
+# Input: ./csvtospace.sh <csv>
+# Output: saves the output into a .txt file in `Data` subdirectory
+# Arguments: 1
+# Date: Oct 2019
+
+for i in `ls ../Data/*.csv`;do
+	a=`basename ${i} | cut -f 1 -d "."`
+	sed -e "s/,/ /g" ${i} > ../Data/${a}.txt
+done
+
+exit
+**********************************************************************
+
+Testing csvtospace.sh...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.02697s
+
+======================================================================
+Inspecting script file ConcatenateTwoFiles.sh...
+
+File contents are:
+**********************************************************************
+#!/bin/bash
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: ConcatenateTwoFiles.sh
+# Desc: end-to-head merge two files in sequence
+# Input: ./ConcatenateTwoFiles.sh <infile_1> <infile_2> <outfile>
+# Output: 1. saves the output into an `outfile` in designated subdirectory; 2. terminal output of `outfile` content
+# Arguments: 1
+# Date: Oct 2019
+
+cat $1 > $3
+cat $2 >> $3
+echo "Merged File is"
+cat $3
+**********************************************************************
+
+Testing ConcatenateTwoFiles.sh...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+Merged File is
+
+**********************************************************************
+
+Encountered error (or warning):
+ConcatenateTwoFiles.sh: line 11: $3: ambiguous redirect
+ConcatenateTwoFiles.sh: line 12: $3: ambiguous redirect
+
+======================================================================
+Inspecting script file myboilerplate.sh...
+
+File contents are:
+**********************************************************************
+#!/bin/bash
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: boilerplate.sh
+# Desc: simple boilerplate for shell scripts
+# Input: ./myboilerplate.sh
+# Output: one-lined terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+echo -e "\nThis is a shell script!\n"
+
+#exit**********************************************************************
+
+Testing myboilerplate.sh...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+This is a shell script!
+
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.00412s
+
+======================================================================
+Inspecting script file UnixPrac1.txt...
+
+File contents are:
+**********************************************************************
+## line count all files
+wc -l ../Data/*.fasta|head -n 3
+
+## print all from 2nd line onwards
+tail -n +2 ../Data/E.coli.fasta
+
+## count seq length E.coli genome
+tail -n +2 ../Data/E.coli.fasta|tr -d "\n"|wc -c ## extract genome, pipe through new-line char removal, pipe through character count
+
+## count matched "ATGC" pattern
+tail -n +2 ../Data/E.coli.fasta|tr -d "\n"|grep -o "ATGC"|wc -l ## after pipe through new-line char, pipe to list all pattern presence, pipe through counting list length
+
+## compute AT:GC
+a=`tail -n +2 ../Data/E.coli.fasta|tr -d "\n"|grep -o "A\|T"|wc -l`&&c=`tail -n +2 ../Data/E.coli.fasta|tr -d "\n"|grep -o "C\|G"|wc -l`&&echo "scale=2;" "${a}/${c}"|bc -l ## extract & save the four components as 2 variables (numerator & denominator respectively), then apply the equation (A+T)/(G+C)
+**********************************************************************
+
+Testing UnixPrac1.txt...
+
+======================================================================
+Inspecting script file CompileLaTeX.sh...
+
+File contents are:
+**********************************************************************
+#!/bin/bash
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: CompileLaTeX.sh
+# Desc: 1. make LaTeX script (with `bib` bibliography file) into pdf; 2. `TeX` and `bib` files must have same filename
+# Input: ./CompileLaTeX.sh <tex without extension>
+# Output: saves the output into a .pdf file in `Data` subdirectory
+# Arguments: 1
+# Date: Oct 2019
+
+pdflatex $1.tex
+pdflatex $1.tex
+bibtex $1
+pdflatex $1.tex
+pdflatex $1.tex
+# evince $1.pdf &
+
+## Cleanup
+rm *~
+rm *.aux
+rm *.dvi
+rm *.log
+rm *.nav
+rm *.out
+rm *.snm
+rm *.toc
+
+rm *.bbl
+rm *.blg
+
+mv *.pdf ../Data/
+**********************************************************************
+
+Testing CompileLaTeX.sh...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(/usr/share/texlive/texmf-dist/tex/latex/tools/.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+File ignored)
+*
+! Emergency stop.
+<*> .tex
+        
+!  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on .log.
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (pre
+**********************************************************************
+
+Encountered error (or warning):
+bibtex: Need exactly one file argument.
+Try `bibtex --help' for more information.
+rm: cannot remove '*~': No such file or directory
+rm: cannot remove '*.aux': No such file or directory
+rm: cannot remove '*.dvi': No such file or directory
+rm: cannot remove '*.log': No such file or directory
+rm: cannot remove '*.nav': No such file or directory
+rm: cannot remove '*.out': No such file or directory
+rm: cannot remove '*.snm': No such file or directory
+rm: cannot remove '*.toc': No such file or directory
+rm: cannot remove '*.bbl': No such file or directory
+rm: cannot remove '*.blg': No such file or directory
+mv: cannot stat '*.pdf': No such file or directory
+
+======================================================================
+Inspecting script file MyExampleScript.sh...
+
+File contents are:
+**********************************************************************
+#!/bin/bash
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: CountLines.sh
+# Desc: print "Hello (username)" in two variable-coding methods
+# Input: ./MyExampleScript.sh
+# Output: two-lined duplicated "Hello" messages under two coding methods
+# Arguments: 0
+# Date: Oct 2019
+
+msg1="Hello"
+msg2=$USER
+echo "$msg1 $msg2"
+echo "Hello $USER"
+echo
+**********************************************************************
+
+Testing MyExampleScript.sh...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+Hello mhasoba
+Hello mhasoba
+
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.00320s
+
+======================================================================
+======================================================================
+Finished running scripts
+
+Ran into 4 errors
 
 ======================================================================
 ======================================================================
