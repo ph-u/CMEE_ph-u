@@ -8,7 +8,18 @@
 # Arguments: 1
 # Date: Oct 2019
 
+if [ -z $1 ];then
+    echo -e "No input"
+    exit
+elif [ -z $2 ];then
+    echo -e "Not enough input"
+    exit
+elif [ -z $3 ];then
+    echo -e "No designated output"
+    exit
+fi
+
 cat $1 > $3
 cat $2 >> $3
-echo "Merged File is"
+echo -e "Merged File is $3"
 cat $3

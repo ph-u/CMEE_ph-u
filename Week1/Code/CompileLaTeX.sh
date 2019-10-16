@@ -8,6 +8,10 @@
 # Arguments: 1
 # Date: Oct 2019
 
+if [ -z $1 ];then
+    echo -e "No input"
+    exit
+fi
 pdflatex $1.tex
 pdflatex $1.tex
 bibtex $1
@@ -16,16 +20,14 @@ pdflatex $1.tex
 # evince $1.pdf &
 
 ## Cleanup
-rm *~
-rm *.aux
-rm *.dvi
-rm *.log
-rm *.nav
-rm *.out
-rm *.snm
-rm *.toc
+for i in aux dvi log nav out snm toc bbl bcf blg run.xml synctex.gz;do
+if [ `ls|grep -c ${i}` -gt 0 ];then
+rm *.${i}
+fi
+done
 
-rm *.bbl
-rm *.blg
+if [ `ls|grep -c "blx.bib"` -gt 0 ];then
+rm *blx.bib
+fi
 
 mv *.pdf ../Data/

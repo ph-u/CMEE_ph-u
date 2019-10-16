@@ -8,6 +8,10 @@
 # Arguments: 1
 # Date: Oct 2019
 
+if [ -z $1 ];then
+    echo -e "No input"
+    exit
+fi
 NumLines=`wc -l < $1`
 echo "The file $1 has $NumLines lines"
 echo
