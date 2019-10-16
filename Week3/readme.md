@@ -2,7 +2,7 @@
 
 # 2019 PokMan HO MRes CMEE Coursework Week3
 
-This week's foci were on: R py sh 
+This week's foci were on: R Rnw log pdf py sh synctex tex 
 
 ## License
 
@@ -12,6 +12,129 @@ Apache-2.0
 
 Multiple scripts were coded and introduced below in filename alphabetical order.  
 All scripts are in `Code` directory
+
+### TAutoCorr-004.pdf
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+Binaryfile TAutoCorr-004.pdf matches
+*****
+
+### TAutoCorr-concordance.tex
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+*****
+
+### TAutoCorr.R
+
+#### Features
+
+Main code dump for `TAutoCorr.Rnw` for statistical analysis and a graphical chart
+
+#### Suggested input
+
+```
+Rscript TAutoCorr.R
+```
+
+#### Output
+
+1. R interpreter output approximated p-value; 2. Rplot.pdf in `Code` subdirectory
+*****
+
+### TAutoCorr.Rnw
+
+#### Features
+
+pdf report creation for a annual temperature `Rdata` dataset
+
+#### Suggested input
+
+```
+None -- need to `Compile PDF` within RStudio.app
+```
+
+#### Output
+
+pdf report in `Code` subdirectory (and other auto-generated files)
+*****
+
+### TAutoCorr.log
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+Outputwritten on TAutoCorr.pdf (2 pages, 118563 bytes).
+*****
+
+### TAutoCorr.pdf
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+*****
+
+### TAutoCorr.synctex.gz
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+*****
+
+### TAutoCorr.tex
+
+#### Features
+
+pdf report creation for a annual temperature `Rdata` dataset
+
+#### Suggested input
+
+```
+None -- need to `Compile PDF` within RStudio.app
+```
+
+#### Output
+
+pdf report in `Code` subdirectory (and other auto-generated files)
+*****
 
 ### TreeHeight.R
 
@@ -200,6 +323,23 @@ Rscript break.R
 20-lined terminal output
 *****
 
+### browse.R
+
+#### Features
+
+generate a break point for debugging
+
+#### Suggested input
+
+```
+Rscript browse.R
+```
+
+#### Output
+
+variable-lined (around 150) terminal output
+*****
+
 ### control_flow.R
 
 #### Features
@@ -249,6 +389,23 @@ python3 get_TreeHeight.py <.csv>
 #### Output
 
 `<.csv>_treeheights.csv` in `results` subdirectory
+*****
+
+### maps.R
+
+#### Features
+
+test GIS mapping in `ggplot2` pkg within R
+
+#### Suggested input
+
+```
+Rscript maps.R
+```
+
+#### Output
+
+None
 *****
 
 ### next.R
