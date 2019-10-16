@@ -1,16 +1,49 @@
 \documentclass{article}
 
+\usepackage[margin=1in]{geometry}
+
+\title{Question: Autocorrection in weather}
+\author{PokMan Ho (CID: 01786076)}
+\date{}
+
 \usepackage{Sweave}
 \begin{document}
 \input{TAutoCorr-concordance}
 
+\maketitle
+\section{load \textbf{KeyWestAnnualMeanTemperature.Rdata}}
+\begin{Schunk}
+\begin{Sinput}
+> ## data load
+> load("../Data/KeyWestAnnualMeanTemperature.RData")
+> ls()
+\end{Sinput}
+\begin{Soutput}
+[1] "ats"
+\end{Soutput}
+\begin{Sinput}
+> ## libraries
+> library(ggplot2)
+> library(knitr)
+\end{Sinput}
+\end{Schunk}
 
-\includegraphics{TAutoCorr-002}
-
+\section{examine data}
 \begin{Schunk}
 \begin{Sinput}
 > ## cor coef
-> b<-unlist(cor(ats,method = "spearman"))[1,2]
+> print(b<-unlist(cor(ats,method = "spearman"))[1,2])
+\end{Sinput}
+\begin{Soutput}
+[1] 0.5255559
+\end{Soutput}
+\end{Schunk}
+
+\section{plot data}
+\includegraphics{TAutoCorr-003}
+
+\begin{Schunk}
+\begin{Sinput}
 > ## cor coef (rand sample)
 > dm<-1e4
 > a<-rep(NA,dm);i<-1
@@ -22,7 +55,7 @@
 > length(a[which(a>b)])/length(a)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.4877
+[1] 0.498
 \end{Soutput}
 \end{Schunk}
 

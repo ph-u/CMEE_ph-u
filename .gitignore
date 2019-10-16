@@ -9,7 +9,7 @@ nohup*
 .Rhistory
 readme_final.md
 *.odt#
-*-002.pdf
+*-*.pdf
 *-concordance.tex
 *.log
 *.synctex.gz

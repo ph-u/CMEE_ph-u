@@ -1,17 +1,31 @@
 \documentclass{article}
 
+\usepackage[margin=1in]{geometry}
+
+\title{Question: Autocorrection in weather}
+\author{PokMan Ho (CID: 01786076)}
+\date{}
+
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 
-<<echo=F>>=
+\maketitle
+\section{load \textbf{KeyWestAnnualMeanTemperature.Rdata}}
+<<>>=
 ## data load
-load("../Data/KeyWestAnnualMeanTemperature.RData")
-
+load("../Data/KeyWestAnnualMeanTemperature.RData");ls()
 ## libraries
 library(ggplot2)
 library(knitr)
 @
 
+\section{examine data}
+<<>>=
+## cor coef
+print(b<-unlist(cor(ats,method = "spearman"))[1,2])
+@
+
+\section{plot data}
 <<echo=F, fig.align='center',fig=TRUE>>=
 ## ini plot
 ggplot()+
@@ -21,9 +35,6 @@ ggplot()+
 @
 
 <<>>=
-## cor coef
-b<-unlist(cor(ats,method = "spearman"))[1,2]
-
 ## cor coef (rand sample)
 dm<-1e4
 a<-rep(NA,dm);i<-1
