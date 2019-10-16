@@ -1,6 +1,7 @@
 \documentclass{article}
 
 \usepackage[margin=1in]{geometry}
+\usepackage{amsmath,hyperref}
 
 \title{Question: Autocorrection in weather}
 \author{PokMan Ho (CID: 01786076)}
@@ -11,27 +12,22 @@
 \input{TAutoCorr-concordance}
 
 \maketitle
-\section{load \textbf{KeyWestAnnualMeanTemperature.Rdata}}
+\begin{center}
+  Hypothesis: Annual temperature ($^o$C) is influenced by the previous year.
+\end{center}
+\section{Load \textbf{KeyWestAnnualMeanTemperature.Rdata}}
 \begin{Schunk}
 \begin{Sinput}
-> ## data load
-> load("../Data/KeyWestAnnualMeanTemperature.RData")
-> ls()
+> load("../Data/KeyWestAnnualMeanTemperature.RData");ls()
 \end{Sinput}
 \begin{Soutput}
 [1] "ats"
 \end{Soutput}
-\begin{Sinput}
-> ## libraries
-> library(ggplot2)
-> library(knitr)
-\end{Sinput}
 \end{Schunk}
 
-\section{examine data}
+\section{Examine correlation coefficient of data\label{osp}}
 \begin{Schunk}
 \begin{Sinput}
-> ## cor coef
 > print(b<-unlist(cor(ats,method = "spearman"))[1,2])
 \end{Sinput}
 \begin{Soutput}
@@ -39,25 +35,41 @@
 \end{Soutput}
 \end{Schunk}
 
-\section{plot data}
-\includegraphics{TAutoCorr-003}
+\section{Plot data\label{plot}}
+\includegraphics{TAutoCorr-004}
 
+\section{Sample Spearman correlation 10K times through random time-series perturbation\label{ssp}}
 \begin{Schunk}
 \begin{Sinput}
-> ## cor coef (rand sample)
 > dm<-1e4
 > a<-rep(NA,dm);i<-1
-> for(x in sample((dim(ats)[1]-1),dm,replace = T)){
+> for(x in sample((2:dim(ats)[1]),dm,replace = T)){
++   ## random pick 10K sample from years range (1901-2000)
 +   a[i]<-unlist(cor(ats[(1:x),],method = "spearman"))[1,2]
-+   i<-i+1
-+   };rm(x,i,dm)
-> ## approx p-val
++   i<-i+1}
+\end{Sinput}
+\end{Schunk}
+\clearpage
+With Spearman correlation coefficient mean (from sampling) calculated as:
+\begin{Schunk}
+\begin{Sinput}
+> mean(a)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.5379805
+\end{Soutput}
+\end{Schunk}
+\section{Fraction of sampling $>$ overall coefficient (approx. p.val)\label{pval}}
+\begin{Schunk}
+\begin{Sinput}
 > length(a[which(a>b)])/length(a)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.498
+[1] 0.4959
 \end{Soutput}
 \end{Schunk}
-
+\section{Discussion}
+Correlation coefficient from both overall (Sec.\ref{osp}) and sampled (Sec.\ref{ssp}) were only in medium levels.  The approximated p-value (Sec.\ref{pval}) is falsifying the hypothesis (p$>>$0.05).\\\\
+The results showed that time (i.e. year) is not a statistically-significant factor for the annual temperature for Florida in the twentieth century.  Hence the ``best-fitted" curve in the plot (Sec.\ref{plot}) was a mis-interpretation.  Other factors (including but not limited to atmospheric carbon dioxide levels, atmospheric sulphur dioxide levels and suspended particulates level) should also be considered in future analyses.
 
 \end{document}
