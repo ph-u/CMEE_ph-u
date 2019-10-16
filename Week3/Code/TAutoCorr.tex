@@ -1,0 +1,30 @@
+\documentclass{article}
+
+\usepackage{Sweave}
+\begin{document}
+\input{TAutoCorr-concordance}
+
+
+\includegraphics{TAutoCorr-002}
+
+\begin{Schunk}
+\begin{Sinput}
+> ## cor coef
+> b<-unlist(cor(ats,method = "spearman"))[1,2]
+> ## cor coef (rand sample)
+> dm<-1e4
+> a<-rep(NA,dm);i<-1
+> for(x in sample((dim(ats)[1]-1),dm,replace = T)){
++   a[i]<-unlist(cor(ats[(1:x),],method = "spearman"))[1,2]
++   i<-i+1
++   };rm(x,i,dm)
+> ## approx p-val
+> length(a[which(a>b)])/length(a)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.4877
+\end{Soutput}
+\end{Schunk}
+
+
+\end{document}
