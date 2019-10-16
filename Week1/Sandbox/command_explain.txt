@@ -1,0 +1,7 @@
+Q: find . -type f -exec ls -s {} \;|sort -n|head -10
+
+find all files inside the current directory.
+Then execute commands behind
+The first command will be run is listing all files from the input by size
+Next, sort the first command output in alphabetical order
+Lastly, only outputing the top 10 lines
