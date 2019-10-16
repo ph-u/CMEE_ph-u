@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: TAutoCorr.R
+# Desc: Main code dump for `TAutoCorr.Rnw` for statistical analysis and a graphical chart
+# Input: Rscript TAutoCorr.R
+# Output: 1. R interpreter output approximated p-value; 2. Rplot.pdf in `Code` subdirectory
+# Arguments: 0
+# Date: Oct 2019
+
 ## data load
 load("../Data/KeyWestAnnualMeanTemperature.RData")
 

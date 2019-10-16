@@ -1,9 +1,17 @@
+%% Author: PokMan Ho pok.ho19@imperial.ac.uk
+%% Script: TAutoCorr.Rnw
+%% Desc: pdf report creation for a annual temperature `Rdata` dataset
+%% Input: None -- need to `Compile PDF` within RStudio.app
+%% Output: pdf report in `Code` subdirectory (and other auto-generated files)
+%% Arguments: 0
+%% Date: Oct 2019
+
 \documentclass{article}
 
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,hyperref}
 
-\title{Question: Autocorrection in weather}
+\title{Question: Autocorrelation in weather}
 \author{PokMan Ho (CID: 01786076)}
 \date{}
 
@@ -56,7 +64,7 @@ With Spearman correlation coefficient mean (from sampling) calculated as:
 > mean(a)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.5379805
+[1] 0.5355228
 \end{Soutput}
 \end{Schunk}
 \section{Fraction of sampling $>$ overall coefficient (approx. p.val)\label{pval}}
@@ -65,7 +73,7 @@ With Spearman correlation coefficient mean (from sampling) calculated as:
 > length(a[which(a>b)])/length(a)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.4959
+[1] 0.4887
 \end{Soutput}
 \end{Schunk}
 \section{Discussion}
