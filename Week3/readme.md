@@ -2,7 +2,7 @@
 
 # 2019 PokMan HO MRes CMEE Coursework Week3
 
-This week's foci were on: R Rnw log pdf py sh synctex tex 
+This week's foci were on:  R Rnw py sh tex 
 
 ## License
 
@@ -12,35 +12,6 @@ Apache-2.0
 
 Multiple scripts were coded and introduced below in filename alphabetical order.  
 All scripts are in `Code` directory
-
-### TAutoCorr-004.pdf
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
-Binaryfile TAutoCorr-004.pdf matches
-*****
-
-### TAutoCorr-concordance.tex
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
-*****
 
 ### TAutoCorr.R
 
@@ -63,12 +34,12 @@ Rscript TAutoCorr.R
 
 #### Features
 
-pdf report creation for a annual temperature `Rdata` dataset
+pdf report creation for an annual temperature `Rdata` dataset
 
 #### Suggested input
 
 ```
-None -- need to `Compile PDF` within RStudio.app
+None -- need to "Compile PDF" within RStudio.app
 ```
 
 #### Output
@@ -76,59 +47,16 @@ None -- need to `Compile PDF` within RStudio.app
 pdf report in `Code` subdirectory (and other auto-generated files)
 *****
 
-### TAutoCorr.log
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
-Outputwritten on TAutoCorr.pdf (2 pages, 118563 bytes).
-*****
-
-### TAutoCorr.pdf
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
-*****
-
-### TAutoCorr.synctex.gz
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
-*****
-
 ### TAutoCorr.tex
 
 #### Features
 
-pdf report creation for a annual temperature `Rdata` dataset
+pdf report creation for an annual temperature `Rdata` dataset
 
 #### Suggested input
 
 ```
-None -- need to `Compile PDF` within RStudio.app
+None -- need to "Compile PDF" within RStudio.app
 ```
 
 #### Output

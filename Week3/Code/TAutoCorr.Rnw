@@ -1,7 +1,7 @@
 %% Author: PokMan Ho pok.ho19@imperial.ac.uk
 %% Script: TAutoCorr.Rnw
-%% Desc: pdf report creation for a annual temperature `Rdata` dataset
-%% Input: None -- need to `Compile PDF` within RStudio.app
+%% Desc: pdf report creation for an annual temperature `Rdata` dataset
+%% Input: None -- need to "Compile PDF" within RStudio.app
 %% Output: pdf report in `Code` subdirectory (and other auto-generated files)
 %% Arguments: 0
 %% Date: Oct 2019
