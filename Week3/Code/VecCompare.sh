@@ -1,5 +1,13 @@
 #!/bin/bash
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: VecCompare.sh
+# Desc: test, compare and print terminal result of computational time for `Vectorize1` and `Vectorize2` python3 and R scripts
+# Input: ./VecCompare.sh
+# Output: tabular terminal output
+# Arguments: 0
+# Date: Oct 2019
 
+## create data-mining txt files
 python3 Vectorize1.py [1]>V1py.txt
 Rscript Vectorize1.R [1]>V1R.txt
 python3 Vectorize2.py [1]>V2py.txt

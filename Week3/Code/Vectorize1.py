@@ -1,5 +1,22 @@
 #!/bin/env python3
 
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: Vectorize1.py
+# Desc: R program substitution -- `Vectorize1` (compare self-written and built-in function computational time)
+# Input: python3 Vectorize1.py
+# Output: two blocks of two-lined terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+"""
+R program substitution -- Vectorize1 (compare self-written and built-in function computational time)
+"""
+
+__appname__='Vectorize1.py'
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 ## imports
 import random
 import time

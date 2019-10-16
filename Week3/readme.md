@@ -1,6 +1,6 @@
 ![alt text](https://unichoices.co.uk/wp-content/uploads/2015/09/Imperial-College-London.jpg)
 
-# 2019 PokMan HO MRes CMEE Coursework Week03
+# 2019 PokMan HO MRes CMEE Coursework Week3
 
 This week's foci were on: R py sh 
 
@@ -28,6 +28,125 @@ Rscript TreeHeight.R
 #### Output
 
 `TreeHts.csv` in `results` subdirectory
+*****
+
+### VecCompare.sh
+
+#### Features
+
+test, compare and print terminal result of computational time for `Vectorize1` and `Vectorize2` python3 and R scripts
+
+#### Suggested input
+
+```
+./VecCompare.sh
+```
+
+#### Output
+
+tabular terminal output
+*****
+
+### Vectorize1.R
+
+#### Features
+
+compare self-written and built-in function computational time
+
+#### Suggested input
+
+```
+Rscript Vectorize1.R
+```
+
+#### Output
+
+two blocks of two-lined terminal output
+*****
+
+### Vectorize1.py
+
+#### Features
+
+R program substitution -- `Vectorize1` (compare self-written and built-in function computational time)
+
+#### Suggested input
+
+```
+python3 Vectorize1.py
+```
+
+#### Output
+
+two blocks of two-lined terminal output
+*****
+
+### Vectorize2.R
+
+#### Features
+
+compare initial and modified stochastic (with gaussian fluctuations) Ricker Eqn computational time
+
+#### Suggested input
+
+```
+Rscript Vectorize2.R
+```
+
+#### Output
+
+two blocks of two-lined terminal output
+*****
+
+### Vectorize2.py
+
+#### Features
+
+R program substitution -- `Vectorize2` (compare initial and modified stochastic with gaussian fluctuations Ricker Eqn computational time)
+
+#### Suggested input
+
+```
+python3 Vectorize2.py
+```
+
+#### Output
+
+two blocks of two-lined terminal output
+*****
+
+### apply1.R
+
+#### Features
+
+try out apply() built-in R function
+
+#### Suggested input
+
+```
+Rscript apply1.R
+```
+
+#### Output
+
+three blocks of two-lined terminal output
+*****
+
+### apply2.R
+
+#### Features
+
+try out apply() built-in R function with self-designed function
+
+#### Suggested input
+
+```
+Rscript apply2.R
+```
+
+#### Output
+
+a matrix of R interpreter terminal output
 *****
 
 ### basic_io.R
@@ -81,7 +200,7 @@ Rscript break.R
 20-lined terminal output
 *****
 
-### control.R
+### control_flow.R
 
 #### Features
 
@@ -90,7 +209,7 @@ test conditionals, `for` loops and `while` loops
 #### Suggested input
 
 ```
-Rscript control.R
+Rscript control_flow.R
 ```
 
 #### Output
@@ -149,6 +268,23 @@ Rscript next.R
 printing odd numbers from 1 to 10
 *****
 
+### preallocate.R
+
+#### Features
+
+test function speed with & without preallocation
+
+#### Suggested input
+
+```
+Rscript preallocate.R
+```
+
+#### Output
+
+two blocks of four-lined R interpreter output
+*****
+
 ### run_get_TreeHeight.sh
 
 #### Features
@@ -170,12 +306,29 @@ None
 
 #### Features
 
-test two methods of random sampling from a population
+test pre-allocation and vectorization efficiencies
 
 #### Suggested input
 
 ```
 Rscript sample.R
+```
+
+#### Output
+
+five-blocks of three-lined R interpreter output
+*****
+
+### try.R
+
+#### Features
+
+test two methods of random sampling from a population
+
+#### Suggested input
+
+```
+Rscript try.R
 ```
 
 #### Output

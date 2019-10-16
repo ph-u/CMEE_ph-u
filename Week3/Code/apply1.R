@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: apply1.R
+# Desc: try out apply() built-in R function
+# Input: Rscript apply1.R
+# Output: three blocks of two-lined terminal output
+# Arguments: 0
+# Date: Oct 2019
+
 ## Build a random matrix
 M<-matrix(rnorm(100),10,10)
 

@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: Vectorize1.R
+# Desc: compare self-written and built-in function computational time
+# Input: Rscript Vectorize1.R
+# Output: two blocks of two-lined terminal output
+# Arguments: 0
+# Date: Oct 2019
+
 M<-matrix(runif(1e6),1e3,1e3)
 
 SumAllElements<-function(M){

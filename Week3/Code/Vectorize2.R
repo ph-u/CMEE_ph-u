@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: Vectorize2.R
+# Desc: compare initial and modified stochastic (with gaussian fluctuations) Ricker Eqn computational time
+# Input: Rscript Vectorize2.R
+# Output: two blocks of two-lined terminal output
+# Arguments: 0
+# Date: Oct 2019
+
 # Runs the stochastic (with gaussian fluctuations) Ricker Eqn .
 
 rm(list=ls())
@@ -41,7 +51,7 @@ stochrick.m<-function(p0=1e3,r=1.2,K=1,sigma=0.2,numyears=100){
 ## comparison
 a<-system.time(res2<-stochrick())
 b<-system.time(res3<-stochrick.m())
-print("My Vectorized Stochastic Ricker takes:\n")
+cat("My Vectorized Stochastic Ricker takes:\n")
 cat(paste0(round(unname(b[1]),3),"\n"))
 cat("Vectorized Stochastic Ricker takes:\n")
 cat(paste0(round(unname(a[1]),3),"\n"))

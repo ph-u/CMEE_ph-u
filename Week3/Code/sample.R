@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: sample.R
+# Desc: test pre-allocation and vectorization efficiencies
+# Input: Rscript sample.R
+# Output: five-blocks of three-lined R interpreter output
+# Arguments: 0
+# Date: Oct 2019
+
 ##### Functions #####
 
 ## a function to take a sample of size n from a population "popn" and return its mean

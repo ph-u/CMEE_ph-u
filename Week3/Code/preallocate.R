@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: preallocate.R
+# Desc: test function speed with & without preallocation
+# Input: Rscript preallocate.R
+# Output: two blocks of four-lined R interpreter output
+# Arguments: 0
+# Date: Oct 2019
+
 ss<-function(p){
   a<-NA
   for(i in seq(1:p)){

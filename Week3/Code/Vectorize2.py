@@ -1,5 +1,22 @@
 #!/bin/env python3
 
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: Vectorize2.py
+# Desc: R program substitution -- `Vectorize2` (compare initial and modified stochastic with gaussian fluctuations Ricker Eqn computational time)
+# Input: python3 Vectorize2.py
+# Output: two blocks of two-lined terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+"""
+R program substitution -- Vectorize2 (compare initial and modified stochastic with gaussian fluctuations Ricker Eqn computational time)
+"""
+
+__appname__='Vectorize2.py'
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 ## imports
 import random
 import time
