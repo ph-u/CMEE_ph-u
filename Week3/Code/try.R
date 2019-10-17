@@ -19,21 +19,22 @@ doit<-function(x){
   }
 }
 
-y<-3
-## run 100 iterations using vectorization:
-result<-lapply(1:y,function(i) doit(x))
-
+y<-9
+# ## run y iterations using vectorization:
+# result<-lapply(1:y,function(i) doit(x))
+# 
 # print("that's enough")
-
-## using a for loop:
-result<-vector("list",y)## preallocate/Initialize
-for(i in 1:y){
-  result[[i]]<-doit(x)
-}
+# 
+# ## using a for loop:
+# result<-vector("list",y)## preallocate/Initialize
+# for(i in 1:y){
+#   result[[i]]<-doit(x)
+# }
 
 ## Try using "try" with vectorization:
 result<-lapply(1:y,function(i) try(doit(x),F))
 
+cat("that's enough\n")
 ## or using a for loop:
 result<-vector("list",y)## preallocate/initialize
 for(i in 1:y){
