@@ -30,12 +30,16 @@ stochrick<-function(p0=runif(1000,.5,1.5),r=1.2,K=1,sigma=0.2,numyears=100)
 }
 
 ## My function
-stochrick.m<-function(p0=1e3,r=1.2,K=1,sigma=0.2,numyears=100){
+stochrickvect<-function(p0=1e3,r=1.2,K=1,sigma=0.2,numyears=100){
   #initialize
   N<-matrix(NA,numyears,p0)
   N[1,]<-runif(p0,.5,1.5)
   
   ## calculate
+  for(yr in 2:numyears){
+    N[yr,]<-apply(N[yr-1,],2,function(x,r=1.2,K=1,sigma=0.2){
+      x*exp(r*(1-x/K)+rnorm(1,0,sigma))})
+  }
   for (pop in 1:length(p0)) #loop through the populations
   {
     for (yr in 2:numyears) #for each pop, loop through the years
@@ -46,14 +50,15 @@ stochrick.m<-function(p0=1e3,r=1.2,K=1,sigma=0.2,numyears=100){
   
   return(N)
 }
+a.0<-data.frame(c(1,2),(rep(NA,2)))
 # Now write another function called stochrickvect that vectorizes the above to the extent possible, with improved performance:
 
 ## comparison
 a<-system.time(res2<-stochrick())
-b<-system.time(res3<-stochrick.m())
+b<-system.time(res3<-stochrickvect())
 cat("My Vectorized Stochastic Ricker takes:\n")
 cat(paste0(round(unname(b[1]),3),"\n"))
-cat("Vectorized Stochastic Ricker takes:\n")
+cat("Looped Stochastic Ricker takes:\n")
 cat(paste0(round(unname(a[1]),3),"\n"))
 # print(paste("My solution is faster than target by",round(unname(b[1])-unname(a[1]),4),"sec"))
 
