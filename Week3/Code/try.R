@@ -30,10 +30,10 @@ doit<-function(x){
 # }
 
 ## Try using "try" with vectorization:
-result<-lapply(1:100,function(i) try(doit(x),F))
+result<-lapply(1:15,function(i) try(doit(x),F))
 
 ## or using a for loop:
-result<-vector("list",100)## preallocate/initialize
-for(i in 1:100){
+result<-vector("list",15)## preallocate/initialize
+for(i in 1:15){
   result[[i]]<-try(doit(x),F)
 }
