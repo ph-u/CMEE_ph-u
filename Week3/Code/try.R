@@ -11,9 +11,9 @@
 ## run a simulation that involves sampling form a popuation
 x<-rnorm(50) # Generate your population
 doit<-function(x){
-  x<-sample(x,replace = T)
-  if(length(unique(x))>30){## only take mean if sample was sufficient
-    print(paste("Mean of this sample was:",as.character(mean(x))))
+  x.0<-sample(x,replace = T)
+  if(length(unique(x.0))>30){## only take mean if sample was sufficient
+    print(paste("Mean of this sample was:",as.character(mean(x.0))))
   }else{
     stop("Couldn't calculate mean: too few unique points!")
   }
