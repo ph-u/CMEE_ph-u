@@ -18,22 +18,24 @@ doit<-function(x){
     stop("Couldn't calculate mean: too few unique points!")
   }
 }
-# ## run 100 iterations using vectorization:
-# result<-lapply(1:100,function(i) doit(x))
-# 
-# # print("that's enough")
-# 
-# ## using a for loop:
-# result<-vector("list",100)## preallocate/Initialize
-# for(i in 1:100){
-#   result[[i]]<-doit(x)
-# }
+
+y<-3
+## run 100 iterations using vectorization:
+result<-lapply(1:y,function(i) doit(x))
+
+# print("that's enough")
+
+## using a for loop:
+result<-vector("list",y)## preallocate/Initialize
+for(i in 1:y){
+  result[[i]]<-doit(x)
+}
 
 ## Try using "try" with vectorization:
-result<-lapply(1:15,function(i) try(doit(x),F))
+result<-lapply(1:y,function(i) try(doit(x),F))
 
 ## or using a for loop:
-result<-vector("list",15)## preallocate/initialize
-for(i in 1:15){
+result<-vector("list",y)## preallocate/initialize
+for(i in 1:y){
   result[[i]]<-try(doit(x),F)
 }
