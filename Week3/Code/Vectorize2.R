@@ -32,22 +32,28 @@ stochrick<-function(p0=runif(1000,.5,1.5),r=1.2,K=1,sigma=0.2,numyears=100)
 ## My function
 stochrickvect<-function(p0=1e3,r=1.2,K=1,sigma=0.2,numyears=100){
   #initialize
+  # N<-as.data.frame(matrix(NA,numyears,p0))
   N<-matrix(NA,numyears,p0)
   N[1,]<-runif(p0,.5,1.5)
   
   ## calculate
   for(yr in 2:numyears){
-    N[yr,]<-apply(N[yr-1,],2,function(x,r=1.2,K=1,sigma=0.2){
-      x*exp(r*(1-x/K)+rnorm(1,0,sigma))})
+    N[yr,]<-N[yr-1,]*exp(r*(1-N[yr-1,]/K)+rnorm(1,0,sigma))
+    # N[yr,]<-apply(N[yr-1,],2,function(x,r=1.2,K=1,sigma=0.2){x*exp(r*(1-x/K)+rnorm(1,0,sigma))})
   }
-  for (pop in 1:length(p0)) #loop through the populations
-  {
-    for (yr in 2:numyears) #for each pop, loop through the years
-    {
-      N[yr,pop]<-N[yr-1,pop]*exp(r*(1-N[yr-1,pop]/K)+rnorm(1,0,sigma))
-    }
-  }
-  
+  # N[2,]<-apply(N[1,],2,function(x,r=1.2,K=1,sigma=0.2){x*exp(r*(1-x/K)+rnorm(1,0,sigma))})
+  # for(yr in 2:numyears){
+  #   N[yr,]<-apply(N[yr-1,],2,function(x,r=1.2,K=1,sigma=0.2){
+  #     x*exp(r*(1-x/K)+rnorm(1,0,sigma))})
+  # }
+  # for (pop in 1:p0) #loop through the populations
+  # {
+  #   for (yr in 2:numyears) #for each pop, loop through the years
+  #   {
+  #     N[yr,pop]<-N[yr-1,pop]*exp(r*(1-N[yr-1,pop]/K)+rnorm(1,0,sigma))
+  #   }
+  # }
+
   return(N)
 }
 a.0<-data.frame(c(1,2),(rep(NA,2)))
