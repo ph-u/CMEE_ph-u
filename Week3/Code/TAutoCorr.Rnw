@@ -70,6 +70,7 @@ dm<-1e4
 a<-rep(NA,dm)
 i<-1
 for(x in 1:dm){
+  
   ## shuffle data into random pairs
   ats.0<-sample(ats[,2],dim(ats)[1],replace = F)
   ats.0<-data.frame(ats.0[1:length(ats.0)-1],ats.0[2:length(ats.0)])
@@ -80,13 +81,24 @@ for(x in 1:dm){
 }
 @
 <<echo=F>>=
-rm(x,i,dm)
+rm(x,i)
 @
 With Spearman correlation coefficient mean (from sampling) calculated as:\\
 <<>>=
 mean(a)
 @
 \section{Fraction of sampling $>$ overall coefficient (approx. p.val)\label{pval}}
+<<echo=F,fig=TRUE>>=
+## normal distribution curve with threshold
+ggplot()+theme_bw()+
+  geom_density(aes(x=a))+
+  geom_vline(xintercept = b,colour="blue")+
+  geom_text(aes(x=0,y=.5,label=paste(dm,"random iteration\nof T|yr vs T|yr-1\ncorrelation coefficient")))+
+  geom_text(aes(x=(b-.02),y=2,angle=90,label=paste("overall Spearman coefficient (measured data):",round(b,4))),colour="blue")+
+  xlab("Spearman Correlation Coefficient")+
+  labs(caption="Density function of randomized Temperature correlation with real Spearman coefficient indicated")+
+  theme(plot.caption = element_text(hjust=0.5, size=rel(1.2)))
+@
 <<>>=
 length(a[which(a>b)])/length(a)
 @

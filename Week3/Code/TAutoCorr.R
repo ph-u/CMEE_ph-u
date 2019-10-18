@@ -58,7 +58,16 @@ i<-1;for(x in 1:dm){
   a[i]<-unlist(cor(ats.0,method = "spearman"))[1,2]
   i<-i+1
 }
-rm(x,i,dm)
+rm(x,i)
+
+## normal distribution curve with threshold
+ggplot()+theme_bw()+
+  geom_density(aes(x=a))+
+  geom_vline(xintercept = b,colour="blue")+
+  geom_text(aes(x=0,y=.5,label=paste(dm,"random iteration\nof T|yr vs T|yr-1\ncorrelation coefficient")))+
+  geom_text(aes(x=(b-.02),y=2,angle=90,label=paste("overall Spearman coefficient (measured data):",round(b,4))),colour="blue")+
+  xlab("Spearman Correlation Coefficient")+
+  labs(caption="Density function of randomized Temperature correlation with real Spearman coefficient indicated")
 
 ## approx p-val
 length(a[which(a>b)])/length(a)

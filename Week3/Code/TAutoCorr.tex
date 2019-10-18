@@ -63,6 +63,7 @@ And plot the paired data\\
 > a<-rep(NA,dm)
 > i<-1
 > for(x in 1:dm){
++   
 +   ## shuffle data into random pairs
 +   ats.0<-sample(ats[,2],dim(ats)[1],replace = F)
 +   ats.0<-data.frame(ats.0[1:length(ats.0)-1],ats.0[2:length(ats.0)])
@@ -79,10 +80,11 @@ With Spearman correlation coefficient mean (from sampling) calculated as:\\
 > mean(a)
 \end{Sinput}
 \begin{Soutput}
-[1] -0.01014379
+[1] -0.009448687
 \end{Soutput}
 \end{Schunk}
 \section{Fraction of sampling $>$ overall coefficient (approx. p.val)\label{pval}}
+\includegraphics{TAutoCorr-010}
 \begin{Schunk}
 \begin{Sinput}
 > length(a[which(a>b)])/length(a)

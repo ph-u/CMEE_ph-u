@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: DataWrangTidy.R
+# Desc: test conditionals, `for` loops and `while` loops
+# Input: Rscript DataWrangTidy.R
+# Output: multiple tabular terminal output
+# Arguments: 0
+# Date: Oct 2019
+
 library(dplyr)
 library(tidyr)
 
@@ -27,9 +37,9 @@ MyWrangledData[,"Block"]<-as.factor(MyWrangledData[,"Block"])
 MyWrangledData[,"Plot"]<-as.factor(MyWrangledData[,"Plot"])
 MyWrangledData[,"Quadrat"]<-as.factor(MyWrangledData[,"Quadrat"])
 MyWrangledData[,"Count"]<-as.integer(MyWrangledData[,"Count"])
-glimpse(MyWrangledData) ## str(MyWrangledData)
+# glimpse(MyWrangledData) ## str(MyWrangledData)
 
 tbl_df(MyWrangledData) ## like head(), but nicer! <https://github.com/r-lib/vctrs/issues/487>
-glimpse(MyWrangledData) ## like str(), but nicer!
+# glimpse(MyWrangledData) ## like str(), but nicer!
 filter(MyWrangledData,Count>100) ## like subset(), but nicer!
 slice(MyWrangledData, 10:15) ## Look at an arbitrary set of data rows
