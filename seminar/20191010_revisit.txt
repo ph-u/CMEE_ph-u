@@ -1,0 +1,39 @@
+bg
+1. climate change: one of the major threats to mordern biodiversity
+2. need better forecast
+3. interacting spp have similar TPC
+
+goals
+1. know physiology response to climate change in longer timescales
+2. know cause of bio-variation, more accurate predictions
+3. test metabolic theory on scale of species evolution
+
+method
+1. how traits response -- thermal performance curves shift
+
+2. Sharpe-Schoolfield model
+2.1 numerator: activation energy; raising TPC section
+2.2 denominator: capture how fast performance declines
+2.3 basic assumption: bio-growth rate of a trait under Tk influence on single rate-limiting enzyme
+2.4 4 parameters: thermal optimal, thermal sensitivity, deactivation energy, trait basal value
+2.5 2 estimated parameters: performance peak, Tk diff between optimal & 50% performance
+
+outline
+1. influence of thermodynamic constraints on TPC shape
+
+thermal specialist vs generalist: -ve correlation between TPC-peak (B|pk) ; diff Tk of peak & 50% perfornance (W|op)
+phytoplankton growth rate from literatures
+phylogenetic regression
+very week thermal specialist pattern
+
+2 correlations
+-ve slope of rise & optimal Tk
+weak correlation between T|op & max performance
+
+body/cell size weekly -ve correlate with peak of TPC
+____________
+2. evolutionary pattern of thermal sensitivity
+
+___________
+3. big picture of thermal adaptation
+
