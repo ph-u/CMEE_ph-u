@@ -35,7 +35,7 @@ dev.off()
 
 ## data info collect
 oo.0<-as.data.frame(matrix(nrow = length(unique(oo$Type.of.feeding.interaction))*length(unique(oo$Predator.lifestage)), ncol = 7))
-colnames(oo.0)<-c("FeedingType", "LifeStageCategory", "slopeSpearman", "interceptSpearman","R2", "F-statistics", "p-val")
+colnames(oo.0)<-c("FeedingType", "LifeStageCategory", "slopeLinear", "interceptLinear","R2", "F-statistics", "p-val")
 a.0<-levels(oo$Type.of.feeding.interaction)
 a.1<-0;for(i in 1:length(a.0)){a.1<-c(a.1,rep(a.0[i],length(levels(oo$Predator.lifestage))))};a.1<-a.1[-1]
 oo.0[,1]<-as.factor(a.1);oo.0[,2]<-as.factor(levels(oo$Predator.lifestage))
@@ -45,13 +45,17 @@ for(i in 1:dim(oo.0)[1]){
   if(oo.1>0){
     print(paste("Usable results:",oo.0[i,1],";",oo.0[i,2]))
     oo.1<-oo[which(oo$Type.of.feeding.interaction==oo.0$FeedingType[i] & oo$Predator.lifestage==oo.0$LifeStageCategory[i]),]
-    oo.2<-suppressWarnings(cor.test(log(oo.1$Predator.mass),log(oo.1$Prey.mass), method="spearman"))
-    oo.3<-lm(log(oo.1$Predator.mass)~log(oo.1$Prey.mass))
-    oo.0[i,3]<-unname(oo.3$coefficients[2])
-    oo.0[i,4]<-unname(oo.3$coefficients[1])
-    oo.0[i,5]<-unname(oo.2$estimate)^2
-    oo.0[i,6]<-unname(oo.2$statistic)
-    oo.0[i,7]<-unname(oo.2$p.value)
+    oo.2<-summary(lm(log(oo.1$Predator.mass)~log(oo.1$Prey.mass)))
+    if(dim(oo.2$coefficients)[1]<2){
+      oo.0[i,3]<-oo.0[i,6]<-oo.0[i,7]<-NA
+    }else{
+      oo.0[i,3]<-oo.2$coefficients[2,1] ##slopeLinear
+      oo.0[i,6]<-unname(oo.2$fstatistic)[1] ## F-statistics
+      oo.0[i,7]<-oo.2$coefficients[2,4] ## p-val
+
+    }
+    oo.0[i,4]<-oo.2$coefficients[1,1] ## interceptLinear
+    oo.0[i,5]<-oo.2$adj.r.squared ## R2
   }
-};oo.0<-oo.0[which(is.na(oo.0[,3])!=T),];rm(i,oo.1,oo.2,oo.3)
+};oo.0<-oo.0[which(is.na(oo.0[,3])!=T),];rm(i,oo.1,oo.2)
 write.csv(oo.0,"../Results/PP_Regress_Results.csv",row.names = F, quote = F)
