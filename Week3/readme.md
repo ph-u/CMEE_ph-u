@@ -13,6 +13,125 @@ Apache-2.0
 Multiple scripts were coded and introduced below in filename alphabetical order.  
 All scripts are in `Code` directory
 
+### DataWrang.R
+
+#### Features
+
+test conditionals, `for` loops and `while` loops
+
+#### Suggested input
+
+```
+Rscript DataWrang.R
+```
+
+#### Output
+
+multiple tabular terminal output
+*****
+
+### DataWrangTidy.R
+
+#### Features
+
+test conditionals, `for` loops and `while` loops
+
+#### Suggested input
+
+```
+Rscript DataWrangTidy.R
+```
+
+#### Output
+
+multiple tabular terminal output
+*****
+
+### Girko.R
+
+#### Features
+
+Use Girko equation to plot a Girko law simulation
+
+#### Suggested input
+
+```
+Rscript Girko.R
+```
+
+#### Output
+
+a vector plot in `Results` subdirectory
+*****
+
+### MyBars.R
+
+#### Features
+
+Export one annotated plot to `Results` subdirectory
+
+#### Suggested input
+
+```
+Rscript MyBars.R
+```
+
+#### Output
+
+a vector plot in `Results` subdirectory
+*****
+
+### PP_Lattice.R
+
+#### Features
+
+1. use `lattice` R-pkg to plot three plots; 2. export data descriptions of mean and median as `csv`
+
+#### Suggested input
+
+```
+Rscript PP_Lattice.R
+```
+
+#### Output
+
+1. three separate vector graphs in `pdf` within `Results` subdirectory; 2. partial data summary as `csv` in `Results` subdirectory
+*****
+
+### PP_Regress.R
+
+#### Features
+
+Export one complex plot and data information (under factors "predator feeding type" and "predator life stage") to `Results` subdirectory
+
+#### Suggested input
+
+```
+Rscript PP_Regress.R
+```
+
+#### Output
+
+1. a vector plot in `Results` subdirectory; 2. result `csv` in `Results` subdirectory
+*****
+
+### PP_Regress_loc.R
+
+#### Features
+
+Export data information (under factors "predator feeding type", "predator life stage" and "location") to `Results` subdirectory
+
+#### Suggested input
+
+```
+Rscript PP_Regress_loc.R
+```
+
+#### Output
+
+result `csv` in `Results` subdirectory
+*****
+
 ### TAutoCorr.R
 
 #### Features
@@ -78,7 +197,7 @@ Rscript TreeHeight.R
 
 #### Output
 
-`TreeHts.csv` in `results` subdirectory
+`TreeHts.csv` in `Results` subdirectory
 *****
 
 ### VecCompare.sh
@@ -214,7 +333,7 @@ Rscript basic_io.R
 
 #### Output
 
-output `MyData.csv` in `results` subdirectory
+output `MyData.csv` in `Results` subdirectory
 *****
 
 ### boilerplate.R
@@ -299,7 +418,7 @@ Rscript get_TreeHeight.R
 
 #### Output
 
-`<.csv>_treeheights.csv` in `results` subdirectory
+`<.csv>_treeheights.csv` in `Results` subdirectory
 *****
 
 ### get_TreeHeight.py
@@ -316,7 +435,7 @@ python3 get_TreeHeight.py <.csv>
 
 #### Output
 
-`<.csv>_treeheights.csv` in `results` subdirectory
+`<.csv>_treeheights.csv` in `Results` subdirectory
 *****
 
 ### maps.R
@@ -351,6 +470,23 @@ Rscript next.R
 #### Output
 
 printing odd numbers from 1 to 10
+*****
+
+### plotLin.R
+
+#### Features
+
+Export one annotated linear regression plot to `Results` subdirectory
+
+#### Suggested input
+
+```
+Rscript plotLin.R
+```
+
+#### Output
+
+a vector plot in `Results` subdirectory
 *****
 
 ### preallocate.R

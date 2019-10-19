@@ -47,7 +47,7 @@ python3 align_seqs_better.py <fasta_1> <fasta_2>
 #### Output
 
 1. python interpreter output -- alignment process
-2. output best alignment(s) and its/their score(s) to a binary file in `results` subdirectory
+2. output best alignment(s) and its/their score(s) to a binary file in `Results` subdirectory
 
 *****
 

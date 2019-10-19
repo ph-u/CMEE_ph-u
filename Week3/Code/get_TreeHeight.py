@@ -4,7 +4,7 @@
 # Script: get_TreeHeight.py
 # Desc: R program substitution -- Tree Height calculation
 # Input: python3 get_TreeHeight.py <.csv>
-# Output: `<.csv>_treeheights.csv` in `results` subdirectory
+# Output: `<.csv>_treeheights.csv` in `Results` subdirectory
 # Arguments: 1
 # Date: Oct 2019
 
@@ -47,6 +47,6 @@ for i in range(len(f_0)):
     else: f_0[i].append(TreeHeight(float(f_0[i][2]),float(f_0[i][1])))
 
 ## write result as csv
-with open(str("../results/"+bn+"_treeheights.csv"),"w") as csvfile: 
+with open(str("../Results/"+bn+"_treeheights.csv"),"w") as csvfile: 
     csvW=csv.writer(csvfile)
     csvW.writerows(i for i in f_0)

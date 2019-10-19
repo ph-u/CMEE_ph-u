@@ -4,7 +4,7 @@
 # Script: Girko.R
 # Desc: Use Girko equation to plot a Girko law simulation
 # Input: Rscript Girko.R
-# Output: a vector plot in `results` subdirectory
+# Output: a vector plot in `Results` subdirectory
 # Arguments: 0
 # Date: Oct 2019
 
@@ -30,7 +30,7 @@ ellDF<-build_ellipse(my_radius, my_radius) ## dataframe to plot the ellipse
 names(ellDF) <- c("Real", "Imaginary") ## rename the columns
 
 ## plot & export
-pdf("../results/Girko.pdf")
+pdf("../Results/Girko.pdf")
 ggplot(eigDF, aes(x=Real, y=Imaginary))+
   geom_point(shape=I(3))+theme(legend.position = "none")+
   geom_hline(aes(yintercept=0))+

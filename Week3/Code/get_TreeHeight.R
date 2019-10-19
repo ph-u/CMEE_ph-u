@@ -4,7 +4,7 @@
 # Script: get_TreeHeight.R
 # Desc: Tree Height calculation program
 # Input: Rscript get_TreeHeight.R
-# Output: `<.csv>_treeheights.csv` in `results` subdirectory
+# Output: `<.csv>_treeheights.csv` in `Results` subdirectory
 # Arguments: 1
 # Date: Oct 2019
 
@@ -36,5 +36,5 @@ bn<-as.character(read.table(text=basename(args[1]),sep=".")[1,1])
 a<-read.csv(args[1],header = T)
 a.0<-data.frame(a,TreeHeight(a$Angle.degrees,a$Distance.m))
 colnames(a.0)[dim(a.0)[2]]="Tree.Height.m"
-# write.csv(a.0,"../results/TreeHts.csv",quote = F,row.names = F)
-write.csv(a.0,paste0("../results/",bn,"_treeheights.csv"),quote = F,row.names = F)
+# write.csv(a.0,"../Results/TreeHts.csv",quote = F,row.names = F)
+write.csv(a.0,paste0("../Results/",bn,"_treeheights.csv"),quote = F,row.names = F)

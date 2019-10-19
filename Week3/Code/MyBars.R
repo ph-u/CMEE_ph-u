@@ -2,9 +2,9 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: MyBars.R
-# Desc: Export one annotated plot to `results` subdirectory
+# Desc: Export one annotated plot to `Results` subdirectory
 # Input: Rscript MyBars.R
-# Output: a vector plot in `results` subdirectory
+# Output: a vector plot in `Results` subdirectory
 # Arguments: 0
 # Date: Oct 2019
 
@@ -18,7 +18,7 @@ a<-read.table("../Data/Results.txt", header = T)
 a$ymin<-rep(0,dim(a)[1]) ## append a column of zeros
 
 ## plot & export
-pdf("../results/MyBars.pdf")
+pdf("../Results/MyBars.pdf")
 ggplot(a)+
   geom_linerange(data = a, aes(x=x, ymin=ymin,ymax=y1,size=.5),colour="#E69F00", alpha=.5, show.legend = F)+ ## Print the first linerange
   geom_linerange(data = a, aes(x=x, ymin=ymin, ymax=y2, size=.5), colour="#56B4E9", alpha=.5, show.legend = F)+ ## print the second linerange

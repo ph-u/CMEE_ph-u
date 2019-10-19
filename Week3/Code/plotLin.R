@@ -2,9 +2,9 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: plotLin.R
-# Desc: Export one annotated linear regression plot to `results` subdirectory
+# Desc: Export one annotated linear regression plot to `Results` subdirectory
 # Input: Rscript plotLin.R
-# Output: a vector plot in `results` subdirectory
+# Output: a vector plot in `Results` subdirectory
 # Arguments: 0
 # Date: Oct 2019
 
@@ -22,7 +22,7 @@ my_data<-data.frame(x=x, y=y)
 my_lm<-summary(lm(y~x, data = my_data))
 
 ## plot & export
-pdf("../results/MyLinReg.pdf")
+pdf("../Results/MyLinReg.pdf")
 ggplot(my_data, aes(x=x, y=y, colour=abs(my_lm$residuals)))+
   geom_point()+
   scale_color_gradient(low = "black", high = "red")+

@@ -4,7 +4,7 @@
 # Script: align_seqs_better.py
 # Desc: python homework -- genetic alignment program
 # Input: python3 align_seqs_better.py <fasta_1> <fasta_2>
-# Output: 1. python interpreter output -- alignment process; 2. output best alignment(s) and its/their score(s) to a binary file in `results` subdirectory
+# Output: 1. python interpreter output -- alignment process; 2. output best alignment(s) and its/their score(s) to a binary file in `Results` subdirectory
 # Arguments: 0 or 2
 # Date: Oct 2019
 
@@ -100,7 +100,7 @@ my_best_align = None
 my_best_score = -1
 
 print("Slave is writing your best results into binary report...")
-f=open("../results/result_b.p","wb")
+f=open("../Results/result_b.p","wb")
 
 t=[]
 for i in range(l1): # Note that you just take the last alignment with the highest score
@@ -148,6 +148,6 @@ f.close()
 print("Slave finishes its report in binary")
 
 ## Load report in python3
-# with open("../results/result_b.p","rb") as f:
+# with open("../Results/result_b.p","rb") as f:
 #     a=pickle.load(f)
 #     for i in range(len(a)): print(a[i])
