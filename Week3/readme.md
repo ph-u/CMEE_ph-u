@@ -85,7 +85,8 @@ a vector plot in `Results` subdirectory
 
 #### Features
 
-1. use `lattice` R-pkg to plot three plots; 2. export data descriptions of mean and median as `csv`
+1. use `lattice` R-pkg to plot three plots
+2. export data descriptions of mean and median as `csv`
 
 #### Suggested input
 
@@ -95,7 +96,9 @@ Rscript PP_Lattice.R
 
 #### Output
 
-1. three separate vector graphs in `pdf` within `Results` subdirectory; 2. partial data summary as `csv` in `Results` subdirectory
+1. three separate vector graphs in `pdf` within `Results` subdirectory
+2. partial data summary as `csv` in `Results` subdirectory
+
 *****
 
 ### PP_Regress.R
@@ -112,7 +115,9 @@ Rscript PP_Regress.R
 
 #### Output
 
-1. a vector plot in `Results` subdirectory; 2. result `csv` in `Results` subdirectory
+1. a vector plot in `Results` subdirectory
+2. result `csv` in `Results` subdirectory
+
 *****
 
 ### PP_Regress_loc.R
@@ -146,7 +151,9 @@ Rscript TAutoCorr.R
 
 #### Output
 
-1. R interpreter output approximated p-value; 2. Rplot.pdf in `Code` subdirectory
+1. R interpreter output approximated p-value
+2. Rplot.pdf in `Code` subdirectory
+
 *****
 
 ### TAutoCorr.Rnw
@@ -401,7 +408,14 @@ Rscript control_flow.R
 
 #### Output
 
-terminal output -- 1. 1-lined text string; 2. 100-lined text strings showing squared number results; 3. 3-lined text strings showing species names; 4. 3-lined text strings showing alphabet chain; 5. 100-lined numbers showing squared number results
+terminal output --
+
+1. 1-lined text string
+2. 100-lined text strings showing squared number results
+3. 3-lined text strings showing species names
+4. 3-lined text strings showing alphabet chain
+5. 100-lined numbers showing squared number results
+
 *****
 
 ### get_TreeHeight.R
