@@ -1,7 +1,5 @@
 *~ 
 *.tmp
-*.fasta
-*.csv
 ._*
 *.tmp
 *.swp

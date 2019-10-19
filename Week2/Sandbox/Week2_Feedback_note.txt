@@ -1,0 +1,19 @@
+100 -> 81
+
+l.598: lc2.py no docstrings (pt-1)
+l.550-552: functional docstring for lc2.py when imported to python3
+
+l.734: basic_csv.py no docstrings (pt-1)
+l.690-693: functional docstring for basic_csv.py
+
+l.749: error encountered by no such file
+***
+There is no such error encountered
+`python3 basic_csv.py` runs normally
+"testcsv.csv" is at relative path `../Data/testcsv.csv`
+
+l.29: "testcsv.csv" is originally included in .gitignore file (as they are data files)
+all csv and fasta pushed to repository prevent error (19-Oct-2019 22:20)
+***
+
+
