@@ -1,19 +1,58 @@
-100 -> 81
+weekly points: 100 -> 81
 
-l.598: lc2.py no docstrings (pt-1)
-l.550-552: functional docstring for lc2.py when imported to python3
+l.598: lc2.py found no docstrings (pt-1)
+l.550-552: lc2.py docstring
 
-l.734: basic_csv.py no docstrings (pt-1)
-l.690-693: functional docstring for basic_csv.py
+l.734: basic_csv.py found no docstrings (pt-1)
+l.690-693: basic_csv.py docstring
 
-l.749: error encountered by no such file
-***
-There is no such error encountered
-`python3 basic_csv.py` runs normally
-"testcsv.csv" is at relative path `../Data/testcsv.csv`
+l.805: cfexercises2.py found no docstrings (pt-1)
+l.766-768: cfexercises2.py docstring
 
-l.29: "testcsv.csv" is originally included in .gitignore file (as they are data files)
-all csv and fasta pushed to repository prevent error (19-Oct-2019 22:20)
-***
+l.1006: align_seqs_better.py found no docstrings (pt-1)
+l.857-859: align_seqs_better.py docstring
 
+l.1078: dictionary.py found no docstrings (pt-1)
+l.1038-1040: dictionary.py docstring
 
+l.1142: debugme.py found no docstrings (pt-1)
+l.1119-1121: debugme.py docstring
+
+l.1278: scope.py found no docstrings (pt-1)
+l.1175-1177: scope.py docstring
+
+l.1354: basic_io3.py found no docstrings (pt-1)
+l.1320-1322: basic_io3.py docstring
+
+l.1560: tuple.py found no docstrings (pt-1)
+l.1527-1529: tuple.py docstring
+
+l.1679: basic_io.py found no docstrings (pt-1) -- 90 points left
+1.1610-1614: basic_io.py docstring
+
+l.1779: lc1.py found no docstrings (pt-1)
+l.1732-l.1734: lc1.py docstring
+
+l.1960: oaks.py found no docstrings (pt-1)
+l.1916-1918: oaks.py docstring
+
+l.2035: loops.py found no docstrings (pt-1)
+l.1995-1997: loops.py docstring
+
+l.2206: using_name.py found no docstrings (pt-1)
+l.2184-2186: using_name.py docstring
+
+l.2333: align_seqs.py found no docstrings (pt-1)
+l.2237-2239: align_seqs.py docstring
+
+l.2392: basic_io2.py found no docstrings (pt-1)
+l.2365-2367: basic_io2.py docstring
+
+l.2444: sysargv.py found no docstrings (pt-1)
+l.2424-2426: sysargv.py docstring
+
+l.2614: align_seqs_fasta.py found no docstring (pt-1)
+l.2477-2479: align_seqs_fasta.py docstring
+
+l.2871: basic_io1.py found no docstring (pt-1) -- 81 points left
+l.2836-2838: basic_io1.py docstring
