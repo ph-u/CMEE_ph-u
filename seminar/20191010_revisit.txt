@@ -75,6 +75,30 @@ thermal sensitivity vary with latitude
 near equator selection for thermal specialists
 mid-latitudes selection for thermal generalists (^var in Tk in these latitudes)
 
+high thermal sen in equator
+decrease trend towards pole
+same slope: sample size problem
 __________
 3. big picture of thermal adaptation
 
+Tk affect interactions on all levels of a biological system
+embrace complexity, explain what is happening in each level
+Tk affect rate of destructive mutation
+Tk destablize proteins
+mutation more destructive under high Tk (^kinetics)
+
+molecular dynamics simulation on same enzyme from different thermal groups
+salinity stress on enzyme kinetics -- baseline
+all spp same trend of Tk effect on enzyme mutational damage effect
+
+strongly explaining ln(substitution rate) vs ln(Tk)
+opposing to metabolic theory prediction: high Tk ^evolution through mutation
+
+future work
+see cause & inforce prediction
+
+Messages
+thermodynamic constraints has weak influence on TPC shape
+various TPC component have evolutionary variations
+^Tk, ^detrimental mutations on protein stability
+research diversity brings unified pic of thermal adaptation
