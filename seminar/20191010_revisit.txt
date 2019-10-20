@@ -31,9 +31,41 @@ very week thermal specialist pattern
 weak correlation between T|op & max performance
 
 body/cell size weekly -ve correlate with peak of TPC
+
+max performance weakly in with T|op
+some var drive by cell vol
+var involve in cell envelop
+phytoplankton being specialist-generalist tradeoff TPC
 ____________
 2. evolutionary pattern of thermal sensitivity
 
-___________
+big debate in literature
+- sensitivity not vary across spp
+- thermal sesitivity has a distribution across spp
+
+prey traits lower thermal sensitivity than predators' (life-dinner principle)
+
+expected fix because of thermodynamical strength
+
+H1: (align with metabolic theory) thermal sensitivity evolve tightly around optimal value [set by thermaldynamical strength]
+
+H2: weak thermodynamical strength constraints
+
+H3: certain clades have higher evolutionary rates upon thermal sensitivity letting them explore parameter space
+
+phytoplankton, prokaryote dataset
+
+thermal sensitivity across phylogeny
+
+result: diff lineages overlap in thermal sensitivity parameter space
+env select for thermal sensitivity
+
+rate of evo on thermal sensitivity patchy
+random burst of evo
+
+expand of trait value space throughout evolutionary timescale
+big jumps occurs for close lineages
+prokaryotes generally evo/migrate to lower thermal sensitivity
+__________
 3. big picture of thermal adaptation
 
