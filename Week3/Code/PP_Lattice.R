@@ -55,4 +55,4 @@ for(i in 1:dim(oo.0)[1]){
     oo.0[i,4]<-median(oo[which(oo$Type.of.feeding.interaction==oo.0$FeedingType[i]),j.0])
   }
 };rm(i)
-write.csv(oo.0,"../Results/PP_Results.csv", quote = F, row.names=T)
+write.csv(oo.0,"../Results/PP_Results.csv", quote = F, row.names=F)
