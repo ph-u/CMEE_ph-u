@@ -48,7 +48,7 @@ for(i in 1:dim(oo.0)[1]){
   
   ## calculation
   if(length(grep("log",oo.0[i,1]))>0){
-    oo.0[i,3]<-mean(log(oo[which(oo$Type.of.feeding.interaction==oo.0$FeedingType[i]),j.0]))
+    oo.0[i,3]<-mean(log(oo[which(oo$Type.of.feeding.interaction==oo.0$FeedingType[i]),j.0])) ## log-mean vs mean-log <https://stats.stackexchange.com/questions/250209/log-mean-vs-mean-log-in-statistics>
     oo.0[i,4]<-median(log(oo[which(oo$Type.of.feeding.interaction==oo.0$FeedingType[i]),j.0]))
   }else{
     oo.0[i,3]<-mean(oo[which(oo$Type.of.feeding.interaction==oo.0$FeedingType[i]),j.0])
