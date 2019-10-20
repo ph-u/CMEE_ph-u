@@ -8,9 +8,7 @@
 # Arguments: variable
 # Date: Oct 2019
 
-"""
-get familiarize with system arguments in python scripts
-"""
+"""get familiarize with system arguments in python scripts"""
 
 __appname__="sysargv.py"
 __author__="PMH"

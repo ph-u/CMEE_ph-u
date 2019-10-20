@@ -8,9 +8,7 @@
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-first of three basic_io.py sections -- output lines from txt file
-"""
+"""first of three basic_io.py sections -- output lines from txt file"""
 
 __appname__="basic_io1.py"
 __author__="PMH"

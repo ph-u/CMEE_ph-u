@@ -8,11 +8,10 @@
 # Arguments: 0
 # Date: Oct 2019
 
-"""
+""" uses
 1. first of three basic_io.py sections -- output lines from txt file
 2. print a list of numbers into txt file
-3. save a python dictionary into binary file, then read and print in python interpreter
-"""
+3. save a python dictionary into binary file, then read and print in python interpreter"""
 
 __appname__="basic_io.py"
 __author__="PMH"

@@ -9,9 +9,7 @@
 # Date: Oct 2019
 
 
-"""
-loops testing
-"""
+"""loops testing"""
 
 __appname__="loops.py"
 __author__="PMH"

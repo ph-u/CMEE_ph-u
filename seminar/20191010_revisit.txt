@@ -66,6 +66,15 @@ random burst of evo
 expand of trait value space throughout evolutionary timescale
 big jumps occurs for close lineages
 prokaryotes generally evo/migrate to lower thermal sensitivity
+
+no global optimum
+
+thermal sensitivity fixed not because of thermodynamical strength
+
+thermal sensitivity vary with latitude
+near equator selection for thermal specialists
+mid-latitudes selection for thermal generalists (^var in Tk in these latitudes)
+
 __________
 3. big picture of thermal adaptation
 

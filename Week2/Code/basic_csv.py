@@ -8,10 +8,9 @@
 # Arguments: 0
 # Date: Oct 2019
 
-"""
+""" uses
 1. python interpretor read csv file and extract first element (species)
-2. copy specific column "bodymass" from testcsv.csv file to a new csv file (bodymass.csv)
-"""
+2. copy specific column "bodymass" from testcsv.csv file to a new csv file (bodymass.csv)"""
 
 __appname__="basic_csv.py"
 __author__="PMH"

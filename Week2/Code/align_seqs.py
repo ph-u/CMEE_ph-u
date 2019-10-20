@@ -8,9 +8,7 @@
 # Arguments: 0 or 2
 # Date: Oct 2019
 
-"""
-python homework -- genetic alignment module program
-"""
+"""python homework -- genetic alignment module program"""
 
 __appname__="align_seqs.py"
 __author__="PMH"
@@ -46,6 +44,7 @@ else:
 # A function that computes a score by returning the number of matches starting from arbitrary startpoint (chosen by user)
 
 def calculate_score(s1, s2, l1, l2, startpoint):
+    """calculate alignment scores"""
     matched = "" # to hold string displaying alignements
     score = 0
     for i in range(l2):

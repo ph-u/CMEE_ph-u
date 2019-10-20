@@ -8,9 +8,7 @@
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-python homework
-"""
+"""python homework"""
 
 __appname__="tuple.py"
 __author__="PMH"

@@ -8,9 +8,7 @@
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-loop testing with different "hello" versions
-"""
+"""loop testing with different "hello" versions"""
 
 __appname__="cfexercises2.py"
 __author__="PMH"

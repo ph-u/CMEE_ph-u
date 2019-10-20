@@ -9,9 +9,7 @@
 # Date: Oct 2019
 
 
-"""
-python homework
-"""
+"""python homework"""
 
 __appname__="lc2.py"
 __author__="PMH"

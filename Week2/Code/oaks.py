@@ -8,9 +8,7 @@
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-test data output methods
-"""
+"""test data output methods"""
 
 __appname__="oaks.py"
 __author__="PMH"
@@ -22,6 +20,7 @@ __license__="None"
 taxa=['Quercus robur',"Fraxinus excelsior","Pinus sylvestris","Quercus cerris","Quercus petraea"]
 
 def is_an_oak(name):
+    """test oak or not"""
 	return name.lower().startswith('quercus ')
 
 ## Using for loops

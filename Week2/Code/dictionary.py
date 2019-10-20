@@ -8,9 +8,7 @@
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-python homework -- create and print dictionary line-by-line
-"""
+"""python homework -- create and print dictionary line-by-line"""
 
 __appname__="dictionary.py"
 __author__="PMH"

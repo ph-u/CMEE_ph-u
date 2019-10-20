@@ -8,9 +8,7 @@
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-python homework -- identify oaks from list of species names with typo flexibilities
-"""
+"""python homework -- identify oaks from list of species names with typo flexibilities"""
 
 __appname__="oaks_debugme.py"
 __author__="PMH"
@@ -51,6 +49,7 @@ def is_an_oak(name):
     #   ... do things
 
 def main(argv): 
+    """main content, no input"""
     f = open('../data/TestOaksData.csv','r')
     g = open('../data/JustOaksData.csv','w')
     taxa = csv.reader(f)

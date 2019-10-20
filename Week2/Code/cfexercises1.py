@@ -8,9 +8,7 @@
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-six importable and self-testable functions with logic bug at foo_3
-"""
+"""six importable and self-testable functions with logic bug at foo_3"""
 
 __appname__="cfexercises1.py"
 __author__="PMH"

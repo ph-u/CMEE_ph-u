@@ -8,9 +8,7 @@
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-third of three basic_io.py sections -- save a python dictionary into binary file, then read and print in python interpreter
-"""
+"""third of three basic_io.py sections -- save a python dictionary into binary file, then read and print in python interpreter"""
 
 __appname__="basic_io3.py"
 __author__="PMH"
