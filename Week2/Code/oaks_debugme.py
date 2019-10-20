@@ -8,7 +8,9 @@
 # Arguments: 0
 # Date: Oct 2019
 
-"""python homework -- identify oaks from list of species names with typo flexibilities"""
+"""
+python homework -- identify oaks from list of species names with typo flexibilities
+"""
 
 __appname__="oaks_debugme.py"
 __author__="PMH"
