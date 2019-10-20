@@ -21,7 +21,7 @@ method
 outline
 1. influence of thermodynamic constraints on TPC shape
 
-thermal specialist vs generalist: -ve correlation between TPC-peak (B|pk) ; diff Tk of peak & 50% perfornance (W|op)
+thermal specialist vs generalist: -ve correlation between TPC-peak (B|pk) ; diff Tk of peak & 50% performance (W|op)
 phytoplankton growth rate from literatures
 phylogenetic regression
 very week thermal specialist pattern
@@ -41,13 +41,13 @@ ____________
 
 big debate in literature
 - sensitivity not vary across spp
-- thermal sesitivity has a distribution across spp
+- thermal sensitivity has a distribution across spp
 
 prey traits lower thermal sensitivity than predators' (life-dinner principle)
 
 expected fix because of thermodynamical strength
 
-H1: (align with metabolic theory) thermal sensitivity evolve tightly around optimal value [set by thermaldynamical strength]
+H1: (align with metabolic theory) thermal sensitivity evolve tightly around optimal value [set by thermodynamical strength]
 
 H2: weak thermodynamical strength constraints
 
@@ -84,7 +84,7 @@ __________
 Tk affect interactions on all levels of a biological system
 embrace complexity, explain what is happening in each level
 Tk affect rate of destructive mutation
-Tk destablize proteins
+Tk destabilize proteins
 mutation more destructive under high Tk (^kinetics)
 
 molecular dynamics simulation on same enzyme from different thermal groups
@@ -95,7 +95,7 @@ strongly explaining ln(substitution rate) vs ln(Tk)
 opposing to metabolic theory prediction: high Tk ^evolution through mutation
 
 future work
-see cause & inforce prediction
+see cause & reinforce prediction
 
 Messages
 thermodynamic constraints has weak influence on TPC shape
