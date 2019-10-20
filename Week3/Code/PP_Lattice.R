@@ -2,7 +2,7 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: PP_Lattice.R
-# Desc: 1. use `lattice` R-pkg to plot three plots; 2. export data descriptions of mean and median as `csv`
+# Desc: 1. use `lattice` R-pkg to plot three density plots; 2. export data descriptions of mean and median as `csv`
 # Input: Rscript PP_Lattice.R
 # Output: 1. three separate vector graphs in `pdf` within `Results` subdirectory; 2. partial data summary as `csv` in `Results` subdirectory
 # Arguments: 0
@@ -17,13 +17,13 @@ oo<-read.csv("../Data/EcolArchives-E089-51-D1.csv")
 
 ## graphs & export
 pdf("../Results/Pred_Lattice.pdf")
-densityplot(~log(oo$Predator.mass),xlab = "log(Predator mass)")
+densityplot(~log(oo$Predator.mass)|oo$Type.of.feeding.interaction,xlab = "log(Predator mass)")
 dev.off()
 pdf("../Results/Prey_Lattice.pdf")
-densityplot(~log(oo$Prey.mass),xlab = "log(Prey mass)")
+densityplot(~log(oo$Prey.mass)|oo$Type.of.feeding.interaction,xlab = "log(Prey mass)")
 dev.off()
 pdf("../Results/SizeRatio_Lattice.pdf")
-densityplot(~log(oo$Prey.mass/oo$Predator.mass),xlab = "log(Prey mass / Predator mass)")
+densityplot(~log(oo$Prey.mass/oo$Predator.mass)|oo$Type.of.feeding.interaction,xlab = "log(Prey mass / Predator mass)")
 dev.off()
 
 ## data description collect & export

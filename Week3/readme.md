@@ -85,7 +85,7 @@ a vector plot in `Results` subdirectory
 
 #### Features
 
-1. use `lattice` R-pkg to plot three plots
+1. use `lattice` R-pkg to plot three density plots
 2. export data descriptions of mean and median as `csv`
 
 #### Suggested input
