@@ -1,4 +1,12 @@
 MyDF<-read.csv("../Data/EcolArchives-E089-51-D1.csv")
+for(i in 1:dim(MyDF)[1]){
+  if(as.character(MyDF[i,14])=="mg"){
+    MyDF[i,9]<-MyDF[i,9]/1000
+    MyDF[i,13]<-MyDF[i,13]/1000
+    MyDF[i,14]<-"g"
+  }
+};rm(i)
+
 dim(MyDF)
 plot(MyDF$Predator.mass,MyDF$Prey.mass)
 plot(log(MyDF$Predator.mass),log(MyDF$Prey.mass))

@@ -13,12 +13,19 @@ library(ggplot2)
 
 ## input
 oo<-read.csv("../Data/EcolArchives-E089-51-D1.csv", header = T)
+for(i in 1:dim(oo)[1]){
+  if(as.character(oo[i,14])=="mg"){
+    oo[i,9]<-oo[i,9]/1000
+    oo[i,13]<-oo[i,13]/1000
+    oo[i,14]<-"g"
+  }
+};rm(i)
 
 ## plot & export
 yscale<-1e-6;for(i in 1:3){yscale[i+1]<-yscale[1]*(1e4)^i};rm(i)
 xscale<-1e-7;for(i in 1:2){xscale[i+1]<-xscale[1]*(1e4)^i};rm(i)
 pdf("../Results/PP_Regress.pdf", height = 11, width = 10)
-  ggplot(data = oo,aes(x=oo$Prey.mass,y=oo$Predator.mass,colour=oo$Predator.lifestage))+theme_bw()+
+ggplot(data = oo,aes(x=oo$Prey.mass,y=oo$Predator.mass,colour=oo$Predator.lifestage))+theme_bw()+
     geom_point(shape=3)+
     geom_smooth(method = "lm", fullrange=T)+
     theme(legend.title = element_text(face = "bold"),
