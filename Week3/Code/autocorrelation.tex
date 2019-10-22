@@ -1,5 +1,5 @@
 %% Author: PokMan Ho pok.ho19@imperial.ac.uk
-%% Script: TAutoCorr.Rnw
+%% Script: autocorrelation.Rnw
 %% Desc: pdf report creation for an annual temperature `Rdata` dataset
 %% Input: None -- need to "Compile PDF" within RStudio.app
 %% Output: pdf report in `Code` subdirectory (and other auto-generated files)
@@ -17,7 +17,7 @@
 
 \usepackage{Sweave}
 \begin{document}
-\input{TAutoCorr-concordance}
+\input{autocorrelation-concordance}
 
 \maketitle
 \begin{center}
@@ -44,7 +44,7 @@
 \end{Schunk}
 
 \section{Plot data\label{plot}}
-\includegraphics{TAutoCorr-004}
+\includegraphics{autocorrelation-004}
 \\
 Pairing annual temperature by shifting yearly data by 1\\
 \begin{Schunk}
@@ -54,7 +54,7 @@ Pairing annual temperature by shifting yearly data by 1\\
 \end{Schunk}
 \clearpage
 And plot the paired data\\
-\includegraphics{TAutoCorr-006}
+\includegraphics{autocorrelation-006}
 
 \section{Sample Spearman correlation 10K times by random shuffles\label{ssp}}
 \begin{Schunk}
@@ -80,11 +80,11 @@ With Spearman correlation coefficient mean (from sampling) calculated as:\\
 > mean(a)
 \end{Sinput}
 \begin{Soutput}
-[1] -0.009448687
+[1] -0.009272743
 \end{Soutput}
 \end{Schunk}
 \section{Fraction of sampling $>$ overall coefficient (approx. p.val)\label{pval}}
-\includegraphics{TAutoCorr-010}
+\includegraphics{autocorrelation-010}
 \begin{Schunk}
 \begin{Sinput}
 > length(a[which(a>b)])/length(a)

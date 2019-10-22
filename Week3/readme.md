@@ -156,7 +156,7 @@ Rscript TAutoCorr.R
 
 *****
 
-### TAutoCorr.Rnw
+### autocorrelation.Rnw
 
 #### Features
 
@@ -173,7 +173,7 @@ None -- need to "Compile PDF" within RStudio.app
 pdf report in `Code` subdirectory (and other auto-generated files)
 *****
 
-### TAutoCorr.tex
+### autocorrelation.tex
 
 #### Features
 

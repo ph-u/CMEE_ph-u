@@ -1,5 +1,5 @@
 %% Author: PokMan Ho pok.ho19@imperial.ac.uk
-%% Script: TAutoCorr.Rnw
+%% Script: autocorrelation.Rnw
 %% Desc: pdf report creation for an annual temperature `Rdata` dataset
 %% Input: None -- need to "Compile PDF" within RStudio.app
 %% Output: pdf report in `Code` subdirectory (and other auto-generated files)
