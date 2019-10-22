@@ -16,7 +16,7 @@ library(lattice)
 oo<-read.csv("../Data/EcolArchives-E089-51-D1.csv")
 for(i in 1:dim(oo)[1]){
   if(as.character(oo[i,14])=="mg"){
-    oo[i,9]<-oo[i,9]/1000
+#    oo[i,9]<-oo[i,9]/1000
     oo[i,13]<-oo[i,13]/1000
     oo[i,14]<-"g"
   }
