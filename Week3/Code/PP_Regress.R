@@ -24,21 +24,22 @@ for(i in 1:dim(oo)[1]){
 ## plot & export
 yscale<-1e-6;for(i in 1:3){yscale[i+1]<-yscale[1]*(1e4)^i};rm(i)
 xscale<-1e-7;for(i in 1:2){xscale[i+1]<-xscale[1]*(1e4)^i};rm(i)
-pdf("../Results/PP_Regress.pdf", height = 11, width = 10)
-ggplot(data = oo,aes(x=oo$Prey.mass,y=oo$Predator.mass,colour=oo$Predator.lifestage))+theme_bw()+
+pdf("../Results/PP_Regress.pdf", height = 12, width = 10);ggplot(data = oo,aes(x=oo$Prey.mass,y=oo$Predator.mass,colour=oo$Predator.lifestage))+theme_bw()+
     geom_point(shape=3)+
     geom_smooth(method = "lm", fullrange=T)+
     theme(legend.title = element_text(face = "bold"),
           legend.position = "bottom",
           plot.margin = unit(c(1,7,1,7),"cm"), ## https://stackoverflow.com/questions/18252827/increasing-area-around-plot-area-in-ggplot2
-          strip.text = element_text(face="bold", size = 10))+ ## https://stackoverflow.com/questions/3290330/facet-label-font-size
+          strip.text = element_text(size = 11), ## https://stackoverflow.com/questions/3290330/facet-label-font-size
+          panel.border = element_rect(colour = "grey50"),
+          axis.ticks = element_line(colour = "grey50"),
+          strip.background = element_rect(colour = "grey50", fill = "grey80"))+
     guides(colour = guide_legend(nrow = 1))+ ## https://stackoverflow.com/questions/36087262/ggplot2-legend-items-in-a-single-horizontal-row
     scale_color_discrete(name="Predator.lifestage")+
     facet_grid(oo$Type.of.feeding.interaction ~.)+
     xlab("Prey Mass in grams")+ylab("Predator mass in grams")+
     scale_x_continuous(trans = "log10", breaks = xscale)+ ## https://www.datanovia.com/en/blog/ggplot-log-scale-transformation/
-    scale_y_continuous(trans = "log10", breaks = yscale)
-dev.off()
+    scale_y_continuous(trans = "log10", breaks = yscale);dev.off()
 
 ## data info collect
 oo.0<-as.data.frame(matrix(nrow = length(unique(oo$Type.of.feeding.interaction))*length(unique(oo$Predator.lifestage)), ncol = 7))
