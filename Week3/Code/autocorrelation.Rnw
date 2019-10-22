@@ -96,7 +96,7 @@ ggplot()+theme_bw()+
   geom_text(aes(x=0,y=.5,label=paste(dm,"random iteration\nof T|yr vs T|yr-1\ncorrelation coefficient")))+
   geom_text(aes(x=(b-.02),y=2,angle=90,label=paste("overall Spearman coefficient (measured data):",round(b,4))),colour="blue")+
   xlab("Spearman Correlation Coefficient")+
-  labs(caption="Density function of randomized Temperature correlation with real Spearman coefficient indicated")+
+  labs(caption="Density function of randomized Temperature correlation\nwith real Spearman coefficient indicated")+
   theme(plot.caption = element_text(hjust=0.5, size=rel(1.2)))
 @
 <<>>=
