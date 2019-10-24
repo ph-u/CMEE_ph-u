@@ -137,6 +137,23 @@ Rscript PP_Regress_loc.R
 result `csv` in `Results` subdirectory
 *****
 
+### Ricker.R
+
+#### Features
+
+try out running self-building functions and plot
+
+#### Suggested input
+
+```
+Rscript Ricker.R
+```
+
+#### Output
+
+a Rplot.pdf in `Code` subdirectory
+*****
+
 ### TAutoCorr.R
 
 #### Features

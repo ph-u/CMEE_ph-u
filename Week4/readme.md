@@ -27,7 +27,77 @@ All scripts are in `Code` directory
 
 *****
 
+### StatsWithSparrows10.R
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+*****
+
 ### StatsWithSparrows2.R
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+*****
+
+### StatsWithSparrows4.R
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+*****
+
+### StatsWithSparrows5.R
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+*****
+
+### StatsWithSparrows6.R
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+*****
+
+### StatsWithSparrows9.R
 
 #### Features
 
