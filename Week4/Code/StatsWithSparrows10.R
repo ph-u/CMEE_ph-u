@@ -1,4 +1,14 @@
-setwd("/Volumes/HPM-000/Academic/Masters/ICL_CMEE/00_course/CMEECourseWork_pmH/Week4/Code/")
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: StatsWithSparrows10.R
+# Desc: minimal R function with two in-script tests
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+# setwd("/Volumes/HPM-000/Academic/Masters/ICL_CMEE/00_course/CMEECourseWork_pmH/Week4/Code/")
 d<-read.table("../Data/SparrowSize.txt",sep = "\t",header = T)
 plot(d$Mass~d$Tarsus, ylab = "Mass (g)", xlab="Tarsus (mm)", pch=19, cex=.4, ylim=c(-5,38), xlim=c(0,22))
 d1<-d[which(!is.na(d$Mass)),]

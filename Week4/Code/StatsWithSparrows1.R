@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: StatsWithSparrows1.R
+# Desc: minimal R function with two in-script tests
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
 2*2+1
 2*(2+1)
 12/2^3

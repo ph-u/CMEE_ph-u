@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: StatsWithSparrows9.R
+# Desc: minimal R function with two in-script tests
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
 a<-data.frame(c(1,2,3,4,8),c(4,3,5,7,9))
 a<-data.frame(runif(1e6,.5,1.5),runif(1e6,.5,1.5))
 m1<-lm(a[,2]~a[,1])

@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: StatsWithSparrows6.R
+# Desc: minimal R function with two in-script tests
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
 oo<-read.table("../Data/SparrowSize.txt", sep = "\t", header = T)
 
 library(pwr)

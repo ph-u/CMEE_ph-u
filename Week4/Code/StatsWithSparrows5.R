@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: StatsWithSparrows5.R
+# Desc: minimal R function with two in-script tests
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
 oo<-read.table("../Data/SparrowSize.txt", sep = "\t", header = T)
 o.0<-subset(oo, oo$Year==2001)
 t.test(o.0$Tarsus,mu=mean(oo$Tarsus,na.rm = T),na.rm=T)

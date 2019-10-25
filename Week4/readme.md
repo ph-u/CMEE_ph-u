@@ -17,98 +17,136 @@ All scripts are in `Code` directory
 
 #### Features
 
+minimal R function with two in-script tests
 
 #### Suggested input
 
 ```
+none -- run in R console line-by-line
 ```
 
 #### Output
 
+R terminal output
 *****
 
 ### StatsWithSparrows10.R
 
 #### Features
 
+minimal R function with two in-script tests
 
 #### Suggested input
 
 ```
+none -- run in R console line-by-line
 ```
 
 #### Output
 
+R terminal output
+*****
+
+### StatsWithSparrows15.R
+
+#### Features
+
+minimal R function with two in-script tests
+
+#### Suggested input
+
+```
+none -- run in R console line-by-line
+```
+
+#### Output
+
+R terminal output
 *****
 
 ### StatsWithSparrows2.R
 
 #### Features
 
+minimal R function with two in-script tests
 
 #### Suggested input
 
 ```
+none -- run in R console line-by-line
 ```
 
 #### Output
 
+R terminal output
 *****
 
 ### StatsWithSparrows4.R
 
 #### Features
 
+minimal R function with two in-script tests
 
 #### Suggested input
 
 ```
+none -- run in R console line-by-line
 ```
 
 #### Output
 
+R terminal output
 *****
 
 ### StatsWithSparrows5.R
 
 #### Features
 
+minimal R function with two in-script tests
 
 #### Suggested input
 
 ```
+none -- run in R console line-by-line
 ```
 
 #### Output
 
+R terminal output
 *****
 
 ### StatsWithSparrows6.R
 
 #### Features
 
+minimal R function with two in-script tests
 
 #### Suggested input
 
 ```
+none -- run in R console line-by-line
 ```
 
 #### Output
 
+R terminal output
 *****
 
 ### StatsWithSparrows9.R
 
 #### Features
 
+minimal R function with two in-script tests
 
 #### Suggested input
 
 ```
+none -- run in R console line-by-line
 ```
 
 #### Output
 
+R terminal output
 *****
 
 ## Reference
