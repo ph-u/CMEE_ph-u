@@ -8,5 +8,12 @@
 # Arguments: 1
 # Date: Oct 2019
 
+if [ -z "$1" ];then
+
+echo -e "INPUT REQUIRED"
+exit
+
+fi
+
 Rscript get_TreeHeight.R $1
 python3 get_TreeHeight.py $1

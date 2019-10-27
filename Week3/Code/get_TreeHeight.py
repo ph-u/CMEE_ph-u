@@ -33,13 +33,18 @@ def TreeHeight(deg,dist):
 
 ## workflow
 
+## if no sys.argv
+if len(sys.argv)>1:
+
 ## working directory orientation issue
-os.chdir(os.path.dirname(sys.argv[1]))
-bn=os.path.basename(sys.argv[1]).split(".")[0]
+    os.chdir(os.path.dirname(sys.argv[1]))
+    bn=os.path.basename(sys.argv[1]).split(".")[0]
 
 ## read csv
-f_0=list(csv.reader(open(sys.argv[1],"r")))
-# f_0=list(csv.reader(open("../Data/trees.csv","r")))
+    f_0=list(csv.reader(open(sys.argv[1],"r")))
+else:
+    f_0=list(csv.reader(open("../Data/trees.csv","r")))
+    bn="trees"
 
 ## calculation -- rubbish python core on data handling (https://stackoverflow.com/questions/44360162/how-to-access-a-column-in-a-list-of-lists-in-python)
 for i in range(len(f_0)):

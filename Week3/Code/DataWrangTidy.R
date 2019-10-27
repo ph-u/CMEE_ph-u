@@ -32,11 +32,18 @@ tbl_df(TempData)## head(TempData)
 MyWrangledData<-gather(TempData,"Species","Count",5:dim(TempData)[2])
 tbl_df(MyWrangledData);tbl_df(MyWrangledData[(dim(MyWrangledData)[1]-5):dim(MyWrangledData)[1],]);## head(MyWrangledData);tail(MyWrangledData)
 
-MyWrangledData[,"Cultivation"]<-as.factor(MyWrangledData[,"Cultication"])
-MyWrangledData[,"Block"]<-as.factor(MyWrangledData[,"Block"])
-MyWrangledData[,"Plot"]<-as.factor(MyWrangledData[,"Plot"])
-MyWrangledData[,"Quadrat"]<-as.factor(MyWrangledData[,"Quadrat"])
-MyWrangledData[,"Count"]<-as.integer(MyWrangledData[,"Count"])
+for(i in 1:dim(MyWrangledData)[2]){
+  if(i<dim(MyWrangledData)[2]){
+    MyWrangledData[,i]<-as.factor(MyWrangledData[,i])
+  }else{
+    MyWrangledData[,i]<-as.numeric(MyWrangledData[,i])
+  }
+}
+# MyWrangledData[,"Cultivation"]<-as.factor(MyWrangledData[,"Cultication"])
+# MyWrangledData[,"Block"]<-as.factor(MyWrangledData[,"Block"])
+# MyWrangledData[,"Plot"]<-as.factor(MyWrangledData[,"Plot"])
+# MyWrangledData[,"Quadrat"]<-as.factor(MyWrangledData[,"Quadrat"])
+# MyWrangledData[,"Count"]<-as.integer(MyWrangledData[,"Count"])
 # glimpse(MyWrangledData) ## str(MyWrangledData)
 
 tbl_df(MyWrangledData) ## like head(), but nicer! <https://github.com/r-lib/vctrs/issues/487>

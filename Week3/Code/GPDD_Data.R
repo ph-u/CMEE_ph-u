@@ -10,6 +10,13 @@
 
 ## key ref <https://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html>
 
+## check lib
+for(i in c("maps","ggmap","ggplot2")){
+  if(i %in% rownames(installed.packages())==F){
+    install.packages(i,repos='http://cran.rstudio.com/')
+  }
+};rm(i)
+
 ## library
 library(maps);library(ggmap)
 library(ggplot2)

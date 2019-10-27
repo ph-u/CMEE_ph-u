@@ -30,6 +30,9 @@ TreeHeight <- function(degrees, distance){
 
 ## R homework
 args=(commandArgs(T))
+if(length(args)==0){
+  args<-"../Data/trees.csv"
+}
 setwd(dirname(args[1]))
 bn<-as.character(read.table(text=basename(args[1]),sep=".")[1,1])
 # a<-read.csv("../Data/trees.csv",header = T)

@@ -25,7 +25,7 @@ rownames(TempData)<-NULL
 head(TempData)
 
 library(reshape2)
-MyWrangledData<-melt(TempData,id=c("Cultivation","Block","Plot","Quadrat"),variable.name = "Species",value.name = "Count")
+MyWrangledData<-melt(TempData,id=c("Cultivation","Block","Plot","Quadrat"),variable.name = "Species",value.name = "Count") ## <https://stackoverflow.com/questions/25688897/reshape2-melt-warning-message>
 head(MyWrangledData);tail(MyWrangledData)
 
 for(i in 1:dim(MyWrangledData)[2]){
