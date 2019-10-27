@@ -10,15 +10,8 @@
 
 ## key ref <https://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html>
 
-## check lib
-for(i in c("maps","ggmap","ggplot2")){
-  if(i %in% rownames(installed.packages())==F){
-    install.packages(i,repos='http://cran.rstudio.com/')
-  }
-};rm(i)
-
 ## library
-library(maps);library(ggmap)
+library(maps)
 library(ggplot2)
 
 load("../Data/GPDDFiltered.RData")
@@ -30,7 +23,8 @@ map(database = "world")
 m<-map_data("world")
 # pdf("../Sandbox/MappedMap.pdf",width = 15)
 ggplot()+xlab("longitude")+ylab("latitude")+
-  geom_map(data = m,map = m,aes(map_id=m$region,x=m$long,y=m$lat),fill="brown")+
+  xlim(c(min(m$long),max(m$long)))+ylim(c(min(m$lat),max(m$lat)))+
+  geom_map(data = m,map = m,aes(map_id=m$region),fill="brown")+
   geom_point(aes(x=gpdd$long,y=gpdd$lat))
 # dev.off()
 
