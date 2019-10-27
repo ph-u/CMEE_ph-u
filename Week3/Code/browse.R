@@ -21,4 +21,4 @@ Exponential<-function(N0=1,r=1,generations=10){
   }
   return(N)
 }
-plot(Exponential(),type="1",main="Exponential growth")
+plot(Exponential(),type="l",main="Exponential growth")

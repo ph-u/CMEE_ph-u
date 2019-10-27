@@ -1,0 +1,10 @@
+weekly points: 100 -> 97
+
+l.904: Vectorize2.py found no docstrings (pt-1)
+l.852-854: Vectorize2.py docstring
+
+l.1259: get_TreeHeight.py found no docstrings (pt-1)
+l.1211-1213: get_TreeHeight.py docstring
+
+l.1987: Vectorize1.py found no docstrings (pt-1) -- 97 point
+l.1966-1968: Vectorize1.py docstring
