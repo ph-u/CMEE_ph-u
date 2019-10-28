@@ -13,6 +13,23 @@ Apache-2.0
 Multiple scripts were coded and introduced below in filename alphabetical order.  
 All scripts are in `Code` directory
 
+### SparrowsAnalysis.R
+
+#### Features
+
+statistical analysis of sparrow tarsus data
+
+#### Suggested input
+
+```
+Rscript SparrowsAnalysis.R
+```
+
+#### Output
+
+R terminal output
+*****
+
 ### StatsWithSparrows1.R
 
 #### Features
@@ -47,7 +64,41 @@ none -- run in R console line-by-line
 R terminal output
 *****
 
+### StatsWithSparrows13.R
+
+#### Features
+
+minimal R function with two in-script tests
+
+#### Suggested input
+
+```
+none -- run in R console line-by-line
+```
+
+#### Output
+
+R terminal output
+*****
+
 ### StatsWithSparrows15.R
+
+#### Features
+
+minimal R function with two in-script tests
+
+#### Suggested input
+
+```
+none -- run in R console line-by-line
+```
+
+#### Output
+
+R terminal output
+*****
+
+### StatsWithSparrows18.R
 
 #### Features
 
