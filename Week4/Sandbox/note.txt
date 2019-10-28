@@ -1,0 +1,2 @@
+var(between) + var(within) = var(total)
+repeatability (R) = var(between)/var(total)
