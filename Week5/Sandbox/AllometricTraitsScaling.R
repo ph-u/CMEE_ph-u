@@ -13,7 +13,7 @@ plot(Data2Fit$TotalLength, Data2Fit$BodyWeight)
 library(ggplot2)
 ggplot(Data2Fit,aes(x=Data2Fit$TotalLength, y=Data2Fit$BodyWeight))+geom_point(size=(3), colour="red")+theme_bw()+labs(y="Body mass (mg)", x="Wing length (mm)")
 
-PowFit<-nlsLM(Data2Fit$BodyWeight~powMod(Data2Fit$TotalLength, a, b), data = Data2Fit, start = list(a=.1, b=.1))
+PowFit<-nlsLM(Data2Fit$BodyWeight~powMod(Data2Fit$TotalLength, a, b), data = Data2Fit, start = list(a=.01, b=.01)) ## {Ani: a=.1, b=.1}, {Dy: a=.01, b=.01}
 summary(PowFit)
 
 Lengths<-seq(min(Data2Fit$TotalLength), max(Data2Fit$TotalLength), len=200)
