@@ -7,6 +7,7 @@ powMod<-function(x, a, b){
 MyData<-read.csv("../Data/GenomeSize.csv")
 head(MyData)
 Data2Fit<-MyData[which(MyData$Suborder=="Anisoptera" & !is.na(MyData$TotalLength)),]
+Data2Fit<-MyData[which(MyData$Suborder=="Zygoptera" & !is.na(MyData$TotalLength)),]
 
 plot(Data2Fit$TotalLength, Data2Fit$BodyWeight)
 library(ggplot2)
@@ -49,3 +50,15 @@ AIC_Pow<-n+2 +n*log(2*pi/n) +n*log(RSS_Pow) +2*pPow
 AIC_Qua<-n+2 +n*log(2*pi/n) +n*log(RSS_Qua) +2*pQua
 AIC_Pow-AIC_Qua
 AIC(PowFit)-AIC(QuaFit) ## lm vs lm
+
+## exercise
+BIC(PowFit)-BIC(QuaFit)
+{i<--.0224;m<-.001 ## test for best abline: {Anisoptera: i<--.185;m<-.006}; {Zygoptera: i<--.0224;m<-.001}
+  plot(Data2Fit$TotalLength, Data2Fit$BodyWeight)
+  lines(Lengths, Predic2PlotPow, col="blue", lwd=2.5)
+  abline(i,m, col="hotpink")
+  text(paste0("straight line\nintercept: ",i,"\nslope: ",m),x=35,y=.025, col="hotpink")
+  
+  a<-ifelse(Data2Fit$BodyWeight<m*Data2Fit$TotalLength+i,0,1)
+  sum(a)
+}
