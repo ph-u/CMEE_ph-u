@@ -43,6 +43,7 @@ a<-list(alb.lin, alb.log, alb.vb);for(i in 1:3){
 };rm(a,i,j,k,p)
 
 ggp<-data.frame("fac"=c(rep("alb.lin",length(resid(alb.lin))),rep("alb.log",length(resid(alb.log))),rep("alb.vb",length(resid(alb.vb)))),"x"=c(names(resid(alb.lin)),names(resid(alb.log)),names(resid(alb.vb))),"data"=c(unname(resid(alb.lin)),unname(resid(alb.log)),unname(resid(alb.vb))))
-ggplot(data = ggp, aes(y=ggp$data, x=as.numeric(ggp$x), colour=ggp$fac))+theme_bw()+
-  # facet_grid(ggp$fac ~.)+
+ggplot(data = ggp, aes(y=ggp$data, x=as.numeric(ggp$x)))+theme_bw()+
+  facet_grid(ggp$fac ~.)+
   geom_point()+geom_smooth(se=F)
+

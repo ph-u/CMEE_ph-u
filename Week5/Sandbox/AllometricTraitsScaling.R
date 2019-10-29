@@ -24,6 +24,12 @@ plot(Data2Fit$TotalLength, Data2Fit$BodyWeight)
 lines(Lengths, Predic2PlotPow, col="blue", lwd=2.5)
 confint(PowFit)
 
+## exercise
+ggplot()+geom_point(aes(x=Data2Fit$TotalLength, y=Data2Fit$BodyWeight))+geom_smooth(aes(x=Lengths, y=Predic2PlotPow), se=F)+geom_text(aes(label="Weight = 3.94*10^-6 * Length^2.59",x=30,y=.02)) ## (a)
+a<-lm(log(Data2Fit$BodyWeight)~log(Data2Fit$TotalLength))
+unname(exp(coef(a)[1]))-unname(coef(PowFit)[1])
+unname(coef(a)[2])-unname(coef(PowFit)[2])
+
 ## num of rows not matching, not working
 QuaFit<-lm(Data2Fit$BodyWeight~poly(Data2Fit$TotalLength,degree = 2))
 # Predic2PlotQua<-predict.lm(QuaFit, data.frame(TotalLength=Lengths)) ## https://stackoverflow.com/questions/27464893/getting-warning-newdata-had-1-row-but-variables-found-have-32-rows-on-pred
