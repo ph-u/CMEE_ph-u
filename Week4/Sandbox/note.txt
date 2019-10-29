@@ -1,2 +1,5 @@
 var(between) + var(within) = var(total)
 repeatability (R) = var(between)/var(total)
+
+Linear mixed models
+Random effect: take out effects from pseudo-replicates
