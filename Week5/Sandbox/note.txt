@@ -1,0 +1,9 @@
+GIS
+coordinates = angles, ref to Earth model
+WGS84: current standard coordinate system
+OSGB 36: fit UK data well -- local coordinate system
+few 10s of km = small scale
+
+remote sensing
+size of resolution vs bandwodth vs reasonable data from sensor
+

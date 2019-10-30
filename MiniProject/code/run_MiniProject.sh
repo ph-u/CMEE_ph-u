@@ -26,12 +26,14 @@ echo -e "Writing Report..."
 ## output: <>_r.tex for compile
 bash Mini_write.sh ${a1} ${a2}
 
+echo -e "${a1} ${a2} ${a3}"
+
 ## Compile pdf
 echo -e "Compiling Report..."
 ## write pdf
 for i in `seq 1 5`;do
-	if [ i!=3 ];then pdflatex ${a3}_r.tex
-	else bibtex ${a3}_r
+	if [ i!=3 ];then nohup pdflatex ${a3}_r.tex
+	else nohup bibtex ${a3}_r
 	fi
 done
 
