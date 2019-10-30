@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: rodents.R
+# Desc: data analysis of rodent dataset
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
 ## lib
 library(car)
 library(PMCMR)
@@ -47,39 +57,7 @@ cor.test(oo$weight.g,oo$precipitation.mm, method = "spearman") ## is precipitati
 # cor.test(log(oo$weight.g),log(oo$precipitation.mm), method = "spearman")
 kruskal.test(oo$weight.g~interaction(oo$species,oo$sex))
 posthoc.kruskal.nemenyi.test(oo$weight.g~interaction(oo$species,oo$sex))
-{ppp<-posthoc.kruskal.nemenyi.test(oo$weight.g~interaction(oo$species,oo$sex))$p.value
-  ppp[ppp>.1]<-NA
-  if(sum(is.na(ppp))==dim(ppp)[1]*dim(ppp)[2]){knplist<-0;print(knplist);rm(ppp)}else{
-    if(dim(ppp)[1]<=2 && dim(ppp)[2]<=2){knplist<-ppp;rm(ppp)}else{
-      i<-1;repeat{
-        if(sum(is.na(ppp[,i]))==dim(ppp)[1]){
-          ppp<-ppp[,-i]
-          if(i==(dim(ppp)[2]+1)){break}
-          if(is.data.frame(ppp)==F){break}
-        }else{
-          i<-i+1
-          if(i==(dim(ppp)[2]+1)){break}}}
-      i<-1;repeat{
-        if(sum(is.na(ppp[i,]))==dim(ppp)[2]){
-          ppp<-ppp[-i,]
-          if(i==(dim(ppp)[1]+1)){break}
-          if(is.data.frame(ppp)==F){break}
-        }else{
-          i<-i+1
-          if(i==(dim(ppp)[1]+1)){break}}}
-      pppL<-row.names(ppp)
-      pppC1<-colnames(ppp)
-      pppC2<-0;for(i in 1:length(pppC1)){
-        pppC2<-c(pppC2,rep(pppC1[i],length(pppL)))
-      };pppC2<-pppC2[-1]
-      pppppp<-0;for(i in 1:dim(ppp)[2]){
-        pppppp<-c(pppppp,ppp[,i])
-      };pppppp<-pppppp[-1]
-      knplist<-data.frame(pppL,pppC2,pppppp)
-      colnames(knplist)=c("f1","f2","p.val")
-      rm(list=ls(pattern="ppp"));rm(i)
-      knplist<-knplist[which(is.na(knplist[,3])==F),]}}
-  if(knplist!=0){View(knplist)}}
+# a<-posthoc.kn.test(oo$weight.g,oo$species,oo$sex) ## self-function
 
 kruskal.test(oo$weight.g~oo$sex)
 posthoc.kruskal.nemenyi.test(oo$weight.g~oo$sex)
