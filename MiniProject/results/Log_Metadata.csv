@@ -4,3 +4,16 @@ substrate	MRS
 replicate	1
 SourceRef	Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A.M. and Van't Riet, K., 1994. Modeling of bacterial growth with shifts in temperature. Appl. Environ. Microbiol., 60(1), pp.204-213.
 Popn_DataUnit	N
+Subset sample size	151
+Normality of log Population Change	0
+Normality of log time of experiment	0
+Min_Time.hr	0.4
+1stQt_Time.hr	4.04
+Median_Time.hr	4.81
+3rdQt_Time.hr	5.27
+Max_Time.hr	5.84
+Min_Population Change	0.16
+1stQt_Population Change	3.24
+Median_Population Change	6.55
+3rdQt_Population Change	7.47
+Max_Population Change	8.86

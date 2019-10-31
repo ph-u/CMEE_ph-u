@@ -110,6 +110,8 @@ cat("R Plotting & writing results\n")
 # dev.off()
 # plot(x=a$Time.hr, y=a$Popn_Change, col=a$clade)
 pdf("../results/Log_data.pdf");ggplot(data = a.0,aes(y=log(a.0$Popn_Change^2), x=log(a.0$Time.hr)))+theme_bw()+
+  theme(axis.title = element_text(size = 20),
+        axis.text = element_text(size = 20))+
   geom_point()+
   xlab("log time")+ylab("log population change");dev.off()
 
@@ -117,7 +119,13 @@ pdf("../results/Log_data.pdf");ggplot(data = a.0,aes(y=log(a.0$Popn_Change^2), x
 write.csv(a.0,"../results/Log_data.csv",quote = F, row.names = F)
 
 {## data description
-  a.md<-data.frame(colnames(a.0)[-c(6,7)],t(a.0[1,-c(6,7)]));row.names(a.md)=NULL
+  a.md<-data.frame(colnames(a.0)[-c(6,7)],t(a.0[1,-c(6,7)]),stringsAsFactors = F)
+  row.names(a.md)=NULL
   # colnames(a.md)=c("Metadata","Content")
+  a.md<-rbind(a.md,c("Subset sample size",dim(a.0)[1]))
+  a.md<-rbind(a.md,c("Normality of log Population Change",round(shapiro.test(log(a.0$Popn_Change))$p.value,2)))
+  a.md<-rbind(a.md,c("Normality of log time of experiment",round(shapiro.test(log(a.0$Time.hr))$p.value,2)))
+  k<-0;for(i in 1:2){j<-ifelse(i<2,"Time.hr","Population Change");k<-c(k,paste0(c("Min", "1stQt","Median","3rdQt","Max"),"_",j))};rm(i,j)
+  a.md<-data.frame(c(a.md[,1],k[-1]),c(a.md[,2],round(fivenum(log(a.0$Time.hr)),2),round(fivenum(log(a.0$Popn_Change)),2)));rm(k)
   write.table(a.md,"../results/Log_Metadata.csv",quote = F, row.names = F, sep = "\t",col.names = F)
   }

@@ -29,11 +29,20 @@ backend     = bibtex,
 sortcites   = true,
 style       = nature,
 ]{biblatex}
-\bibliography{../reference/LogRef} %% <https://tex.stackexchange.com/questions/43325/citations-not-showing-up-in-text-and-bibiography>
+\bibliography{../reference/LogRef.bib} %% <https://tex.stackexchange.com/questions/6805/bib-library-file-in-a-different-directory-how-to-use-mendeley-centralised-b>
 
 \begin{document}
 	\maketitle
 	hihi\autocite{zwietering1994modeling}
-	
+	\section*{Abstract}
+	\section*{Introduction}
+	\section*{Methods}
+	\section*{Results}
+	\begin{figure}[h]
+		\centering\includegraphics[width=10cm]{Log_data.pdf}
+	\end{figure}
+	\section*{Discussion}
+	\section*{Conclusion}
+	\section*{References}
 	\nocite{*}\printbibliography
 \end{document}
