@@ -20,12 +20,12 @@ a3=`echo ${a1}|cut -f 1 -d "_"`
 
 ## Main Workflow
 echo -e "Running Data Slave..."
-Rscript Logistic.R
+Rscript Logistic_0.R
 
 echo -e "Model Fitting..."
 
 echo -e "Running Data Analysis..."
-
+Rscript Logistic_2.R
 
 echo -e "Writing Report..."
 ## ${a1}: name of template; ${a2}: starting line

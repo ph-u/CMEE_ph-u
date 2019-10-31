@@ -14,3 +14,10 @@ a3=`echo ${a1}|cut -f 1 -d "_"`
 
 ## Writing
 cp $1 ${a3}_r.tex
+
+## spacialize for *_r.tex
+head -n 3 ${a3}_r.tex > tmp
+echo -e '% Desc: Daughter script for corresponding final `LaTeX` report' >> tmp
+tail -n +5 ${a3}_r.tex >> tmp
+
+mv tmp ${a3}_r.tex

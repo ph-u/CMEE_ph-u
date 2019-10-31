@@ -1,9 +1,9 @@
 #!/bin/env Rscript
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
-# Script: Logistic.R
+# Script: Logistic_0.R
 # Desc: model-fitting and data analysis for `LogisticGrowthMetaData.csv`
-# Input: Rscript Logistic.R
+# Input: Rscript Logistic_0.R
 # Output: analysis result and metadata file output in `result` subdirectory
 # Arguments: 0
 # Date: Oct 2019
@@ -102,7 +102,8 @@
 
 ## plot data export
 cat("R Writing data\n")
-write.csv(a.0,"../results/Log_data.csv",quote = F, row.names = F)
+aa<-a.0[,c(6,7)]
+write.csv(aa,"../results/Log_data.csv",quote = F, row.names = F)
 
 {## data description
   a.md<-data.frame(colnames(a.0)[-c(6,7)],t(a.0[1,-c(6,7)]),stringsAsFactors = F)
