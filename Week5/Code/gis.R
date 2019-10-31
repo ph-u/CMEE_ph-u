@@ -18,6 +18,7 @@ library(raster)
 library(sf)
 library(viridis)
 library(units)
+library(rgdal)
 
 ## Vec from coordinates
 pop_dens<-data.frame(n_km2=c(260,67,151,4500,133),country=c("England","Scotland","Wales","London","Northern Ireland"))
@@ -35,7 +36,7 @@ uk_eire_capitals <- data.frame(long= c(-0.1, -3.2, -3.2, -6.0, -6.25), lat=c(51.
 uk_eire_capitals <- st_as_sf(uk_eire_capitals, coords=c('long','lat'), crs=4326)
 
 ## Vec geometry operations
-st_pauls<-st_point(x=c(-.098056, 51.513611))
+st_pauls<-st_point(x=c(-.098056, 51.513611)) ## lon, lat
 london<-st_buffer(st_pauls, .25)
 england_no_london<-st_difference(england, london)
 
@@ -123,3 +124,20 @@ square_agg_max<-aggregate(square, fact=2, fun=max)
 values(square_agg_max)
 square_agg_modal<-aggregate(square, fact=2, fun=modal)
 values(square_agg_modal)
+
+## disaggregating rasters
+square_disagg<-disaggregate(square, fact=2)
+square_disagg_interp<-disaggregate(square, fact=2, method="bilinear")
+
+## reprojecting a raster
+uk_pts_WGS84<-st_sfc(st_point(c(-11, 49.5)), st_point(c(2,59)), crs = 4326)
+uk_pts_BNG<-st_sfc(st_point(c(-2e5, 0)), st_point(c(7e5, 1e6)), crs = 27700)
+uk_grid_WGS84<-st_make_grid(uk_pts_WGS84, cellsize = .5)
+uk_grid_BNG<-st_make_grid(uk_pts_BNG, cellsize = 1e5)
+uk_grid_BNG_as_WGS84<-st_transform(uk_grid_BNG, 4326)
+plot(uk_grid_WGS84, asp=1, border="grey", xlim=c(-13,4))
+plot(st_geometry(uk_eire), add=T, border="darkgreen", lwd=2)
+plot(uk_grid_BNG_as_WGS84, border="red", add=T)
+
+uk_raster_BNG<-raster(xmn=-2e5, xmx=7e5, ymn=0, ymx=1e6, res=1e5, crs="+init=EPSG:27700")
+uk_raster_BNG_interp<-projectRaster(uk_raster_WGS84)
