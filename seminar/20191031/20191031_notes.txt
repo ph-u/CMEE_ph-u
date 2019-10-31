@@ -1,0 +1,76 @@
+consumer-resource interactions in ecology
+
+wide range of model organisms
+energy (flow): currency of ecology
+functional responses
+handling time
+type 1: linear
+type 2: saturation
+type 3: response lag + saturation
+
+capture rate: limit on encounters in space
+handling time: limit on physioogy
+
+larger & warm animals: higher capture rate, lower handling time (=eat more)
+not too well-explained
+
+currently too much pseudo-replications across researches on model organisms
+
+categorical predictors
+active vs passive encounter strategies
+skewed data towards mobile, filter feeders
+
+mutual interference
+density of predators increase, resource not decreased
+ratio- / prey- / predator-dependent models?
+similar conclusion between competiting models
+
+response scaled with body size?
+subtle effect: ^pred, ^capture rate
+encounter rate: forage over volume > over surface --> consider interaction in space
+
+physical structure modify consumer-resource interactions
+behaviour changes when environment changes
+
+sub-optimal foraging when there is a large resource pool
+small spatial scale -> collapse of hump-shape curve in log capture rate from drifting -> simple structure -> complex structure
+interaction changes temporally, spatially & habitat complexity
+
+human change habitat context without understanding consequences
+
+lots of covariating factors on habitat structure manipulation using natural ingredients
+
+refuge space creation -- artificial precise change minimizing confounding factors in covariation effect
+hard to control refuge space technically
+
+3-D printing create precise habitat
+printing time scales with length of print
+
+interaction difference between species pairs
+increase in obstacle density, decrease in capture rate (`.`refuge space)
+
+available data limits what we can know:
+metabolic predictors well established
+model species and systems skew limited global data
+modefiers of encounter rates are key
+structure cannot be understood without new data
+
+currently not collecting data with sufficient attributes to understand interactions
+
+high turnover trials for collecting data points
+artifect of model-fitting
+
+survey works on whale functional response (more course)
+data can be quite skewed
+
+aquatic foodwebs are nested
+not enough data to quantify effect
+
+boundary effect on functional response changes?
+
+seagrass habitat complex: complexity changes with predator size & foraging mode
+active-capture predators more eye-catching for data
+obligate sit-and-wait predators encounter less resource than other groups?
+
+lack of pairwise data
+
