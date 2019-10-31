@@ -140,4 +140,36 @@ plot(st_geometry(uk_eire), add=T, border="darkgreen", lwd=2)
 plot(uk_grid_BNG_as_WGS84, border="red", add=T)
 
 uk_raster_BNG<-raster(xmn=-2e5, xmx=7e5, ymn=0, ymx=1e6, res=1e5, crs="+init=EPSG:27700")
-uk_raster_BNG_interp<-projectRaster(uk_raster_WGS84)
+### <https://stackoverflow.com/questions/15248815/rgdal-package-installation>
+uk_raster_BNG_interp<-projectRaster(uk_raster_WGS84, uk_raster_BNG, method = "bilinear")
+uk_raster_BNG_ngb<-projectRaster(uk_raster_WGS84, uk_raster_BNG, method = "ngb")
+round(values(uk_raster_BNG_interp)[1:9], 2)
+values(uk_raster_BNG_ngb)[1:9]
+par(mfrow=c(1,3), mar=c(1,1,2,1))
+plot(uk_raster_BNG_interp,main="Interpolated", axes=F, legend=F)
+plot(uk_raster_BNG_ngb, main="Nearest Neighbour", axes=F, legend=F)
+
+## vec to ras
+uk_20km<-raster(xmn=-2e5, xmx=65e4, ymn=0, ymx=1e6, res=2e4, crs="+init=EPSG:27700")
+uk_eire_poly_20km<-rasterize(as(uk_eire_BNG, "Spatial"), uk_20km, field="name")
+uk_eire_BNG_line<-st_cast(uk_eire_BNG, "LINESTRING")
+
+st_agr(uk_eire_BNG)<-"constant"
+uk_eire_BNG_line<-st_cast(uk_eire_BNG, "LINESTRING")
+uk_eire_BNG_line_20km<-rasterize(as(uk_eire_BNG_line, "Spatial"), uk_20km, field="name")
+uk_eire_BNG_point<-st_cast(st_cast(uk_eire_BNG, "MULTIPOINT"), "POINT")
+uk_eire_BNG_point$name<-as.numeric(uk_eire_BNG_point$name)
+uk_eire_BNG_point_20km<-rasterize(as(uk_eire_BNG_point, "Spatial"), uk_20km, field="name")
+par(mfrow=c(1,3), mar=c(1,1,1,1))
+plot(uk_eire_poly_20km, col=viridis(6,alpha = .5), legend=F, axes=F)
+plot(st_geometry(uk_eire_BNG), add=T, border="grey")
+plot(uk_eire_BNG_line_20km, col=viridis(6,alpha = .5), legend=F, axes=F)
+plot(st_geometry(uk_eire_BNG), add=T, border="grey")
+plot(uk_eire_BNG_point_20km, col=viridis(6,alpha = .5), legend=F, axes=F)
+plot(st_geometry(uk_eire_BNG), add=T, border="grey")
+
+## ras to vec
+poly_from_rast<-rasterToPolygons(uk_eire_poly_20km)
+poly_from_rast<-as(poly_from_rast, "sf")
+## local mac R meltdown
+poly_from_rast_dissolve<-rasterToPolygons(uk_eire_poly_20km, dissolve = T)
