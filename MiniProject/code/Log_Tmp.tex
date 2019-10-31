@@ -9,17 +9,19 @@
 
 \documentclass[a4paper, 11pt]{article}
 \usepackage[margin=1in]{geometry}
-\usepackage{hyperref}
+\usepackage{hyperref, setspace, lineno}
 
 %% test insert graphs
 \usepackage{graphicx}
 \graphicspath{ {../results/} } %% <https://www.overleaf.com/learn/latex/Inserting_Images>
 
 %% test insert variables
-\newcommand{\text}{hihihi} %% <https://stackoverflow.com/questions/1211888/is-there-any-way-i-can-define-a-variable-in-latex>
+\newcommand{\ReportTitle}{Report on Logistic Growth curve} %% <https://stackoverflow.com/questions/1211888/is-there-any-way-i-can-define-a-variable-in-latex>
+\newcommand{\ReportAuthor}{PokMan HO}
+\newcommand{\ReportAffil}{Department of Life Sciences,\\Faculty of Natural Sciences,\\Imperial College London}
 
-\title{Still testing}
-\author{PokMan Ho (CID: 01786076)}
+\title{\ReportTitle}
+\author{\ReportAuthor (CID: 01786076)}
 \date{}
 
 %% citation
@@ -31,7 +33,19 @@ style       = nature,
 ]{biblatex}
 \bibliography{../reference/LogRef.bib} %% <https://tex.stackexchange.com/questions/6805/bib-library-file-in-a-different-directory-how-to-use-mendeley-centralised-b>
 
+%% set as required
+\doublespacing
+\linenumbers
+
 \begin{document}
+	\Huge\textbf{\ReportTitle}\\
+	\LARGE\ReportAuthor\\
+	\Large\ReportAffil
+	\begin{figure}[h]
+		\centering\includegraphics[width=\linewidth]{icl.jpg}
+	\end{figure}
+	\clearpage
+	
 	\maketitle
 	hihi\autocite{zwietering1994modeling}
 	\section*{Abstract}
@@ -43,6 +57,5 @@ style       = nature,
 	\end{figure}
 	\section*{Discussion}
 	\section*{Conclusion}
-	\section*{References}
 	\nocite{*}\printbibliography
 \end{document}

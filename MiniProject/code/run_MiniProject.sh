@@ -23,6 +23,7 @@ echo -e "Running Data Slave..."
 Rscript Logistic_0.R
 
 echo -e "Model Fitting..."
+python3 Logistic_1.py
 
 echo -e "Running Data Analysis..."
 Rscript Logistic_2.R
