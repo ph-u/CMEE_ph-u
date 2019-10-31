@@ -11,7 +11,6 @@
 # setwd("/Volumes/HPM-000/Academic/Masters/ICL_CMEE/00_course/CMEECourseWork_pmH/MiniProject/code/")
 
 ## lib
-library(ggplot2)
 
 {## data cleaning
   a<-read.csv("../data/LogisticGrowthData.csv", header = T, stringsAsFactors = F)[,-1]
@@ -101,21 +100,8 @@ library(ggplot2)
   rm(list=ls(pattern="p.|.lv"))
 }
 
-## plot & export
-cat("R Plotting & writing results\n")
-# pdf("../../Week5/Sandbox/hi.pdf",height = 100)
-# ggplot(data = a,aes(x=log(a$Time.hr), y=log(a$Popn_Change)))+theme_bw()+
-#   geom_point(aes(colour=a$clade), show.legend = F)+
-#   facet_grid(a$clade ~.)
-# dev.off()
-# plot(x=a$Time.hr, y=a$Popn_Change, col=a$clade)
-pdf("../results/Log_data.pdf");ggplot(data = a.0,aes(y=log(a.0$Popn_Change^2), x=log(a.0$Time.hr)))+theme_bw()+
-  theme(axis.title = element_text(size = 20),
-        axis.text = element_text(size = 20))+
-  geom_point()+
-  xlab("log time")+ylab("log population change");dev.off()
-
 ## plot data export
+cat("R Writing data\n")
 write.csv(a.0,"../results/Log_data.csv",quote = F, row.names = F)
 
 {## data description
