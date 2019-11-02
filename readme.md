@@ -31,7 +31,8 @@ Writing readme.md for each week was mainly automated, followed by manual modific
 `Week1`: bash, git, LaTeX  
 `Week2`: python3  
 `Week3`: R  
-`Week4`: R
+`Week4`: R  
+`Week5`: R
 
 ## Reference
 
