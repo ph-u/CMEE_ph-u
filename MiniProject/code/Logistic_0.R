@@ -4,7 +4,7 @@
 # Script: Logistic_0.R
 # Desc: data handling for `LogisticGrowthMetaData.csv`
 # Input: ```Rscript Logistic_0.R```
-# Output: filtered data and metadata file output in `results` subdirectory
+# Output: filtered data and metadata file output in `data` subdirectory
 # Arguments: 0
 # Date: Oct 2019
 
@@ -100,10 +100,10 @@
   rm(list=ls(pattern="p.|.lv"))
 }
 
-## plot data export
+## subsetted data export
 cat("R Writing data\n")
 aa<-a.0[,c(6,7)]
-write.csv(aa,"../results/Log_data.csv",quote = F, row.names = F)
+write.csv(aa,"../data//Log_data.csv",quote = F, row.names = F)
 
 {## data description
   a.md<-data.frame(colnames(a.0)[-c(6,7)],t(a.0[1,-c(6,7)]),stringsAsFactors = F)
@@ -114,5 +114,5 @@ write.csv(aa,"../results/Log_data.csv",quote = F, row.names = F)
   a.md<-rbind(a.md,c("Normality of log time of experiment",round(shapiro.test(log(a.0$Time.hr))$p.value,2)))
   k<-0;for(i in 1:2){j<-ifelse(i<2,"Time.hr","Population Change");k<-c(k,paste0(c("Min", "1stQt","Median","3rdQt","Max"),"_",j))};rm(i,j)
   a.md<-data.frame(c(a.md[,1],k[-1]),c(a.md[,2],round(fivenum(log(a.0$Time.hr)),2),round(fivenum(log(a.0$Popn_Change)),2)));rm(k)
-  write.table(a.md,"../results/Log_Metadata.csv",quote = F, row.names = F, sep = "\t",col.names = F)
+  write.table(a.md,"../data/Log_Metadata.csv",quote = F, row.names = F, sep = "\t",col.names = F)
   }

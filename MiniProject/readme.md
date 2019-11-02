@@ -114,7 +114,7 @@ data handling for `LogisticGrowthMetaData.csv`
 
 #### Output
 
-filtered data and metadata file output in `results` subdirectory
+filtered data and metadata file output in `data` subdirectory
 
 *****
 

@@ -18,7 +18,7 @@
 %% test insert variables
 \newcommand{\ReportTitle}{Report on Logistic Growth curve} %% <https://stackoverflow.com/questions/1211888/is-there-any-way-i-can-define-a-variable-in-latex>
 \newcommand{\ReportAuthor}{PokMan HO}
-\newcommand{\ReportAffil}{Department of Life Sciences,\\Faculty of Natural Sciences,\\Imperial College London}
+\newcommand{\ReportAffil}{Department of Life Sciences, Faculty of Natural Sciences,\\Imperial College London}
 
 \title{\ReportTitle}
 \author{\ReportAuthor (CID: 01786076)}
@@ -38,9 +38,11 @@ style       = nature,
 \linenumbers
 
 \begin{document}
-	\Huge\textbf{\ReportTitle}\\
-	\LARGE\ReportAuthor\\
-	\Large\ReportAffil
+	\begin{center}
+		\Huge\textbf{\ReportTitle}\\
+		\LARGE\ReportAuthor\\
+		\Large\ReportAffil
+	\end{center}
 	\begin{figure}[h]
 		\centering\includegraphics[width=\linewidth]{icl.jpg}
 	\end{figure}

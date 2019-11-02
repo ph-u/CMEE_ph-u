@@ -14,7 +14,7 @@
 library(ggplot2)
 
 ## Data import
-a.0<-read.csv("../results/Log_data.csv",header = T)
+a.0<-read.csv("../data//Log_data.csv",header = T)
 
 ## Plot and export
 pdf("../results/Log_data.pdf")
