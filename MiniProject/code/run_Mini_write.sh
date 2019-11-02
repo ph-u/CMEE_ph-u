@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
-# Script: Mini_write.sh
+# Script: run_Mini_write.sh
 # Desc: Master script file reproducing the MiniProject
-# Input: ./Mini_write.sh <tex> <start_line_num>
+# Input: ```./run_Mini_write.sh <tex> <start_line_num>```
 # Output: write up a `tex` document for compiling
 # Arguments: 0
 # Date: Oct 2019

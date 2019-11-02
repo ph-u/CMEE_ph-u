@@ -3,7 +3,7 @@
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: run_MiniProject.sh
 # Desc: Master script file reproducing the MiniProject
-# Input: ./run_MiniProject.sh <tex> <LaTeX_Tmp starting line>
+# Input: ```./run_MiniProject.sh <tex> <LaTeX_Tmp starting line>```
 # Output: 1. `pdf` output in main project subdirectory; 2. all result graphs in `results` subdirectory
 # Arguments: 0 or 2
 # Date: Oct 2019
@@ -31,7 +31,7 @@ Rscript Logistic_2.R
 echo -e "Writing Report..."
 ## ${a1}: name of template; ${a2}: starting line
 ## output: <>_r.tex for compile
-bash Mini_write.sh ${a1} ${a2}
+bash run_Mini_write.sh ${a1} ${a2}
 
 echo -e "Compiling Report..."
 for i in `seq 1 4`;do

@@ -2,9 +2,9 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: Logistic_0.R
-# Desc: model-fitting and data analysis for `LogisticGrowthMetaData.csv`
-# Input: Rscript Logistic_0.R
-# Output: analysis result and metadata file output in `result` subdirectory
+# Desc: data handling for `LogisticGrowthMetaData.csv`
+# Input: ```Rscript Logistic_0.R```
+# Output: filtered data and metadata file output in `results` subdirectory
 # Arguments: 0
 # Date: Oct 2019
 
