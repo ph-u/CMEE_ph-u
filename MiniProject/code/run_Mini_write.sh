@@ -20,4 +20,9 @@ head -n 3 ${a3}_r.tex > tmp
 echo -e '% Desc: Daughter script for corresponding final `LaTeX` report' >> tmp
 tail -n +5 ${a3}_r.tex >> tmp
 
+head -n 51 tmp > tmp1
+echo -e $((`texcount tmp |tail -n 19|head -n 1|cut -f 2 -d ":"|cut -f 2 -d " "` -7 -13)) >> tmp1
+tail -n +52 ${a3}_r.tex >> tmp1
+
+mv tmp1 tmp
 mv tmp ${a3}_r.tex
