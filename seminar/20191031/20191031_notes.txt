@@ -9,7 +9,7 @@ type 2: saturation
 type 3: response lag + saturation
 
 capture rate: limit on encounters in space
-handling time: limit on physioogy
+handling time: limit on physiology
 
 larger & warm animals: higher capture rate, lower handling time (=eat more)
 not too well-explained
@@ -23,7 +23,7 @@ skewed data towards mobile, filter feeders
 mutual interference
 density of predators increase, resource not decreased
 ratio- / prey- / predator-dependent models?
-similar conclusion between competiting models
+similar conclusion between competing models
 
 response scaled with body size?
 subtle effect: ^pred, ^capture rate
@@ -52,18 +52,18 @@ increase in obstacle density, decrease in capture rate (`.`refuge space)
 available data limits what we can know:
 metabolic predictors well established
 model species and systems skew limited global data
-modefiers of encounter rates are key
+modifiers of encounter rates are key
 structure cannot be understood without new data
 
 currently not collecting data with sufficient attributes to understand interactions
 
 high turnover trials for collecting data points
-artifect of model-fitting
+artifact of model-fitting
 
 survey works on whale functional response (more course)
 data can be quite skewed
 
-aquatic foodwebs are nested
+aquatic food-webs are nested
 not enough data to quantify effect
 
 boundary effect on functional response changes?
