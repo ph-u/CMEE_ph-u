@@ -200,6 +200,23 @@ none -- run in R console line-by-line
 R terminal output
 *****
 
+### rodents.R
+
+#### Features
+
+data analysis of rodent dataset
+
+#### Suggested input
+
+```
+none -- run in R console line-by-line
+```
+
+#### Output
+
+R terminal output
+*****
+
 ## Reference
 
 [https://docs.readme.com/docs/best-practices][01]  
