@@ -147,5 +147,5 @@ write.csv(aa,"../data/Log_data.csv",quote = F, row.names = F)
   j.0<-c("Nmn", "log", "Nmx");for(i in 1:3){
     a.md<-rbind(a.md,c(paste("Population change Mean of cluster",j.0[i]),round(mean(aa[which(aa$cluster==i),4]),2)))
   };rm(i)
-  write.table(a.md,"../data/Log_Metadata.csv",quote = F, row.names = F, sep = "\t",col.names = F)
+  write.table(a.md,"../data/Log_Metadata.txt",quote = F, row.names = F, sep = "\t",col.names = F)
 }
