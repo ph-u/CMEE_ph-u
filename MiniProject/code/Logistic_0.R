@@ -107,9 +107,9 @@ cst<-3 ## um of log pop cluster determine log time clusters
 cat("R Writing data\n")
 aa<-data.frame("logTime"=log(a.0[,6]),"logPop"=log(a.0[,7]),a.0[,6:7])
 ## data clustering
-aa.1<-kmeans(aa[,2],cst) ## 3 phases: lag (Nmn), log, climax (Nmx)
+aa.1<-kmeans(aa[,2],cst) ## 3 phases: lag (Nmn, N0), log, climax (Nmx, K)
 aa$cluster<-aa.1$cluster ## fusing clustering result
-{## order clustser num into 1 = Nmn, 2 = log, 3 = Nmx
+{## order clustser num into 1 = N0, 2 = log, 3 = K
   for(i in 1:3){
     assign(paste0("aa.0",i),mean(aa[which(aa$cluster==i),2]))
   }
@@ -144,7 +144,7 @@ write.csv(aa,"../data/Log_data.csv",quote = F, row.names = F)
   a.md<-data.frame(c(a.md[,1],k[-1]),c(a.md[,2],round(fivenum(log(a.0$Time.hr)),2),round(fivenum(log(a.0$Popn_Change)),2)));rm(k)
   for(i in 1:dim(a.md)[2]){a.md[,i]<-as.character(a.md[,i])};rm(i) ## class issue
   a.md<-rbind(a.md, c("Set number of k-means clusters",cst))
-  j.0<-c("Nmn", "log", "Nmx");for(i in 1:3){
+  j.0<-c("N0", "log", "K");for(i in 1:3){
     a.md<-rbind(a.md,c(paste("Population change Mean of cluster",j.0[i]),round(mean(aa[which(aa$cluster==i),4]),2)))
   };rm(i)
   write.table(a.md,"../data/Log_Metadata.txt",quote = F, row.names = F, sep = "\t",col.names = F)

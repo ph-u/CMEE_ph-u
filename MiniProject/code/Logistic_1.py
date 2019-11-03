@@ -17,6 +17,7 @@ __license__='License for this code / program'
 
 ## lib
 import csv ## read, write csv
+import lmfit ## non-linear model fitting <https://lmfit.github.io/lmfit-py/ ; http://cars9.uchicago.edu/software/python/lmfit/lmfit.pdf>
 
 ## logistic equations
 def func_log0(N0, K, r, t):
@@ -24,26 +25,26 @@ def func_log0(N0, K, r, t):
     Nt=N0*K*exp(r*t)/(K+N0*(exp(r*t)-1))
     return Nt
 
-def func_Gom(Nmn, Nmx, rmx, ld, t):
+def func_Gom(N0, K, r, ld, t):
     """modified Gompertz model"""
-    A=log(Nmx/Nmn)
-    Nt=A*exp(-exp(rmx*exp/A*(ld-t)+1))
+    A=log(K/N0)
+    Nt=A*exp(-exp(r*exp/A*(ld-t)+1))
     return Nt
 
-def func_Bar(Nmn, Nmx, rmx, ld, t):
+def func_Bar(N0, K, r, ld, t):
     """Baranyi model"""
-    h0=(exp(ld*rmx)-1)^-1
-    At=t+rmx^-1*log((exp(-rmx*t)+h0)/(1+h0))
-    Nt=Nmn + rmx * At - log(1+exp(rmx * At - 1)/exp(Nmx-Nmn))
+    h0=(exp(ld*r)-1)^-1
+    At=t+r^-1*log((exp(-r*t)+h0)/(1+h0))
+    Nt=N0 + r * At - log(1+exp(r * At - 1)/exp(K-N0))
     return Nt
 
-def func_Buc(Nmn, Nmx, tlag, t):
+def func_Buc(N0, K, tlag, tmx, t):
     """Buchanan model / three-phase logistic model"""
     if t <= tlag:
-        Nt=Nmn
+        Nt=N0
     elif t >= tmx:
-        Nt=Nmx
-    else: Nt=Nmx+rmx*(t-tlag)
+        Nt=K
+    else: Nt=K+r*(t-tlag)
     return Nt
 
 ## raw data
@@ -52,9 +53,20 @@ ls_f0=list(csv.reader(open("../data/Log_data.csv")))
 ## metadata arrangement
 ls_f1=open("../data/Log_Metadata.txt").read().replace("\n","\t").split("\t")
 if len(ls_f1)%2 != 0: ## if python read file badly
-    del ls_f1[len(ls_f1)-1] ## completely empty line after indentation crucial
+    del ls_f1[len(ls_f1)-1]
+    ## completely empty line after indentation crucial
 
 ls_f2=[[ls_f1[i],ls_f1[i+1]] for i in range(len(ls_f1)) if i%2 == 0];del i ## compensate for bad python readers
 ls_f1=ls_f2;del ls_f2
 
-## calculation
+## set parameters for calculations
+dic_par={
+    "N0": float(ls_f1[20][1]),
+    "K": float(ls_f1[22][1]),
+    "r": ,
+    "tlag": ,
+    "tmx": ,
+    "ld": ,
+    "t": 
+}
+minimize(func_log0, )
