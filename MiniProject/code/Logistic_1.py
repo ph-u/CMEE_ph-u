@@ -18,18 +18,33 @@ __license__='License for this code / program'
 ## lib
 import sys
 import os
+import csv
+import pandas as pd
 
 ## logistic equations
-def log0(N0, r, t, K):
+def log0(N0, K, r, t):
     """traditional Logistic equation"""
-    a=N0*K*exp(r*t)/(K+N0*(exp(r*t)-1))
-    return(a)
-def Gom(Nmx, Nmn, rmx, ld, t):
+    Nt=N0*K*exp(r*t)/(K+N0*(exp(r*t)-1))
+    return Nt
+def Gom(Nmn, Nmx, rmx, ld, t):
     """modified Gompertz model"""
-    a.0=log(Nmx/Nmn)
-    a.1=a.0*exp(-exp(rmx*exp/a.0*(ld-t)+1))
-    return(a.1)
-def Bar(args):
+    A=log(Nmx/Nmn)
+    Nt=A*exp(-exp(rmx*exp/A*(ld-t)+1))
+    return Nt
+def Bar(Nmn, Nmx, rmx, ld, t):
     """Baranyi model"""
+    h0=(exp(ld*rmx)-1)^-1
+    At=t+rmx^-1*log((exp(-rmx*t)+h0)/(1+h0))
+    Nt=Nmn + rmx * At - log(1+exp(rmx * At - 1)/exp(Nmx-Nmn))
+    return Nt
+def Buc(Nmn, Nmx, tlag, t):
+    """Buchanan model / three-phase logistic model"""
+    if t <= tlag:
+        Nt=Nmn
+    elif t >= tmx:
+        Nt=Nmx
+    else: Nt=Nmx+rmx*(t-tlag)
+    return Nt
 
 ## raw data
+f0=pd.DataFrame(csv.DictReader(open("../data/Log_data.csv")))

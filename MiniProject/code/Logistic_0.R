@@ -12,6 +12,9 @@
 
 ## lib
 
+## variables
+cst<-3 ## um of log pop cluster determine log time clusters
+
 {## data cleaning
   a<-read.csv("../data/LogisticGrowthData.csv", header = T, stringsAsFactors = F)[,-1]
   a<-a[,c(3,6:9,1,2,5)]
@@ -102,8 +105,33 @@
 
 ## subsetted data export
 cat("R Writing data\n")
-aa<-a.0[,c(6,7)]
-write.csv(aa,"../data//Log_data.csv",quote = F, row.names = F)
+aa<-data.frame("logTime"=log(a.0[,6]),"logPop"=log(a.0[,7]),a.0[,6:7])
+## data clustering
+aa.1<-kmeans(aa[,2],cst) ## 3 phases: lag (Nmn), log, climax (Nmx)
+aa$cluster<-aa.1$cluster ## fusing clustering result
+{## order clustser num into 1 = Nmn, 2 = log, 3 = Nmx
+  for(i in 1:3){
+    assign(paste0("aa.0",i),mean(aa[which(aa$cluster==i),2]))
+  }
+  if(aa.01>aa.02){
+    aa$cluster[aa$cluster==1]<-NA
+    aa$cluster[aa$cluster==2]<-1
+    aa$cluster[is.na(aa$cluster)]<-2
+  }
+  if(aa.01>aa.03){
+    aa$cluster[aa$cluster==1]<-NA
+    aa$cluster[aa$cluster==3]<-1
+    aa$cluster[is.na(aa$cluster)]<-3
+  }
+  if(aa.03<aa.02){
+    aa$cluster[aa$cluster==3]<-NA
+    aa$cluster[aa$cluster==2]<-3
+    aa$cluster[is.na(aa$cluster)]<-2
+  }
+  rm(list=ls(pattern="aa.0"))
+}
+# b<-aa[which(aa$cluster==3),];plot(x=aa[,1], y=aa[,2], col=as.factor(aa$cluster),pch=4);points(x=b[,1], y=b[,2], add=T, col="blue");rm(b) ## visual cluster plot
+write.csv(aa,"../data/Log_data.csv",quote = F, row.names = F)
 
 {## data description
   a.md<-data.frame(colnames(a.0)[-c(6,7)],t(a.0[1,-c(6,7)]),stringsAsFactors = F)
@@ -114,5 +142,10 @@ write.csv(aa,"../data//Log_data.csv",quote = F, row.names = F)
   a.md<-rbind(a.md,c("Normality of log time of experiment",round(shapiro.test(log(a.0$Time.hr))$p.value,2)))
   k<-0;for(i in 1:2){j<-ifelse(i<2,"Time.hr","Population Change");k<-c(k,paste0(c("Min", "1stQt","Median","3rdQt","Max"),"_",j))};rm(i,j)
   a.md<-data.frame(c(a.md[,1],k[-1]),c(a.md[,2],round(fivenum(log(a.0$Time.hr)),2),round(fivenum(log(a.0$Popn_Change)),2)));rm(k)
+  for(i in 1:dim(a.md)[2]){a.md[,i]<-as.character(a.md[,i])};rm(i) ## class issue
+  a.md<-rbind(a.md, c("Set number of k-means clusters",cst))
+  j.0<-c("Nmn", "log", "Nmx");for(i in 1:3){
+    a.md<-rbind(a.md,c(paste("Population change Mean of cluster",j.0[i]),round(mean(aa[which(aa$cluster==i),4]),2)))
+  };rm(i)
   write.table(a.md,"../data/Log_Metadata.csv",quote = F, row.names = F, sep = "\t",col.names = F)
-  }
+}
