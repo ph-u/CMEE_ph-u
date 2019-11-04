@@ -27,25 +27,27 @@ for j in 16 14 12 10;do
 		jj="Log-Growth"
 		ii="Log"
 	fi
-	echo -e "writing scripts for ${jj}"
-	for i in `ls ${ii}*|grep -v .swp`;do
-		echo >> ../readme.md
-		echo -e "### ${i}" >> ../readme.md
-		echo >> ../readme.md
-		echo "#### Features" >> ../readme.md
-		echo >> ../readme.md
-		grep "Desc:" ${i}|cut -f 2 -d ":"|sed -e "s/ //1"|head -n 1 >> ../readme.md
-		echo >> ../readme.md
-		echo "#### Suggested input" >> ../readme.md
-		echo "" >> ../readme.md
-		grep "Input" ${i}|cut -f 2 -d ":"|sed -e "s/ //1"|head -n 1 >> ../readme.md
-		echo >> ../readme.md
-		echo "#### Output" >> ../readme.md
-		echo "" >> ../readme.md
-		grep "Output" ${i}|cut -f 2 -d ":"|sed -e "s/ //1"|head -n 1 >> ../readme.md
-		echo >> ../readme.md
-		echo "*****" >> ../readme.md
-	done
+	if [ `ls|grep -o "${ii}"|wc -l` -lt 0 ];then
+		echo -e "writing scripts for ${jj}"
+		for i in `ls ${ii}*|grep -v .swp`;do
+			echo >> ../readme.md
+			echo -e "### ${i}" >> ../readme.md
+			echo >> ../readme.md
+			echo "#### Features" >> ../readme.md
+			echo >> ../readme.md
+			grep "Desc:" ${i}|cut -f 2 -d ":"|sed -e "s/ //1"|head -n 1 >> ../readme.md
+			echo >> ../readme.md
+			echo "#### Suggested input" >> ../readme.md
+			echo "" >> ../readme.md
+			grep "Input" ${i}|cut -f 2 -d ":"|sed -e "s/ //1"|head -n 1 >> ../readme.md
+			echo >> ../readme.md
+			echo "#### Output" >> ../readme.md
+			echo "" >> ../readme.md
+			grep "Output" ${i}|cut -f 2 -d ":"|sed -e "s/ //1"|head -n 1 >> ../readme.md
+			echo >> ../readme.md
+			echo "*****" >> ../readme.md
+		done
+	fi
 done
 
 ## end

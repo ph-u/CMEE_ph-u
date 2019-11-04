@@ -17,25 +17,26 @@ __license__='License for this code / program'
 
 ## lib
 import csv ## read, write csv
+import math ## math operation definitions
 import lmfit ## non-linear model fitting <https://lmfit.github.io/lmfit-py/ ; http://cars9.uchicago.edu/software/python/lmfit/lmfit.pdf>
 
 ## logistic equations
 def func_log0(N0, K, r, t):
     """traditional Logistic equation"""
-    Nt=N0*K*exp(r*t)/(K+N0*(exp(r*t)-1))
+    Nt=N0*K*math.exp(r*t)/(K+N0*(math.exp(r*t)-1))
     return Nt
 
 def func_Gom(N0, K, r, ld, t):
     """modified Gompertz model"""
     A=log(K/N0)
-    Nt=A*exp(-exp(r*exp/A*(ld-t)+1))
+    Nt=A*math.exp(-math.exp(r*math.exp(1)/A*(ld-t)+1))
     return Nt
 
 def func_Bar(N0, K, r, ld, t):
     """Baranyi model"""
-    h0=(exp(ld*r)-1)^-1
-    At=t+r^-1*log((exp(-r*t)+h0)/(1+h0))
-    Nt=N0 + r * At - log(1+exp(r * At - 1)/exp(K-N0))
+    h0=(math.exp(ld*r)-1)^-1
+    At=t+r^-1*log((math.exp(-r*t)+h0)/(1+h0))
+    Nt=N0 + r * At - log(1+math.exp(r * At - 1)/math.exp(K-N0))
     return Nt
 
 def func_Buc(N0, K, tlag, tmx, t):
@@ -69,4 +70,4 @@ dic_par={
     "ld": ,
     "t": 
 }
-minimize(func_log0, )
+minimize(func_log0, dic_par,)
