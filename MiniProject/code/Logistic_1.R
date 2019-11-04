@@ -44,4 +44,4 @@ func_Buc<-function(N0, K, tlag, tmx, t){
 ls_f0<-read.csv("../data/Log_data.csv", header = T)
 
 ## metadata arrangement
-ls_f1<-read.table("../data/Log_Metadata.txt", sep = "\t", header = F, row.names = F, stringsAsFactors = F, blank.lines.skip = T)
+ls_f1<-read.table("../data/Log_Metadata.txt", sep = "\t", header = F, stringsAsFactors = F, blank.lines.skip = T)
