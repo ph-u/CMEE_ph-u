@@ -14,7 +14,7 @@ library(minpack.lm)
 ## logistic equations
 func_log0<-function(N0, K, r, t){
   ## traditional Logistic equation
-  Nt<-N0*k*exp(r*t)/(K+N0*(exp(r*t)-1))
+  Nt<-N0*K*exp(r*t)/(K+N0*(exp(r*t)-1))
   return(Nt)
 }
 func_Gom<-function(N0, K, r, ld, t){
@@ -45,3 +45,32 @@ ls_f0<-read.csv("../data/Log_data.csv", header = T)
 
 ## metadata arrangement
 ls_f1<-read.table("../data/Log_Metadata.txt", sep = "\t", header = F, stringsAsFactors = F, blank.lines.skip = T)
+
+## fix values for model-fitting
+## assumed growth rate (r) is max during log phase (cluster 2)
+dict_par<-as.data.frame(matrix(nrow = 6, ncol = 2))
+dict_par[,1]<-c("N0", "K", "r", "ld", "tlag", "tmx")
+## cluster 1 = lag; 2 = log; 3 = max
+r.m<-(max(ls_f0[which(ls_f0$cluster==2),4])-min(ls_f0[which(ls_f0$cluster==2),4])) / (max(ls_f0[which(ls_f0$cluster==2),3])-min(ls_f0[which(ls_f0$cluster==2),3]))
+r.y<-as.numeric(ls_f1[21,2])
+r.x<-mean(ls_f0[which(ls_f0$cluster==2),3])
+r.b<-r.y-r.m*r.x
+dict_par[,2]<-c(ls_f1[20,2],ls_f1[22,2], ## N0, K
+                r.m, ## r
+                -r.b/r.m, ## ld
+                max(ls_f0[which(ls_f0$cluster==2),3])-min(ls_f0[which(ls_f0$cluster==1),3]), ## tlag
+                min(ls_f0[which(ls_f0$cluster==3),3])) ## tmx
+rm(list=ls(pattern="r."))
+
+## model-fitting (use log data)
+nlls_log0<-nlsLM(logPop ~ func_log0(N0, K, r, ls_f0[,1]), data = ls_f0,
+                 ## y place must be a colname only
+                 start = list(N0=as.numeric(dict_par[which(dict_par[,1]=="N0"),2]),
+                              K=as.numeric(dict_par[which(dict_par[,1]=="K"),2]),
+                              r=as.numeric(dict_par[which(dict_par[,1]=="r"),2])))
+
+nlls_Gom<-nlsLM(logPop ~ func_Gom(N0, K, r, ld, ls_f0[,1]), data = ls_f0,
+                start = list(N0=as.numeric(dict_par[which(dict_par[,1]=="N0"),2]),
+                             K=as.numeric(dict_par[which(dict_par[,1]=="K"),2]),
+                             r=as.numeric(dict_par[which(dict_par[,1]=="r"),2]),
+                             ld=as.numeric(dict_par[which(dict_par[,1]=="ld"),2])))

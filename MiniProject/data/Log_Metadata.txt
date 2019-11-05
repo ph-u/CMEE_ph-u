@@ -1,6 +1,7 @@
 Temp.C	10
 clade	Lactobaciulus plantarum
 substrate	MRS
+replicate	1
 Popn_DataUnit	N
 Subset sample size	151
 Normality of log Population Change	0

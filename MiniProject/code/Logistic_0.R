@@ -145,7 +145,7 @@ write.csv(aa,"../data/Log_data.csv",quote = F, row.names = F)
   for(i in 1:dim(a.md)[2]){a.md[,i]<-as.character(a.md[,i])};rm(i) ## class issue
   a.md<-rbind(a.md, c("Set number of k-means clusters",cst))
   j.0<-c("N0", "log", "K");for(i in 1:3){
-    a.md<-rbind(a.md,c(paste("Population change Mean of cluster",j.0[i]),round(mean(aa[which(aa$cluster==i),4]),2)))
+    a.md<-rbind(a.md,c(paste("Population change Mean of cluster",j.0[i]),round(mean(aa[which(aa$cluster==i),4]),2))) ## raw data before log
   };rm(i)
   write.table(a.md[c(1:6),],"../data/Log_DataSource.txt",quote = F, row.names = F, sep = "\t",col.names = F)
   write.table(a.md[-5,],"../data/Log_Metadata.txt",quote = F, row.names = F, sep = "\t",col.names = F)
