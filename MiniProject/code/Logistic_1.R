@@ -63,6 +63,18 @@ dict_par[,2]<-c(ls_f1[20,2],ls_f1[22,2], ## N0, K
 rm(list=ls(pattern="r."))
 
 ## model-fitting (use log data)
+{ppt<-ppp<-c()
+  for(i in ls_f0[,3]){
+    ppt<-c(ppt,i)
+    ppp<-c(ppp,func_Gom(
+      as.numeric(dict_par[which(dict_par[,1]=="N0"),2]),
+      as.numeric(dict_par[which(dict_par[,1]=="K"),2]),
+      as.numeric(dict_par[which(dict_par[,1]=="r"),2]),
+      as.numeric(dict_par[which(dict_par[,1]=="ld"),2]), i))
+  };plot(ppp~ppt)
+  View(data.frame(ppt,ppp))
+  rm(i,ppp,ppt)}
+
 nlls_log0<-nlsLM(logPop ~ func_log0(N0, K, r, ls_f0[,1]), data = ls_f0,
                  ## y place must be a colname only
                  start = list(N0=as.numeric(dict_par[which(dict_par[,1]=="N0"),2]),
