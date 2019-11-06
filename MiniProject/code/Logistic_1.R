@@ -11,14 +11,14 @@
 ## lib
 library(minpack.lm)
 
-## logistic equations
+## logistic equations: y=Nt x=exp(t)
 func_log0<-function(N0, K, r, t){
-  ## traditional Logistic equation
+  ## traditional Logistic equation: y~x
   Nt<-N0*K*exp(r*t)/(K+N0*(exp(r*t)-1))
   return(Nt)
 }
 func_Gom<-function(N0, K, r, ld, t){
-  ## modified Gompertz model
+  ## modified Gompertz model, initial 
   A<-log(K/N0)
   Nt<-A*exp(-exp(r*exp(1)/A*(ld-t)+1))
   return(Nt)
@@ -64,7 +64,7 @@ rm(list=ls(pattern="r."))
 
 ## model-fitting (use log data)
 {ppt<-ppp<-c()
-  for(i in ls_f0[,3]){
+  for(i in log(ls_f0[,3])){
     ppt<-c(ppt,i)
     ppp<-c(ppp,func_Gom(
       as.numeric(dict_par[which(dict_par[,1]=="N0"),2]),

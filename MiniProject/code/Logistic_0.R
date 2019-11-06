@@ -112,7 +112,7 @@ aa$cluster<-aa.1$cluster ## fusing clustering result
 {## order clustser num into 1 = N0, 2 = log, 3 = K
   for(i in 1:3){
     assign(paste0("aa.0",i),mean(aa[which(aa$cluster==i),2]))
-  }
+  };rm(i)
   if(aa.01>aa.02){
     aa$cluster[aa$cluster==1]<-NA
     aa$cluster[aa$cluster==2]<-1

@@ -24,7 +24,7 @@ Rscript Logistic_0.R
 
 echo -e "Model Fitting..."
 #python3 Logistic_1.py
-Rscript Logistic_1.R
+#Rscript Logistic_1.R
 
 echo -e "Running Data Analysis..."
 Rscript Logistic_2.R
