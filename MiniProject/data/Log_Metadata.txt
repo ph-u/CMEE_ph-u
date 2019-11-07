@@ -17,6 +17,6 @@ Median_Population Change	6.55
 3rdQt_Population Change	7.47
 Max_Population Change	8.86
 Set number of k-means clusters	3
-Population change Mean of cluster N0	4.03
-Population change Mean of cluster log	76.34
-Population change Mean of cluster K	1857.59
+Population change Mean of cluster N0	1.86
+Population change Mean of cluster log	287.02
+Population change Mean of cluster K	2131.71

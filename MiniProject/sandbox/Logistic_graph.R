@@ -1,9 +1,9 @@
 #!/bin/env Rscript
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
-# Script: Logistic_2.R
+# Script: Logistic_graph.R
 # Desc: data analysis and results export for `LogisticGrowthMetaData.csv`
-# Input: ```Rscript Logistic_2.R```
+# Input: ```Rscript Logistic_graph.R```
 # Output: result output in `results` subdirectory
 # Arguments: 0
 # Date: Oct 2019
@@ -40,9 +40,9 @@ func_gom<-function(N0=as.numeric(a.1[20,2]),
                    r=r.m, t,
                    ld=r.x){
   A=log(K/N0)
-  Nt=exp(A*exp(-exp(r*exp(1)/A*(ld-t)+1)))
+  Nt=A*exp(-exp(r*exp(1)/A*(ld-t)+1))
   return(Nt)}
-a.0$gom<-func_gom(t=a.0$Time.hr)
+a.0$gom<-exp(func_gom(t=a.0$Time.hr))
 
 func_bar<-function(N0=as.numeric(a.1[20,2]),
                    K=as.numeric(a.1[22,2]),
@@ -54,7 +54,7 @@ func_bar<-function(N0=as.numeric(a.1[20,2]),
   return(Nt)}
 a.0$bar<-func_bar(t=a.0$Time.hr)
 
-func_buc<-function(N0=as.numeric(a.1[20,2]),
+func_buc<-function(N0=as.numeric(a.1[20,2]), ## add cluster term as 0 / 1
                    K=as.numeric(a.1[22,2]),
                    r=r.m, t,
                    tlag=max(a.0[which(a.0$cluster==1),3]),
@@ -77,7 +77,7 @@ ggplot()+theme_bw()+
         legend.text = element_text(size = 15))+
   geom_point(aes(x=a.0$Time.hr, y=abs(a.0$Popn_Change), colour=as.factor(a.0$cluster)),shape=4)+
   geom_line(aes(x=a.2$Time.hr, y=a.2$ExpPop, linetype=a.2$model))+
-  scale_colour_manual(name="Phase cluster",values = cbbPalette[c(4,2,6)], labels=c("lag","exponential / log","stationary"))+
+  scale_colour_manual(name="Phase cluster",values = cbbPalette[-1], labels=c("lag","exponential / log","stationary"))+
   scale_linetype_manual(name="Models", values = c(1,3,5,6), labels=c("classical","modified Gompertz","Baranyi","Buchanan"))+
   scale_y_continuous(labels = scientific,trans = "log10",limits = c(min(abs(a.0$Popn_Change)-.5),max(abs(a.0$Popn_Change))+.5),oob = rescale_none)+ ## <https://stackoverflow.com/questions/10365167/geom-bar-bars-not-displaying-when-specifying-ylim>
   xlab("Time (hr)")+ylab("log population change")

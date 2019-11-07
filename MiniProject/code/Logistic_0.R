@@ -13,7 +13,7 @@
 ## lib
 
 ## variables
-cst<-3 ## um of log pop cluster determine log time clusters
+cst<-3 ## num of log pop cluster determine log time clusters
 
 {## data cleaning
   a<-read.csv("../data/LogisticGrowthData.csv", header = T, stringsAsFactors = F)[,-1]
@@ -106,31 +106,9 @@ cst<-3 ## um of log pop cluster determine log time clusters
 ## subsetted data export
 cat("R Writing data\n")
 aa<-data.frame("logTime"=log(a.0[,6]),"logPop"=log(a.0[,7]),a.0[,6:7])
-## data clustering
-aa.1<-kmeans(aa[,2],cst) ## 3 phases: lag (Nmn, N0), log, climax (Nmx, K)
-aa$cluster<-aa.1$cluster ## fusing clustering result
-{## order clustser num into 1 = N0, 2 = log, 3 = K
-  for(i in 1:3){
-    assign(paste0("aa.0",i),mean(aa[which(aa$cluster==i),2]))
-  };rm(i)
-  if(aa.01>aa.02){
-    aa$cluster[aa$cluster==1]<-NA
-    aa$cluster[aa$cluster==2]<-1
-    aa$cluster[is.na(aa$cluster)]<-2
-  }
-  if(aa.01>aa.03){
-    aa$cluster[aa$cluster==1]<-NA
-    aa$cluster[aa$cluster==3]<-1
-    aa$cluster[is.na(aa$cluster)]<-3
-  }
-  if(aa.03<aa.02){
-    aa$cluster[aa$cluster==3]<-NA
-    aa$cluster[aa$cluster==2]<-3
-    aa$cluster[is.na(aa$cluster)]<-2
-  }
-  rm(list=ls(pattern="aa.0"))
-}
-# b<-aa[which(aa$cluster==3),];plot(x=aa[,1], y=aa[,2], col=as.factor(aa$cluster),pch=4);points(x=b[,1], y=b[,2], add=T, col="blue");rm(b) ## visual cluster plot
+## data clustering: can't use k-mean (min in-cluster mean distance)
+aa$cluster<-ifelse(aa$Time.hr<10,1,ifelse(aa$Time.hr>150,3,2))
+# b<-aa[which(aa$cluster==3),];plot(x=aa[,3], y=aa[,2], col=as.factor(aa$cluster),pch=4);points(x=b[,3], y=b[,2], add=T, col="blue");rm(b) ## visual cluster plot
 write.csv(aa,"../data/Log_data.csv",quote = F, row.names = F)
 
 {## data description

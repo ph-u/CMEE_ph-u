@@ -26,7 +26,7 @@ echo -e "Model Fitting..."
 #python3 Logistic_1.py
 #Rscript Logistic_1.R
 
-echo -e "Running Data Analysis..."
+echo -e "Result Visualizing..."
 Rscript Logistic_2.R
 
 echo -e "Writing Report..."
