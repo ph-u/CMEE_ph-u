@@ -119,9 +119,8 @@ write.csv(aa,"../data/Log_data.csv",quote = F, row.names = F)
   a.md<-rbind(a.md,c("Normality of log Population Change",round(shapiro.test(log(a.0$Popn_Change))$p.value,2)))
   a.md<-rbind(a.md,c("Normality of log time of experiment",round(shapiro.test(log(a.0$Time.hr))$p.value,2)))
   k<-0;for(i in 1:2){j<-ifelse(i<2,"Time.hr","Population Change");k<-c(k,paste0(c("Min", "1stQt","Median","3rdQt","Max"),"_",j))};rm(i,j)
-  a.md<-data.frame(c(a.md[,1],k[-1]),c(a.md[,2],round(fivenum(log(a.0$Time.hr)),2),round(fivenum(log(a.0$Popn_Change)),2)));rm(k)
+  a.md<-data.frame(c(a.md[,1],k[-1]),c(a.md[,2],round(fivenum(a.0$Time.hr),2),round(fivenum(log(a.0$Popn_Change)),2)));rm(k)
   for(i in 1:dim(a.md)[2]){a.md[,i]<-as.character(a.md[,i])};rm(i) ## class issue
-  a.md<-rbind(a.md, c("Set number of k-means clusters",cst))
   j.0<-c("N0", "log", "K");for(i in 1:3){
     a.md<-rbind(a.md,c(paste("Population change Mean of cluster",j.0[i]),round(mean(aa[which(aa$cluster==i),4]),2))) ## raw data before log
   };rm(i)

@@ -11,7 +11,7 @@
 ## if no input
 if [ -z "$1" ];then
 	a1=`echo -e "Log_Tmp.tex"`
-	a2=35
+	a2=63
 else
 	a1=$1
 	a2=$2

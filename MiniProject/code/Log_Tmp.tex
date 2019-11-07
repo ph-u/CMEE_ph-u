@@ -30,7 +30,7 @@
 autocite    = superscript,
 backend     = bibtex,
 sortcites   = true,
-style       = nature,
+style       = nature
 ]{biblatex}
 \bibliography{../reference/LogRef.bib} %% <https://tex.stackexchange.com/questions/6805/bib-library-file-in-a-different-directory-how-to-use-mendeley-centralised-b>
 
@@ -54,8 +54,32 @@ style       = nature,
 	
 	\maketitle
 	\section*{Abstract}
+	
+	
 	\section*{Introduction}
+	
+	
 	\section*{Methods}
+	A subset of microbial growth data was selected based on ``the highest number of data points".  The candidate dataset was the replicate %1 %%%%%%% FIRST CUT AFTER THIS %%%%%%%
+	 from Zwietering \textit{et al.}(1994)\autocite{zwietering1994modeling} \textit{%L.plantarum
+	}on %MRS
+	 substrate under %10
+	 degrees Celsius.  The data was containing %151
+	 records on population cell count (%N
+).\\
+	The data was recorded in ``population change" (response variable) against ``time of experiment (hr)" (explanatory variable).  The response variable was neither normally-distributed nor log-normal (Shapiro Test p-value: %0
+	; Min
+	, 1st Q
+	, 2nd Q
+	, 3rd Q
+	, Max
+	, all corrected to 2 d.p.).  Time (in hr) was also recorded not in a normal-distributed not log-normal way (Shapiro Test p-value: %0
+	; Min
+	, 1st Q
+	, 2nd Q
+	, 3rd Q
+	, Max
+	, all corrected to 2 d.p.).\\
 	modified Gompertz model\autocite{zwietering1994modeling}\\
 	Buchanan model\autocite{buchanan1993differentiation}
 	\subsection*{Computing tools}

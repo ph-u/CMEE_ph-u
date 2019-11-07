@@ -28,15 +28,15 @@ r.b<-max(a.0[which(a.0$cluster==2),2])-r.m*max(a.0[which(a.0$cluster==2),3])
 r.x<--r.b/r.m
 
 ## functions & calculations
-func_log0<-function(N0=as.numeric(a.1[20,2]),
-                    K=as.numeric(a.1[22,2]),
+func_log0<-function(N0=as.numeric(a.1[19,2]),
+                    K=as.numeric(a.1[21,2]),
                     r=r.m, t){
   Nt=N0*K*exp(r*t)/(K+N0*(exp(r*t)-1))
   return(Nt)}
 a.0$log0<-func_log0(t=a.0$Time.hr)
 
-func_gom<-function(N0=as.numeric(a.1[20,2]),
-                   K=as.numeric(a.1[22,2]),
+func_gom<-function(N0=as.numeric(a.1[19,2]),
+                   K=as.numeric(a.1[21,2]),
                    r=r.m, t,
                    ld=r.x){
   A=log(K/N0)
@@ -44,8 +44,8 @@ func_gom<-function(N0=as.numeric(a.1[20,2]),
   return(Nt)}
 a.0$gom<-func_gom(t=a.0$Time.hr)
 
-func_bar<-function(N0=as.numeric(a.1[20,2]),
-                   K=as.numeric(a.1[22,2]),
+func_bar<-function(N0=as.numeric(a.1[19,2]),
+                   K=as.numeric(a.1[21,2]),
                    r=r.m, t,
                    tlag=max(a.0[which(a.0$cluster==1),3])){
   h0=1/(exp(tlag*r)-1)
@@ -54,8 +54,8 @@ func_bar<-function(N0=as.numeric(a.1[20,2]),
   return(Nt)}
 a.0$bar<-func_bar(t=a.0$Time.hr)
 
-func_buc<-function(N0=as.numeric(a.1[20,2]),
-                   K=as.numeric(a.1[22,2]),
+func_buc<-function(N0=as.numeric(a.1[19,2]),
+                   K=as.numeric(a.1[21,2]),
                    r=r.m, t,
                    tlag=max(a.0[which(a.0$cluster==1),3]),
                    cst=as.numeric(a.0$cluster)){

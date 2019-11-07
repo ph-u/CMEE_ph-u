@@ -6,17 +6,16 @@ Popn_DataUnit	N
 Subset sample size	151
 Normality of log Population Change	0
 Normality of log time of experiment	0
-Min_Time.hr	0.4
-1stQt_Time.hr	4.04
-Median_Time.hr	4.81
-3rdQt_Time.hr	5.27
-Max_Time.hr	5.84
+Min_Time.hr	1.49
+1stQt_Time.hr	57.07
+Median_Time.hr	123.3
+3rdQt_Time.hr	195.36
+Max_Time.hr	345.07
 Min_Population Change	0.16
 1stQt_Population Change	3.24
 Median_Population Change	6.55
 3rdQt_Population Change	7.47
 Max_Population Change	8.86
-Set number of k-means clusters	3
 Population change Mean of cluster N0	1.86
 Population change Mean of cluster log	287.02
 Population change Mean of cluster K	2131.71
