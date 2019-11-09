@@ -1,8 +1,7 @@
 *~ 
 *.tmp
 ._*
-*.tmp
-*.swp
+*.sw*
 nohup*
 .Rhistory
 readme_final.md
