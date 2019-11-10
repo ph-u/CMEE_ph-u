@@ -1,0 +1,9 @@
+autocite	main content
+acquah2010comparison	B>A: in large (n>50) sample sizes, small variance (sd<3); parameter effect: var > n
+aho2014model	A: asymptotic efficiency, on multiple inaccurate models, allow complex good models, for predictive models, imprecise modeling; B: consistency, on developed models, prefer simple parameters, for hypothesis testing, precisely-specified models
+kuha2004aic	A>B: more stable performance in sparse data; B>A: ^n; similar results on selecting "true model" / "better prediction"
+penny2012comparing
+strutz2010data
+vrieze2012model
+wang2006comparison
+yang2005can
