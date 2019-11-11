@@ -10,6 +10,12 @@
 
 
 """timing trials"""
+
+__appname__="timeit.py"
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 ## loops vs list comprehensions
 iters=int(1e6)
 

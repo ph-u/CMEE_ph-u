@@ -10,6 +10,12 @@
 
 
 """timing code run-time"""
+
+__appname__="profileme.py"
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 def my_squares(iters):
     """squaring loop function"""
     out=[]

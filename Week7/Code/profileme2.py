@@ -10,6 +10,12 @@
 
 
 """timing code run-time"""
+
+__appname__="profileme2.py"
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 def my_squares(iters):
     """list comprehension on squaring function"""
     out=[i**2 for i in range(iters)]

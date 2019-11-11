@@ -10,6 +10,12 @@
 
 
 """Consumer-Resource cycle plotting"""
+
+__appname__="LV1.py"
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 import scipy as sc
 import scipy.integrate as integrate
 import matplotlib.pylab as p
@@ -48,5 +54,5 @@ p.ylabel("Consumer density")
 p.title("Consumer-Resource population dynamics")
 # p.show()
 
-f1.savefig("../results/LV_model1.pdf")
-f2.savefig("../results/LV_model2.pdf")
+f1.savefig("../results/LV1_model1.pdf")
+f2.savefig("../results/LV1_model2.pdf")
