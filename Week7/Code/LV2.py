@@ -17,6 +17,7 @@ __version__="0.0.1"
 __license__="None"
 
 def LV():
+    """adaptation for cProfile"""
     import sys
     import scipy as sc
     import scipy.integrate as integrate

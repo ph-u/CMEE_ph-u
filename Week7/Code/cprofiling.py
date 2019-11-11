@@ -17,7 +17,7 @@ __version__="0.0.1"
 __license__="None"
 
 ## profiling using bash <https://stackoverflow.com/questions/582336/how-can-you-profile-a-python-script>
-## profiling using python3 <>
+## profiling using python3 <https://stackoverflow.com/questions/582336/how-can-you-profile-a-python-script>
 import cProfile
 
 ## self-recognition <https://stackoverflow.com/questions/50499/how-do-i-get-the-path-and-name-of-the-file-that-is-currently-executing>
