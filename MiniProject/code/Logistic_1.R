@@ -59,5 +59,5 @@ func_buc<-function(N0=as.numeric(a.1[20,2]),
   return(Nt)}
 
 ## can't run model because data is too good? <https://stats.stackexchange.com/questions/13053/singular-gradient-error-in-nls-with-correct-starting-values>
-## can;t run model because models are too board / too specific? <https://stackoverflow.com/questions/35409099/r-minpack-lmnls-lm-failed-with-good-results>
-nlsLM(Popn_Change ~ func_log0(t=a.0$Time.hr), data = a.0, start = list(N0=as.numeric(a.1[20,2]),K=as.numeric(a.1[22,2]),r=r.m))
+## can't run model because models are too board / too specific? <https://stackoverflow.com/questions/35409099/r-minpack-lmnls-lm-failed-with-good-results>
+nlsLM(Popn_Change ~ func_log0(t=a.0$Time.hr), data = a.0, start = list(N0=as.numeric(a.1[20,2]),K=as.numeric(a.1[21,2]),r=r.m))
