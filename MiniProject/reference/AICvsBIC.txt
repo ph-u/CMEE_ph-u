@@ -2,8 +2,6 @@ autocite	main content
 acquah2010comparison	B>A: in large (n>50) sample sizes, small variance (sd<3); parameter effect: var > n
 aho2014model	A: asymptotic efficiency, on multiple inaccurate models, allow complex good models, for predictive models, imprecise modeling; B: consistency, on developed models, prefer simple parameters, for hypothesis testing, precisely-specified models
 kuha2004aic	A>B: more stable performance in sparse data; B>A: ^n; similar results on selecting "true model" / "better prediction"
-penny2012comparing
-strutz2010data
-vrieze2012model
+vrieze2012model	when ^n, type-1 error of AIC>0 vs BIC=0; B assumptions: 1.  true model under consideration, dimension fixed as N grows; number of parameters in true model is finite (Nishii, 1984; Shibata, 1983; Shao, 1997); A: select general case of the true model (Shao, 1997); B>A: existing fixed, finite dimensional try model; A>B: try model too complex to estimate parametrically (Shao, 1997)
 wang2006comparison
 yang2005can
