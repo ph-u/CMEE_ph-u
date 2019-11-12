@@ -4,7 +4,7 @@
 # Script: LV1.py
 # Desc: Consumer-Resource cycle plotting
 # Input: python3 LV1.py
-# Output: two graphical outputs
+# Output: two graphical outputs in `results` subdirectory
 # Arguments: 0
 # Date: Nov 2019
 
@@ -16,12 +16,12 @@ __author__="PMH"
 __version__="0.0.1"
 __license__="None"
 
+import scipy as sc
+import scipy.integrate as integrate
+import matplotlib.pylab as p
+
 def LV():
     """adaptation for cProfile"""
-    import scipy as sc
-    import scipy.integrate as integrate
-    import matplotlib.pylab as p
-
     ## function
     def dCR_dt(pops, t=0):
         """Lotka-Volterra model"""
