@@ -21,6 +21,8 @@ pred.vb<-predict(alb.vb, newdata = list(age=ages))*scale
 
 plot(alb$age, alb$wt, xlab = "age (days)", ylab = "weight (g)", xlim = c(0,100));lines(ages, pred.lin, col=2, lwd=2);lines(ages, pred.log, col=3, lwd=2);lines(ages, pred.vb, col=4, lwd=2);legend("topleft", legend = c("linear", "logistic", "Von Bert"), lwd = 2, lty = 1, col = 2:4)
 
+# ggplot()+theme_bw()+geom_point(aes(x=alb$age, y=alb$wt))+geom_line(aes(y=pred.lin, x=ages, colour="red"))+geom_line(aes(y=pred.log, x=ages, colour="green"))+geom_line(aes(y=pred.vb, x=ages, colour="blue"))+xlab("age.days")+ylab("weight.g")+scale_colour_manual(name="type", values = c("red","green","blue"), labels=c("linear", "logistic", "Von Bert")) ## ggplot2 version
+
 par(mfrow=c(3,1), bty="n")
 plot(alb$age, resid(alb.lin), main = "LM resids", xlim = c(0,100))
 plot(alb$age, resid(alb.log), main = "Logistic resids", xlim = c(0,100))

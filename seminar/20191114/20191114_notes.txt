@@ -1,0 +1,21 @@
+50% global population at risk of dengue
+spatial expansion from coastal to inland
+climate, vector population, human society
+other mechanisms leading to outbreaks `.`no special patterns with severe dengue cases
+mosquito abundance highly seasonal: June to early Oct
+sensitivity analysis on model -- combining two mosquito spp not affecting result much
+integrated modelling approach: mechanistic + analytical (generalized additive model, GAM)
+one month lag between climate & mosquito conditions (weather-abundance correlation)
+spatial heterogeneity in ppt-abundance association
+susceptical-infected-recovered (SIR) epidemic model
+15d/month as mosquito abundance affecting threshold
+epidemic season 4-5 months, end at Sept-Oct
+two considering factors: mosquito abundance, per mosquito vector efficiency -- which is dominant? (later one -> transgenetic approach?)
+large dispersion in mosquito abundance
+estimated population in model `.` observation site changes, observed data less accurate than estimated ones
+mosquito abundance as factor to analysis works
+backward modelling, use data for callibration of model
+simple SIR model `.`need more data for callibration of complex ones
+human behaviour (exposure) might also be a contributing factor
+spline function
+local case drive by climate conditions, imported cases not -- update model by considering imported cases
