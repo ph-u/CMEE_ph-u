@@ -40,7 +40,7 @@ func_gom<-function(N0=as.numeric(a.1[19,2]),
                    r=r.m, t,
                    ld=r.x){
   A=log(K/N0)
-  Nt=exp(A*exp(-exp(r*exp(1)/A*(ld-t)+1)))
+  Nt=10^(A*exp(-exp(r*exp(1)/A*(ld-t)+1))*2)
   return(Nt)}
 a.0$gom<-func_gom(t=a.0$Time.hr)
 

@@ -29,10 +29,10 @@ func_log0<-function(N0, K, r, t){
 func_gom<-function(N0, K, r, t, ld){
   ## modified Gompertz model, initial 
   A=log(K/N0)
-  Nt=A*exp(-exp(r*exp(1)/A*(ld-t)+1))
+  Nt=10^(A*exp(-exp(r*exp(1)/A*(ld-t)+1))*2)
   return(Nt)}
 
-func_bar<-function(N0, K, r, t, tlag=max(a.0[which(a.0$cluster==1),3])){
+func_bar<-function(N0, K, r, t, tlag){
   ## Baranyi model
   h0=1/(exp(tlag*r)-1)
   At=t+1/r*log((exp(-r*t)+h0)/(1+h0))
@@ -55,10 +55,13 @@ func_buc<-function(N0=as.numeric(a.1[20,2]),
 nls_log0<-nlsLM(Popn_Change ~ func_log0(N0, K, r, t=a.0$Time.hr), data = a.0, start = list(N0=as.numeric(a.1[20,2]),K=as.numeric(a.1[21,2]),r=r.m), lower = c(min(a.0[which(a.0[,5]==1),4]),min(a.0[which(a.0[,5]==3),4]),r.m-1), upper = c(max(a.0[which(a.0[,5]==1),4]),max(a.0[which(a.0[,5]==3),4]),r.m+1))
 
 nls_gom<-nlsLM(Popn_Change ~ func_gom(N0, K, r, t=a.0$Time.hr, ld), data = a.0, start = list(N0=as.numeric(a.1[20,2]),K=as.numeric(a.1[21,2]),r=r.m,ld=r.x), lower = c(min(a.0[which(a.0[,5]==1),4]),min(a.0[which(a.0[,5]==3),4]),r.m-1,r.x-1), upper = c(max(a.0[which(a.0[,5]==1),4]),max(a.0[which(a.0[,5]==3),4]),r.m+1,r.x+1))
-## tests
-for(i in 1:length(a.0[,3])){j<-a.0[i,3];print(paste(i,j,func_gom(N0=as.numeric(a.1[20,2]),K=as.numeric(a.1[21,2]),r=r.m, t=a.0[j,3],ld=r.x)))};rm(i,j)
-plot(func_gom(N0=as.numeric(a.1[20,2]),K=as.numeric(a.1[21,2]),r=r.m,ld=r.x, t=a.0[,3])~a.0[,3])
 
-nls_bar<-nlsLM(Popn_Change ~ func_log0(N0, K, r, t=a.0$Time.hr), data = a.0, start = list(N0=as.numeric(a.1[20,2]),K=as.numeric(a.1[21,2]),r=r.m), lower = c(min(a.0[which(a.0[,5]==1),4]),min(a.0[which(a.0[,5]==3),4]),r.m-1), upper = c(max(a.0[which(a.0[,5]==1),4]),max(a.0[which(a.0[,5]==3),4]),r.m+1))
+nls_bar<-nlsLM(Popn_Change ~ func_bar(N0, K, r, t=a.0$Time.hr, tlag), data = a.0, start = list(N0=as.numeric(a.1[20,2]),K=as.numeric(a.1[21,2]),r=r.m, tlag=max(a.0[which(a.0$cluster==1),3])), lower = c(min(a.0[which(a.0[,5]==1),4]),min(a.0[which(a.0[,5]==3),4]),r.m-1, max(a.0[which(a.0$cluster==1),3])-mean(a.0[which(a.0$cluster==1),3])), upper = c(max(a.0[which(a.0[,5]==1),4]),max(a.0[which(a.0[,5]==3),4]),r.m+1, max(a.0[which(a.0$cluster==1),3])+mean(a.0[which(a.0$cluster==1),3])))
+{## tests
+  for(i in 1:length(a.0[,3])){
+    j<-a.0[i,3]
+    print(paste(i,j,func_bar(N0=as.numeric(a.1[20,2]),K=as.numeric(a.1[21,2]),r=r.m, t=a.0[j,3],tlag=max(a.0[which(a.0$cluster==1),3]))))};rm(i,j)
+  plot(func_bar(N0=as.numeric(a.1[20,2]),K=as.numeric(a.1[21,2]),r=r.m,tlag=max(a.0[which(a.0$cluster==1),3]), t=a.0[,3])~a.0[,3])
+}
 
 nls_buc<-nlsLM(Popn_Change ~ func_log0(N0, K, r, t=a.0$Time.hr), data = a.0, start = list(N0=as.numeric(a.1[20,2]),K=as.numeric(a.1[21,2]),r=r.m), lower = c(min(a.0[which(a.0[,5]==1),4]),min(a.0[which(a.0[,5]==3),4]),r.m-1), upper = c(max(a.0[which(a.0[,5]==1),4]),max(a.0[which(a.0[,5]==3),4]),r.m+1))
