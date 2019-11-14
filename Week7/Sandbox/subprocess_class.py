@@ -13,3 +13,5 @@ print(stdout.decode())
 p=subprocess.Popen(["python3","../../Week2/Code/boilerplate.py"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 stdout, stderr = p.communicate()
 print(stdout.decode())
+
+subprocess.os.path.join('directory','subdirectory','file')
