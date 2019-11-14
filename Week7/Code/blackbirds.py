@@ -1,3 +1,21 @@
+#!/bin/env python3
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: blackbirds.py
+# Desc: homework on blackbirds
+# Input: python3 blackbirds.py
+# Output: two graphical outputs in `results` subdirectory
+# Arguments: 0
+# Date: Nov 2019
+
+
+"""homework on blackbirds"""
+
+__appname__="blackbirds.py"
+__author__="PMH"
+__version__="0.0.1"
+__license__="None"
+
 import re
 
 # Read the file (using a different, more python 3 way, just for fun!)
