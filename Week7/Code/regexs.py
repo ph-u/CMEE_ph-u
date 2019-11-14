@@ -16,6 +16,8 @@ __author__="PMH"
 __version__="0.0.1"
 __license__="None"
 
+import re
+
 match = re.search(r'2', "it takes 2 to tango");match.group()
 match = re.search(r'\d', "it takes 2 to tango");match.group()
 match = re.search(r'\d.*', "it takes 2 to tango");match.group()
@@ -60,19 +62,7 @@ found_oaks = re.findall(r"Q[\w\s].*\s", f.read())
 found_oaks
 
 import urllib3
-
-## get unique values from a list <https://www.geeksforgeeks.org/python-get-unique-values-list/>
-def unique(list1): 
-    """get unique values"""
-    # intilize a null list 
-    unique_list = [] 
-      
-    # traverse for all elements 
-    for x in list1: 
-        # check if exists in unique_list or not 
-        if x not in unique_list: 
-            unique_list.append(x)
-    return unique_list
+import scipy as sc
 
 conn = urllib3.PoolManager() ## open a connection
 r = conn.request("Get", "https://www.imperial.ac.uk/silwood-park/academic-staff/")
@@ -85,7 +75,7 @@ mm=[]
 for match in regex.finditer(My_Data):
     mm.append(match.group())
 
-mm=unique(mm)
+mm=sc.unique(mm)
 mm.sort()
 for i in range(len(mm)):
     print(mm[i])
