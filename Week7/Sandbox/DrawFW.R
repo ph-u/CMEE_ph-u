@@ -41,8 +41,9 @@ Sizs<-sample(SizRan,MaxN,replace = T)
 Gn<-network(AdjL,Sps,vertex.attrnames = as.character(Sps)) ## links
 Gi<-graph.data.frame(AdjL)
 NodeSizs<-degree(Gi, mode = "all")*10
+Gi.1<-layout_in_circle(Gi, order = order(membership(cluster_optimal(Gi)))) ## circular network graph <https://igraph.org/r/doc/layout_in_circle.html>
 
 ## network plotting
 ## <https://programminghistorian.org/en/lessons/temporal-network-analysis-with-r>
-plot(Gi, mode="circle", displaylabels=T, vertex.size=NodeSizs)
+plot(Gi, layout=Gi.1, vertex.size=NodeSizs)
 plot(Gn, mode="circle", displaylabels=T) ## mode options <https://www.rdocumentation.org/packages/network/versions/1.13.0/topics/network.layout>
