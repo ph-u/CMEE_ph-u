@@ -16,3 +16,6 @@ __author__="PMH"
 __version__="0.0.1"
 __license__="None"
 
+import subprocess
+
+subprocess.Popen("Rscript fmr.R 2> ../results/fmr_err.Rout", shell=True).wait()
