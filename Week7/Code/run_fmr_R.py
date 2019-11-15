@@ -19,3 +19,6 @@ __license__="None"
 import subprocess
 
 subprocess.Popen("Rscript fmr.R 2> ../results/fmr_err.Rout", shell=True).wait()
+with open('../results/fmr_err.Rout', 'r') as f: text = f.read()
+if len(text) > 0: print("python3 announcement: unsuccessful run")
+else: print("python3 announcement: successful run")
