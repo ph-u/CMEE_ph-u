@@ -4,7 +4,7 @@
 # Script: blackbirds.py
 # Desc: homework on blackbirds
 # Input: python3 blackbirds.py
-# Output: two graphical outputs in `results` subdirectory
+# Output: terminal output
 # Arguments: 0
 # Date: Nov 2019
 

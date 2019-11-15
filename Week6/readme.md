@@ -30,6 +30,57 @@ Rscript GenomeDesc.R <csv>
 1. five analysis result `csv` outputs in `results` subdirectory; 2. two graphical plots in `result` subdirectory
 *****
 
+### coalescence.R
+
+#### Features
+
+classwork program based on killer whale data files
+
+#### Suggested input
+
+```
+Rscript coalescence.R
+```
+
+#### Output
+
+R terminal output
+*****
+
+### gecko.R
+
+#### Features
+
+classwork program based on gecko data files
+
+#### Suggested input
+
+```
+Rscript gecko.R
+```
+
+#### Output
+
+R terminal output
+*****
+
+### turtle.R
+
+#### Features
+
+classwork program based on turtle data files
+
+#### Suggested input
+
+```
+Rscript turtle.R
+```
+
+#### Output
+
+R terminal output
+*****
+
 ## Reference
 
 [https://docs.readme.com/docs/best-practices][01]  

@@ -4,7 +4,7 @@
 # Script: regexs.py
 # Desc: regular expression classwork
 # Input: python3 regexs.py
-# Output: none
+# Output: terminal output
 # Arguments: 0
 # Date: Nov 2019
 
