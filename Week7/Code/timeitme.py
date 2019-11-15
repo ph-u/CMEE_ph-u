@@ -1,9 +1,9 @@
 #!/bin/env python3
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
-# Script: timeit.py
+# Script: timeitme.py
 # Desc: timing trials
-# Input: python3 timeit.py
+# Input: python3 timeitme.py
 # Output: terminal output on timing within python shells
 # Arguments: 0
 # Date: Nov 2019
@@ -11,7 +11,7 @@
 
 """timing trials"""
 
-__appname__="timeit.py"
+__appname__="timeitme.py"
 __author__="PMH"
 __version__="0.0.1"
 __license__="None"
