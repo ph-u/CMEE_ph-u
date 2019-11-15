@@ -40,7 +40,7 @@ func_gom<-function(N0=as.numeric(a.1[19,2]),
                    r=r.m, t,
                    ld=r.x){
   A=log(K/N0)
-  Nt=10^(A*exp(-exp(r*exp(1)/A*(ld-t)+1))*2)
+  Nt=10^(A*exp(-exp(r*exp(1)/A*(ld-t)+1))*.47) ## mod: 10^(f(t)*.47)
   return(Nt)}
 a.0$gom<-func_gom(t=a.0$Time.hr)
 
@@ -50,7 +50,7 @@ func_bar<-function(N0=as.numeric(a.1[19,2]),
                    tlag=max(a.0[which(a.0$cluster==1),3])){
   h0=1/(exp(tlag*r)-1)
   At=t+1/r*log((exp(-r*t)+h0)/(1+h0))
-  Nt=N0+r*At-log(1+(exp(r*At)-1)/exp(K-N0))
+  Nt=exp(N0+r*At-log(1+(exp(r*At)-1)/exp(K-N0)))/5 ## mod: exp(f(t))/5
   return(Nt)}
 a.0$bar<-func_bar(t=a.0$Time.hr)
 
@@ -82,3 +82,4 @@ ggplot()+theme_bw()+
   scale_y_continuous(labels = scientific,trans = "log10",limits = c(min(abs(a.0$Popn_Change)-.5),max(abs(a.0$Popn_Change))+.5),oob = rescale_none)+ ## <https://stackoverflow.com/questions/10365167/geom-bar-bars-not-displaying-when-specifying-ylim>
   xlab("Time (hr)")+ylab("log population change")
 dev.off()
+
