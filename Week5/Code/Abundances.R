@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: Abundances.R
+# Desc: classwork for Abundances section
+# Input: Rscript Abundances.R
+# Output: R terminal output
+# Arguments: 0
+# Date: Nov 2019
+
 library(ggplot2)
 library(minpack.lm)
 

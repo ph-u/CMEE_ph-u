@@ -1,3 +1,13 @@
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: AllometricTraitsScaling.R
+# Desc: classwork for Allometric Traits section
+# Input: Rscript AllometricTraitsScaling.R
+# Output: R terminal output
+# Arguments: 0
+# Date: Nov 2019
+
 library(repr)
 #options(repr.plot.width = 4, repr.plot.height = 4) ## change plot sizes (in cm) in Jupyter notebook
 library(minpack.lm)
