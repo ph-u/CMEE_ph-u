@@ -16,6 +16,3 @@ Min_Population Change	0.16
 Median_Population Change	6.55
 3rdQt_Population Change	7.47
 Max_Population Change	8.86
-Population change Mean of cluster N0	1.86
-Population change Mean of cluster log	287.02
-Population change Mean of cluster K	2131.71
