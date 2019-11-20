@@ -67,3 +67,5 @@ for(i in 1:dim(a.1)[1]){
     geom_point(aes(x=a.p$RDen, y=a.p$N_TraitValue), shape=4, colour="red"))
   dev.off()
 };rm(i)
+
+## function
