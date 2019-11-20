@@ -16,6 +16,10 @@ library(scales)
 library(minpack.lm)
 library(reshape2)
 
+## background settings
+cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#e79f00", "#9ad0f3", "#F0E442", "#999999", "#cccccc", "#6633ff", "#00FFCC", "#0066cc")## initial 8 colour (color-blinded)
+a.pl<-c("Verhulst (classical)","modified Gompertz","Baranyi","Buchanan")
+
 ## raw input & data cleaning
 a<-read.csv("../data/LogisticGrowthData.csv", header = T, stringsAsFactors = F)[,-1]
 a<-a[,c(3,6:9,1,2,5)]
@@ -61,7 +65,7 @@ for(i in 1:dim(a.0)[1]){
                  a$SourceRef==a.0$SourceRef[i] &
                  a$Popn_DataUnit==a.0$Popn_DataUnit[i]),]
   if(i<10){i.1<-"00"}else if(i<100){i.1<-"0"}else{i.1<-""}
-  pdf(paste0("../sandbox/Log_PreGraph/",i.1,i,".pdf"))
+  pdf(paste0("Log_PreGraph/",i.1,i,".pdf"))
   print(ggplot()+theme_bw()+
           xlab("Time (hr)")+ylab(paste0("Population Change (",unique(a.p$Popn_DataUnit),")"))+
           ggtitle(paste0(a.0$Temp.C[i],"_",a.0$clade[i],"_",a.0$substrate[i],"_",a.0$replicate[i],"_",a.0$Popn_DataUnit[i],"_",dim(a.p)[1]))+
@@ -183,7 +187,7 @@ for(i in 1:dim(a.0)[1]){
       th.4df<-rbind(th.4df,c(unname(coef(th.4)),deviance(th.4),th.4$convInfo$finIter,th.4$convInfo$finTol,AIC(th.4)))
     }
     
-    if(ii>1e3){break}
+    if(ii>1e1){break}
     if(ii%%1e3==0){cat(paste0(ii/1e3,"K trials\n"))}
     ii<-ii+1
   };rm(ii);colnames(th.1df)=c("N0","K","r","SS","iter","tol","AIC");colnames(th.2df)=colnames(th.3df)=colnames(th.4df)=c("N0","K","r","tlag","SS","iter","tol","AIC")
@@ -194,26 +198,32 @@ for(i in 1:dim(a.0)[1]){
   th.3<-try(as.numeric(th.3df[which(th.3df$AIC==min(th.3df$AIC)),]),silent = T)
   th.4<-try(as.numeric(th.4df[which(th.4df$AIC==min(th.4df$AIC)),]),silent = T)
   a.p<-data.frame("Time.hr"=a.p$Time.hr,"Popn_Change"=a.p$Popn_Change,"cst"=a.p$cst)
-  a.p$log0<-try(func_log0(N0=th.1[1], K=th.1[2], r=th.1[3], t=a.p$Time.hr))
-  a.p$gom<-try(func_gom(N0=th.2[1], K=th.2[2], r=th.2[3], t=a.p$Time.hr, ld=th.2[4]))
-  a.p$bar<-try(func_bar(N0=th.3[1], K=th.3[2], r=th.3[3], t=a.p$Time.hr, tlag=th.3[4]))
-  a.p$buc<-try(func_buc(N0=th.4[1], K=th.4[2], r=th.4[3], t=a.p$Time.hr, tlag=th.4[4], cst = a.p$cst))
+  
+  ### input calculated values if they exist
+  a.pp<-try(func_log0(N0=th.1[1], K=th.1[2], r=th.1[3], t=a.p$Time.hr), silent = T)
+  if(isTRUE(class(a.pp))=="try-error"){a.p$log0<-NA}else{a.p$log0<-try(func_log0(N0=th.1[1], K=th.1[2], r=th.1[3], t=a.p$Time.hr), silent = T)}
+  a.pp<-try(func_gom(N0=th.2[1], K=th.2[2], r=th.2[3], t=a.p$Time.hr, ld=th.2[4]), silent = T)
+  if(isTRUE(class(a.pp))=="try-error"){a.p$gom<-NA}else{a.p$gom<-try(func_gom(N0=th.2[1], K=th.2[2], r=th.2[3], t=a.p$Time.hr, ld=th.2[4]), silent = T)}
+  a.pp<-try(func_bar(N0=th.3[1], K=th.3[2], r=th.3[3], t=a.p$Time.hr, tlag=th.3[4]), silent = T)
+  if(isTRUE(class(a.pp))=="try-error"){a.p$bar<-NA}else{a.p$bar<-try(func_bar(N0=th.3[1], K=th.3[2], r=th.3[3], t=a.p$Time.hr, tlag=th.3[4]), silent = T)}
+  a.pp<-try(func_buc(N0=th.4[1], K=th.4[2], r=th.4[3], t=a.p$Time.hr, tlag=th.4[4], cst = a.p$cst), silent = T)
+  if(isTRUE(class(a.pp))=="try-error"){a.p$buc<-NA}else{a.p$buc<-try(func_buc(N0=th.4[1], K=th.4[2], r=th.4[3], t=a.p$Time.hr, tlag=th.4[4], cst = a.p$cst), silent = T)}
+
+  ### mod for plotting
   a.p<-melt(a.p, id=c("Time.hr","Popn_Change","cst"), variable.name = "Model", value.name = "value")
   
   ### plotting
-  cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#e79f00", "#9ad0f3", "#F0E442", "#999999", "#cccccc", "#6633ff", "#00FFCC", "#0066cc")## initial 8 colour (color-blinded)
-  a.pl<-c("Verhulst (classical)","modified Gompertz","Baranyi","Buchanan")
   a.pla<-c(th.1[7],th.2[8],th.3[8],th.4[8])
   
     if(i<10){i.1<-"00"}else if(i<100){i.1<-"0"}else{i.1<-""}
-  pdf(paste0("../sandbox/",i.1,i,".pdf"))
-  ggplot()+theme_bw()+
+  pdf(paste0("Log_PlotGraph/",i.1,i,".pdf"))
+  print(ggplot()+theme_bw()+
     xlab("Time (hr)")+ylab("log Population Change")+
     scale_color_manual(name="Model", labels=a.pl, values = cbbPalette[-c(1,4,5)])+
     scale_linetype_discrete(name="Model", labels=a.pl)+
     geom_point(aes(x=a.p$Time.hr, y=a.p$Popn_Change), shape=4)+
     geom_line(aes(x=a.p$Time.hr, y=a.p$value, linetype=a.p$Model, colour=a.p$Model))+
-    geom_label(aes(label=paste0("lowest AIC model:\n",a.pl[which(a.pla==min(a.pla, na.rm = T))]), x=mean(a.p$Time.hr)*1.4, y=mean(log(a.p$Popn_Change))*.3))+
-    scale_y_continuous(labels = scientific,trans = "log10",oob = rescale_none)
+    geom_label(aes(label=paste0("lowest AIC model:\n",a.pl[which(a.pla==min(a.pla, na.rm = T))]), x=mean(a.p$Time.hr)*1.4, y=abs(mean(log(a.p$Popn_Change))*.3)))+
+    scale_y_continuous(labels = scientific,trans = "log10",oob = rescale_none))
   dev.off()
 };rm(i)
