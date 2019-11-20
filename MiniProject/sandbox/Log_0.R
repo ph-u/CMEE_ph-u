@@ -212,10 +212,13 @@ for(i in 1:dim(a.0)[1]){
   ### mod for plotting
   a.p<-melt(a.p, id=c("Time.hr","Popn_Change","cst"), variable.name = "Model", value.name = "value")
   
+  ### output plot data
+  if(i<10){i.1<-"00"}else if(i<100){i.1<-"0"}else{i.1<-""}
+  write.csv(a.p,paste0("../data/Log_Plot_Data/",i.1,i,".csv"),quote=F, row.names=F)
+  
   ### plotting
   a.pla<-c(th.1[7],th.2[8],th.3[8],th.4[8])
   
-    if(i<10){i.1<-"00"}else if(i<100){i.1<-"0"}else{i.1<-""}
   pdf(paste0("Log_PlotGraph/",i.1,i,".pdf"))
   print(ggplot()+theme_bw()+
     xlab("Time (hr)")+ylab("log Population Change")+

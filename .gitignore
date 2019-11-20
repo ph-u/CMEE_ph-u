@@ -10,3 +10,4 @@ readme_final.md
 *-concordance.tex
 *.log
 *.synctex.gz
+.Rapp.history
