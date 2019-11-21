@@ -86,8 +86,8 @@ f_cu<-function(x,a){
 }
 
 ## record function-testing result
-t_red<-as.data.frame(matrix(nrow = dim(a.1)[1], ncol = 4))
-colnames(t_red)=c("iter","hog","qua","cub")
+t_red<-as.data.frame(matrix(nrow = dim(a.1)[1], ncol = 3))
+colnames(t_red)=c("hog","qua","cub")
 
 ## treating every data subsets
 for(i in 1:dim(a.1)[1]){
@@ -177,8 +177,8 @@ for(i in 1:dim(a.1)[1]){
       t_rea<-t_rea[which(t_rea$AIC==min(t_rea$AIC, na.rm = T)),]
     }
   
-  ## screen print & record
-  t_red[i,]<-c(i,dim(t_rec)[1],
+  ## record & screen print
+  t_red[i,]<-c(dim(t_rec)[1],
                if(dim(t_reb)[1]==1 & is.na(t_reb$AIC)==T){NA}else{dim(t_reb)[1]},
                if(dim(t_rea)[1]==1 & is.na(t_rea$AIC)==T){NA}else{dim(t_rea)[1]})
   print(paste0(i,"; hog ",dim(t_rec)[1],
