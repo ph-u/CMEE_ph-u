@@ -87,6 +87,7 @@ f_cu<-function(x,a){
 
 ## record function-testing result
 t_red<-rep(NA,dim(a.1)[1])
+t_bes<-matrix(nrow = dim(a.1)[1], ncol = 3)
 
 ## treating every data subsets
 for(i in 1:dim(a.1)[1]){
@@ -143,5 +144,8 @@ for(i in 1:dim(a.1)[1]){
            ifelse(is.na(f_qq2[length(f_qq2)]),NA,round(as.numeric(f_qq2[length(f_qq2)]),2)),
            ifelse(is.na(f_qq3[length(f_qq3)]),NA,round(as.numeric(f_qq3[length(f_qq3)]),2))))
   cat(paste0("Dataset ",i," Best model: ",paste(f_pri[which(f_pri$AIC==min(f_pri$AIC, na.rm = T)),1], collapse = " ; "),"\n"))
+  t_bes[i,1]<-ifelse(!is.na(f_pri[1,2]),ifelse(f_pri[1,2]==min(f_pri$AIC, na.rm = T),1,0),0)
+  t_bes[i,2]<-ifelse(!is.na(f_pri[1,2]),ifelse(f_pri[2,2]==min(f_pri$AIC, na.rm = T),1,0),0)
+  t_bes[i,3]<-ifelse(!is.na(f_pri[1,2]),ifelse(f_pri[3,2]==min(f_pri$AIC, na.rm = T),1,0),0)
   # if(i%%50==0){cat(paste0(i,", "))}
 };rm(i)
