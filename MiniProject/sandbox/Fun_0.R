@@ -12,6 +12,12 @@
 
 ## lib
 library(ggplot2)
+library(scales)
+library(minpack.lm)
+library(reshape2)
+
+## background settings
+cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73"    , "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#e79f00", "    #9ad0f3", "#F0E442", "#999999", "#cccccc", "#6633ff", "#00    FFCC", "#0066cc")
 
 ## data in
 a.0<-read.csv("../data/CRat.csv", header = T, stringsAsFactors = F)
@@ -61,11 +67,69 @@ for(i in 1:dim(a.1)[1]){
   if(i<10){i.1<-"00"}else if(i<100){i.1<-"0"}else{i.1<-""}
   pdf(paste0("../sandbox/Fun_PreGraph/",i.1,i,".pdf"))
   print(ggplot()+theme_bw()+
-    ylab("Consumer N Traait Value")+xlab(paste0("Resource Density (",unique(a.p$RDenUnit),")"))+
-    ggtitle(paste0(a.1$id[i],"_",a.1$CTaxa[i],"_\n",a.1$RTaxa[i],"_",dim(a.p)[1]))+
-    geom_text(aes(label=a.1$cite[i],x=max(a.p$RDen)-min(a.p$RDen), y=max(a.p$N_TraitValue)-min(a.p$N_TraitValue)), size=2)+
-    geom_point(aes(x=a.p$RDen, y=a.p$N_TraitValue), shape=4, colour="red"))
+          ylab("Consumer N Trait Value")+xlab(paste0("Resource Density (",unique(a.p$RDenUnit),")"))+
+          ggtitle(paste0(a.1$id[i],"_",a.1$CTaxa[i],"_\n",a.1$RTaxa[i],"_",dim(a.p)[1]))+
+          geom_text(aes(label=a.1$cite[i],x=max(a.p$RDen)-min(a.p$RDen), y=max(a.p$N_TraitValue)-min(a.p$N_TraitValue)), size=2)+
+          geom_point(aes(x=a.p$RDen, y=a.p$N_TraitValue), shape=4, colour="red"))
   dev.off()
 };rm(i)
 
 ## function
+f_hog<-function(x,a,h,q){
+  return(a*x^(q+1)/(1+h*a*x^(q+1)))
+}
+f_qu<-function(x,a){
+  return(a[1]+a[2]*x+a[3]*x^2)
+}
+f_cu<-function(x,a){
+  return(a[1]+a[2]*x+a[3]*x^2+a[4]*x^3)
+}
+
+## treating every data subsets
+for(i in 1:dim(a.1)[1]){
+  a.p<-a.0[which(a.0$id==a.1$id[i] &
+                   a.0$cite==a.1$cite[i] &
+                   a.0$CTaxa==a.1$CTaxa[i] &
+                   a.0$RTaxa==a.1$RTaxa[i] &
+                   a.0$RDenUnit==a.1$RDenUnit[i]),]
+  
+  f_qua<-unname(coef(lm(a.p$N_TraitValue~poly(a.p$RDen,2))))
+  f_cub<-unname(coef(lm(a.p$N_TraitValue~poly(a.p$RDen,3))))
+  
+  v.h<-max(a.p$N_TraitValue) ## h.max
+  ### screen for a.max
+  a.p0<-a.p;i.1<-i.2<-1;a.lmM<-rep(0,2);repeat{
+    if((range(a.p$RDen)[2]-range(a.p$RDen)[1]) < 5 & i.2 < 2){i.2<-2;a.p<-a.p1}
+    if((range(a.p$RDen)[2]-range(a.p$RDen)[1]) < 5 & i.2 == 2){a.p<-a.p0;rm(a.p0, a.p1, i.1, i.2, a.lm);break}
+    a.lm<-unname(coef(lm(a.p$N_TraitValue~a.p$RDen)))
+    if(a.lm[2] > a.lmM[2]){a.lmM<-a.lm;a.p1<-a.p}
+    a.p<-a.p[-which(a.p$RDen > max(a.p$RDen)*(1-.05)),] ## chop off top 5% x-axis
+  }
+  v.q<-runif(1, min = -10, max = 10)
+  iter<-1e2
+  t_rec<-data.frame("a"=rnorm(iter, mean = a.lmM[2], sd=1),
+                    "h"=rnorm(iter, mean = v.h, sd=1),
+                    "q"=rnorm(iter, mean = 0, sd=2),
+                    "Model"=rep("generalized Holling",iter),
+                    "AIC"=rep(NA,iter))
+  t_reb<-data.frame("a"=rnorm(iter, mean = f_qua[1], sd=1),
+                    "b"=rnorm(iter, mean = f_qua[2], sd=1),
+                    "c"=rnorm(iter, mean = f_qua[3], sd=1),
+                    "Model"=rep("quadratic",iter),
+                    "AIC"=rep(NA,iter))
+  t_rea<-data.frame("a"=rnorm(iter, mean = f_cub[1], sd=1),
+                    "b"=rnorm(iter, mean = f_cub[2], sd=1),
+                    "c"=rnorm(iter, mean = f_cub[3], sd=1),
+                    "d"=rnorm(iter, mean = f_cub[4], sd=1),
+                    "Model"=rep("cubic",iter),
+                    "AIC"=rep(NA,iter))
+  i.1<-1;repeat{
+    t_hog<-try(nlsLM(N_TraitValue~f_hog(RDen,a,h,q), data=a.p, start = list(a=t_rec[i.1,1], h=t_rec[i.1,2], q=t_rec[i.1,3])), silent = T)
+    if(class(t_hog)!="try-error"){t_rec$AIC[i.1]<-AIC(t_hog)}
+    
+    t_qua<-try(nlsLM(N_TraitValue~f_qu(x=RDen,a), data = a.p, start = list(a=as.numeric(t_reb[i.1,1:3]))))
+    
+    if(i.1==iter){break}else{i.1<-i.1+1}
+  }
+  t_rec<-t_rec[which(t_rec$AIC==min(t_rec$AIC, na.rm = T)),] #t_rec<-t_rec[-which(is.na(t_rec$AIC)),]
+};rm(i)
