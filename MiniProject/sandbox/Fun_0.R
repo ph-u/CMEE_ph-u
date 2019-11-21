@@ -85,6 +85,10 @@ f_cu<-function(x,a){
   return(a[1]+a[2]*x+a[3]*x^2+a[4]*x^3)
 }
 
+## record function-testing result
+t_red<-as.data.frame(matrix(nrow = dim(a.1)[1], ncol = 4))
+colnames(t_red)=c("iter","hog","qua","cub")
+
 ## treating every data subsets
 for(i in 1:dim(a.1)[1]){
   a.p<-a.0[which(a.0$id==a.1$id[i] &
@@ -93,43 +97,91 @@ for(i in 1:dim(a.1)[1]){
                    a.0$RTaxa==a.1$RTaxa[i] &
                    a.0$RDenUnit==a.1$RDenUnit[i]),]
   
-  f_qua<-unname(coef(lm(a.p$N_TraitValue~poly(a.p$RDen,2))))
-  f_cub<-unname(coef(lm(a.p$N_TraitValue~poly(a.p$RDen,3))))
+  f_qua<-try(unname(coef(lm(a.p$N_TraitValue~poly(a.p$RDen,2)))),silent = T)
+  f_cub<-try(unname(coef(lm(a.p$N_TraitValue~poly(a.p$RDen,3)))),silent = T)
   
   v.h<-max(a.p$N_TraitValue) ## h.max
   ### screen for a.max
-  a.p0<-a.p;i.1<-i.2<-1;a.lmM<-rep(0,2);repeat{
+  a.p0<-a.p1<-a.p;i.1<-i.2<-1;a.lmM<-rep(0,2);repeat{
     if((range(a.p$RDen)[2]-range(a.p$RDen)[1]) < 5 & i.2 < 2){i.2<-2;a.p<-a.p1}
     if((range(a.p$RDen)[2]-range(a.p$RDen)[1]) < 5 & i.2 == 2){a.p<-a.p0;rm(a.p0, a.p1, i.1, i.2, a.lm);break}
     a.lm<-unname(coef(lm(a.p$N_TraitValue~a.p$RDen)))
     if(a.lm[2] > a.lmM[2]){a.lmM<-a.lm;a.p1<-a.p}
     a.p<-a.p[-which(a.p$RDen > max(a.p$RDen)*(1-.05)),] ## chop off top 5% x-axis
   }
-  v.q<-runif(1, min = -10, max = 10)
+  v.q<-runif(1, min = -10, max = 10) ## sample q from uniform distribution
   iter<-1e2
   t_rec<-data.frame("a"=rnorm(iter, mean = a.lmM[2], sd=1),
                     "h"=rnorm(iter, mean = v.h, sd=1),
                     "q"=rnorm(iter, mean = 0, sd=2),
                     "Model"=rep("generalized Holling",iter),
                     "AIC"=rep(NA,iter))
-  t_reb<-data.frame("a"=rnorm(iter, mean = f_qua[1], sd=1),
-                    "b"=rnorm(iter, mean = f_qua[2], sd=1),
-                    "c"=rnorm(iter, mean = f_qua[3], sd=1),
-                    "Model"=rep("quadratic",iter),
-                    "AIC"=rep(NA,iter))
-  t_rea<-data.frame("a"=rnorm(iter, mean = f_cub[1], sd=1),
-                    "b"=rnorm(iter, mean = f_cub[2], sd=1),
-                    "c"=rnorm(iter, mean = f_cub[3], sd=1),
-                    "d"=rnorm(iter, mean = f_cub[4], sd=1),
-                    "Model"=rep("cubic",iter),
-                    "AIC"=rep(NA,iter))
+  if(class(f_qua)=="try-error"){
+    t_reb<-data.frame("a"=rep(NA,iter),
+                      "b"=rep(NA,iter),
+                      "c"=rep(NA,iter),
+                      "Model"=rep("quadratic",iter),
+                      "AIC"=rep(NA,iter))
+  }else{
+    t_reb<-data.frame("a"=rnorm(iter, mean = f_qua[1], sd=1),
+                      "b"=rnorm(iter, mean = f_qua[2], sd=1),
+                      "c"=rnorm(iter, mean = f_qua[3], sd=1),
+                      "Model"=rep("quadratic",iter),
+                      "AIC"=rep(NA,iter))
+  }
+  if(class(f_cub)=="try-error"){
+    t_rea<-data.frame("a"=rep(NA,iter),
+                      "b"=rep(NA,iter),
+                      "c"=rep(NA,iter),
+                      "d"=rep(NA,iter),
+                      "Model"=rep("cubic",iter),
+                      "AIC"=rep(NA,iter))
+  }else{
+    t_rea<-data.frame("a"=rnorm(iter, mean = f_cub[1], sd=1),
+                      "b"=rnorm(iter, mean = f_cub[2], sd=1),
+                      "c"=rnorm(iter, mean = f_cub[3], sd=1),
+                      "d"=rnorm(iter, mean = f_cub[4], sd=1),
+                      "Model"=rep("cubic",iter),
+                      "AIC"=rep(NA,iter))
+  }
+  
   i.1<-1;repeat{
     t_hog<-try(nlsLM(N_TraitValue~f_hog(RDen,a,h,q), data=a.p, start = list(a=t_rec[i.1,1], h=t_rec[i.1,2], q=t_rec[i.1,3])), silent = T)
     if(class(t_hog)!="try-error"){t_rec$AIC[i.1]<-AIC(t_hog)}
     
-    t_qua<-try(nlsLM(N_TraitValue~f_qu(x=RDen,a), data = a.p, start = list(a=as.numeric(t_reb[i.1,1:3]))))
+    if(class(f_qua)!="try-error"){
+      aa<-as.numeric(t_reb[i.1,1:3])
+      t_qua<-try(nlsLM(N_TraitValue~f_qu(x=RDen,a), data = a.p, start = list(a=aa)), silent = T)
+      if(class(t_qua)!="try-error"){t_reb$AIC[i.1]<-AIC(t_qua)}
+    }
+    
+    if(class(f_qua)!="try-error"){
+      aa<-as.numeric(t_rea[i.1,1:4])
+      t_cub<-try(nlsLM(N_TraitValue~f_cu(x=RDen,a), data = a.p, start = list(a=aa)),silent = T)
+      if(class(t_cub)!="try-error"){t_rea$AIC[i.1]<-AIC(t_cub)}
+    }
     
     if(i.1==iter){break}else{i.1<-i.1+1}
   }
+  
   t_rec<-t_rec[which(t_rec$AIC==min(t_rec$AIC, na.rm = T)),] #t_rec<-t_rec[-which(is.na(t_rec$AIC)),]
+  
+  if(length(is.na(t_reb$AIC))==dim(t_reb)[1]){
+    t_reb<-t_reb[1,]}else{
+      t_reb<-t_reb[which(t_reb$AIC==min(t_reb$AIC, na.rm = T)),]
+    }
+  
+  
+  if(length(is.na(t_rea$AIC))==dim(t_rea)[1]){
+    t_rea<-t_rea[1,]}else{
+      t_rea<-t_rea[which(t_rea$AIC==min(t_rea$AIC, na.rm = T)),]
+    }
+  
+  ## screen print & record
+  t_red[i,]<-c(i,dim(t_rec)[1],
+               if(dim(t_reb)[1]==1 & is.na(t_reb$AIC)==T){NA}else{dim(t_reb)[1]},
+               if(dim(t_rea)[1]==1 & is.na(t_rea$AIC)==T){NA}else{dim(t_rea)[1]})
+  print(paste0(i,"; hog ",dim(t_rec)[1],
+               "; qua ",if(dim(t_reb)[1]==1 & is.na(t_reb$AIC)==T){NA}else{dim(t_reb)[1]},
+               "; cub ",if(dim(t_rea)[1]==1 & is.na(t_rea$AIC)==T){NA}else{dim(t_rea)[1]}))
 };rm(i)
