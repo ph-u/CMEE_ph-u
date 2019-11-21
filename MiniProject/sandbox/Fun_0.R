@@ -21,12 +21,12 @@ cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73"    , "#F0E442", "#007
 
 ## data in
 a.0<-read.csv("../data/CRat.csv", header = T, stringsAsFactors = F)
-colnames(a.0) ## checking
+# colnames(a.0) ## checking
 
 ## col select (release RAM)
 a.0<-data.frame(a.0$ID, a.0$Citation, a.0$ConTaxa, a.0$ResTaxa, a.0$N_TraitValue, a.0$ResDensity, a.0$ResDensityUnit, stringsAsFactors = F)
 colnames(a.0)=c("id", "cite", "CTaxa", "RTaxa", "N_TraitValue", "RDen", "RDenUnit")
-for(i in 1:dim(a.0)[2]){print(paste(i,length(unique(a.0[,i]))))};rm(i) ## checking usefulness of each column for selection
+# for(i in 1:dim(a.0)[2]){print(paste(i,length(unique(a.0[,i]))))};rm(i) ## checking usefulness of each column for selection
 for(i in 1:dim(a.0)[2]){ ## substitute NA for later grep rows out
   a.0[,i]<-ifelse(is.na(a.0[,i])==T,"sub",a.0[,i])
 };rm(i)
@@ -138,6 +138,10 @@ for(i in 1:dim(a.1)[1]){
                        t_rec$AIC==min(t_rec$AIC, na.rm = T)),]
   
   ## record & screen print
-  t_red[i]<-dim(t_rec)[1]
-  if(i%%50==0){cat(paste0(i,", "))}
+  f_pri<-data.frame("model"=c(as.character(t_rec[1,dim(t_rec)[2]-1]),f_qq2[length(f_qq2)-1],f_qq3[length(f_qq3)-1]),
+                    "AIC"=c(round(t_rec[1,dim(t_rec)[2]],2),
+           ifelse(is.na(f_qq2[length(f_qq2)]),NA,round(as.numeric(f_qq2[length(f_qq2)]),2)),
+           ifelse(is.na(f_qq3[length(f_qq3)]),NA,round(as.numeric(f_qq3[length(f_qq3)]),2))))
+  cat(paste0("Dataset ",i," Best model: ",paste(f_pri[which(f_pri$AIC==min(f_pri$AIC, na.rm = T)),1], collapse = " ; "),"\n"))
+  # if(i%%50==0){cat(paste0(i,", "))}
 };rm(i)
