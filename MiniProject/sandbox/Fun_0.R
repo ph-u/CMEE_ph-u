@@ -58,21 +58,21 @@ for(i in 1:dim(a.0)[1]){
 write.table(a.1, "../data/Fun_Uq.txt",sep="\t", quote=F)
 
 ## plot
-for(i in 1:dim(a.1)[1]){
-  a.p<-a.0[which(a.0$id==a.1$id[i] &
-                   a.0$cite==a.1$cite[i] &
-                   a.0$CTaxa==a.1$CTaxa[i] &
-                   a.0$RTaxa==a.1$RTaxa[i] &
-                   a.0$RDenUnit==a.1$RDenUnit[i]),]
-  if(i<10){i.1<-"00"}else if(i<100){i.1<-"0"}else{i.1<-""}
-  pdf(paste0("../sandbox/Fun_PreGraph/",i.1,i,".pdf"))
-  print(ggplot()+theme_bw()+
-          ylab("Consumer N Trait Value")+xlab(paste0("Resource Density (",unique(a.p$RDenUnit),")"))+
-          ggtitle(paste0(a.1$id[i],"_",a.1$CTaxa[i],"_\n",a.1$RTaxa[i],"_",dim(a.p)[1]))+
-          geom_text(aes(label=a.1$cite[i],x=max(a.p$RDen)-min(a.p$RDen), y=max(a.p$N_TraitValue)-min(a.p$N_TraitValue)), size=2)+
-          geom_point(aes(x=a.p$RDen, y=a.p$N_TraitValue), shape=4, colour="red"))
-  dev.off()
-};rm(i)
+# for(i in 1:dim(a.1)[1]){
+#   a.p<-a.0[which(a.0$id==a.1$id[i] &
+#                    a.0$cite==a.1$cite[i] &
+#                    a.0$CTaxa==a.1$CTaxa[i] &
+#                    a.0$RTaxa==a.1$RTaxa[i] &
+#                    a.0$RDenUnit==a.1$RDenUnit[i]),]
+#   if(i<10){i.1<-"00"}else if(i<100){i.1<-"0"}else{i.1<-""}
+#   pdf(paste0("../sandbox/Fun_PreGraph/",i.1,i,".pdf"))
+#   print(ggplot()+theme_bw()+
+#           ylab("Consumer N Trait Value")+xlab(paste0("Resource Density (",unique(a.p$RDenUnit),")"))+
+#           ggtitle(paste0(a.1$id[i],"_",a.1$CTaxa[i],"_\n",a.1$RTaxa[i],"_",dim(a.p)[1]))+
+#           geom_text(aes(label=a.1$cite[i],x=max(a.p$RDen)-min(a.p$RDen), y=max(a.p$N_TraitValue)-min(a.p$N_TraitValue)), size=2)+
+#           geom_point(aes(x=a.p$RDen, y=a.p$N_TraitValue), shape=4, colour="red"))
+#   dev.off()
+# };rm(i)
 
 ## function
 f_hog<-function(x,a,h,q){
@@ -86,8 +86,7 @@ f_cu<-function(x,a){
 }
 
 ## record function-testing result
-t_red<-as.data.frame(matrix(nrow = dim(a.1)[1], ncol = 3))
-colnames(t_red)=c("hog","qua","cub")
+t_red<-rep(NA,dim(a.1)[1])
 
 ## treating every data subsets
 for(i in 1:dim(a.1)[1]){
@@ -96,9 +95,6 @@ for(i in 1:dim(a.1)[1]){
                    a.0$CTaxa==a.1$CTaxa[i] &
                    a.0$RTaxa==a.1$RTaxa[i] &
                    a.0$RDenUnit==a.1$RDenUnit[i]),]
-  
-  f_qua<-try(unname(coef(lm(a.p$N_TraitValue~poly(a.p$RDen,2)))),silent = T)
-  f_cub<-try(unname(coef(lm(a.p$N_TraitValue~poly(a.p$RDen,3)))),silent = T)
   
   v.h<-max(a.p$N_TraitValue) ## h.max
   ### screen for a.max
@@ -116,72 +112,32 @@ for(i in 1:dim(a.1)[1]){
                     "q"=rnorm(iter, mean = 0, sd=2),
                     "Model"=rep("generalized Holling",iter),
                     "AIC"=rep(NA,iter))
+  f_qua<-try(unname(coef(
+    f_qq<-lm(a.p$N_TraitValue~poly(a.p$RDen,2)))),silent = T)
   if(class(f_qua)=="try-error"){
-    t_reb<-data.frame("a"=rep(NA,iter),
-                      "b"=rep(NA,iter),
-                      "c"=rep(NA,iter),
-                      "Model"=rep("quadratic",iter),
-                      "AIC"=rep(NA,iter))
-  }else{
-    t_reb<-data.frame("a"=rnorm(iter, mean = f_qua[1], sd=1),
-                      "b"=rnorm(iter, mean = f_qua[2], sd=1),
-                      "c"=rnorm(iter, mean = f_qua[3], sd=1),
-                      "Model"=rep("quadratic",iter),
-                      "AIC"=rep(NA,iter))
-  }
+    f_qq2<-c(rep(NA,3),"quadratic",NA)
+  }else{f_qq2<-c(f_qua,"quadratic",AIC(f_qq))}
+  
+  f_cub<-try(unname(coef(
+    f_qq<-lm(a.p$N_TraitValue~poly(a.p$RDen,3)))),silent = T)
   if(class(f_cub)=="try-error"){
-    t_rea<-data.frame("a"=rep(NA,iter),
-                      "b"=rep(NA,iter),
-                      "c"=rep(NA,iter),
-                      "d"=rep(NA,iter),
-                      "Model"=rep("cubic",iter),
-                      "AIC"=rep(NA,iter))
-  }else{
-    t_rea<-data.frame("a"=rnorm(iter, mean = f_cub[1], sd=1),
-                      "b"=rnorm(iter, mean = f_cub[2], sd=1),
-                      "c"=rnorm(iter, mean = f_cub[3], sd=1),
-                      "d"=rnorm(iter, mean = f_cub[4], sd=1),
-                      "Model"=rep("cubic",iter),
-                      "AIC"=rep(NA,iter))
-  }
+    f_qq3<-c(rep(NA,3),"cubic",NA)
+  }else{f_qq3<-c(f_cub,"cubic",AIC(f_qq))}
   
   i.1<-1;repeat{
     t_hog<-try(nlsLM(N_TraitValue~f_hog(RDen,a,h,q), data=a.p, start = list(a=t_rec[i.1,1], h=t_rec[i.1,2], q=t_rec[i.1,3])), silent = T)
-    if(class(t_hog)!="try-error"){t_rec$AIC[i.1]<-AIC(t_hog)}
-    
-    if(class(f_qua)!="try-error"){
-      aa<-as.numeric(t_reb[i.1,1:3])
-      t_qua<-try(nlsLM(N_TraitValue~f_qu(x=RDen,a), data = a.p, start = list(a=aa)), silent = T)
-      if(class(t_qua)!="try-error"){t_reb$AIC[i.1]<-AIC(t_qua)}
-    }
-    
-    if(class(f_qua)!="try-error"){
-      aa<-as.numeric(t_rea[i.1,1:4])
-      t_cub<-try(nlsLM(N_TraitValue~f_cu(x=RDen,a), data = a.p, start = list(a=aa)),silent = T)
-      if(class(t_cub)!="try-error"){t_rea$AIC[i.1]<-AIC(t_cub)}
-    }
+    if(class(t_hog)!="try-error"){
+      t_rec[i.1,-(dim(t_rec)-1)]<-c(as.numeric(coef(t_hog)),AIC(t_hog))}
     
     if(i.1==iter){break}else{i.1<-i.1+1}
   }
   
-  t_rec<-t_rec[which(t_rec$AIC==min(t_rec$AIC, na.rm = T)),] #t_rec<-t_rec[-which(is.na(t_rec$AIC)),]
-  
-  if(length(is.na(t_reb$AIC))==dim(t_reb)[1]){
-    t_reb<-t_reb[1,]}else{
-      t_reb<-t_reb[which(t_reb$AIC==min(t_reb$AIC, na.rm = T)),]
-    }
-  
-  
-  if(length(is.na(t_rea$AIC))==dim(t_rea)[1]){
-    t_rea<-t_rea[1,]}else{
-      t_rea<-t_rea[which(t_rea$AIC==min(t_rea$AIC, na.rm = T)),]
-    }
+  t_rec<-t_rec[which(unique(t_rec$a) &
+                       unique(t_rec$h) &
+                       unique(t_rec$q) &
+                       t_rec$AIC==min(t_rec$AIC, na.rm = T)),]
   
   ## record & screen print
-  t_red[i,]<-c(dim(t_rec)[1],
-               if(dim(t_reb)[1]==1 & is.na(t_reb$AIC)==T){NA}else{dim(t_reb)[1]},
-               if(dim(t_rea)[1]==1 & is.na(t_rea$AIC)==T){NA}else{dim(t_rea)[1]})
-  print(paste0(i,"; hog ",dim(t_rec)[1],
-               "; qua ",if(dim(t_reb)[1]==1 & is.na(t_reb$AIC)==T){NA}else{dim(t_reb)[1]},
-               "; cub ",if(dim(t_rea)[1]==1 & is.na(t_rea$AIC)==T){NA}else{dim(t_rea)[1]}))
+  t_red[i]<-dim(t_rec)[1]
+  if(i%%50==0){cat(paste0(i,", "))}
 };rm(i)
