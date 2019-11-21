@@ -37,21 +37,22 @@ colnames(a.1)=colnames(a.0)[-c(5,6)]
 for(i in 1:dim(a.0)[1]){
   if(i==1){
     v.1<-unique(a.1[,1])
-    v.2<-unique(a.1[,2])
-    v.3<-unique(a.1[,3])
-    v.4<-unique(a.1[,4])
-    v.5<-unique(a.1[,5])
+    # v.2<-unique(a.1[,2])
+    # v.3<-unique(a.1[,3])
+    # v.4<-unique(a.1[,4])
+    # v.5<-unique(a.1[,5])
   }
-  if(!(a.0$id[i] %in% v.1 &
-       a.0$cite[i] %in% v.2 &
-       a.0$CTaxa[i] %in% v.3 &
-       a.0$RTaxa[i] %in% v.4 &
-       a.0$RDenUnit[i] %in% v.5)){
+  if(!(a.0$id[i] %in% v.1)){
+    # a.0$id[i] %in% v.1 &
+    # a.0$cite[i] %in% v.2 &
+    # a.0$CTaxa[i] %in% v.3 &
+    # a.0$RTaxa[i] %in% v.4 &
+    # a.0$RDenUnit[i] %in% v.5)){
     v.1<-unique(a.1[,1])
-    v.2<-unique(a.1[,2])
-    v.3<-unique(a.1[,3])
-    v.4<-unique(a.1[,4])
-    v.5<-unique(a.1[,5])
+    # v.2<-unique(a.1[,2])
+    # v.3<-unique(a.1[,3])
+    # v.4<-unique(a.1[,4])
+    # v.5<-unique(a.1[,5])
     a.1<-rbind(a.1,a.0[i,-c(5,6)])
   }
 };rm(i);rm(list=ls(pattern="v."))
@@ -91,11 +92,12 @@ t_bes<-matrix(nrow = dim(a.1)[1], ncol = 3)
 
 ## treating every data subsets
 for(i in 1:dim(a.1)[1]){
-  a.p<-a.0[which(a.0$id==a.1$id[i] &
-                   a.0$cite==a.1$cite[i] &
-                   a.0$CTaxa==a.1$CTaxa[i] &
-                   a.0$RTaxa==a.1$RTaxa[i] &
-                   a.0$RDenUnit==a.1$RDenUnit[i]),]
+  a.p<-a.0[which(a.0$id==a.1$id[i]),]
+  # a.0$id==a.1$id[i] &
+  #   a.0$cite==a.1$cite[i] &
+  #   a.0$CTaxa==a.1$CTaxa[i] &
+  #   a.0$RTaxa==a.1$RTaxa[i] &
+  #   a.0$RDenUnit==a.1$RDenUnit[i]),]
   
   v.h<-max(a.p$N_TraitValue) ## h.max
   ### screen for a.max
@@ -141,8 +143,8 @@ for(i in 1:dim(a.1)[1]){
   ## record & screen print
   f_pri<-data.frame("model"=c(as.character(t_rec[1,dim(t_rec)[2]-1]),f_qq2[length(f_qq2)-1],f_qq3[length(f_qq3)-1]),
                     "AIC"=c(round(t_rec[1,dim(t_rec)[2]],2),
-           ifelse(is.na(f_qq2[length(f_qq2)]),NA,round(as.numeric(f_qq2[length(f_qq2)]),2)),
-           ifelse(is.na(f_qq3[length(f_qq3)]),NA,round(as.numeric(f_qq3[length(f_qq3)]),2))))
+                            ifelse(is.na(f_qq2[length(f_qq2)]),NA,round(as.numeric(f_qq2[length(f_qq2)]),2)),
+                            ifelse(is.na(f_qq3[length(f_qq3)]),NA,round(as.numeric(f_qq3[length(f_qq3)]),2))))
   cat(paste0("Dataset ",i," Best model: ",paste(f_pri[which(f_pri$AIC==min(f_pri$AIC, na.rm = T)),1], collapse = " ; "),"\n"))
   t_bes[i,1]<-ifelse(!is.na(f_pri[1,2]),ifelse(f_pri[1,2]==min(f_pri$AIC, na.rm = T),1,0),0)
   t_bes[i,2]<-ifelse(!is.na(f_pri[1,2]),ifelse(f_pri[2,2]==min(f_pri$AIC, na.rm = T),1,0),0)
