@@ -9,7 +9,7 @@
 # Date: Nov 2019
 
 ## settings:
-## a = raw data
+## a = raw data (data subset in slave scripts)
 ## a.~ = data.frames decending from raw data
 ## f.~ = functions
 ## v.~ = variables
