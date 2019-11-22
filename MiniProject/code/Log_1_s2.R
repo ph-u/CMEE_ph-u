@@ -60,11 +60,11 @@ f.cu<-function(para,t){return(para[1]+para[2]*t+para[3]*t^2+para[4]*t^3)} ## cub
 
 ## sample starting values
 cat(paste0("start sample starting values, dataset ",v.0,"\n"))
-a.0<-as.matrix(data.frame("N0"=abs(rnorm(v.1, mean = a.u[1,2], sd = 1)),
-                          "K"=abs(rnorm(v.1, mean = a.u[2,2], sd = 1)),
-                          "r.max"=abs(rnorm(v.1, mean = a.u[3,2], sd = 1)),
-                          "t.lag"=abs(rnorm(v.1, mean = a.u[4,2], sd = 1)),
-                          "ve"=rep(NA,v.1),"go"=rep(NA,v.1),"ba"=rep(NA,v.1),"bu"=rep(NA,v.1)))
+a.0<-data.frame("N0"=abs(rnorm(v.1, mean = a.u[1,2], sd = 1)),
+                "K"=abs(rnorm(v.1, mean = a.u[2,2], sd = 1)),
+                "r.max"=abs(rnorm(v.1, mean = a.u[3,2], sd = 1)),
+                "t.lag"=abs(rnorm(v.1, mean = a.u[4,2], sd = 1)),
+                "ve"=rep(NA,v.1),"go"=rep(NA,v.1),"ba"=rep(NA,v.1),"bu"=rep(NA,v.1))
 i.0<-1
 repeat{ ## do trials
   ## check f.ve
@@ -108,6 +108,7 @@ a.u<-rbind(a.u, c("Model",a.1[which(a.1$AIC==min(a.1$AIC, na.rm = T)),1]))
 ## best parameters to data
 v.2<-as.data.frame(matrix(nrow = 5, ncol = 6))
 colnames(v.2)=c("Verhulst_(classical)","modified_Gompertz","Baranyi","Buchanan","quadratic","cubic")
+row.names(v.2)=c("AIC",seq(1:(dim(v.2)[1]-1)))
 for(i in 1:dim(v.2)[2]){
   if(i<5){
     v.2[1,i]<-ifelse(length(a.0[which(is.na(a.0[,i+4])),(i+4)])==dim(a.0)[1],NA,min(a.0[,i+4], na.rm = T))
@@ -116,25 +117,27 @@ for(i in 1:dim(v.2)[2]){
   }else{v.2[1,i]<-ifelse(is.na(i.qu),NA,i.qu)}
   
   if(!is.na(v.2[1,i])){
-    
+    if(i<5){
+      i.1<-as.data.frame(a.0[which(a.0[,i+4]==min(a.0[,i+4], na.rm = T)),1:4])
+    v.2[,i]<-c(v.2[1,i],as.numeric(i.1[1,]))
+    }else
+    if(i==5){v.2[,i]<-c(v.2[1,i],as.numeric(coef(i.qul)),NA)}else{v.2[,i]<-c(v.2[1,i],as.numeric(coef(i.cul)))}
   }
-  
-  v.2[2:dim(v.2)[1],i]<-
 };rm(i)
 
 
-i.1<-a.1[which(a.1$AIC < min(a.1$AIC, na.rm = T)+2),3] ## take token of best fit
-if(i.1 < 2){ ## check whether token of best fit is polynomials
-  ifelse(i.1==0,
-         i.1<-data.frame("index"=names(coef(i.qul)),"val"=unname(coef(i.qul))), ## make data.frame out of quadratic function
-         i.1<-data.frame("index"=names(coef(i.cul)),"val"=unname(coef(i.cul)))) ## make data.frame out of cubic function
-}else{
-  i.1<-a.0[which(a.0[,i.1]==min(a.1$AIC, na.rm = T)),1:4] ## grab best fit data from NLLS functions
-  if(dim(i.1)[1] > 1){i.1<-i.1[1,]} ## pick one model out of equal-importance models if necessary
-  i.1<-data.frame("index"=names(i.1),"val"=unname(i.1)) ## make data.frame out of model parameters
-}
+# i.1<-a.1[which(a.1$AIC < min(a.1$AIC, na.rm = T)+2),3] ## take token of best fit
+# if(i.1 < 2){ ## check whether token of best fit is polynomials
+#   ifelse(i.1==0,
+#          i.1<-data.frame("index"=names(coef(i.qul)),"val"=unname(coef(i.qul))), ## make data.frame out of quadratic function
+#          i.1<-data.frame("index"=names(coef(i.cul)),"val"=unname(coef(i.cul)))) ## make data.frame out of cubic function
+# }else{
+#   i.1<-a.0[which(a.0[,i.1]==min(a.1$AIC, na.rm = T)),1:4] ## grab best fit data from NLLS functions
+#   if(dim(i.1)[1] > 1){i.1<-i.1[1,]} ## pick one model out of equal-importance models if necessary
+#   i.1<-data.frame("index"=names(i.1),"val"=unname(i.1)) ## make data.frame out of model parameters
+# }
 
 ## data export
 write.table(a.u,paste0("../data/Log_",v.0,"_para.txt"), sep = "\t", quote = F, row.names = F)
-write.table(i.1,paste0("../data/Log_",v.0,"_data.txt"), sep = "\t", quote = F, row.names = F)
+write.table(v.2,paste0("../data/Log_",v.0,"_data.txt"), sep = "\t", quote = F)
 cat(paste0("dataset ",v.0," done\n"))

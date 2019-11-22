@@ -36,6 +36,8 @@ a.0<-a<-a[which(a$Temp.C==a.u$Temp.C[v.0] &
              a$Popn_DataUnit==a.u$Popn_DataUnit[v.0]),]
 rm(a.u) ## finish using ref dataframe
 
+a$Popn_Change[which(a$Popn_DataUnit=="OD_595")]<-a$Popn_Change[which(a$Popn_DataUnit=="OD_595")]*100 ## change to percentages when calculating
+
 ## parameters
 v.1<-range(a$Popn_Change) ## N0, K (later included inside parameter table)
 
@@ -81,6 +83,9 @@ v.1<-data.frame("para"=c("N0", "K", "r.max", "t.lag", "t.K"),
                 "val"=c(v.1, v.r[2], -v.r[1]/v.r[2], (max(log(a$Popn_Change+1))-v.r[1])/v.r[2]))
 rm(v.r) ## recycle RAM
 a$cst<-ifelse(a$Time.hr < v.1[4,2],1,ifelse(a$Time.hr > v.1[5,2],3,2)) ## set estimated cluster of lag, log, stationary phases
+v.1$val<-ifelse(!is.na(v.1$val),v.1$val,0)
+
+a$Popn_Change[which(a$Popn_DataUnit=="OD_595")]<-a$Popn_Change[which(a$Popn_DataUnit=="OD_595")]/100 ## change back data to intial values
 
 ## write intermediate data
 cat("start writing intermediate data\n")
