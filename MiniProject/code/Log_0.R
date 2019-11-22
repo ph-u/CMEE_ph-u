@@ -30,6 +30,7 @@ a$clade<-gsub("spp.|sp.","sp",a$clade) ## condense spp names
 a$clade<-gsub("[.]"," ",a$clade) ## condense spp names
 a$clade<-gsub("77|88|Strain 97|StrainCYA28|subsp Carotovorum Pc","",a$clade) ## rm specific unnecessary things for better spp categorizing
 a$clade<-trimws(a$clade) ## condense spp names (rm white spaces from both ends)
+a$Popn_Change<-ifelse(a$Popn_Change<0,0,a$Popn_Change) ## assume impossible to drop population below technical 0
 
 ## get unique datasets
 a.0<-as.data.frame(matrix(nrow=0, ncol=(dim(a)[2]-2))) ## start data frame of record
