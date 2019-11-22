@@ -1,9 +1,9 @@
 #!/bin/env Rscript
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
-# Script: Log_1.R
+# Script: Log_1_s1.R
 # Desc: slave script on partial dataset get starting values
-# Input: ```Rscript Log_1.R <uq num>```
+# Input: ```Rscript Log_1_s1.R <uq num>```
 # Output: 1. cleaned data (.txt); 2. unique dataset tabular list (.txt)
 # Arguments: 1
 # Date: Nov 2019

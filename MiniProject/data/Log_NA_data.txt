@@ -1,0 +1,1 @@
+Temp.C	clade	substrate	replicate	SourceRef	Time.hr	Popn_Change	Popn_DataUnit	cst

@@ -1,0 +1,6 @@
+para	val
+N0	Inf
+K	-Inf
+r.max	0
+t.lag	NA
+t.K	-Inf
