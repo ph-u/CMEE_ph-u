@@ -105,12 +105,29 @@ a.1<-data.frame("model"=c("ve","go","ba","bu","qu","cu"), ## extract minimal AIC
                 stringsAsFactors = F)
 a.u<-rbind(a.u, c("Model",a.1[which(a.1$AIC==min(a.1$AIC, na.rm = T)),1]))
 
-## parameters to data
-i.1<-a.1[which(a.1$AIC==min(a.1$AIC, na.rm = T)),3] ## take token of best fit
+## best parameters to data
+v.2<-as.data.frame(matrix(nrow = 5, ncol = 6))
+colnames(v.2)=c("Verhulst_(classical)","modified_Gompertz","Baranyi","Buchanan","quadratic","cubic")
+for(i in 1:dim(v.2)[2]){
+  if(i<5){
+    v.2[1,i]<-ifelse(length(a.0[which(is.na(a.0[,i+4])),(i+4)])==dim(a.0)[1],NA,min(a.0[,i+4], na.rm = T))
+  }else if(i>5){
+    v.2[1,i]<-ifelse(is.na(i.cu),NA,i.cu)
+  }else{v.2[1,i]<-ifelse(is.na(i.qu),NA,i.qu)}
+  
+  if(!is.na(v.2[1,i])){
+    
+  }
+  
+  v.2[2:dim(v.2)[1],i]<-
+};rm(i)
+
+
+i.1<-a.1[which(a.1$AIC < min(a.1$AIC, na.rm = T)+2),3] ## take token of best fit
 if(i.1 < 2){ ## check whether token of best fit is polynomials
   ifelse(i.1==0,
-              i.1<-data.frame("index"=names(coef(i.qul)),"val"=unname(coef(i.qul))), ## make data.frame out of quadratic function
-              i.1<-data.frame("index"=names(coef(i.cul)),"val"=unname(coef(i.cul)))) ## make data.frame out of cubic function
+         i.1<-data.frame("index"=names(coef(i.qul)),"val"=unname(coef(i.qul))), ## make data.frame out of quadratic function
+         i.1<-data.frame("index"=names(coef(i.cul)),"val"=unname(coef(i.cul)))) ## make data.frame out of cubic function
 }else{
   i.1<-a.0[which(a.0[,i.1]==min(a.1$AIC, na.rm = T)),1:4] ## grab best fit data from NLLS functions
   if(dim(i.1)[1] > 1){i.1<-i.1[1,]} ## pick one model out of equal-importance models if necessary
