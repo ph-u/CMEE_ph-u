@@ -125,19 +125,10 @@ for(i in 1:dim(v.2)[2]){
   }
 };rm(i)
 
-
-# i.1<-a.1[which(a.1$AIC < min(a.1$AIC, na.rm = T)+2),3] ## take token of best fit
-# if(i.1 < 2){ ## check whether token of best fit is polynomials
-#   ifelse(i.1==0,
-#          i.1<-data.frame("index"=names(coef(i.qul)),"val"=unname(coef(i.qul))), ## make data.frame out of quadratic function
-#          i.1<-data.frame("index"=names(coef(i.cul)),"val"=unname(coef(i.cul)))) ## make data.frame out of cubic function
-# }else{
-#   i.1<-a.0[which(a.0[,i.1]==min(a.1$AIC, na.rm = T)),1:4] ## grab best fit data from NLLS functions
-#   if(dim(i.1)[1] > 1){i.1<-i.1[1,]} ## pick one model out of equal-importance models if necessary
-#   i.1<-data.frame("index"=names(i.1),"val"=unname(i.1)) ## make data.frame out of model parameters
-# }
+## data attributes for vertical file combine
+a.u$dt<-v.2[dim(v.2)[1]+1,]<-as.character(v.0)
 
 ## data export
-write.table(a.u,paste0("../data/Log_",v.0,"_para.txt"), sep = "\t", quote = F, row.names = F)
-write.table(v.2,paste0("../data/Log_",v.0,"_data.txt"), sep = "\t", quote = F)
+write.table(a.u[,c(3,1,2)],paste0("../data/Log_",v.0,"_para.txt"), sep = "\t", quote = F, row.names = F, col.names = F)
+write.table(t(v.2)[,c(6,1:5)],paste0("../data/Log_",v.0,"_data.txt"), sep = "\t", quote = F, col.names = F)
 cat(paste0("dataset ",v.0," done\n"))

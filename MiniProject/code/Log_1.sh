@@ -10,18 +10,28 @@
 
 a0=`wc -l ../data/Log_Uq.txt|tr -s " "|cut -f 2 -d " "` ## get number of unique dataset for parallel processing
 
+echo -e "start data subset analysis"
 for i in `seq 1 $((${a0} -1))`;do ## parallel data subset processing
 	nohup ./Log_1_c.sh ${i} 1e2 &
 done
 
-sleep 20 ## allow some time to run slave scripts before loading CPU for checking progress
+i2=30
+echo -e "wait ${i2} sec for analysis to finish"
+sleep ${i2} ## allow some time to run slave scripts before loading CPU for checking progress
 
 ## hault control script for intermediate data collection
+i1=2
 while [ $((`ps aux|grep slave|grep R|wc -l`)) -gt 0 ];do
-	sleep 10
+	echo -e "analysis process remaining: `ps aux|grep slave|grep R|wc -l`; sleep ${i1} sec"
+	sleep ${i1}
 done
 
+## confirm no previoius run
+rm ../data/Log_tt_* 2> nohup.out ## <https://stackoverflow.com/questions/31318068/shell-script-to-remove-a-file-if-it-already-exist>
+
 ## collect intermediate result
+
+echo -e "collecting scattered analysis results"
 touch ../data/Log_tt_data.txt
 touch ../data/Log_tt_para.txt
 for i in `seq 1 $((${a0} -1))`;do ## parallel data subset processing
