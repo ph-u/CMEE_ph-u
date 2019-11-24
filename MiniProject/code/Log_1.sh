@@ -35,8 +35,8 @@ echo -e "collecting scattered analysis results"
 touch ../data/Log_tt_data.txt
 touch ../data/Log_tt_para.txt
 for i in `seq 1 $((${a0} -1))`;do ## parallel data subset processing
-	cat ../data/Log_${i}_data.txt >> ../data/Log_tt_data.txt
-	cat ../data/Log_${i}_para.txt >> ../data/Log_tt_para.txt
+	cat ../data/Log_${i}_data.txt >> ../data/Log_t1_data.txt
+	cat ../data/Log_${i}_para.txt >> ../data/Log_t1_para.txt
 done
 
 for i in `ls ../data/*|grep "Log_[0-9]*_[dp]a[tr]a.txt"`;do

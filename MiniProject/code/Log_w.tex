@@ -1,0 +1,80 @@
+
+% Author: PokMan Ho pok.ho19@imperial.ac.uk
+% Script: LogisticTmp.tex
+% Desc: `LaTex` report framework -- Logistic Growth
+% Input: none
+% Output: none
+% Arguments: 0
+% Date: Oct 2019
+
+\documentclass[a4paper, 11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref, setspace, lineno}
+
+%% test insert graphs
+\usepackage{graphicx}
+\graphicspath{ {../results/} } %% <https://www.overleaf.com/learn/latex/Inserting_Images>
+
+%% test insert variables
+\newcommand{\ReportTitle}{Report on Model Selection between Logistic Growth curves based on chosen Bacterial Population Growth Experimental Data} %% <https://stackoverflow.com/questions/1211888/is-there-any-way-i-can-define-a-variable-in-latex>
+\newcommand{\ReportAuthor}{PokMan HO}
+\newcommand{\ReportAffil}{Department of Life Sciences, Faculty of Natural Sciences,\\Imperial College London}
+\newcommand{\Disclaim}{\textbf{A Mini-project submitted in partial fulfilment of the requirements for the degree of Master of Research at Imperial College London\\\\Formatted in the journal style of the \textit{Nature} Journal\\Submitted for the MRes in Computational Methods of Ecology and Evolution}}
+
+\title{\ReportTitle}
+\author{\ReportAuthor (CID: 01786076)}
+\date{}
+
+%% citation
+\usepackage[%
+autocite    = superscript,
+backend     = bibtex,
+sortcites   = true,
+style       = nature
+]{biblatex}
+\bibliography{../reference/LogRef.bib} %% <https://tex.stackexchange.com/questions/6805/bib-library-file-in-a-different-directory-how-to-use-mendeley-centralised-b>
+
+%% set as required
+\doublespacing
+\linenumbers
+
+\begin{document}
+	\begin{center}
+		\Huge\textbf{\ReportTitle}\\
+		\LARGE\ReportAuthor\\
+		\Large\ReportAffil
+	\end{center}
+	\begin{figure}[h]
+		\centering\includegraphics[width=\linewidth]{icl.jpg}
+	\end{figure}
+	\begin{flushright}
+		\Large Approximate Word Count: %% insert approx word count
+	\end{flushright}
+	\clearpage
+	
+	\maketitle
+	\section*{Abstract}
+	
+	
+	\section*{Introduction}
+	
+	\section*{Methods}
+
+	\subsection*{Computing tools}
+	R (ver 3.6.0)\autocite{Rcore} was used with following packages: ``ggplot2"\autocite{ggplot2} was used for visualisation; ``reshape2"\autocite{reshape2} was used for converting dataset from wide to long format; ``scales"\autocite{scales} was used for improve ``ggplot" graphs data presentation; and ``minpack.lm"\autocite{minpacklm} was used for computing non-linear least square statistics for model comparisons.
+	
+	\section*{Results}
+	
+	\section*{Discussion}
+	%% AIC vs BIC <https://www.methodology.psu.edu/resources/AIC-vs-BIC/>
+	%% AIC <https://en.wikipedia.org/wiki/Akaike_information_criterion#Comparison_with_BIC>
+	%% BIC <https://en.wikipedia.org/wiki/Bayesian_information_criterion>
+	Model fitness to real data and simplistic mathematics were favoured by both AIC\autocite{johnson2004model,akaike1998information,burnhamdr} and BIC\autocite{johnson2004model,turchin2003complex}.  Apart from that, BIC also takes account of sample size effect\autocite{johnson2004model,turchin2003complex}.\\
+	comparisons in different fields\autocite{kuha2004aic,aho2014model,yang2005can,vrieze2012model,wang2006comparison,acquah2010comparison}
+	
+	\section*{Conclusion}
+	
+	\section*{Code and Data Availability}
+	All \href{https://github.com/ph-u/CMEECourseWork_pmH/tree/master/MiniProject/code}{scripts} and \href{https://github.com/ph-u/CMEECourseWork_pmH/tree/master/MiniProject/data}{data} used for this report were publicity available at GitHub.
+	\nocite{*}\printbibliography
+\end{document}
