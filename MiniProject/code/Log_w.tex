@@ -9,20 +9,32 @@
 
 \documentclass[a4paper, 11pt]{article}
 \usepackage[margin=1in]{geometry}
-\usepackage{hyperref, setspace, lineno}
+\usepackage{hyperref, setspace, lineno, amsmath, amssymb}
 
 %% test insert graphs
 \usepackage{graphicx}
 \graphicspath{ {../results/} } %% <https://www.overleaf.com/learn/latex/Inserting_Images>
 
 %% test insert variables
-\newcommand{\ReportTitle}{Phenological models on microbial growth -- which model is better and why?} %% <https://stackoverflow.com/questions/1211888/is-there-any-way-i-can-define-a-variable-in-latex>
+\newcommand{\pml}{phenological model}
+\newcommand{\pms}{phenological models}
+\newcommand{\Pml}{Phenological model}
+\newcommand{\Pms}{Phenological models}
+\newcommand{\ReportTitle}{\Pms\ on microbial growth -- which model is better and why?} %% <https://stackoverflow.com/questions/1211888/is-there-any-way-i-can-define-a-variable-in-latex>
 \newcommand{\ReportAuthor}{PokMan HO}
 \newcommand{\ReportAffil}{Department of Life Sciences, Faculty of Natural Sciences,\\Imperial College London}
 \newcommand{\Disclaim}{\textbf{A Mini-project submitted in partial fulfilment of the requirements for the degree of Master of Research at Imperial College London\\\\Formatted in the journal style of the \textit{Nature} Journal\\Submitted for the MRes in Computational Methods of Ecology and Evolution}}
+\newcommand{\fve}{Verhulst (classical)}
+\newcommand{\fgo}{modified Gompertz}
+\newcommand{\fba}{Baranyi}
+\newcommand{\fbu}{Buchanan}
+\newcommand{\fqu}{quadratic}
+\newcommand{\fcu}{cubic}
+\newcommand{\pop}{population size}
+\newcommand{\pps}{population sizes}
 
 \title{\ReportTitle}
-\author{\ReportAuthor (CID: 01786076)}
+\author{\ReportAuthor\ (CID: 01786076)}
 \date{}
 
 %% citation
@@ -57,15 +69,38 @@ style       = nature
 	
 	
 	\section*{Introduction}
-	Phenological models are expected to fit data trends within its biological field.  Yet due to different reasons, models developed and published from one sample may not fit the others.  These reasons may be due to data variabilities, confounding factors, inaccurate assumptions or models being too-specific.  This project is aimed at compare and contrast different published phenological models different microbial population growth data, which is a better one under what conditions.  The hypotheses are:
+	\Pms\ are expected to fit data trends within its biological field.  Yet due to different reasons, models developed and published from one sample may not fit the others.  These reasons may be due to data variabilities, confounding factors, inaccurate assumptions or models being too-specific.  This project is aimed at compare and contrast published \pms\ on microbial \pop\ data, highlighting which is a better model under what conditions.  The hypotheses are:
 	\begin{itemize}
-		\item published phenological models are better than polynomials in describing microbial population data;
-		\item appropriate phenological model(s) can be identified through distinguishable shapes of microbial population data; and
-		\item parameters of data under each model is clustered, similar with dataset best-described by the same model but different from those described by other models.
+		\item published \pms\ are better than polynomials in describing microbial \pop;
+		\item appropriate \pml(s) can be identified through distinguishable shapes of microbial \pop; and
+		\item parameters of data under each \pml\ is clustered, similar with dataset best-described by the same model but different from those described by other models.
 	\end{itemize}
 	
 	\section*{Methods}
+	Experimental microbial population growth data library were divided into individual data subsets through six filters (``Temperature (in $^o$C)", ``Microbial clade", ``growth substrate materials", ``experimental replicate number", ``population data recording unit" and ``data source").  Records with data unit ``OD\_595" were scaled into optical density percentages (i.e. data*100) to facilitate general analyses workflow.  Independent (or explanatory) variable was ``Time (hr)" and dependent (or response) variable was ``\pop".\\
+	Some raw data were recorded in minutes (instead of hour).  This record artifact was not corrected because of two reasons: 1. shape of curves were the main concern instead of independent variable's scale; and 2. the unit was consistent within each data subset.
 	
+	\subsection*{Model assessment}
+	Six candidate models were assessed, four phenological and two polynomial equations.  They were ``\fve"\autocite{mckendrick1912xlv}, ``\fgo"\autocite{GIL200689}, ``\fba"\autocite{baranyi1993modeling}, ``\fbu"\autocite{buchanan1993differentiation}, ``\fqu" and ``\fcu". NLLS was used only on the four \pms\ and linear model-fitting was done on the two polynomials.  Starting values selection (for \pms\ only) was described below:\\
+	Initial (N0) and final (K) \pps\ were selected to be the minimum and maximum values of each data subset respectively.  Maximum growth rate (r.max) was selected by linear model through a recursive manner.  For every iteration, \pop\ data from the top 5\% independent variable values were excluded from the linear model calculation.  The data and slope would only be recorded if it was positive, higher adjusted R$^{2}$ value and larger slope than the recorded ``best slope" value.  After scanning from the maximum side, the best slope and its respective data were taken out and screened from the minimum side.  Final best slope and x-intercept were regarded as the r.max and relative time lag (t.lag) of the population (in the source experiment) respectively.  Time which this linear model intersected with K was regarded as the time achieving carrying capacity (t.K).  Population data was then classified into three groups (gx) according to the time: g1 $\leq$ t.lag $<$ g2 $<$ t.K $\leq$ g3.  5\% was chosen as the scanning threshold because I assumed this resolution was fine enough for achieving good starting values for NLLS fitting.  Inputs for \pms were listed below (popn \& time were the dependent and independent variables respectively):\\
+	\begin{tabular}{rl}
+		\fve: & popn = $f$(N0, K, r.max, time)\\
+		\fgo: & popn = $f$(N0, K, r.max, time, t.lag)\\
+		\fba: & popn = $f$(N0, K, r.max, time, t.lag)\\
+		\fbu: & popn = $f$(N0, K, r.max, time, t.lag, gx)
+	\end{tabular}\\
+	
+	All test starting values were than sampled from normal distribution with mean as the estimated value and standard deviation (sd) of 1.  The sd value was chosen because of different reasons for each parameters.  N0 and K were directly extracted from the raw experimental data, which could be assumed being an accurate estimate for that data subset (hence a small sd was logical). r.max was a guesstimated value from fitting linear models.  This process could potentially be affected by extreme values in the data and hence a large sd should be preferred.  100 trials were done as a optimal value under a trade-off between efficiency and accuracy.\\
+	
+	Only AIC\autocite{johnson2004model,akaike1998information,burnhamdr} was used to select for optimal parameter values within each \pml\ and best model between the six candidates for a data subset.  Reasons would be listed in Discussion section.  For models with more than one parameter sets as sharing the lowest AIC value, the first set of values from the random sampling trials were used for downstream analyses.  AIC tolerance was expanded to min(AIC)+2\\
+	
+	\subsection*{Statistical analysis}
+	
+	\subsection*{Main Assumptions}
+	\begin{itemize}
+		\item there was no negative population growth (i.e. starting population was always lower than carrying capacity), so negative population growth data were set to zeros;
+		\item estimated parameter estimates would always result in a global optimal status in parameter space through the non-linear least squares method (NLLS)
+	\end{itemize}
 	
 	\subsection*{Computing tools}
 	R (ver 3.6.0)\autocite{Rcore} was used with following packages: ``ggplot2"\autocite{ggplot2} was used for visualisation; ``reshape2"\autocite{reshape2} was used for converting dataset from wide to long format; ``scales"\autocite{scales} was used for improve ``ggplot" graphs data presentation; and ``minpack.lm"\autocite{minpacklm} was used for computing non-linear least square statistics for model comparisons.
