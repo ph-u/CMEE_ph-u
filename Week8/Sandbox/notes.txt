@@ -1,0 +1,23 @@
+ecological neutral theory
+assume all individuals eco equ
+see how this assumption get results
+mutation balance out extinction
+zero sum assumption
+- isolated system, no migrations
+- can be relaxed, little population fluctuation
+
+point mutation speciation, protracted speciation, polyploidy speciation
+spatial structure non-existing / implicit (metacommunity & local) / spatially explicit network / fully spatially explicit (voter model)
+
+null model: statistically aim to beat
+demographic properties of an individual are independent of its species identity
+an individual die not because of ecology
+a model in which species are interchangeable is neutral (no janzen-connell model -- crowdness affect fitness)
+
+voter model
+neutral probability
+spread to nearest neighbours only
+impenetrable clumps formation
+edge effect presence
+introduce mutation
+
