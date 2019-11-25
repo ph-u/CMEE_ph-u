@@ -127,6 +127,8 @@ for(i in 1:dim(v.2)[2]){
 
 ## data attributes for vertical file combine
 a.u$dt<-v.2[dim(v.2)[1]+1,]<-as.character(v.0)
+i.0<-which(as.numeric(v.2[1,])<min(as.numeric(v.2[1,]), na.rm = T)+2)
+for(i in 1:dim(v.2)[2]){if(!(i %in% i.0)){v.2[,i]<-NA}};rm(i, i.0)
 
 ## data export
 write.table(a.u[,c(3,1,2)],paste0("../data/Log_",v.0,"_para.txt"), sep = "\t", quote = F, row.names = F, col.names = F)

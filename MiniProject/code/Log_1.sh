@@ -8,7 +8,7 @@
 # Arguments: 0
 # Date: Nov 2019
 
-a0=`wc -l ../data/Log_Uq.txt|tr -s " "|cut -f 2 -d " "` ## get number of unique dataset for parallel processing
+a0=`wc -l ../data/Log_Uq.txt|tr -s " "|sed 's/^ *//g'|cut -f 1 -d " "` ## get number of unique dataset for parallel processing
 
 echo -e "start data subset analysis"
 for i in `seq 1 $((${a0} -1))`;do ## parallel data subset processing
@@ -27,13 +27,13 @@ while [ $((`ps aux|grep slave|grep R|wc -l`)) -gt 0 ];do
 done
 
 ## confirm no previoius run
-rm ../data/Log_tt_* 2> nohup.out ## <https://stackoverflow.com/questions/31318068/shell-script-to-remove-a-file-if-it-already-exist>
+rm ../data/Log_t1_* 2> nohup.out ## <https://stackoverflow.com/questions/31318068/shell-script-to-remove-a-file-if-it-already-exist>
 
 ## collect intermediate result
 
 echo -e "collecting scattered analysis results"
-touch ../data/Log_tt_data.txt
-touch ../data/Log_tt_para.txt
+touch ../data/Log_t1_data.txt
+touch ../data/Log_t1_para.txt
 for i in `seq 1 $((${a0} -1))`;do ## parallel data subset processing
 	cat ../data/Log_${i}_data.txt >> ../data/Log_t1_data.txt
 	cat ../data/Log_${i}_para.txt >> ../data/Log_t1_para.txt

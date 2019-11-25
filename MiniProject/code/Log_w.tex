@@ -44,7 +44,7 @@ backend     = bibtex,
 sortcites   = true,
 style       = nature
 ]{biblatex}
-\bibliography{../reference/LogRef.bib} %% <https://tex.stackexchange.com/questions/6805/bib-library-file-in-a-different-directory-how-to-use-mendeley-centralised-b>
+\bibliography{../reference/Log_r.bib} %% <https://tex.stackexchange.com/questions/6805/bib-library-file-in-a-different-directory-how-to-use-mendeley-centralised-b>
 
 %% set as required
 \doublespacing
@@ -92,7 +92,7 @@ style       = nature
 	
 	All test starting values were than sampled from normal distribution with mean as the estimated value and standard deviation (sd) of 1.  The sd value was chosen because of different reasons for each parameters.  N0 and K were directly extracted from the raw experimental data, which could be assumed being an accurate estimate for that data subset (hence a small sd was logical). r.max was a guesstimated value from fitting linear models.  This process could potentially be affected by extreme values in the data and hence a large sd should be preferred.  100 trials were done as a optimal value under a trade-off between efficiency and accuracy.\\
 	
-	Only AIC\autocite{johnson2004model,akaike1998information,burnhamdr} was used to select for optimal parameter values within each \pml\ and best model between the six candidates for a data subset.  Reasons would be listed in Discussion section.  For models with more than one parameter sets as sharing the lowest AIC value, the first set of values from the random sampling trials were used for downstream analyses.  AIC tolerance was expanded to min(AIC)+2\\
+	Only AIC\autocite{johnson2004model,akaike1998information,burnhamdr} was used to select for optimal parameter values within each \pml\ and best model between the six candidates for a data subset.  Reasons would be listed in Discussion section.  For models with more than one parameter sets as sharing the lowest AIC value, the first set of values from the random sampling trials were used for downstream analyses.  AIC tolerance threshold was expanded to min(AIC)+2\autocite{burnham2004multimodel} to incorporate more accepted models for analyses.\\
 	
 	\subsection*{Statistical analysis}
 	
@@ -103,7 +103,7 @@ style       = nature
 	\end{itemize}
 	
 	\subsection*{Computing tools}
-	R (ver 3.6.0)\autocite{Rcore} was used with following packages: ``ggplot2"\autocite{ggplot2} was used for visualisation; ``reshape2"\autocite{reshape2} was used for converting dataset from wide to long format; ``scales"\autocite{scales} was used for improve ``ggplot" graphs data presentation; and ``minpack.lm"\autocite{minpacklm} was used for computing non-linear least square statistics for model comparisons.
+	R (ver 3.6.0)\autocite{Rcore} was used with ``minpack.lm"\autocite{minpacklm} for computing non-linear least square statistics for model comparisons.
 	
 	\section*{Results}
 	
