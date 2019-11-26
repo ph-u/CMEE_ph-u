@@ -4,7 +4,7 @@
 # Script: pokho_HPC_2019_test.R
 # Desc: test *_main.R script
 # Input: Rscript pokho_HPC_2019_test.R
-# Output: none
+# Output: terminal outputs and .rda file
 # Arguments: 0
 # Date: Nov 2019
 
@@ -44,4 +44,5 @@ octaves(c(100,64,63,5,4,3,2,2,1,1,1,1))
 sum_vect(c(1,3),c(1,0,5,2))
 question_16()
 Challenge_A()
-Challenge_B()
+Challenge_B() ######### day 1
+cluster_run(.1, 100, 10, 1, 10, 200, "my_test_file_1.rda")

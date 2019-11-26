@@ -173,17 +173,24 @@ cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interva
   t1<-1 ## set ini generation
   sppR<-rep(NA,burn_in_generations) ## pre-allocate spp-richness vector
   abdO<-list() ## ini abundance octave list
+  cat("at gen: ")
   
   t0<-unname(proc.time()[3])
   repeat{
+    if(t1%%1e3==0){cat(paste0(t1/1e3,"K; "))}
     pop<-neutral_generation_speciation(pop,speciation_rate)
     if(t1<=burn_in_generations & t1%%interval_rich==1){
       sppR[t1]<-species_richness(pop)
     }else if(t1%%interval_oct==1){
-      
+      abdO<-list(abdO,octaves(species_abundance(pop)))
     }
-    if((unname(proc.time()[3])-t0)/60>wall_time){break}else{t1<-t1+1}
+    if(t1==burn_in_generations){popB<-pop}
+    tE<-(unname(proc.time()[3])-t0)/60
+    if(tE>wall_time){break}else{t1<-t1+1}
   }
+  cat("\nSaving file...\n")
+  ## output content: popB, abdO, pop, tE, speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations
+  save(popB, abdO, pop, tE, speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, file = paste0("../results/",output_file_name))
 }
 
 # Questions 18 and 19 involve writing code elsewhere to run your simulations on the cluster
