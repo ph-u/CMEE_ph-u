@@ -48,7 +48,7 @@ neutral_step <- function(community){
 # Question 6
 neutral_generation <- function(community){
   n0<-length(community)
-  if(n0%%2!=0 & runif(1)<.5){n1<-floor(n0/2)+n0%%2}else{n1<-floor(n0/2)}
+  n1<-floor(n0/2)+n0%%2
   for(i in 1:n1){
     community<-neutral_step(community)
   }
@@ -80,7 +80,7 @@ question_8 <- function() {
   plot(a~seq(1:n0), pch=3, xlab="generation", ylab = "species richness", type="l", col="red") ## plot species richness 
   # lines(rep(1,n0)~seq(1:n0), add=T)
   
-  return(paste0("species richness = ",min(a)," at ",min(which(a==min(a)))," generations"))
+  return(cat(paste0("species richness = ",min(a)," at ",min(which(a==min(a)))," generations\nSpecies richness will always be either unchanged (replace by any of the species with multiple individuals) or decreased (when last of its kind get replaced)")))
 }
 
 # Question 9
@@ -123,12 +123,14 @@ question_12 <- function()  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
   n0<-200
   sp_rate<-.1
-  a0<-neutral_time_series_speciation(init_community_max(100),sp_rate, n0)
-  a1<-neutral_time_series_speciation(init_community_min(100),sp_rate, n0)
+  ind<-100
+  a0<-neutral_time_series_speciation(init_community_max(ind),sp_rate, n0)
+  a1<-neutral_time_series_speciation(init_community_min(ind),sp_rate, n0)
   b0<-abs(a0-a1)
   
   plot(a0~seq(1:n0), pch=3, xlab="generation", ylab = "species richness", type="l", col="red") ## plot species richness 
-  lines(a1~seq(1:n0), pch=3, xlab="generation", ylab = "species richness", type="l", col="blue", add=T)
+  suppressWarnings(lines(a1~seq(1:n0), pch=3, xlab="generation", ylab = "species richness", type="l", col="blue", add=T))
+  legend(x=150,y=65,col = c("red","blue"), legend = c("max", "min"), title = "initial diversity", lty = 1:2)
   
   # return(paste0("species richness min difference at ",b0," at ",which(abs(a0-a1)==b0)," generations"))
   return(cat(paste0("Throughout ",n0," generations,\nIQR of species richness difference is ",IQR(b0),", from ",fivenum(b0)[2]," to ",fivenum(b0)[4],";\nIQR of high species diversity goup is from ",fivenum(a0)[2]," to ",fivenum(a0)[4],";\nIQR of low species diversity goup is from ",fivenum(a1)[2]," to ",fivenum(a1)[4],"\nReason of this pattern is due to the introduction of speciation with rate ",sp_rate,", which new mutations are hard to get rid of but diversity is easy to be reduced\nSo initial states have no observable effect on the final result\n")))
@@ -142,20 +144,47 @@ species_abundance <- function(community)  {
 # Question 14
 octaves <- function(abundance_vector) {
   a<-table(floor(log2(abundance_vector)))
-  a0<-data.frame(seq(1,max(names(a))),0)
-  for(i in 1:dim(a0)[1]){a0[i,2]<-a[which(names(a)==a0[i,1])]}
-  return(a0[,2])
+  a0<-data.frame(seq(0,max(names(a))),0)
+  for(i in 1:dim(a0)[1]){try(a0[i,2]<-a[which(names(a)==a0[i,1])],silent = T)}
+  return(as.numeric(a0[,2]))
 }
 
 # Question 15
 sum_vect <- function(x, y) {
-  
+  if(length(x) < length(y)){a1<-x; a2<-y}else{a2<-x; a1<-y}
+  a1<-c(a1,rep(0,length(a2)-length(a1)))
+  return(a1+a2)
 }
 
 # Question 16 
 question_16 <- function()  {
-  # clear any existing graphs and plot your graph within the R window
-  return("type your written answer here")
+  graphics.off() # clear any existing graphs and plot your graph within the R window
+  n0<-200;sp_rate<-.1;ind<-100;duration<-2e3;smp<-20
+  # a0<-as.data.frame(matrix(nrow = ind,ncol = floor(duration/smp)+1))
+  a0<-c()
+  community<-floor(runif(ind,0,n0))
+  for(i in 1:n0){
+    community<-neutral_generation_speciation(community, sp_rate)
+  }
+  a0<-sum_vect(a0,octaves(species_abundance(community)))
+  # i<-1
+  # a1<-octaves(species_abundance(community))
+  # a0[,i]<-c(a1,rep(0,dim(a0)[1]-length(a1)))
+  for(i0 in 1:duration){
+    community<-neutral_generation_speciation(community, sp_rate)
+    if(i0%%20==0){
+      # i<-i+1
+      # a1<-octaves(species_abundance(community))
+      # a0[,i]<-c(a1,rep(0,dim(a0)[1]-length(a1)))
+      a0<-sum_vect(a0,octaves(species_abundance(community)))
+    }
+  }
+  # a1<-c()
+  # for(i in 1:dim(a0)[1]){a1<-c(a1,mean(as.numeric(a0[i,])))}
+  # a1<-a1[which(a1>0)]
+  a0<-a0[which(a0>0)]/(n0+duration)
+  barplot(a0~seq(1,length(a0)), xlab = "Octave", ylab = "average species abundance")
+  return("initial condition has no observable effect.  As generation time increases, speciation rate dictates final species abundance result")
 }
 
 # Question 17
@@ -238,12 +267,63 @@ draw_fern2 <- function()  {
 
 # Challenge question A
 Challenge_A <- function() {
-  # clear any existing graphs and plot your graph within the R window
+  graphics.off() # clear any existing graphs and plot your graph within the R window
+  n0<-200;sp_rate<-.1;ind<-100;ciNum<-.972
+  a.h<-a.l<-as.data.frame(matrix(nrow = 0, ncol = n0))
+  repeat{
+    a.h<-rbind(a.h,neutral_time_series_speciation(init_community_max(ind),sp_rate, n0))
+    a.l<-rbind(a.l,neutral_time_series_speciation(init_community_min(ind),sp_rate, n0))
+    if(dim(a.h)[1]>30 & fivenum(a.h[1:(dim(a.h)[1]-1),n0])[3]-fivenum(a.h[1:dim(a.h)[1],n0])[3]<1 & fivenum(a.l[1:(dim(a.l)[1]-1),n0])[3]-fivenum(a.l[1:dim(a.l)[1],n0])[3]<1){break}
+  }
+  errh<-errl<-a.h.y<-a.l.y<-rep(NA,n0)
+  xxx<-seq(n0)
+  for(i in 1:n0){
+    errh[i]<-qnorm(ciNum)*sqrt(var(a.h[,i])/dim(a.h)[1])
+    errl[i]<-qnorm(ciNum)*sqrt(var(a.l[,i])/dim(a.l)[1])
+    a.h.y[i]<-median(a.h[,i])
+    a.l.y[i]<-median(a.l[,i])
+  }
+  a.h.eqm<-min(which(abs(a.h.y[c(1:(length(a.h.y)-10))]-a.h.y[-c(1:10)])<1))
+  a.l.eqm<-min(which(abs(a.l.y[c(1:(length(a.l.y)-10))]-a.l.y[-c(1:10)])<1))
+  a.h.y<-c(a.h.y+errh,rev(a.h.y)-errh)
+  a.l.y<-c(a.l.y+errl,rev(a.l.y)-errl)
+  xxx<-c(xxx,rev(xxx))
+  
+  plot(c(1,n0), c(0,max(a.h)), type = "n", xlab = "generations", ylab = "species richness")
+  suppressWarnings(polygon(xxx,a.h.y, col = rgb(1,0,0,.5), add=T, border = NA))
+  suppressWarnings(polygon(xxx,a.l.y, col = rgb(0,0,1,.5), add=T, border = NA))
+  suppressWarnings(abline(v=a.h.eqm, col=rgb(1,0,0,1), add=T))
+  suppressWarnings(text(x = a.h.eqm+5,y = 0, labels = a.h.eqm, col = rgb(1,0,0,1), add=T))
+  suppressWarnings(abline(v=a.l.eqm, col=rgb(0,0,1,1), add=T))
+  suppressWarnings(text(x = a.l.eqm+5,y = 5, labels = a.l.eqm, col = rgb(0,0,1,1), add=T))
+  legend(x=50,y=max(a.h)*.9,col = c("red","blue"), legend = c("max", "min"), title = paste0(ciNum," C.I. on initial diversity"), lty = 1)
 }
 
 # Challenge question B
 Challenge_B <- function() {
-  # clear any existing graphs and plot your graph within the R window
+  graphics.off() # clear any existing graphs and plot your graph within the R window
+  n0<-200;sp_rate<-.1;ind<-100;ciNum<-.972
+  a.h<-as.data.frame(matrix(nrow = 0, ncol = n0))
+  repeat{
+    ind<-sample(ind,ind, replace = TRUE)
+    a.h<-rbind(a.h,neutral_time_series_speciation(ind,sp_rate, n0))
+    if(dim(a.h)[1]>30 & fivenum(a.h[1:(dim(a.h)[1]-1),n0])[3]-fivenum(a.h[1:dim(a.h)[1],n0])[3]<1){break}
+  }
+  errh<-a.h.y<-rep(NA,n0)
+  xxx<-seq(n0)
+  for(i in 1:n0){
+    errh[i]<-qnorm(ciNum)*sqrt(var(a.h[,i])/dim(a.h)[1])
+    a.h.y[i]<-median(a.h[,i])
+  }
+  a.h.eqm<-min(which(abs(a.h.y[c(1:(length(a.h.y)-10))]-a.h.y[-c(1:10)])<1))
+  a.h.y<-c(a.h.y+errh,rev(a.h.y)-errh)
+  xxx<-c(xxx,rev(xxx))
+  
+  plot(c(1,n0), c(0,max(a.h)), type = "n", xlab = "generations", ylab = "species richness")
+  suppressWarnings(polygon(xxx,a.h.y, col = rgb(0,0,0,.5), add=T, border = NA))
+  suppressWarnings(abline(v=a.h.eqm, col=rgb(0,.5,.5,1), add=T))
+  suppressWarnings(text(x = a.h.eqm+5,y = 0, labels = a.h.eqm, col = rgb(0,.5,.5,1), add=T))
+  suppressWarnings(text(x = 100,y = max(a.h)*2/3, labels = paste0(ciNum," C.I. on varying initial diversity"), col = rgb(0,0,0,1), add=T))
 }
 
 # Challenge question C
