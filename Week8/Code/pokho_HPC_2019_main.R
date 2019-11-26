@@ -182,7 +182,7 @@ cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interva
     if(t1<=burn_in_generations & t1%%interval_rich==1){
       sppR[t1]<-species_richness(pop)
     }else if(t1%%interval_oct==1){
-      abdO<-list(abdO,octaves(species_abundance(pop)))
+      abdO[[length(abdO)+1]]<-octaves(species_abundance(pop))
     }
     if(t1==burn_in_generations){popB<-pop}
     tE<-(unname(proc.time()[3])-t0)/60
@@ -191,6 +191,8 @@ cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interva
   cat("\nSaving file...\n")
   ## output content: popB, abdO, pop, tE, speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations
   save(popB, abdO, pop, tE, speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, file = paste0("../results/",output_file_name))
+  # print(length(abdO))
+  # save(popB, pop, tE, speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, file = paste0("../results/",output_file_name))
 }
 
 # Questions 18 and 19 involve writing code elsewhere to run your simulations on the cluster

@@ -10,5 +10,13 @@
 
 # CMEE 2019 HPC excercises R code HPC run code proforma
 
-rm(list=ls()) # good practice 
-source("pokho_HPC_2019_main.R")
+{## prep
+  rm(list=ls()) # good practice 
+  graphics.off()
+  source("pokho_HPC_2019_main.R")
+}
+## variables
+iter<-1
+# iter<-as.numeric(Sys.getenv("PBS_ARRAY_INDEX"))
+
+set.seed(iter)
