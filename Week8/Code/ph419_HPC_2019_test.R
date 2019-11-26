@@ -1,9 +1,9 @@
 #!/bin/env R
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
-# Script: pokho_HPC_2019_test.R
+# Script: ph419_HPC_2019_test.R
 # Desc: test *_main.R script
-# Input: Rscript pokho_HPC_2019_test.R
+# Input: Rscript ph419_HPC_2019_test.R
 # Output: terminal outputs and .rda file
 # Arguments: 0
 # Date: Nov 2019

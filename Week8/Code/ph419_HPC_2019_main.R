@@ -1,9 +1,9 @@
 #!/bin/env R
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
-# Script: pokho_HPC_2019_main.R
+# Script: ph419_HPC_2019_main.R
 # Desc: function input script
-# Input: Rscript pokho_HPC_2019_main.R
+# Input: Rscript ph419_HPC_2019_main.R
 # Output: none
 # Arguments: 0
 # Date: Nov 2019
@@ -177,22 +177,22 @@ cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interva
   
   t0<-unname(proc.time()[3])
   repeat{
-    if(t1%%1e3==0){cat(paste0(t1/1e3,"K; "))}
-    pop<-neutral_generation_speciation(pop,speciation_rate)
-    if(t1<=burn_in_generations & t1%%interval_rich==1){
+    if(t1%%1e3==0){cat(paste0(t1/1e3,"K; "))} ## terminal print generation progress
+    pop<-neutral_generation_speciation(pop,speciation_rate) ## model
+    if(t1<=burn_in_generations & t1%%interval_rich==1){ ## record spp richness before population stabilizes
       sppR[t1]<-species_richness(pop)
-    }else if(t1%%interval_oct==1){
-      abdO[[length(abdO)+1]]<-octaves(species_abundance(pop))
+    }else if(t1%%interval_oct==1){ ## recordabundance vector after population stabilizes
+      abdO[[length(abdO)+1]]<-octaves(species_abundance(pop)) ## lengthening list for spp abundance
     }
-    if(t1==burn_in_generations){popB<-pop}
-    tE<-(unname(proc.time()[3])-t0)/60
-    if(tE>wall_time){break}else{t1<-t1+1}
+    if(t1==burn_in_generations){popB<-pop} ## save population structure as initial state for dynamic equilibrium
+    tE<-(unname(proc.time()[3])-t0)/60 ## timed code speed
+    if(tE>wall_time){break}else{t1<-t1+1} ## check time
   }
   cat("\nSaving file...\n")
-  ## output content: popB, abdO, pop, tE, speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations
+  
+  ## output
   save(popB, abdO, pop, tE, speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, file = paste0("../results/",output_file_name))
-  # print(length(abdO))
-  # save(popB, pop, tE, speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, file = paste0("../results/",output_file_name))
+  # save(popB, abdO, pop, tE, speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, file =output_file_name)
 }
 
 # Questions 18 and 19 involve writing code elsewhere to run your simulations on the cluster
