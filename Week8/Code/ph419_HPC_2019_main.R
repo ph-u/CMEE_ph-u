@@ -234,7 +234,10 @@ process_cluster_results <- function()  {
   
   ## plot
   par(mfrow=c(2,2))
-  plot(octaves(a.05),seq(1,length(a.05)))
+  try(barplot(octaves(a.05)~seq(1,length(octaves(a.05))), xlab = paste0("octave for burn-in generations ",a.05b/1e3,"K"), ylab = "abundance", ylim = c(0,max(octaves(a.05))*1.3)), silent = T)
+  try(barplot(octaves(a.10)~seq(1,length(octaves(a.10))), xlab = paste0("octave for burn-in generations ",a.10b/1e3,"K"), ylab = "abundance", ylim = c(0,max(octaves(a.10))*1.3)), silent = T)
+  try(barplot(octaves(a.25)~seq(1,length(octaves(a.25))), xlab = paste0("octave for burn-in generations ",a.25b/1e3,"K"), ylab = "abundance", ylim = c(0,max(octaves(a.25))*1.3)), silent = T)
+  try(barplot(octaves(a.50)~seq(1,length(octaves(a.50))), xlab = paste0("octave for burn-in generations ",a.50b/1e3,"K"), ylab = "abundance", ylim = c(0,max(octaves(a.50))*1.3)), silent = T)
   
   combined_results <- list(a.05, a.10, a.25, a.50) #create your list output here to return
   return(combined_results)
