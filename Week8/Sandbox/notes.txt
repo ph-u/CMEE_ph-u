@@ -37,3 +37,14 @@ cladogenesis: sister species & target all on island only -- radiation speciation
 more isolation, less impact bring by immigration species, better do endemic spp do
 too many parameters, over fitting
 
+-------------------
+coalescence
+trace back time, found all speciation events
+always in eqm condition
+result vector of abundances, length(n) = number of spp in current condition
+J: sample size
+N: community / lineage size of interest
+simulations not reality
+(N-1)/(J-1): proportion of the lineage come from any place from the previous time step (can be from outside of target community of interest)
+probability: v + (N-1)/(J-1)*(1-v) + [nothing happen] = 1
+decrease chance of coalescence when going back in time
