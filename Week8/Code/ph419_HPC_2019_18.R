@@ -13,11 +13,14 @@
 {## prep
   rm(list=ls()) # good practice 
   graphics.off()
-  source("pokho_HPC_2019_main.R")
+  source("ph419_HPC_2019_main.R")
 }
+
+args=(commandArgs(T))
+args<-as.numeric(args)
 ## variables
-iter<-1
-v.1<- 1 ## runtime allowed
+iter<-args[1]
+v.1<-1 ## runtime allowed, local & test
 # iter<-as.numeric(Sys.getenv("PBS_ARRAY_INDEX")) ## cluster sys argv
 # v.1<-11.5 ## runtime cluster
 
@@ -29,6 +32,6 @@ cluster_run(speciation_rate = personal_speciation_rate,
             size = r.0,
             wall_time = v.1,
             interval_rich = 1,
-            interval_oct = size/10,
-            burn_in_generations = size*8,
+            interval_oct = r.0/10,
+            burn_in_generations = r.0*8,
             output_file_name = paste0("q18_",iter,".rda"))

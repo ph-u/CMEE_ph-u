@@ -11,7 +11,7 @@
 # CMEE 2019 HPC excercises R code HPC run code proforma
 
 rm(list=ls()) # good practice 
-source("pokho_HPC_2019_main.R")
+source("ph419_HPC_2019_main.R")
 # it should take a faction of a second to source your file
 # if it takes longer you're using the main file to do actual simulations
 # it should be used only for defining functions that will be useful for your cluster run and which will be marked automatically
