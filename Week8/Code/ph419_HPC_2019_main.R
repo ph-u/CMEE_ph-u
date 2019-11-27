@@ -199,8 +199,44 @@ cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interva
 
 # Question 20 
 process_cluster_results <- function()  {
-  # clear any existing graphs and plot your graph within the R window
-  combined_results <- list() #create your list output here to return
+  graphics.off() # clear any existing graphs and plot your graph within the R window
+  
+  r.0<-data.frame(seq(1,100),c(5e2,1e3,2.5e3,5e3)) ## ref df
+  
+  a.05<-a.10<-a.25<-a.50<-0
+  cat("contain ");for(i in 1:dim(r.0)[1]){
+    a<-try(load(paste0("../results/q18_",i,".rda")), silent = T)
+    # a<-try(load(paste0("q18_",i,".rda")), silent = T)
+    if(class(a)!="try-error"){cat(paste0(i,"; "))
+      if(size==5e2){ ## size 500
+        for(j in 1:length(abdO)){
+          a.05<-sum_vect(a.05,abdO[[j]])
+          a.05b<-burn_in_generations
+          }
+      }else if(size==1e3){ ## size 1000
+        for(j in 1:length(abdO)){
+          a.10<-sum_vect(a.10,abdO[[j]])
+          a.10b<-burn_in_generations
+        }
+      }else if(size==2.5e3){ ## size 2500
+        for(j in 1:length(abdO)){
+          a.25<-sum_vect(a.25,abdO[[j]])
+          a.25b<-burn_in_generations
+          }
+      }else{## size 5000
+        for(j in 1:length(abdO)){
+          a.50<-sum_vect(a.50,abdO[[j]])
+          a.50b<-burn_in_generations
+        }
+      }
+    }
+  };rm(i);cat("\n")
+  
+  ## plot
+  par(mfrow=c(2,2))
+  plot(octaves(a.05),seq(1,length(a.05)))
+  
+  combined_results <- list(a.05, a.10, a.25, a.50) #create your list output here to return
   return(combined_results)
 }
 
