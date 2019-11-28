@@ -186,7 +186,7 @@ cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interva
       abdO[[length(abdO)+1]]<-octaves(species_abundance(pop)) ## lengthening list for spp abundance
     }
     if(t1==burn_in_generations){popB<-pop} ## save population structure as initial state for dynamic equilibrium
-    tE<-(unname(proc.time()[3])-t0)/60 ## timed code speed
+    tE<-(unname(proc.time()[3])-t0)/(60^2) ## timed code speed
     if(tE>wall_time){break}else{t1<-t1+1} ## check time
   }
   cat("\nSaving file...\n")
