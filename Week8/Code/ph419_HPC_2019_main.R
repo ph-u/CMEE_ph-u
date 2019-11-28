@@ -182,7 +182,8 @@ cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interva
     pop<-neutral_generation_speciation(pop,speciation_rate) ## model
     if(t1<=burn_in_generations & t1%%interval_rich==1){ ## record spp richness before population stabilizes
       sppR[t1]<-species_richness(pop)
-    }else if(t1%%interval_oct==1){ ## recordabundance vector after population stabilizes
+    }
+    if(t1%%interval_oct==1){ ## interval record abundance vector
       abdO[[length(abdO)+1]]<-octaves(species_abundance(pop)) ## lengthening list for spp abundance
     }
     if(t1==burn_in_generations){popB<-pop} ## save population structure as initial state for dynamic equilibrium
@@ -213,7 +214,7 @@ process_cluster_results <- function(full_path="../")  {
         for(j in 1:length(abdO)){
           a.05<-sum_vect(a.05,abdO[[j]])
           a.05b<-burn_in_generations
-          }
+        }
       }else if(size==1e3){ ## size 1000
         for(j in 1:length(abdO)){
           a.10<-sum_vect(a.10,abdO[[j]])
@@ -223,7 +224,7 @@ process_cluster_results <- function(full_path="../")  {
         for(j in 1:length(abdO)){
           a.25<-sum_vect(a.25,abdO[[j]])
           a.25b<-burn_in_generations
-          }
+        }
       }else{## size 5000
         for(j in 1:length(abdO)){
           a.50<-sum_vect(a.50,abdO[[j]])
@@ -376,14 +377,41 @@ Challenge_B <- function() {
 # Challenge question C
 Challenge_C <- function() {
   graphics.off() # clear any existing graphs and plot your graph within the R window
-  a<-process_cluster_results()
+  fList<-length(list.files("../results/", pattern = "q18"))
+  a.0<-vector(mode = "list", length = fList)
   
-  plot(seq(0,100),seq(0,100), type = "n", xlab = "generation", ylab = "species richness")
+  for(i in 1:fList){
+    load(paste0("../results/q18_",i,".rda"))
+    a.2<-rep(NA,length(abdO))
+    for(j in 1:length(abdO)){a.2[j]<-sum(abdO[[j]])}
+    a.0[[i]]<-a.2
+  }
+  
+  a.1<-as.data.frame(matrix(nrow = 0, ncol = 3))
+  for(i in 1:4){
+    for(j in 0:(length(a.0)/4-1)){
+      if(j==0){a.2<-a.0[[i+j*4]]}else{a.2<-sum_vect(a.2,a.0[[i+j*4]])}
+    }
+    a.1<-rbind(a.1,data.frame(seq(1,length(a.2))-1,i,a.2))
+  }
+  a.1[,2]<-ifelse(a.1[,2]<3, ifelse(a.1[,2]<2,5e2,1e3), ifelse(a.1[,2]>3,5e3,25e2))
+  
+  plot(a.1[,3]/3~a.1[,1], type = "n", xlab = "generation", ylab = "species richness", pch=3)
+  lines(a.1[which(a.1[,2]==5e2),3]/3~a.1[which(a.1[,2]==5e2),1], col=rgb(1,0,0,.3))
+  lines(a.1[which(a.1[,2]==1e3),3]/3~a.1[which(a.1[,2]==1e3),1], col=rgb(0,0,0,.3))
+  lines(a.1[which(a.1[,2]==25e2),3]/3~a.1[which(a.1[,2]==25e2),1], col=rgb(0,1,0,.3))
+  lines(a.1[which(a.1[,2]==5e3),3]/3~a.1[which(a.1[,2]==5e3),1], col=rgb(0,0,1,.3))
+  legend(x=1.7e4, y=70, lty = 1, col = c(rgb(1,0,0,1),rgb(0,0,0,1),rgb(0,1,0,1),rgb(0,0,1,1)), legend = c(5e2,1e3,25e2,5e3), title = "Community size")
 }
 
 # Challenge question D
 Challenge_D <- function() {
-  # clear any existing graphs and plot your graph within the R window
+  graphics.off() # clear any existing graphs and plot your graph within the R window
+  size<-200
+  sp_rate<-speciation_rate
+  pop<-rep(1,size)
+  abd<-c()
+  
   return("type your written answer here")
 }
 
