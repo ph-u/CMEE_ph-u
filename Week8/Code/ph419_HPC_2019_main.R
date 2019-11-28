@@ -206,7 +206,7 @@ process_cluster_results <- function(full_path="../")  {
   
   a.05<-a.10<-a.25<-a.50<-0
   cat("contain ");for(i in 1:dim(r.0)[1]){
-    a<-try(load(paste0(full_path,"q18_",i,".rda")), silent = T)
+    a<-try(load(paste0(full_path,"results/q18_",i,".rda")), silent = T)
     # a<-try(load(paste0("q18_",i,".rda")), silent = T)
     if(class(a)!="try-error"){cat(paste0(i,"; "))
       if(size==5e2){ ## size 500
@@ -244,6 +244,7 @@ process_cluster_results <- function(full_path="../")  {
   dev.off()
   
   combined_results <- list(a.05, a.10, a.25, a.50) #create your list output here to return
+  save(combined_results,file = "../results/ph419_cx1_results.rda")
   return(combined_results)
 }
 
@@ -374,7 +375,10 @@ Challenge_B <- function() {
 
 # Challenge question C
 Challenge_C <- function() {
-  # clear any existing graphs and plot your graph within the R window
+  graphics.off() # clear any existing graphs and plot your graph within the R window
+  a<-process_cluster_results()
+  
+  plot(seq(0,100),seq(0,100), type = "n", xlab = "generation", ylab = "species richness")
 }
 
 # Challenge question D

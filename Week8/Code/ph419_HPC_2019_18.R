@@ -39,4 +39,3 @@ cluster_run(speciation_rate = personal_speciation_rate,
             burn_in_generations = r.0*8,
             output_file_name = paste0("q18_",iter,".rda"),
             full_path=full_path)
-process_cluster_results(full_path=full_path)
