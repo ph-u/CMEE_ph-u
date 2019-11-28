@@ -48,3 +48,6 @@ simulations not reality
 (N-1)/(J-1): proportion of the lineage come from any place from the previous time step (can be from outside of target community of interest)
 probability: v + (N-1)/(J-1)*(1-v) + [nothing happen] = 1
 decrease chance of coalescence when going back in time
+
+------------------
+
