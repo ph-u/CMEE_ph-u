@@ -407,12 +407,24 @@ Challenge_C <- function() {
 # Challenge question D
 Challenge_D <- function() {
   graphics.off() # clear any existing graphs and plot your graph within the R window
-  size<-200
-  sp_rate<-speciation_rate
-  pop<-rep(1,size)
+  j<-N<-200
+  v<-personal_speciation_rate
+  pop<-rep(1,j)
   abd<-c()
-  
-  return("type your written answer here")
+  th<-v*(j-1)/(1-v)
+  repeat{
+    chg<-sample(j,1)
+    if(runif(1)<th/(th+N-1)){
+      abd<-c(abd, pop[chg])
+    }else{
+      tmp<-seq(N)
+      tmp<-sample(tmp[which(tmp!=chg)],1)
+      pop[tmp]<-pop[tmp]+pop[chg]
+    }
+    pop<-pop[-chg]
+    if(N>1){N<-N-1}else{break}
+  }
+  return(abd)
 }
 
 # Challenge question E
