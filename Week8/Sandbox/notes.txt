@@ -50,4 +50,6 @@ probability: v + (N-1)/(J-1)*(1-v) + [nothing happen] = 1
 decrease chance of coalescence when going back in time
 
 ------------------
+mandelbrot set: radius <=2
+fractals: dimension not a whole number, self-similar
 
