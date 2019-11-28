@@ -15,7 +15,7 @@ name <- "Pok Man Ho"
 preferred_name <- "PokMan"
 email <- "pok.ho19@imperial.ac.uk"
 username <- "ph419"
-personal_speciation_rate <- 0.002 # will be assigned to each person individually in class and should be between 0.002 and 0.007
+personal_speciation_rate <- 0.006101 # will be assigned to each person individually in class and should be between 0.002 and 0.007
 
 # Question 1
 species_richness <- function(community){
