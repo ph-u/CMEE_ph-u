@@ -252,13 +252,15 @@ process_cluster_results <- function(full_path="../")  {
 }
 
 # Question 21
-question_21 <- function()  {
-  return("type your written answer here")
+question_21 <- function(x.0=3, x.1=8)  {
+  x<-log(x.1)/log(x.0)
+  return(cat(paste0(x,"\ndimension 1 of biggest structure contains ",x.0," repeating units, and the whole biggest structure contains ",x.1," repeating units")))
 }
 
 # Question 22
-question_22 <- function()  {
-  return("type your written answer here")
+question_22 <- function(x.0=3, x.1=20)  {
+  x<-log(x.1)/log(x.0)
+  return(cat(paste0(x,"\ndimension 1 of biggest structure contains ",x.0," repeating units, and the whole biggest structure contains ",x.1," repeating units")))
 }
 
 # Question 23

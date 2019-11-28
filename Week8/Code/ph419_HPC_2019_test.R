@@ -49,3 +49,6 @@ cluster_run(.1, 100, 10, 1, 10, 200, "my_test_file_1.rda")
 process_cluster_results()
 Challenge_C()
 Challenge_D()
+
+question_21()
+question_22()
