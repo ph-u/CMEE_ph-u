@@ -155,9 +155,11 @@ sum_vect <- function(x, y) {
 # Question 16 
 question_16 <- function()  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
+  set.seed(9990)
   n0<-200;sp_rate<-.1;ind<-100;duration<-2e3;smp<-20 ## set parameters: generation, speciation rate, population size, data collection generation, sampling interval
   a0<-0
-  community<-floor(runif(ind,0,ind)) ## population size filled with random individuals with identity ranging from 0 to population size num
+  community<-rep(1,ind)
+  # community<-floor(runif(ind,0,ind)) ## population size filled with random individuals with identity ranging from 0 to population size num
   for(i in 1:(n0+duration)){
     community<-neutral_generation_speciation(community, sp_rate)
     if(i > n0 & i%%smp==0){a0<-sum_vect(a0,octaves(species_abundance(community)))}
@@ -407,24 +409,26 @@ Challenge_C <- function() {
 # Challenge question D
 Challenge_D <- function() {
   graphics.off() # clear any existing graphs and plot your graph within the R window
-  j<-N<-200
-  v<-personal_speciation_rate
+  set.seed(9990)
+  j<-N<-100
+  v<-.1
   pop<-rep(1,j)
   abd<-c()
   th<-v*(j-1)/(1-v)
   repeat{
-    chg<-sample(j,1)
+    chg<-sample(N,1)
     if(runif(1)<th/(th+N-1)){
       abd<-c(abd, pop[chg])
     }else{
       tmp<-seq(N)
-      tmp<-sample(tmp[which(tmp!=chg)],1)
+      tmp<-tmp[which(tmp!=chg)]
+      tmp<-sample(tmp,1)
       pop[tmp]<-pop[tmp]+pop[chg]
     }
     pop<-pop[-chg]
     if(N>1){N<-N-1}else{break}
   }
-  return(abd)
+  return(octaves(abd))
 }
 
 # Challenge question E
