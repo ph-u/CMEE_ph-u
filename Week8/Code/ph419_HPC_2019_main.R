@@ -168,7 +168,8 @@ question_16 <- function()  {
 }
 
 # Question 17
-cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, output_file_name)  {
+cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, output_file_name,
+                        full_path="../")  {
   pop<-rep(1,size) ## create intiial min div population
   t1<-1 ## set ini generation
   sppR<-rep(NA,burn_in_generations) ## pre-allocate spp-richness vector
@@ -191,21 +192,21 @@ cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interva
   cat("\nSaving file...\n")
   
   ## output
-  save(popB, abdO, pop, tE, speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, file = paste0("../results/",output_file_name))
+  save(popB, abdO, pop, tE, speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, file = paste0(full_path,"results/",output_file_name))
   # save(popB, abdO, pop, tE, speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, file =output_file_name)
 }
 
 # Questions 18 and 19 involve writing code elsewhere to run your simulations on the cluster
 
 # Question 20 
-process_cluster_results <- function()  {
+process_cluster_results <- function(full_path="../")  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
   
   r.0<-data.frame(seq(1,100),c(5e2,1e3,2.5e3,5e3)) ## ref df
   
   a.05<-a.10<-a.25<-a.50<-0
   cat("contain ");for(i in 1:dim(r.0)[1]){
-    a<-try(load(paste0("../results/q18_",i,".rda")), silent = T)
+    a<-try(load(paste0(full_path,"q18_",i,".rda")), silent = T)
     # a<-try(load(paste0("q18_",i,".rda")), silent = T)
     if(class(a)!="try-error"){cat(paste0(i,"; "))
       if(size==5e2){ ## size 500
@@ -232,12 +233,15 @@ process_cluster_results <- function()  {
     }
   };rm(i);cat("\n")
   
+  pdf(paste0(full_path,"results/abundances.pdf"))
   ## plot
   par(mfrow=c(2,2))
   try(barplot(octaves(a.05)~seq(1,length(octaves(a.05))), xlab = paste0("octave for burn-in generations ",a.05b/1e3,"K"), ylab = "abundance", ylim = c(0,max(octaves(a.05))*1.3)), silent = T)
   try(barplot(octaves(a.10)~seq(1,length(octaves(a.10))), xlab = paste0("octave for burn-in generations ",a.10b/1e3,"K"), ylab = "abundance", ylim = c(0,max(octaves(a.10))*1.3)), silent = T)
   try(barplot(octaves(a.25)~seq(1,length(octaves(a.25))), xlab = paste0("octave for burn-in generations ",a.25b/1e3,"K"), ylab = "abundance", ylim = c(0,max(octaves(a.25))*1.3)), silent = T)
   try(barplot(octaves(a.50)~seq(1,length(octaves(a.50))), xlab = paste0("octave for burn-in generations ",a.50b/1e3,"K"), ylab = "abundance", ylim = c(0,max(octaves(a.50))*1.3)), silent = T)
+  
+  dev.off()
   
   combined_results <- list(a.05, a.10, a.25, a.50) #create your list output here to return
   return(combined_results)
