@@ -264,9 +264,21 @@ question_22 <- function(x.0=3, x.1=20)  {
 }
 
 # Question 23
-chaos_game <- function()  {
-  # clear any existing graphs and plot your graph within the R window
-  return("type your written answer here")
+chaos_game <- function(x=0, y=0, colrr=rgb(0,0,0,1), xI=c(0,3,4), yI=c(0,4,1))  {
+  graphics.off() # clear any existing graphs and plot your graph within the R window
+  a<-as.matrix(data.frame(xI,yI))
+  a.p<-as.data.frame(matrix(nrow = 0, ncol = 2))
+  a.p<-rbind(a.p,c(x,y))
+  
+  t.0<-proc.time()[3]
+  repeat{
+    r<-sample(dim(a)[1],1)
+    a.p<-rbind(a.p,c((a[r,1]+a.p[dim(a.p)[1],1])/2,(a[r,2]+a.p[dim(a.p)[1],2])/2))
+    if(proc.time()[3]-t.0>20){break}
+  }
+  
+  plot(x = a.p[,1], y = a.p[,2], type = "p", xlim = c(min(a.p[,1]),max(a.p[,1])), ylim = c(min(a.p[,2]),max(a.p[,2])), xlab = "x", ylab = "y", cex=.01, pch=1, col=colrr)
+  return("a fractal triangle with three spikes at the pre-designed points")
 }
 
 # Question 24
@@ -434,9 +446,10 @@ Challenge_D <- function() {
 }
 
 # Challenge question E
-Challenge_E <- function() {
-  # clear any existing graphs and plot your graph within the R window
-  return("type your written answer here")
+Challenge_E <- function(x=1, y=0, colrr=rgb(1,0,0,1), xI=c(0,2,1), yI=c(0,0,sqrt(3/4))) {
+  graphics.off() # clear any existing graphs and plot your graph within the R window
+  chaos_game(x,y,colrr, xI, yI)
+  return("initial points has no effect on resultant plot")
 }
 
 # Challenge question F

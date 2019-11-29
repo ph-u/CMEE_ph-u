@@ -52,3 +52,5 @@ Challenge_D()
 
 question_21()
 question_22()
+chaos_game()
+Challenge_E()
