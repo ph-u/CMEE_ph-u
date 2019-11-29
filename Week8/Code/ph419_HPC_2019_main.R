@@ -282,35 +282,34 @@ chaos_game <- function(x=0, y=0, colrr=rgb(0,0,0,1), xI=c(0,3,4), yI=c(0,4,1))  
 }
 
 # Question 24
-turtle <- function(start_position=c(0,0), direction=.03, length=1)  {
-  direction<-ifelse(direction>2*pi, direction*pi/180, direction)
-  a<-as.data.frame(matrix(nrow = 0, ncol = 2))
-  a<-rbind(a,start_position)
-  rad<-direction
-  t.0<-as.numeric(proc.time()[3]);repeat{
-    # rad<-(runif(1,min = 0, max = 2*pi)+direction)%%(2*pi)
-    a<-rbind(a,c(a[dim(a)[1],1]+length*cos(rad),a[dim(a)[1],2]+length*sin(rad)))
-    if(as.numeric(proc.time()[3])-t.0>30){break}
-  }
-  # plot(x=a[,1], y=a[,2], type = "n", xlab = "x", ylab = "y")
-  suppressWarnings(points(x=a[,1], y=a[,2], col=rgb(.5,.5,0,1), add=T, cex=.01))
-  return(as.numeric(a[dim(a)[1],])) # you should return your endpoint here.
+turtle <- function(start_position=c(0,0), direction=.03, length=.1)  {
+  a<-c(start_position[1]+length*cos(direction),start_position[2]+length*sin(direction))
+  suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), col=rgb(.5,.5,0,1), add=T, cex=.01))
+  return(a) # you should return your endpoint here.
 }
 
 # Question 25
-elbow <- function(start_position=c(0,0), direction=0, length=1)  {
-  graphics.off()
-  plot.new()
+elbow <- function(start_position=c(.1,.1), direction=0, length=.5)  {
+  # graphics.off()
+  # plot.new()
   a<-as.data.frame(matrix(nrow = 0, ncol = 2))
   a<-rbind(a,start_position)
   a<-rbind(a,turtle(start_position, direction, length))
-  a<-rbind(a,turtle(a[dim(a)[1],], direction+45, .95*length))
+  a<-rbind(a,turtle(a[dim(a)[1],], direction+pi/4, .95*length))
   suppressWarnings(lines(x=a[,1], y=a[,2], add=T))
 }
 
 # Question 26
-spiral <- function(start_position, direction, length)  {
-  return("type your written answer here")
+spiral <- function(start_position=c(.4,.3), direction=0, length=.3)  {
+  a<-as.data.frame(matrix(nrow = 0, ncol = 2))
+  ang<-direction; len<-length
+  a<-rbind(a,start_position)
+  repeat{
+    a<-rbind(a,turtle(a[dim(a)[1],],ang<-ang+pi/4,len<-len*.95))
+    if(len<1e-9){break}
+  }
+  suppressWarnings(lines(x=a[,1], y=a[,2], add=T))
+  return("Error: C stack usage ... too close to limit")
 }
 
 # Question 27
