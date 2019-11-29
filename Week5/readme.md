@@ -13,16 +13,16 @@ Apache-2.0
 Multiple scripts were coded and introduced below in filename alphabetical order.  
 All scripts are in `Code` directory
 
-### chess.R
+### Abundances.R
 
 #### Features
 
-3rd homework for GIS session on 31-Oct to 01-Nov 2019
+classwork for Abundances section
 
 #### Suggested input
 
 ```
-Rscript chess.R
+Rscript Abundances.R
 ```
 
 #### Output
@@ -30,16 +30,16 @@ Rscript chess.R
 R terminal output
 *****
 
-### fish_Fiji.R
+### AedesAegyptiFecundity.R
 
 #### Features
 
-2nd homework for GIS session on 31-Oct to 01-Nov 2019
+classwork for Fecundity section
 
 #### Suggested input
 
 ```
-Rscript fish_Fiji.R
+Rscript AedesAdgyptiFecundity.R
 ```
 
 #### Output
@@ -47,16 +47,16 @@ Rscript fish_Fiji.R
 R terminal output
 *****
 
-### gis.R
+### AlbatrossChickenGrowth.R
 
 #### Features
 
-classwork for GIS session on 31-Oct to 01-Nov 2019
+classwork for Albatross Chicken Growth section
 
 #### Suggested input
 
 ```
-Rscript gis.R
+Rscript AlbatrossChickenGrowth.R
 ```
 
 #### Output
@@ -64,21 +64,21 @@ Rscript gis.R
 R terminal output
 *****
 
-### ppt_trans_NG.R
+### AllometricTraitsScaling.R
 
 #### Features
 
-1st homework for GIS session on 31-Oct to 01-Nov 2019
+classwork for Allometric Traits section
 
 #### Suggested input
 
 ```
-Rscript ppt_trans_NG.R
+Rscript AllometricTraitsScaling.R
 ```
 
 #### Output
 
-a graphical `pdf` in `results` subdirectory
+R terminal output
 *****
 
 ## Reference
