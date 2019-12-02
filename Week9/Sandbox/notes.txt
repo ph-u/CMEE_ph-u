@@ -36,3 +36,6 @@ long - longint: num > 64K
 shor
 
 byte intended to be unit storage of ASCII char set
+
+Test c program with diff compiler versions
+gcc -std=c99 <C> -o <prog>
