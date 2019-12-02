@@ -1,20 +1,14 @@
 #include <stdio.h>
 
-int main()
+int main (void)
 {
-    /* Declare the variables: */
-    int x = 10;
-    int y = 5;
-    float z = 1.1;
-    //char a = 'a';
-    
-    /* Print the variables to the console */
-    printf("The value of x: %i", x);
-    printf("The value of x: %i",  y);
-    printf("The value of x: %f", z);
-    printf("The value of x: %i", 'a');
-    
-    /* Return 0 to the OS*/
-    return 0;
+     int x = 1;
+     char a = 'a';
+     float point1 = 1.1;
+     
+     printf("An integer: %i\n", x);
+     printf("A character: %c\n", a);
+     printf("A floating point: %f\n", point1);
+     
+     return 0;
 }
-
