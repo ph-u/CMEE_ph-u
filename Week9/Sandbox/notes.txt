@@ -7,5 +7,32 @@ space in C very flexible
 step of compile
 0. preprocessor: textual substitutions -> perform constant arithmetric substitutions
 1. compiler: translate code -> assembly -> binary -> output: object file (binary compiler code)
-2. linker: create excutables (e.g. exe; link all relatibles & fix symbols); skip when writing libraries
+2. linker: create standalone excutables (e.g. exe; link all relatibles & fix symbols); skip when writing libraries
 
+clang -E <.c> -o preproc.i --> save preprocessing result into preproc.i
+clang -Wall <.c> --> print all warnings to console
+
+HD, RAM, CPU
+registers: CPU's local RAM
+
+data types -- 3 mains: integral, floating point, bool
+char - ASCII char set; 1 byte
+int - integer: able to store large num; 4 byte; 0 ~ 2.1B
+
+float - floating real points (range concept); range not too defined, rounding error occur
+double - double-precision float; max conventional limit: 9*10^15
+
+_Bool - 0/1, 1-byte storage
+pointer - address, 1-byte storage
+
+
+machine word size at integral level -- 32-/64-bit
+
+
+word size
+signed
+unsigned
+long - longint: num > 64K
+shor
+
+byte intended to be unit storage of ASCII char set
