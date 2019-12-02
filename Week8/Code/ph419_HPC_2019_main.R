@@ -314,8 +314,9 @@ spiral <- function(start_position=c(.4,.3), direction=0, length=.3)  {
 
 # Question 27
 draw_spiral <- function()  {
-  # clear any existing graphs and plot your graph within the R window
-  
+  graphics.off() # clear any existing graphs and plot your graph within the R window
+  plot.new()
+  spiral()
 }
 
 # Question 28

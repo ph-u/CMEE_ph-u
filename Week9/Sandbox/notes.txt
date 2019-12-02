@@ -1,0 +1,11 @@
+low-level computational language: communication with machine, binary; for generation of ref libraries
+"#" pre-processor libraries
+shell read "main" function
+return: return operator
+space in C very flexible
+
+step of compile
+0. preprocessor: textual substitutions -> perform constant arithmetric substitutions
+1. compiler: translate code -> assembly -> binary -> output: object file (binary compiler code)
+2. linker: create excutables (e.g. exe; link all relatibles & fix symbols); skip when writing libraries
+
