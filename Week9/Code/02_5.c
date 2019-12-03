@@ -1,7 +1,7 @@
 /* 
 Author: PokMan Ho pok.ho19@imperial.ac.uk
 Script: 02_5.c
-Desc: print terminal message
+Desc: memory limitations
 Input: clang 02_5.c -o 02_5;./02_5
 Output: terminal output
 Arguments: 2

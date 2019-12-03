@@ -1,7 +1,7 @@
 /* 
 Author: PokMan Ho pok.ho19@imperial.ac.uk
 Script: 02_3.c
-Desc: print terminal message
+Desc: variable declarations
 Input: clang 02_3.c -o 02_3;./02_3
 Output: terminal output
 Arguments: 2

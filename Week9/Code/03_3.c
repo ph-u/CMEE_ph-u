@@ -1,7 +1,7 @@
 /* 
 Author: PokMan Ho pok.ho19@imperial.ac.uk
 Script: 03_3.c
-Desc: print terminal message
+Desc: deincrement and increment
 Input: clang 03_3.c -o 03_3;./03_3
 Output: terminal output
 Arguments: 2

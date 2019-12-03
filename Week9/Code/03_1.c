@@ -1,7 +1,7 @@
 /* 
 Author: PokMan Ho pok.ho19@imperial.ac.uk
 Script: 03_1.c
-Desc: print terminal message
+Desc: constants and data type conversions
 Input: clang 03_1.c -o 03_1;./03_1
 Output: terminal output
 Arguments: 2

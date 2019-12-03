@@ -1,7 +1,7 @@
 /* 
 Author: PokMan Ho pok.ho19@imperial.ac.uk
 Script: 03_2.c
-Desc: print terminal message
+Desc: testing cast results
 Input: clang 03_2.c -o 03_2;./03_2
 Output: terminal output
 Arguments: 2

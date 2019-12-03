@@ -1,7 +1,7 @@
 /* 
 Author: PokMan Ho pok.ho19@imperial.ac.uk
 Script: 01_1.c
-Desc: print terminal message (Ex.1,2)
+Desc: Ex.1,2 answers
 Input: clang 01_1.c -o hello;./hello
 Output: terminal output
 Arguments: 2

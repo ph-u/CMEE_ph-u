@@ -1,7 +1,7 @@
 /* 
 Author: PokMan Ho pok.ho19@imperial.ac.uk
 Script: 02_6.c
-Desc: print terminal message
+Desc: floating point binary
 Input: clang 02_6.c -o 02_6;./02_6
 Output: terminal output
 Arguments: 2

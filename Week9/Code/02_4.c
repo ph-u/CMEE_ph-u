@@ -1,7 +1,7 @@
 /* 
 Author: PokMan Ho pok.ho19@imperial.ac.uk
 Script: 02_4.c
-Desc: print terminal message
+Desc: variable types impact
 Input: clang 02_4.c -o 02_4;./02_4
 Output: terminal output
 Arguments: 2

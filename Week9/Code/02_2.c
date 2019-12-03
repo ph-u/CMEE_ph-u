@@ -1,7 +1,7 @@
 /* 
 Author: PokMan Ho pok.ho19@imperial.ac.uk
 Script: 02_2.c
-Desc: print terminal message
+Desc: debug 2
 Input: clang 02_2.c -o 02_2;./02_2
 Output: terminal output
 Arguments: 2
