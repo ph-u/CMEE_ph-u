@@ -1,0 +1,75 @@
+R start
+
+R version 3.6.1 (2019-07-05) -- "Action of the Toes"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-conda_cos6-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> #!/bin/env R
+> 
+> # Author: PokMan Ho pok.ho19@imperial.ac.uk
+> # Script: ph419_HPC_2019_19.R
+> # Desc: HPC homework Q18
+> # Input: Rscript ph419_HPC_2019_19.R
+> # Output: none
+> # Arguments: 0
+> # Date: Nov 2019
+> 
+> # CMEE 2019 HPC excercises R code HPC run code proforma
+> 
+> 
+> {## prep
++   rm(list=ls()) # good practice 
++   graphics.off()
++ ## path
++ full_path<-"/rds/general/user/ph419/home/"
++   source(paste0(full_path,"code/ph419_HPC_2019_main.R"))
++ }
+> 
+> #args=(commandArgs(T))
+> #args<-as.numeric(args)
+> ## variables
+> #iter<-args[1]
+> #v.1<-1 ## runtime allowed, local & test
+> iter<-as.numeric(Sys.getenv("PBS_ARRAY_INDEX")) ## cluster sys argv
+> v.1<-11.5 ## runtime cluster
+> 
+> set.seed(iter)
+> r.0<-data.frame(seq(1,100),c(5e2,1e3,2.5e3,5e3)) ## ref df
+> r.0<-r.0[which(r.0[,1]==iter),2] ## grab input pop to work on
+> 
+> cluster_run(speciation_rate = personal_speciation_rate,
++             size = r.0,
++             wall_time = v.1,
++             interval_rich = 1,
++             interval_oct = r.0/10,
++             burn_in_generations = r.0*8,
++             output_file_name = paste0("q18_",iter,".rda"),
++             full_path=full_path)
+at gen: 1K; 2K; 3K; 4K; 5K; 6K; 7K; 8K; 9K; 10K; 11K; 12K; 13K; 14K; 15K; 16K; 17K; 18K; 19K; 20K; 21K; 22K; 23K; 24K; 25K; 26K; 27K; 28K; 29K; 30K; 31K; 32K; 33K; 34K; 35K; 36K; 37K; 38K; 39K; 40K; 41K; 42K; 43K; 44K; 45K; 46K; 47K; 48K; 49K; 50K; 51K; 52K; 53K; 54K; 55K; 56K; 57K; 58K; 59K; 60K; 61K; 62K; 63K; 64K; 65K; 66K; 67K; 68K; 69K; 70K; 71K; 72K; 73K; 74K; 75K; 76K; 77K; 78K; 79K; 80K; 81K; 82K; 83K; 84K; 85K; 86K; 87K; 88K; 89K; 90K; 91K; 92K; 93K; 94K; 95K; 96K; 97K; 98K; 99K; 100K; 101K; 102K; 103K; 104K; 105K; 106K; 107K; 108K; 109K; 110K; 111K; 112K; 113K; 114K; 115K; 116K; 117K; 118K; 119K; 120K; 121K; 122K; 123K; 124K; 125K; 126K; 127K; 128K; 129K; 130K; 131K; 132K; 133K; 134K; 135K; 136K; 137K; 138K; 139K; 140K; 141K; 142K; 143K; 144K; 145K; 146K; 147K; 148K; 149K; 150K; 151K; 152K; 153K; 154K; 155K; 156K; 157K; 158K; 159K; 160K; 161K; 162K; 163K; 164K; 165K; 166K; 167K; 168K; 169K; 170K; 171K; 172K; 173K; 174K; 175K; 176K; 177K; 178K; 179K; 180K; 181K; 182K; 183K; 184K; 185K; 186K; 187K; 188K; 189K; 190K; 191K; 192K; 193K; 194K; 195K; 196K; 197K; 198K; 199K; 200K; 201K; 202K; 203K; 204K; 205K; 206K; 207K; 208K; 209K; 210K; 211K; 212K; 213K; 214K; 215K; 216K; 217K; 218K; 219K; 220K; 221K; 222K; 223K; 224K; 225K; 226K; 227K; 228K; 229K; 230K; 231K; 232K; 233K; 
+Saving file...
+> 
+job  done
+
+============================================
+
+        Job resource usage summary 
+
+                 Memory (GB)    NCPUs
+ Requested  :         1             1
+ Used       :         0 (peak)   0.98 (ave)
+
+============================================

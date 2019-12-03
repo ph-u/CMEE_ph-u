@@ -202,14 +202,14 @@ cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interva
 # Questions 18 and 19 involve writing code elsewhere to run your simulations on the cluster
 
 # Question 20 
-process_cluster_results <- function(full_path="../")  {
+process_cluster_results <- function(full_path="../", dist_path="results/")  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
   
   r.0<-data.frame(seq(1,100),c(5e2,1e3,2.5e3,5e3)) ## ref df
   
   a.05<-a.10<-a.25<-a.50<-0
   cat("contain ");for(i in 1:dim(r.0)[1]){
-    a<-try(load(paste0(full_path,"results/q18_",i,".rda")), silent = T)
+    a<-try(load(paste0(full_path,dist_path,"q18_",i,".rda")), silent = T)
     # a<-try(load(paste0("q18_",i,".rda")), silent = T)
     if(class(a)!="try-error"){cat(paste0(i,"; "))
       if(size==5e2){ ## size 500

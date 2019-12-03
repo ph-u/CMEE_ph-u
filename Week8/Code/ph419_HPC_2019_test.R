@@ -46,7 +46,7 @@ question_16()
 Challenge_A()
 Challenge_B() ######### day 1
 cluster_run(.1, 100, 10, 1, 10, 200, "my_test_file_1.rda")
-process_cluster_results()
+process_cluster_results(dist_path = "results/run/")
 Challenge_C()
 Challenge_D()
 
