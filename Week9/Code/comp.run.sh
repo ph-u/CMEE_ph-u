@@ -22,14 +22,13 @@ else
 	a1=$2
 fi
 
-clang $1
+clang -Wall $1 -o ${a1}
 
-if [ $((`echo $ERROR`)) -eq 0 ];then
-	clang $1 -o ${a1}
-	./${a1}
-else
+if [ $? != 0 ];then
 	echo -e "return value unsuccessful"
 	exit
+else
+	./${a1}
 fi
 
 exit
