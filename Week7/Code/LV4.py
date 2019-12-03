@@ -24,8 +24,8 @@ import matplotlib.pylab as p
 ## sys argv imput
 if len(sys.argv) < 4:
     print("not enough inputs, using defaults")
-    print("r=1.  a=0.1  z=1.5  e=0.75")
-    r=1.;a=.1;z=1.5;e=.75
+    print("r=1.  a=0.1  z=1.5  e=0")
+    r=1.;a=.1;z=1.5;e=0
 else:
     r=float(sys.argv[1])
     a=float(sys.argv[2])
