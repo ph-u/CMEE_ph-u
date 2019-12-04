@@ -204,50 +204,57 @@ cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interva
 # Question 20 
 process_cluster_results <- function(full_path="../", dist_path="results/")  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
-  
-  r.0<-data.frame(seq(1,100),c(5e2,1e3,2.5e3,5e3)) ## ref df
-  
+  r.0<-c(5e2,1e3,2.5e3,5e3) ## ref vec
+  a.0<-list.files(path = paste0(full_path,dist_path), pattern = ".rda")
+  a.1<-as.data.frame(matrix(nrow = length(a.0), ncol = 4)) ## rda num summary
   a.05<-a.10<-a.25<-a.50<-0
-  cat("contain ");for(i in 1:dim(r.0)[1]){
-    a<-try(load(paste0(full_path,dist_path,"q18_",i,".rda")), silent = T)
-    # a<-try(load(paste0("q18_",i,".rda")), silent = T)
-    if(class(a)!="try-error"){cat(paste0(i,"; "))
-      if(size==5e2){ ## size 500
-        for(j in 1:length(abdO)){
-          a.05<-sum_vect(a.05,abdO[[j]])
-          a.05b<-burn_in_generations
-        }
-      }else if(size==1e3){ ## size 1000
-        for(j in 1:length(abdO)){
-          a.10<-sum_vect(a.10,abdO[[j]])
-          a.10b<-burn_in_generations
-        }
-      }else if(size==2.5e3){ ## size 2500
-        for(j in 1:length(abdO)){
-          a.25<-sum_vect(a.25,abdO[[j]])
-          a.25b<-burn_in_generations
-        }
-      }else{## size 5000
-        for(j in 1:length(abdO)){
-          a.50<-sum_vect(a.50,abdO[[j]])
-          a.50b<-burn_in_generations
-        }
-      }
-    }
-  };rm(i);cat("\n")
+  cat("handling ")
+  for(i in 1:length(a.0)){cat(paste0(i,"; "))
+    a<-try(load(paste0(full_path, dist_path, "q18_",i,".rda")), silent = T)
+    if(class(a)!="try-error"){
+      a.1[i,]<-c(i,size,length(abdO),burn_in_generations) ## collect descriptive info
+      a.2<-which(r.0==size) ## id which abundance dump should the data be saved to
+      for(i0 in 1:length(abdO)){ ## collect abundance vectors
+        if(a.2==1){
+          a.05<-sum_vect(a.05, abdO[[i0]])
+        }else if(a.2==2){
+          a.10<-sum_vect(a.10, abdO[[i0]])
+        }else if(a.2==3){
+          a.25<-sum_vect(a.25, abdO[[i0]])
+        }else{
+          a.50<-sum_vect(a.50, abdO[[i0]])
+        } ## save data in appropriate dump
+      } ## for-loop sum vec
+    } ## if load not try-error
+  } ## for-loop on all rda files
+  colnames(a.1)=c("run","size","NumGeneration","BurnIn")
+  cat("\n")
+  
+  ## grab total number of combined data
+  a.05b<-sum(a.1[which(a.1[,2]==r.0[1]),3])
+  a.10b<-sum(a.1[which(a.1[,2]==r.0[2]),3])
+  a.25b<-sum(a.1[which(a.1[,2]==r.0[3]),3])
+  a.50b<-sum(a.1[which(a.1[,2]==r.0[4]),3])
+  
+  ## grab mean of total abundances
+  a.05<-a.05/a.05b
+  a.10<-a.10/a.10b
+  a.25<-a.25/a.25b
+  a.50<-a.50/a.50b
   
   pdf(paste0(full_path,"results/abundances.pdf"))
   ## plot
   par(mfrow=c(2,2))
-  try(barplot(octaves(a.05)~seq(1,length(octaves(a.05))), xlab = paste0("octave for burn-in generations ",a.05b/1e3,"K"), ylab = "abundance", ylim = c(0,max(octaves(a.05))*1.3)), silent = T)
-  try(barplot(octaves(a.10)~seq(1,length(octaves(a.10))), xlab = paste0("octave for burn-in generations ",a.10b/1e3,"K"), ylab = "abundance", ylim = c(0,max(octaves(a.10))*1.3)), silent = T)
-  try(barplot(octaves(a.25)~seq(1,length(octaves(a.25))), xlab = paste0("octave for burn-in generations ",a.25b/1e3,"K"), ylab = "abundance", ylim = c(0,max(octaves(a.25))*1.3)), silent = T)
-  try(barplot(octaves(a.50)~seq(1,length(octaves(a.50))), xlab = paste0("octave for burn-in generations ",a.50b/1e3,"K"), ylab = "abundance", ylim = c(0,max(octaves(a.50))*1.3)), silent = T)
+  try(barplot(a.05~seq(1,length(a.05)), xlab = paste0("octave for ",round(a.05b/1e3),"K generations"), ylab = "abundance", ylim = c(0,max(a.05)*1.3)), silent = T)
+  try(barplot(a.10~seq(1,length(a.10)), xlab = paste0("octave for ",round(a.10b/1e3),"K generationa"), ylab = "abundance", ylim = c(0,max(a.10)*1.3)), silent = T)
+  try(barplot(a.25~seq(1,length(a.25)), xlab = paste0("octave for ",round(a.25b/1e3),"K generations"), ylab = "abundance", ylim = c(0,max(a.25)*1.3)), silent = T)
+  try(barplot(a.50~seq(1,length(a.50)), xlab = paste0("octave for ",round(a.50b/1e3),"K generations"), ylab = "abundance", ylim = c(0,max(a.50)*1.3)), silent = T)
   
   dev.off()
   
   combined_results <- list(a.05, a.10, a.25, a.50) #create your list output here to return
   save(combined_results,file = "../results/ph419_cx1_results.rda")
+  write.csv(a.1,"../results/ph419_cx1_summary.csv", row.names = F, quote = F)
   return(combined_results)
 }
 
@@ -330,24 +337,11 @@ tree <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.4, LR=0)
 draw_tree <- function()  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
   plot.new()
-  a<-turtle(c(.5,.5),-pi/2,1)
-  for(i in 0:1){
-    tree(LR=i)
-  }
+  for(i in 0:1){tree(LR=i)}
 }
 
 # Question 29
 fern <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.4, LR=0)  {
-  a<-as.data.frame(matrix(nrow = 0, ncol = 2))
-  ang<-direction; len<-length
-  ddir<-ifelse(LR==0,pi/4,0)
-  llen<-ifelse(LR==0,.38,.87)
-  a<-rbind(a,start_position)
-  repeat{
-    a<-rbind(a,turtle(a[dim(a)[1],],ang<-ang+ddir,len<-len*llen))
-    if(len<1e-9){break}
-  }
-  suppressWarnings(lines(x=a[,1], y=a[,2], add=T))
 }
 draw_fern <- function()  {
   # clear any existing graphs and plot your graph within the R window
