@@ -303,32 +303,29 @@ elbow <- function(start_position=c(.1,.1), direction=0, length=.5)  {
 spiral <- function(start_position=c(.15,0), direction=0, length=.45)  {
   a<-turtle(start_position,direction,length)
   suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), add=T))
-  if(length>1e-5){
-    try(spiral(start_position = a, direction = direction+pi/4, length = length*.95), silent = T)
+  if(length>1e-9){
+    spiral(start_position = a, direction = direction+pi/4, length = length*.95)
   }
-  spiral()
 }
 
 # Question 27
 draw_spiral <- function()  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
   plot.new()
-  suppressMessages(spiral())
+  spiral()
   return("Error: C stack usage ... too close to limit")
 }
 
 # Question 28
-tree <- function(start_position=c(.5,.5), direction=90*2*pi/360, length=.4, LR=0)  {
-  a<-as.data.frame(matrix(nrow = 0, ncol = 2))
-  ang<-direction; len<-length
-  ddir<-ifelse(LR==0,-pi/4,pi/4)
-  a<-rbind(a,start_position)
-  repeat{
-    a<-rbind(a,turtle(a[dim(a)[1],],ang<-ang+ddir,len<-len*.65))
-    if(len<1e-9){break}
+tree <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.4, LR=0)  {
+  a<-turtle(start_position,direction,length)
+  suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), add=T))
+  dirr<-direction+ifelse(LR==0,pi/4,-pi/4)
+  lenn<-length*.65
+  if(length>1e-2){
+    tree(start_position = a, direction = dirr, length = lenn, LR=0)
+    tree(start_position = a, direction = dirr, length = lenn, LR=1)
   }
-  suppressWarnings(lines(x=a[,1], y=a[,2], add=T))
-  
 }
 draw_tree <- function()  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
