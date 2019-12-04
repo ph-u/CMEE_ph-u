@@ -300,36 +300,57 @@ elbow <- function(start_position=c(.1,.1), direction=0, length=.5)  {
 }
 
 # Question 26
-spiral <- function(start_position=c(.4,.3), direction=0, length=.3)  {
-  a<-as.data.frame(matrix(nrow = 0, ncol = 2))
-  ang<-direction; len<-length
-  a<-rbind(a,start_position)
-  repeat{
-    a<-rbind(a,turtle(a[dim(a)[1],],ang<-ang+pi/4,len<-len*.95))
-    if(len<1e-9){break}
+spiral <- function(start_position=c(.15,0), direction=0, length=.45)  {
+  a<-turtle(start_position,direction,length)
+  suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), add=T))
+  if(length>1e-5){
+    try(spiral(start_position = a, direction = direction+pi/4, length = length*.95), silent = T)
   }
-  suppressWarnings(lines(x=a[,1], y=a[,2], add=T))
-  return("Error: C stack usage ... too close to limit")
+  spiral()
 }
 
 # Question 27
 draw_spiral <- function()  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
   plot.new()
-  spiral()
+  suppressMessages(spiral())
+  return("Error: C stack usage ... too close to limit")
 }
 
 # Question 28
-tree <- function(start_position, direction, length)  {
+tree <- function(start_position=c(.5,.5), direction=90*2*pi/360, length=.4, LR=0)  {
+  a<-as.data.frame(matrix(nrow = 0, ncol = 2))
+  ang<-direction; len<-length
+  ddir<-ifelse(LR==0,-pi/4,pi/4)
+  a<-rbind(a,start_position)
+  repeat{
+    a<-rbind(a,turtle(a[dim(a)[1],],ang<-ang+ddir,len<-len*.65))
+    if(len<1e-9){break}
+  }
+  suppressWarnings(lines(x=a[,1], y=a[,2], add=T))
   
 }
 draw_tree <- function()  {
-  # clear any existing graphs and plot your graph within the R window
+  graphics.off() # clear any existing graphs and plot your graph within the R window
+  plot.new()
+  a<-turtle(c(.5,.5),-pi/2,1)
+  for(i in 0:1){
+    tree(LR=i)
+  }
 }
 
 # Question 29
-fern <- function(start_position, direction, length)  {
-  
+fern <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.4, LR=0)  {
+  a<-as.data.frame(matrix(nrow = 0, ncol = 2))
+  ang<-direction; len<-length
+  ddir<-ifelse(LR==0,pi/4,0)
+  llen<-ifelse(LR==0,.38,.87)
+  a<-rbind(a,start_position)
+  repeat{
+    a<-rbind(a,turtle(a[dim(a)[1],],ang<-ang+ddir,len<-len*llen))
+    if(len<1e-9){break}
+  }
+  suppressWarnings(lines(x=a[,1], y=a[,2], add=T))
 }
 draw_fern <- function()  {
   # clear any existing graphs and plot your graph within the R window
