@@ -35,6 +35,8 @@ Writing readme.md for each week was mainly automated, followed by manual modific
 `Week5`: R (GIS)  
 `Week6`: R (bioinformatics)  
 `Week7`: python3  
+`Week8`: R (HPC)  
+`Week9`: C
 
 ## Reference
 
