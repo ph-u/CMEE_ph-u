@@ -1,0 +1,58 @@
+bird demographics
+spatial structure
+
+observational methods
+correlation or causation?
+
+record interaction
+deduce social network
+
+use data permutations as null models
+do this for every sites every weekend
+test statistic
+
+control feeder response to the bird types
+number-tagged -- odd / even access feeders
+
+study methods
+wytham woods
+examining sociality
+
+social bonds: foraging
+pre-experimental period: no assortment by tag type
+experimental period
+1. highly non-random assormentby tag type
+2. where they can feed = interactions
+monitored new food patches
+network diffusion analysis
+more close to the forced groups in exp't period
+
+foraging segregation influence site prospecting? yes
+winter foraging flocks -> spring breeding patterns? yes
+social choice depend on where they were during winter
+neighbour: stronger winter bonds
+mated pairs: compatible vs conflicting pairs
+conflicting pairs spend more time on areas at prohibited feeders
+male personal +ve affect mate bond strength
+bold males spend much more time with partner & earlier meeting partner
+
+repeatable social phenotypes
+
+how bond affect fitness?
+degree : count num of social bonds; 40% repeatability
+strength: tightness of social bonds; 25% repeatability
+consistency of social bonds yearly
+annual 50% flock turnover rate
+
+birds reponse to losing flockmates
+losing past flock mates -> more new & strong social bonds
+
+betweenness: how well a group is bridged to another group
+clustering: how well do group members are connected
+simple social behaviour better predicted by direct metric simulations
+problem solvers netwoek positions differ from non-solvers?
+juvenile birds: non-solvers strong and few links
+average: solvers weak and many links
+simple behaviour: solver spread info faster `.` more connections
+
+complex behavioiur: solvers slower
