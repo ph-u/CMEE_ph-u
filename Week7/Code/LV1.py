@@ -34,8 +34,13 @@ def LV():
         return sc.array([dRdt, dCdt])
 
     ## set initial start parameters
-    r=1.;a=.1;z=1.5;e=.75;t=sc.linspace(0,15,1e3)
-    R0=10;C0=5;RC0=sc.array([R0,C0])
+    r=1. ## intrinsic (per-capita) growth rate
+    a=.1 ## per-capita "search-rate" for resource
+    z=1.5 ## mortality rate
+    e=.75 ## consumer's efficiency for resource -> biomass
+    t=sc.linspace(0,15,1e3)
+    R0=10;C0=5 ## initial population of resource & consumers
+    RC0=sc.array([R0,C0])
     pops, infodict=integrate.odeint(dCR_dt, RC0, t, full_output=True);pops
 
     f1=p.figure(num=1);f1

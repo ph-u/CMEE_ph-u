@@ -24,13 +24,13 @@ import matplotlib.pylab as p
 ## sys argv imput
 if len(sys.argv) < 4:
     print("not enough inputs, using defaults")
-    print("r=1.  a=0.1  z=1.5  e=0")
-    r=100.;a=.1;z=1.5;e=0
+    print("r=1.  a=0.1  z=0.1  e=0.1")
+    r=1.;a=.1;z=.1;e=.1
 else:
-    r=float(sys.argv[1])
-    a=float(sys.argv[2])
-    z=float(sys.argv[3])
-    e=float(sys.argv[4])
+    r=float(sys.argv[1]) ## intrinsic (per-capita) growth rate
+    a=float(sys.argv[2]) ## per-capita "search-rate" for resource
+    z=float(sys.argv[3]) ## mortality rate
+    e=float(sys.argv[4]) ## consumer's efficiency for resource -> biomass
 
 def LV():
     """adaptation for cProfile"""
@@ -39,7 +39,7 @@ def LV():
         """Lotka-Volterra model, discrete time"""
         R=pop[0]
         C=pop[1]
-        ep=float(stats.norm.rvs(size=1))
+        ep=float(stats.norm.rvs(size=1, scale=.01)) ## stochasticity
         R1=R*(2+r+ep-R/K-a*C)
         C1=C*(1-z+ep+e*a*R)
         ## dimension analysis required (unit balance)
@@ -48,9 +48,9 @@ def LV():
 
     ## set initial start parameters
     t=sc.linspace(0,15,1e3)
-    K=50
+    K=50 ## carrying capacity
     pops=sc.zeros(((len(t)),2))
-    pops[0,:]=[10,5]
+    pops[0,:]=[10,5] ## initial population of resource & consumers
     for i in range(1,len(t)):
         pops[i,:]=dCR_dt(pops[(i-1),:],t[i])
         if pops[i,0] > K:

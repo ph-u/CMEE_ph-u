@@ -29,10 +29,10 @@ def LV():
         print("r=1.  a=0.1  z=1.5  e=0.75")
         r=1.;a=.1;z=1.5;e=.75
     else:
-        r=float(sys.argv[1])
-        a=float(sys.argv[2])
-        z=float(sys.argv[3])
-        e=float(sys.argv[4])
+        r=float(sys.argv[1]) ## intrinsic (per-capita) growth rate
+        a=float(sys.argv[2]) ## per-capita "search-rate" for resource
+        z=float(sys.argv[3]) ## mortality rate
+        e=float(sys.argv[4]) ## consumer's efficiency for resource -> biomass
 
     ## function
     def dCR_dt(pops, t=0):
@@ -47,8 +47,9 @@ def LV():
 
     ## set initial start parameters
     t=sc.linspace(0,15,1e3)
-    K=37
-    R0=10;C0=5;RC0=sc.array([R0,C0])
+    K=37 ## carrying capacity
+    R0=10;C0=5 ## initial population of resource & consumers
+    RC0=sc.array([R0,C0])
     pops, infodict=integrate.odeint(dCR_dt, RC0, t, full_output=True);pops
 
     f1=p.figure(num=1);f1

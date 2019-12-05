@@ -26,10 +26,10 @@ if len(sys.argv) < 4:
     print("r=1.  a=0.1  z=1.5  e=0.75")
     r=1.;a=.1;z=1.5;e=.75
 else:
-    r=float(sys.argv[1])
-    a=float(sys.argv[2])
-    z=float(sys.argv[3])
-    e=float(sys.argv[4])
+    r=float(sys.argv[1]) ## intrinsic (per-capita) growth rate
+    a=float(sys.argv[2]) ## per-capita "search-rate" for resource
+    z=float(sys.argv[3]) ## mortality rate
+    e=float(sys.argv[4]) ## consumer's efficiency for resource -> biomass
 
 def LV():
     """adaptation for cProfile"""
@@ -46,9 +46,9 @@ def LV():
 
     ## set initial start parameters
     t=sc.linspace(0,15,1e3)
-    K=33 ## max 40
+    K=33 ## max 40, carrying capacity
     pops=sc.zeros(((len(t)),2))
-    pops[0,:]=[10,5]
+    pops[0,:]=[10,5] ## initial population of resource & consumers
     for i in range(1,len(t)):
         pops[i,:]=dCR_dt(pops[(i-1),:],t[i])
         if pops[i,0] > K:

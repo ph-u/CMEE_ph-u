@@ -341,27 +341,23 @@ draw_tree <- function()  {
 }
 
 # Question 29
-fern <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.4, LR=0, LR1=0)  {
+fern <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.3, LR=0, LR1=0)  {
   a<-turtle(start_position,direction,length)
   suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), add=T))
-  if(LR1==0){
-    dirr<-direction+ifelse(LR==0,pi/4,0)
-    lenn<-length*ifelse(LR==0,.38,.87)
-  }else{
-    dirr<-direction+ifelse(LR==0,0,-pi/4)
-    lenn<-length*ifelse(LR==0,.87,.38)
-  }
+  dirr<-direction+ifelse(LR==0,pi/4,0)
+  lenn<-length*ifelse(LR==0,.38,.87)
   if(length>1e-2){
-    fern(start_position = a, direction = dirr, length = lenn, LR=0, LR1 = 0)
-    fern(start_position = a, direction = dirr, length = lenn, LR=0, LR1 = 1)
-    fern(start_position = a, direction = dirr, length = lenn, LR=1, LR1 = 0)
-    fern(start_position = a, direction = dirr, length = lenn, LR=1, LR1 = 1)
+    fern(start_position = a, direction = dirr, length = lenn, LR=0, LR1=0)
+    fern(start_position = a, direction = dirr, length = lenn, LR=0, LR1=1)
+    fern(start_position = a, direction = dirr, length = lenn, LR=1, LR1=0)
+    fern(start_position = a, direction = dirr, length = lenn, LR=1, LR1=1)
   }
 }
 draw_fern <- function()  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
   plot.new()
-  for(i in 0:1){for(j in 0:1){fern(LR=i, LR1=j)}}
+  fern()
+  # for(i in 0:1){for(j in 0:1){fern(LR=i, LR1=j)}}
 }
 
 # Question 30
