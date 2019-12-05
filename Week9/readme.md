@@ -2,7 +2,7 @@
 
 # 2019 PokMan HO MRes CMEE Coursework Week9
 
-This week's foci were on: Week9/Code/02_1 Week9/Code/02_2 Week9/Code/02_3 Week9/Code/02_4 Week9/Code/02_5 Week9/Code/02_6 Week9/Code/03_1 Week9/Code/03_2 Week9/Code/03_3 Week9/Code/goodbye Week9/Code/hello c run 
+This week's foci were on: c run 
 
 ## License
 
@@ -17,7 +17,7 @@ All scripts are in `Code` directory
 
 #### Features
 
-print terminal message (Ex.1,2)
+Ex.1,2 answers
 
 #### Suggested input
 
@@ -47,25 +47,11 @@ clang 01_3.c -o goodbye;./goodbye
 terminal output
 *****
 
-### 02_1
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
-*****
-
 ### 02_1.c
 
 #### Features
 
-print terminal message (Ex.1,2)
+debug 1
 
 #### Suggested input
 
@@ -78,25 +64,11 @@ clang 02_1.c -o 02_1;./02_1
 terminal output
 *****
 
-### 02_2
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
-*****
-
 ### 02_2.c
 
 #### Features
 
-print terminal message
+debug 2
 
 #### Suggested input
 
@@ -109,25 +81,11 @@ clang 02_2.c -o 02_2;./02_2
 terminal output
 *****
 
-### 02_3
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
-*****
-
 ### 02_3.c
 
 #### Features
 
-print terminal message
+variable declarations
 
 #### Suggested input
 
@@ -140,25 +98,11 @@ clang 02_3.c -o 02_3;./02_3
 terminal output
 *****
 
-### 02_4
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
-*****
-
 ### 02_4.c
 
 #### Features
 
-print terminal message
+variable types impact
 
 #### Suggested input
 
@@ -171,25 +115,11 @@ clang 02_4.c -o 02_4;./02_4
 terminal output
 *****
 
-### 02_5
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
-*****
-
 ### 02_5.c
 
 #### Features
 
-print terminal message
+memory limitations
 
 #### Suggested input
 
@@ -202,25 +132,11 @@ clang 02_5.c -o 02_5;./02_5
 terminal output
 *****
 
-### 02_6
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
-*****
-
 ### 02_6.c
 
 #### Features
 
-print terminal message
+floating point binary
 
 #### Suggested input
 
@@ -233,25 +149,11 @@ clang 02_6.c -o 02_6;./02_6
 terminal output
 *****
 
-### 03_1
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
-*****
-
 ### 03_1.c
 
 #### Features
 
-print terminal message
+constants and data type conversions
 
 #### Suggested input
 
@@ -264,25 +166,11 @@ clang 03_1.c -o 03_1;./03_1
 terminal output
 *****
 
-### 03_2
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
-*****
-
 ### 03_2.c
 
 #### Features
 
-print terminal message
+testing cast results
 
 #### Suggested input
 
@@ -295,30 +183,33 @@ clang 03_2.c -o 03_2;./03_2
 terminal output
 *****
 
-### 03_3
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
-*****
-
 ### 03_3.c
 
 #### Features
 
-print terminal message
+deincrement and increment
 
 #### Suggested input
 
 ```
 clang 03_3.c -o 03_3;./03_3
+```
+
+#### Output
+
+terminal output
+*****
+
+### 04_1.c
+
+#### Features
+
+loop for counting prime numbers
+
+#### Suggested input
+
+```
+clang 04_1.c -o 04_1;./04_1
 ```
 
 #### Output
@@ -341,34 +232,6 @@ compile and run designated C-program
 #### Output
 
 output of the C program
-*****
-
-### goodbye
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
-*****
-
-### hello
-
-#### Features
-
-
-#### Suggested input
-
-```
-```
-
-#### Output
-
 *****
 
 ## Reference

@@ -77,11 +77,15 @@ res$effective<-res$est/(4*sn*1e-8)
   a.tot<-data.frame("s"=names(a.tot),"d"=unname(a.tot)/sum(unname(a.tot)))[,-2]
 }
 
+pdf("../results/coalescence_01.pdf")
 ggplot()+theme_bw()+
   xlab("Site Frequency Spectrum")+ylab("SFS density")+
   scale_fill_discrete(name="Source", label=c("North", "South"))+
   geom_col(aes(x=as.numeric(as.character(a.NS$s)), y=as.numeric(a.NS$d.Freq), fill=a.NS$t), position="dodge") ## <https://stackoverflow.com/questions/38101512/the-same-width-of-the-bars-in-geom-barposition-dodge>
+dev.off()
 
+pdf("../results/coalescence_02.pdf")
 ggplot()+theme_bw()+
   xlab("Site Frequency Spectrum")+ylab("SFS density")+
   geom_col(aes(x=as.numeric(as.character(a.tot$s)), y=as.numeric(a.tot$d.Freq)))
+dev.off()

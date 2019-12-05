@@ -61,7 +61,9 @@ for(i in 1:dim(a.r)[1]){ ## print subpop Fst result
   };rm(i)
 
 ## plot -- real phy-tree: [A,[B, [C,D]]]; D = A + ^B + C; heavy genetic exchange
+pdf("../results/turtle_01.pdf")
 ggplot(data = a.r, aes(x=a.r$dist, y=a.r$den))+xlab("Spatial Dist. (km)")+ylab("Pairwise genetic dist (Pairwise Fst)")+theme_bw()+geom_point()
+dev.off()
 
 ## stat test Spearman correlation
 cor.test(y=a.r$den, x=a.r$dist, method = "spearman")

@@ -41,10 +41,10 @@ def GenRdmAdjList(N = 2, C = .5):
 ## L = potential number of links in a network
 ## N = size of network / number of nodes
 
-MaxN = 30
-C = .75
+MaxN = 30 ## max number of players
+C = .75 ## probability of establishing a link
 
-AdjL = sc.array(GenRdmAdjList(MaxN, C))
+AdjL = sc.array(GenRdmAdjList(MaxN, C)) ## construct adjacent list
 Sps = sc.unique(AdjL) ## get species ids 
 SizRan = ([-10,10]) ## use log10 scale
 Sizs = sc.random.uniform(SizRan[0], SizRan[1], MaxN)

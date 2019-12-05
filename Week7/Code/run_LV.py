@@ -43,3 +43,6 @@ cProfile.run('LV3.LV()', sort="tottime")
 
 import LV4
 cProfile.run('LV4.LV()', sort="tottime")
+
+import LV5
+cProfile.run('LV5.LV()', sort="tottime")
