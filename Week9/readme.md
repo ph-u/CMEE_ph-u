@@ -2,7 +2,7 @@
 
 # 2019 PokMan HO MRes CMEE Coursework Week9
 
-This week's foci were on: c run 
+This week's foci were on: c sh 
 
 ## License
 
@@ -217,7 +217,7 @@ clang 04_1.c -o 04_1;./04_1
 terminal output
 *****
 
-### comp.run.sh
+### comp_run.sh
 
 #### Features
 
@@ -226,7 +226,7 @@ compile and run designated C-program
 #### Suggested input
 
 ```
-./comp.run.sh <C>
+./comp_run.sh <C>
 ```
 
 #### Output

@@ -2,7 +2,7 @@
 
 # 2019 PokMan HO MRes CMEE Coursework Week8
 
-This week's foci were on: R sh 
+This week's foci were on: 38 R sh 
 
 ## License
 
@@ -12,6 +12,90 @@ Apache-2.0
 
 Multiple scripts were coded and introduced below in filename alphabetical order.  
 All scripts are in `Code` directory
+
+### Screen
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+*****
+
+### Shot
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+*****
+
+### 2019-12-05
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+*****
+
+### at
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+*****
+
+### 11.38.34
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+*****
+
+### PM.png
+
+#### Features
+
+
+#### Suggested input
+
+```
+```
+
+#### Output
+
+*****
 
 ### jrosinde_HPC_2019_challengeG.R
 

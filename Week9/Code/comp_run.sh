@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
-# Script: comp.run.sh
+# Script: comp_run.sh
 # Desc: compile and run designated C-program
-# Input: ./comp.run.sh <C>
+# Input: ./comp_run.sh <C>
 # Output: output of the C program
 # Arguments: 1
 # Date: Dec 2019
