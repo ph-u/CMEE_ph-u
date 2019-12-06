@@ -38,21 +38,40 @@ void delete_tree(tree_t* tree)
 	//implement me
 }
 
+void tree_clear_connects(tree_t* t)
+{
+		int i = 0;
+		for(i=0; i < t->num_nodes; ++i){
+				t->nodes[i].left = NULL;
+				t->nodes[i].right= NULL;
+				t->nodes[i].anc = NULL;
+		}
+}
+
 void tree_read_anc_table(int *anctable, tree_t* t)
 {
 	int i	= 0;
 	int j	= 0;
 
+	// clear all connector pointers: assume NULL values
+	tree_clear_connects(t);
 /*
 	loop over all elements of anctable
 	at each position link that node to its ancestor
 */
-	for (i=0; i<t->numnodes; ++i){
-		t->nodes[i].anc = t->nodes[anctable[i]];
-		if(t->nodes[anctable[i]].left == NULL){
-			t->nodes[anctable[i]].left = &t->nodes[i];
+	for (i=0; i<t->num_nodes-1; ++i){
+			j = anctable[i];// index of ancestor of ith node
+			t->nodes[i].anc = &t->nodes[j]; //pointing first node ancestor pointer & assign address of nodes to pointer
+		if(t->nodes[j].left == NULL){
+			t->nodes[j].left = &t->nodes[i];
 		}else{
-			t->nodes[anctable[i]].right = &t->nodes[i];
+			t->nodes[j].right = &t->nodes[i];
 		}
 	}
+	t->root = &t->nodes[t->num_nodes-1];
+}
+
+void tree_traverse(tree_t* t)
+{
+		node_traverse(t->root);
 }

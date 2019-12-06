@@ -12,6 +12,7 @@ typedef struct _node {
 	char	*label;
 } node_t;
 
+void node_traverse(node_t* n);
 //node_t* new_node(void);
 //void    delete_node;
 
