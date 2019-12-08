@@ -33,11 +33,11 @@ fern <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.1, LR=1,
   d<-direction+ifelse(LR<1,pi/4,ifelse(LR>1,-pi/4,0))
   L<-length*ifelse(LR==1,.87,.38)
 
-  if(L > 1e-3){for(i in 0:2){fern(a,d,L,i,pp,1)}}
+  if(L > 1e-3){for(i in 0:2){fern(a,d,L,i,pp,1,pp2)}}
 }
 
 draw_fern <- function(k)  {
-  graphics.off() # clear any existing graphs and plot your graph within the R window
+#graphics.off() # clear any existing graphs and plot your graph within the R window
   plot.new()
   for(i in 1:5){
 		  fern(pp=i,pp2=k)

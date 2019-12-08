@@ -361,7 +361,9 @@ draw_fern <- function()  {
 }
 
 # Question 30
-fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.1, LR=1, LR1=0)  {
+fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.1,
+                  LR=1, ## angle of branch from main stem
+                  LR1=0)  { ## angle of left/right brance
   a<-turtle(start_position,direction,ifelse(LR1==0,length*.2,length))
   # a<-turtle(start_position,direction,length)
   colouring<-c(rgb(0,.7,.1,1),rgb(.5,.5,.2,1),rgb(1,0,0,1)) ## leaves, branches, tips
@@ -375,7 +377,7 @@ fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.1, LR=1
     ifelse(LR1%%2==0 & LR!=1, -pi/2,0) ## flip half of branches
   L<-length*ifelse(LR==1,.88,.38)
   
-  if(L > 1e-3){for(i in 0:1){fern2(a,d,L,i,LR1+1)}}
+  if(L > 1e-3){for(i in 0:1){fern2(a,d,L,i,LR1+2)}}
 }
 draw_fern2 <- function()  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
