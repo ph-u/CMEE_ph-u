@@ -377,7 +377,7 @@ fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.1,
     ifelse(LR1%%2==0 & LR!=1, -pi/2,0) ## flip half of branches
   L<-length*ifelse(LR==1,.88,.38)
   
-  if(L > 1e-3){for(i in 0:1){fern2(a,d,L,i,LR1+2)}}
+  if(L > 1e-3){for(i in 0:1){fern2(a,d,L,i,LR1+1)}}
 }
 draw_fern2 <- function()  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
