@@ -44,6 +44,4 @@ draw_fern <- function(k)  {
   }
 }
 
-for(i in 0:1){
-	draw_fern(i)
-}
+#draw_fern(a[1]) ## 0: normal; 1: Ismini version
