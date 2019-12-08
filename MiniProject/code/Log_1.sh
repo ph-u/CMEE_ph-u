@@ -2,7 +2,7 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: Log_1.sh
-# Desc: control script for Log_1_c.R commander script
+# Desc: control script for Log_1_c.sh commander script; call parallel data subset processing
 # Input: bash Log_1.sh
 # Output: none
 # Arguments: 0
@@ -15,7 +15,7 @@ for i in `seq 1 $((${a0} -1))`;do ## parallel data subset processing
 	nohup ./Log_1_c.sh ${i} 1e2 &
 done
 
-i2=30
+i2=5
 echo -e "wait ${i2} sec for analysis to finish"
 sleep ${i2} ## allow some time to run slave scripts before loading CPU for checking progress
 
@@ -39,8 +39,8 @@ for i in `seq 1 $((${a0} -1))`;do ## parallel data subset processing
 	cat ../data/Log_${i}_para.txt >> ../data/Log_t1_para.txt
 done
 
-for i in `ls ../data/*|grep "Log_[0-9]*_[dp]a[tr]a.txt"`;do
+for i in `ls ../data/Log_[0-9]*[tr]a.txt`;do
 	rm ${i}
 done
-rm nohup*
+#rm nohup*
 exit

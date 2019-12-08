@@ -10,7 +10,7 @@
 
 ## if no input
 a1=`echo -e "Log_w.tex"`
-a2=63
+a2=`grep -n "approx word count" Log_w.tex |cut -f 1 -d ":"`
 a3=`echo ${a1}|cut -f 1 -d "_"`
 
 ## write report tex file

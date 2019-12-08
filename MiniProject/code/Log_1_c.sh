@@ -2,7 +2,7 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: Log_1_c.sh
-# Desc: commander script for Log_1_s*.R slaves
+# Desc: commander script for Log_1_s*.R slaves; get starting values (s1) + model fitting (s2)
 # Input: bash Log_1_c.sh <Dataset Num> <Iterations>
 # Output: none
 # Arguments: 2
