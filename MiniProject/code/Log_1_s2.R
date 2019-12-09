@@ -20,8 +20,8 @@ library(minpack.lm)
 
 ## take command line order
 args=(commandArgs(T))
-v.0=as.numeric(args[1])
-v.1=as.numeric(args[2])
+v.0=as.numeric(args[1]) ## data subset num
+v.1=as.numeric(args[2]) ## sampling size
 
 ## data in
 a<-read.table(paste0("../data/Log_",v.0,"_data.txt"),sep="\t",header = T, stringsAsFactors = F)
@@ -131,6 +131,6 @@ i.0<-which(as.numeric(v.2[1,])<min(as.numeric(v.2[1,]), na.rm = T)+2)
 for(i in 1:dim(v.2)[2]){if(!(i %in% i.0)){v.2[,i]<-NA}};rm(i, i.0)
 
 ## data export
-write.table(a.u[,c(3,1,2)],paste0("../data/Log_",v.0,"_para.txt"), sep = "\t", quote = F, row.names = F, col.names = F)
-write.table(t(v.2)[,c(6,1:5)],paste0("../data/Log_",v.0,"_data.txt"), sep = "\t", quote = F, col.names = F)
+write.table(a.u[,c(3,1,2)],paste0("../data/Log_",v.0,"_para.txt"), sep = "\t", quote = F, row.names = F, col.names = F) ## model details, model numeric values
+write.table(t(v.2)[,c(6,1:5)],paste0("../data/Log_",v.0,"_data.txt"), sep = "\t", quote = F, col.names = F) ## model, AIC, para 1, para 2, para 3, para 4
 cat(paste0("dataset ",v.0," done\n"))
