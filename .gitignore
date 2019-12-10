@@ -11,3 +11,6 @@ readme_final.md
 *.log
 *.synctex.gz
 .Rapp.history
+*.mov
+*.mp4
+*.gif

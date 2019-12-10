@@ -363,7 +363,8 @@ draw_fern <- function()  {
 # Question 30
 fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.1,
                   LR=1, ## angle of branch from main stem
-                  LR1=0)  { ## angle of left/right brance
+                  LR1=0, ## angle of left/right brance
+                  details=3)  {
   a<-turtle(start_position,direction,ifelse(LR1==0,length*.2,length))
   # a<-turtle(start_position,direction,length)
   colouring<-c(rgb(0,.7,.1,1),rgb(.5,.5,.2,1),rgb(1,0,0,1)) ## leaves, branches, tips
@@ -377,7 +378,7 @@ fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.1,
     ifelse(LR1%%2==0 & LR!=1, -pi/2,0) ## flip half of branches
   L<-length*ifelse(LR==1,.88,.38)
   
-  if(L > 1e-3){for(i in 0:1){fern2(a,d,L,i,LR1+1)}}
+  if(L > 10^(-1*details)){for(i in 0:1){fern2(a,d,L,i,LR1+1,details = details)}}
 }
 draw_fern2 <- function()  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
@@ -481,26 +482,55 @@ Challenge_C <- function() {
 # Challenge question D
 Challenge_D <- function() {
   graphics.off() # clear any existing graphs and plot your graph within the R window
-  set.seed(9990)
-  j<-N<-100
-  v<-.1
-  pop<-rep(1,j)
-  abd<-c()
-  th<-v*(j-1)/(1-v)
-  repeat{
-    chg<-sample(N,1)
-    if(runif(1)<th/(th+N-1)){
-      abd<-c(abd, pop[chg])
-    }else{
-      tmp<-seq(N)
-      tmp<-tmp[which(tmp!=chg)]
-      tmp<-sample(tmp,1)
-      pop[tmp]<-pop[tmp]+pop[chg]
+  cat("handling ")
+  a.05<-a.10<-a.25<-a.50<-c()
+  samplesize<-c(5e2,1e3,25e2,5e3)
+  for(i in 1:100){
+    cat(paste0(i,"; "))
+    set.seed(i)
+    j<-N<-ifelse(i%%4==0,samplesize[4],samplesize[i%%4])
+    v<-personal_speciation_rate
+    pop<-rep(1,j)
+    abd<-c()
+    th<-v*(j-1)/(1-v)
+    repeat{
+      chg<-sample(N,1)
+      if(runif(1)<th/(th+N-1)){
+        abd<-c(abd, pop[chg])
+      }else{
+        tmp<-seq(N)
+        tmp<-tmp[which(tmp!=chg)]
+        tmp<-sample(tmp,1)
+        pop[tmp]<-pop[tmp]+pop[chg]
+      }
+      pop<-pop[-chg]
+      if(N>1){N<-N-1}else{break}
     }
-    pop<-pop[-chg]
-    if(N>1){N<-N-1}else{break}
+    if(i%%4==1){
+      a.05<-sum_vect(a.05,abd)
+    }else if(i%%4==2){
+      a.10<-sum_vect(a.10,abd)
+    }else if(i%%4==3){
+      a.25<-sum_vect(a.25,abd)
+    }else if(i%%4==0){
+      a.50<-sum_vect(a.50,abd)
+    }
   }
-  return(octaves(abd))
+  cat(paste0("\nPlotting...\n"))
+  oc.05<-octaves(a.05/(100/4))
+  oc.10<-octaves(a.10/(100/4))
+  oc.25<-octaves(a.25/(100/4))
+  oc.50<-octaves(a.50/(100/4))
+  
+  ## plots
+  yyl<-"abundance"
+  xxl<-"octaves of size "
+  par(mfrow=c(2,2))
+  try(barplot(oc.05~seq(1:length(oc.05)), xlab=paste0(xxl,samplesize[1]), ylab=yyl, ylim=c(0,max(oc.05)*1.2)), silent = T)
+  try(barplot(oc.10~seq(1:length(oc.10)), xlab=paste0(xxl,samplesize[2]), ylab=yyl, ylim=c(0,max(oc.10)*1.2)), silent = T)
+  try(barplot(oc.25~seq(1:length(oc.25)), xlab=paste0(xxl,samplesize[3]), ylab=yyl, ylim=c(0,max(oc.25)*1.2)), silent = T)
+  try(barplot(oc.50~seq(1:length(oc.50)), xlab=paste0(xxl,samplesize[4]), ylab=yyl, ylim=c(0,max(oc.50)*1.2)), silent = T)
+  return(cat(paste0("The coalescence simulation has used less than 30 sec\nThe reason is because vectors storing temporary data would not getting larger like forward simulations.  This saved space for the computer to run faster.\n")))
 }
 
 # Challenge question E
@@ -512,8 +542,16 @@ Challenge_E <- function(x=1, y=0, colrr=rgb(1,0,0,1), xI=c(0,2,1), yI=c(0,0,sqrt
 
 # Challenge question F
 Challenge_F <- function() {
-  # clear any existing graphs and plot your graph within the R window
-  return("type your written answer here")
+  graphics.off() # clear any existing graphs and plot your graph within the R window
+  plot.new()
+  for(i in c(2,2.3,2.7,3,3.3)){
+    cat(paste0("plotting detail level = ",i,"\n"))
+    fern2(details = i)
+    Sys.sleep(1)
+  }
+  Sys.sleep(2)
+  title(main = "Merry Christmas 2019~", sub = "and a Happy New 2020!")
+  return(cat("The output gives increasingly details in an exponential way\nGrowing a Christmas tree~\nMerry Christmas\n"))
 }
 
 # Challenge question G should be written in a separate file that has no dependencies on any functions here.

@@ -45,3 +45,49 @@ draw_fern <- function(k)  {
 }
 
 #draw_fern(a[1]) ## 0: normal; 1: Ismini version
+
+fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.1,
+                  LR=1, ## angle of branch from main stem
+                  LR1=0, ## angle of left/right brance
+                  details=3,
+				  col=1)  {
+  a<-turtle(start_position,direction,ifelse(LR1==0,length*.2,length))
+  # a<-turtle(start_position,direction,length)
+		  if(col==1){
+				  colouring<-c(rgb(0,.7,.1,1),rgb(.5,.5,.2,1),rgb(1,0,0,1)) ## leaves, branches, tips
+		  }else if(col==2){
+				  colouring<- c(rgb(.5,1,0,1),rgb(1,0,1,1),rgb(0,0,1,1)) ## blue-themed
+		  }else if(col==3){
+				  colouring<-c(rgb(0,.7,1,1),rgb(.6,0,0,1),rgb(1,.5,0,1)) ## orange-themed
+		  }else if(col==4){
+				  colouring<-c(rgb(.5,.5,1,1),rgb(.5,.5,.2,1),rgb(1,.3,1,1)) ## pink-themed
+		  }
+
+  # colouring<-c(rgb(.5,.5,1,1),rgb(.5,.5,.2,1),rgb(1,.3,1,.6)) ## pink variation
+  ccol<-ifelse(length>5e-3,colouring[2],ifelse(length>1.2e-3,colouring[1],colouring[3]))
+  suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), add=T, col=ccol))
+
+  ## parameters mod
+  d<-direction+ ## core direction upwards
+    ifelse(LR<1,pi/4,0)+ ## change angle of branches
+    ifelse(LR1%%2==0 & LR!=1, -pi/2,0) ## flip half of branches
+  L<-length*ifelse(LR==1,.88,.38)
+
+  if(L > 10^(-1*details)){for(i in 0:1){fern2(a,d,L,i,LR1+1,details = details, col=col)}}
+}
+
+Challenge_F <- function() {
+  graphics.off() # clear any existing graphs and plot your graph within the R window
+  plot.new()
+  for(i in c(2,2.3,2.7,3,3.3)){
+    cat(paste0("plotting detail level = ",i,"\n"))
+    fern2(details = i)
+    Sys.sleep(1)
+  }
+  Sys.sleep(2)
+  title(main = "Merry Christmas 2019~", sub = "and a Happy New 2020!")
+  return(cat("The output gives increasingly details in an exponential way\nGrowing a Christmas tree~\nMerry Christmas\n"))
+}
+
+Challenge_F()
+for(i in c(2:4,1)){fern2(col=i)}
