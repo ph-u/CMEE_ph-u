@@ -291,7 +291,9 @@ chaos_game <- function(x=0, y=0, colrr=rgb(0,0,0,1), xI=c(0,3,4), yI=c(0,4,1))  
 # Question 24
 turtle <- function(start_position=c(0,0), direction=.03, length=.1)  {
   a<-c(start_position[1]+length*cos(direction),start_position[2]+length*sin(direction))
-  suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), col=rgb(.5,.5,0,1), add=T, cex=.01))
+    colouring<-c(rgb(0,.7,.1,1),rgb(.5,.5,.2,1),rgb(1,0,0,1)) ## leaves, branches, tips
+      ccol<-ifelse(length>5e-3,colouring[2],ifelse(length>1.2e-3,colouring[1],colouring[3]))
+  suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), col=ccol, add=T, cex=.01))
   return(a) # you should return your endpoint here.
 }
 
@@ -341,12 +343,12 @@ draw_tree <- function()  {
 }
 
 # Question 29
-fern <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.1, LR=1)  {
+fern <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.13, LR=1)  {
   a<-turtle(start_position,direction,length)
-  colouring<-c(rgb(0,.7,.1,1),rgb(.5,.5,.2,1),rgb(1,0,0,1)) ## leaves, branches, tips
+  # colouring<-c(rgb(0,.7,.1,1),rgb(.5,.5,.2,1),rgb(1,0,0,1)) ## leaves, branches, tips
   # colouring<-c(rgb(.5,.5,1,1),rgb(.5,.5,.2,1),rgb(1,.3,1,.6)) ## pink variation
-  ccol<-ifelse(length>5e-3,colouring[2],ifelse(length>1.2e-3,colouring[1],colouring[3]))
-  suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), add=T, col=ccol))
+  # ccol<-ifelse(length>5e-3,colouring[2],ifelse(length>1.2e-3,colouring[1],colouring[3]))
+  # suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), add=T, col=ccol))
   
   ## parameters mod
   d<-direction+ifelse(LR<1,pi/4,ifelse(LR>1,-pi/4,0))
@@ -361,30 +363,45 @@ draw_fern <- function()  {
 }
 
 # Question 30
-fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.1,
-                  LR=1, ## angle of branch from main stem
-                  LR1=0, ## angle of left/right brance
-                  details=3)  {
-  a<-turtle(start_position,direction,ifelse(LR1==0,length*.2,length))
-  # a<-turtle(start_position,direction,length)
-  colouring<-c(rgb(0,.7,.1,1),rgb(.5,.5,.2,1),rgb(1,0,0,1)) ## leaves, branches, tips
-  # colouring<-c(rgb(.5,.5,1,1),rgb(.5,.5,.2,1),rgb(1,.3,1,.6)) ## pink variation
-  ccol<-ifelse(length>5e-3,colouring[2],ifelse(length>1.2e-3,colouring[1],colouring[3]))
-  suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), add=T, col=ccol))
-  
-  ## parameters mod
-  d<-direction+ ## core direction upwards
-    ifelse(LR<1,pi/4,0)+ ## change angle of branches
-    ifelse(LR1%%2==0 & LR!=1, -pi/2,0) ## flip half of branches
-  L<-length*ifelse(LR==1,.88,.38)
-  
-  if(L > 10^(-1*details)){for(i in 0:1){fern2(a,d,L,i,LR1+1,details = details)}}
+fern2 <- function(p=c(.5,0), d=90*2*pi/360, l=.13, LR=0, tk=0, i=0, details=3){
+  p<-turtle(p,d,ifelse(i==0,l*.1,l))
+  d<-d+45*2*pi/360*LR
+  l<-l*ifelse(LR==0,.87,.38)
+  if(l>10^(-1*details)){
+    pp<-c(0,ifelse(tk==0,1,-1))
+    for(i in pp){fern2(p,d,l,i,(tk+1)%%2,1, details)}
+    }
 }
-draw_fern2 <- function()  {
-  graphics.off() # clear any existing graphs and plot your graph within the R window
+draw_fern2 <- function(){
+  graphics.off()
   plot.new()
   fern2()
 }
+
+# fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.1,
+#                   LR=1, ## angle of branch from main stem
+#                   LR1=0, ## angle of left/right brance
+#                   details=3)  {
+#   a<-turtle(start_position,direction,ifelse(LR1==0,length*.2,length))
+#   # a<-turtle(start_position,direction,length)
+#   colouring<-c(rgb(0,.7,.1,1),rgb(.5,.5,.2,1),rgb(1,0,0,1)) ## leaves, branches, tips
+#   # colouring<-c(rgb(.5,.5,1,1),rgb(.5,.5,.2,1),rgb(1,.3,1,.6)) ## pink variation
+#   ccol<-ifelse(length>5e-3,colouring[2],ifelse(length>1.2e-3,colouring[1],colouring[3]))
+#   suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), add=T, col=ccol))
+#   
+#   ## parameters mod
+#   d<-direction+ ## core direction upwards
+#     ifelse(LR<1,pi/4,0)+ ## change angle of branches
+#     ifelse(LR1%%2==0 & LR!=1, -pi/2,0) ## flip half of branches
+#   L<-length*ifelse(LR==1,.88,.38)
+#   
+#   if(L > 10^(-1*details)){for(i in 0:1){fern2(a,d,L,i,LR1+1,details = details)}}
+# }
+# draw_fern2 <- function()  {
+#   graphics.off() # clear any existing graphs and plot your graph within the R window
+#   plot.new()
+#   fern2()
+# }
 
 # Challenge questions - these are optional, substantially harder, and a maximum of 16% is available for doing them.  
 
@@ -550,7 +567,7 @@ Challenge_F <- function() {
     Sys.sleep(1)
   }
   Sys.sleep(2)
-  title(main = "Merry Christmas 2019~", sub = "and a Happy New 2020!")
+  title(main = "Merry Christmas 2019~", sub = "and a Happy New Year!")
   return(cat("The output gives increasingly details in an exponential way\nGrowing a Christmas tree~\nMerry Christmas\n"))
 }
 
