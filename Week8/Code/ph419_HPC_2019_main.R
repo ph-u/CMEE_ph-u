@@ -291,16 +291,14 @@ chaos_game <- function(x=0, y=0, colrr=rgb(0,0,0,1), xI=c(0,3,4), yI=c(0,4,1))  
 # Question 24
 turtle <- function(start_position=c(0,0), direction=.03, length=.1)  {
   a<-c(start_position[1]+length*cos(direction),start_position[2]+length*sin(direction))
-    colouring<-c(rgb(0,.7,.1,1),rgb(.5,.5,.2,1),rgb(1,0,0,1)) ## leaves, branches, tips
-      ccol<-ifelse(length>5e-3,colouring[2],ifelse(length>1.2e-3,colouring[1],colouring[3]))
+  colouring<-c(rgb(0,.7,.1,1),rgb(.5,.5,.2,1),rgb(1,0,0,1)) ## leaves, branches, tips
+  ccol<-ifelse(length>1e-2,colouring[2],ifelse(length>1e-3,colouring[1],colouring[3]))
   suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), col=ccol, add=T, cex=.01))
   return(a) # you should return your endpoint here.
 }
 
 # Question 25
 elbow <- function(start_position=c(.1,.1), direction=0, length=.5)  {
-  # graphics.off()
-  # plot.new()
   a<-as.data.frame(matrix(nrow = 0, ncol = 2))
   a<-rbind(a,start_position)
   a<-rbind(a,turtle(start_position, direction, length))
@@ -311,7 +309,6 @@ elbow <- function(start_position=c(.1,.1), direction=0, length=.5)  {
 # Question 26
 spiral <- function(start_position=c(.15,0), direction=0, length=.45)  {
   a<-turtle(start_position,direction,length)
-  suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), add=T))
   if(length>1e-9){
     spiral(start_position = a, direction = direction+pi/4, length = length*.95)
   }
@@ -326,35 +323,26 @@ draw_spiral <- function()  {
 }
 
 # Question 28
-tree <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.3, LR=0)  {
+tree <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.3)  {
   a<-turtle(start_position,direction,length)
-  suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), add=T))
-  dirr<-direction+ifelse(LR==0,pi/4,-pi/4)
-  lenn<-length*.65
-  if(length>1e-2){
-    tree(start_position = a, direction = dirr, length = lenn, LR=0)
-    tree(start_position = a, direction = dirr, length = lenn, LR=1)
+  if(length>1e-3){
+    tree(start_position = a, direction = direction+pi/4, length = length*.65)
+    tree(start_position = a, direction = direction+-pi/4, length = length*.65)
   }
 }
 draw_tree <- function()  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
   plot.new()
-  for(i in 0:1){tree(LR=i)}
+  tree()
 }
 
 # Question 29
-fern <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.13, LR=1)  {
+fern <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.13)  {
   a<-turtle(start_position,direction,length)
-  # colouring<-c(rgb(0,.7,.1,1),rgb(.5,.5,.2,1),rgb(1,0,0,1)) ## leaves, branches, tips
-  # colouring<-c(rgb(.5,.5,1,1),rgb(.5,.5,.2,1),rgb(1,.3,1,.6)) ## pink variation
-  # ccol<-ifelse(length>5e-3,colouring[2],ifelse(length>1.2e-3,colouring[1],colouring[3]))
-  # suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), add=T, col=ccol))
-  
-  ## parameters mod
-  d<-direction+ifelse(LR<1,pi/4,ifelse(LR>1,-pi/4,0))
-  L<-length*ifelse(LR==1,.87,.38)
-  
-  if(L > 1e-3){for(i in 0:2){fern(a,d,L,i)}}
+  if(length > 0.005){
+    fern(start_position = a, direction = direction, length = length*.87)
+    fern(start_position = a, direction = direction+pi/4, length = length*.38)
+  }
 }
 draw_fern <- function()  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
@@ -363,45 +351,36 @@ draw_fern <- function()  {
 }
 
 # Question 30
-fern2 <- function(p=c(.5,0), d=90*2*pi/360, l=.13, LR=0, tk=0, i=0, details=3){
-  p<-turtle(p,d,ifelse(i==0,l*.1,l))
-  d<-d+45*2*pi/360*LR
-  l<-l*ifelse(LR==0,.87,.38)
-  if(l>10^(-1*details)){
-    pp<-c(0,ifelse(tk==0,1,-1))
-    for(i in pp){fern2(p,d,l,i,(tk+1)%%2,1, details)}
-    }
+# fern2 <- function(p=c(.5,0), d=90*2*pi/360, l=.13, LR=0, tk=0, i=0, details=3){
+#   p<-turtle(p,d,ifelse(i==0,l*.1,l))
+#   d<-d+45*2*pi/360*LR
+#   l<-l*ifelse(LR==0,.87,.38)
+#   if(l>10^(-1*details)){
+#     pp<-c(0,ifelse(tk==0,1,-1))
+#     for(i in pp){fern2(p,d,l,i,(tk+1)%%2,1, details)}
+#   }
+# }
+
+fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.13, LR=1)  {
+  a<-turtle(start_position,direction,length)
+  if(length > 1e-3){
+    fern2(start_position = a, direction = direction, length = length*.87, LR=-LR)
+    fern2(start_position = a, direction = direction+pi/4*LR, length = length*.38, LR = LR)
+  }
 }
-draw_fern2 <- function(){
-  graphics.off()
+# fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.13, details=3, LR1=0)  {
+#   a<-turtle(start_position,direction,length)
+#   if(length > 10^(-1*details)){
+#     fern2(start_position = a, direction = direction, length = length*.87, LR1=1)
+#     LR1<-ifelse(LR1==0,LR1+1,-1*LR1)
+#     fern2(start_position = a, direction = direction+pi/4*LR1, length = length*.38, LR1=1)
+#   }
+# }
+draw_fern2 <- function()  {
+  graphics.off() # clear any existing graphs and plot your graph within the R window
   plot.new()
   fern2()
 }
-
-# fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.1,
-#                   LR=1, ## angle of branch from main stem
-#                   LR1=0, ## angle of left/right brance
-#                   details=3)  {
-#   a<-turtle(start_position,direction,ifelse(LR1==0,length*.2,length))
-#   # a<-turtle(start_position,direction,length)
-#   colouring<-c(rgb(0,.7,.1,1),rgb(.5,.5,.2,1),rgb(1,0,0,1)) ## leaves, branches, tips
-#   # colouring<-c(rgb(.5,.5,1,1),rgb(.5,.5,.2,1),rgb(1,.3,1,.6)) ## pink variation
-#   ccol<-ifelse(length>5e-3,colouring[2],ifelse(length>1.2e-3,colouring[1],colouring[3]))
-#   suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), add=T, col=ccol))
-#   
-#   ## parameters mod
-#   d<-direction+ ## core direction upwards
-#     ifelse(LR<1,pi/4,0)+ ## change angle of branches
-#     ifelse(LR1%%2==0 & LR!=1, -pi/2,0) ## flip half of branches
-#   L<-length*ifelse(LR==1,.88,.38)
-#   
-#   if(L > 10^(-1*details)){for(i in 0:1){fern2(a,d,L,i,LR1+1,details = details)}}
-# }
-# draw_fern2 <- function()  {
-#   graphics.off() # clear any existing graphs and plot your graph within the R window
-#   plot.new()
-#   fern2()
-# }
 
 # Challenge questions - these are optional, substantially harder, and a maximum of 16% is available for doing them.  
 
@@ -439,7 +418,7 @@ Challenge_A <- function() {
   legend(x=50,y=max(a.h)*.9,col = c("red","blue"), legend = c("max", "min"), title = paste0(ciNum," C.I. on initial diversity"), lty = 1)
 }
 
-# Challenge question B
+# Challenge question B (YET)
 Challenge_B <- function() {
   graphics.off() # clear any existing graphs and plot your graph within the R window
   n0<-200;sp_rate<-.1;ind<-100;ciNum<-.972 ## set parameters: burn-in generation, speciation rate, pop size, confidence interval
@@ -498,13 +477,15 @@ Challenge_C <- function() {
 
 # Challenge question D
 Challenge_D <- function() {
+  timing<-unname(proc.time()[3])
   graphics.off() # clear any existing graphs and plot your graph within the R window
   cat("handling ")
   a.05<-a.10<-a.25<-a.50<-c()
   samplesize<-c(5e2,1e3,25e2,5e3)
-  for(i in 1:100){
+  set.seed(99999)
+  num_reps<-1e3
+  for(i in 1:num_reps){
     cat(paste0(i,"; "))
-    set.seed(i)
     j<-N<-ifelse(i%%4==0,samplesize[4],samplesize[i%%4])
     v<-personal_speciation_rate
     pop<-rep(1,j)
@@ -524,20 +505,20 @@ Challenge_D <- function() {
       if(N>1){N<-N-1}else{break}
     }
     if(i%%4==1){
-      a.05<-sum_vect(a.05,abd)
+      a.05<-sum_vect(a.05,octaves(abd))
     }else if(i%%4==2){
-      a.10<-sum_vect(a.10,abd)
+      a.10<-sum_vect(a.10,octaves(abd))
     }else if(i%%4==3){
-      a.25<-sum_vect(a.25,abd)
+      a.25<-sum_vect(a.25,octaves(abd))
     }else if(i%%4==0){
-      a.50<-sum_vect(a.50,abd)
+      a.50<-sum_vect(a.50,octaves(abd))
     }
   }
   cat(paste0("\nPlotting...\n"))
-  oc.05<-octaves(a.05/(100/4))
-  oc.10<-octaves(a.10/(100/4))
-  oc.25<-octaves(a.25/(100/4))
-  oc.50<-octaves(a.50/(100/4))
+  oc.05<-a.05/(num_reps/4)
+  oc.10<-a.10/(num_reps/4)
+  oc.25<-a.25/(num_reps/4)
+  oc.50<-a.50/(num_reps/4)
   
   ## plots
   yyl<-"abundance"
@@ -547,7 +528,7 @@ Challenge_D <- function() {
   try(barplot(oc.10~seq(1:length(oc.10)), xlab=paste0(xxl,samplesize[2]), ylab=yyl, ylim=c(0,max(oc.10)*1.2)), silent = T)
   try(barplot(oc.25~seq(1:length(oc.25)), xlab=paste0(xxl,samplesize[3]), ylab=yyl, ylim=c(0,max(oc.25)*1.2)), silent = T)
   try(barplot(oc.50~seq(1:length(oc.50)), xlab=paste0(xxl,samplesize[4]), ylab=yyl, ylim=c(0,max(oc.50)*1.2)), silent = T)
-  return(cat(paste0("The coalescence simulation has used less than 30 sec\nThe reason is because vectors storing temporary data would not getting larger like forward simulations.  This saved space for the computer to run faster.\n")))
+  return(cat(paste0("The coalescence simulation has done ",num_reps," trials used ",(unname(proc.time()[3])-timing)/60^2," hours\nThe reason is because vectors storing temporary data would not getting larger like forward simulations.  This saved space for the computer to run faster.\n")))
 }
 
 # Challenge question E
