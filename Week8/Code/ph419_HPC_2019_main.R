@@ -18,35 +18,35 @@ username <- "ph419"
 personal_speciation_rate <- 0.006101 # will be assigned to each person individually in class and should be between 0.002 and 0.007
 
 # Question 1
-species_richness <- function(community){
+species_richness <- function(community=c(1,4,4,5,1,6,1)){
   return(length(unique(community)))
 }
 
 # Question 2
-init_community_max <- function(size){
+init_community_max <- function(size=7){
   return(seq(1,size))
 }
 
 # Question 3
-init_community_min <- function(size){
+init_community_min <- function(size=7){
   return(rep(1,size))
 }
 
 # Question 4
-choose_two <- function(max_value){
+choose_two <- function(max_value=4){
   a<-init_community_max(max_value)
   return(sample(a,2))
 }
 
 # Question 5
-neutral_step <- function(community){
+neutral_step <- function(community=c(10,5,13)){
   a<-choose_two(length(community))
   if(runif(1) < .5){community[a[1]] <- community[a[2]]}else{community[a[2]] <- community[a[1]]} ## determine 1st / 2nd element got replaced by the other
   return(community)
 }
 
 # Question 6
-neutral_generation <- function(community){
+neutral_generation <- function(community=c(10,5,14)){
   n0<-length(community)
   n1<-floor(n0/2)+n0%%2 ## calculate how many steps are going to run
   for(i in 1:n1){
@@ -56,7 +56,7 @@ neutral_generation <- function(community){
 }
 
 # Question 7
-neutral_time_series <- function(community,duration)  {
+neutral_time_series <- function(community=init_community_max(7),duration=20)  {
   sp_rich<-rep(NA,duration)
   for(i in 1:duration){
     community<-neutral_generation(community) ## calculate community players identity
@@ -80,26 +80,25 @@ question_8 <- function() {
   plot(a~seq(1:n0), pch=3, xlab="generation", ylab = "species richness", type="l", col="red") ## plot species richness 
   # lines(rep(1,n0)~seq(1:n0), add=T)
   
-  return(cat(paste0("species richness = ",min(a)," at ",min(which(a==min(a)))," generations\nSpecies richness will always be either unchanged (replace by any of the species with multiple individuals) or decreased (when last of its kind get replaced)")))
+  return(cat(paste0("species richness = ",min(a)," at ",min(which(a==min(a)))," generations\nSpecies richness will always be either unchanged (replace by any of the species with multiple individuals) or decreased (when last of its kind get replaced)\n")))
 }
 
 # Question 9
-neutral_step_speciation <- function(community,speciation_rate)  {
+neutral_step_speciation <- function(community=c(10,5,13),speciation_rate=.2)  {
   a0<-choose_two(length(community))
-  a1<-runif(2) ## array: [speciation?, which intial sp getting replaced]
   ## section allow spp reappearing
   # a2<-seq(1:length(community)^2)
   # a3<-a2!=community
   # a3<-sample(a2[a3==T],1)
   a3<-max(community)+1 ## not allow spp reappearing
-  if(a1[2]<.5){i0<-1}else{i0<-2} ## determine which sp is getting replaced
-  if(a1[1]<speciation_rate){i1<-a3}else{i1<-community[a0[i0%%length(a0)+1]]} ## determine replacement value
+  i0<-ifelse(runif(1)<.5,1,2) ## determine which sp is getting replaced
+  i1<-ifelse(runif(1)<speciation_rate,a3,community[a0[i0%%length(a0)+1]]) ## determine replacement value
   community[a0[i0]]<-i1 ## replacement
   return(community)
 }
 
 # Question 10
-neutral_generation_speciation <- function(community,speciation_rate)  {
+neutral_generation_speciation <- function(community=c(10,5,13),speciation_rate=.2)  {
   n0<-length(community)
   for(i in 1:(floor(n0/2)+n0%%2)){ ## run on designated generations
     community<-neutral_step_speciation(community,speciation_rate)
@@ -108,7 +107,7 @@ neutral_generation_speciation <- function(community,speciation_rate)  {
 }
 
 # Question 11
-neutral_time_series_speciation <- function(community,speciation_rate,duration)  {
+neutral_time_series_speciation <- function(community=c(10,5,13),speciation_rate=.2,duration=10)  {
   sp_rich<-rep(NA, duration) ## pre-allocation of sp_richness collection vector
   for(i in 1:duration){
     community<-neutral_generation_speciation(community,speciation_rate)
@@ -127,18 +126,18 @@ question_12 <- function()  {
   
   plot(a0~seq(1:n0), pch=3, xlab="generation", ylab = "species richness", type="l", col="red") ## plot species richness 
   suppressWarnings(lines(a1~seq(1:n0), pch=3, xlab="generation", ylab = "species richness", type="l", col="blue", add=T))
-  legend(x=150,y=65,col = c("red","blue"), legend = c("max", "min"), title = "initial diversity", lty = 1:2)
+  legend(x=150,y=65,col = c("red","blue"), legend = c("max", "min"), title = "initial diversity", lty = 1)
   
   return(cat(paste0("Throughout ",n0," generations,\nIQR of species richness difference is ",IQR(b0),", from ",fivenum(b0)[2]," to ",fivenum(b0)[4],";\nIQR of high species diversity goup is from ",fivenum(a0)[2]," to ",fivenum(a0)[4],";\nIQR of low species diversity goup is from ",fivenum(a1)[2]," to ",fivenum(a1)[4],"\nReason of this pattern is due to the introduction of speciation with rate ",sp_rate,", which new mutations are hard to get rid of but diversity is easy to be reduced\nSo initial states have no observable effect on the final result\n"))) ## analysis summary
 }
 
 # Question 13
-species_abundance <- function(community)  {
+species_abundance <- function(community=c(1,5,3,6,5,6,1,1))  {
   return(rev(sort(unname(table(community))))) ## sort community abundances in decending order
 }
 
 # Question 14
-octaves <- function(abundance_vector) {
+octaves <- function(abundance_vector=c(100,64,63,5,4,3,2,2,1,1,1,1)) {
   a<-table(floor(log2(abundance_vector))) ## normal abundance vector with names linked with numbers, not necessary accending names order
   a0<-data.frame(seq(0,max(names(a))),0) ## create ordered abundance reference form
   for(i in 1:dim(a0)[1]){try(a0[i,2]<-a[which(names(a)==a0[i,1])],silent = T)} ## fill out the form with known numbers
@@ -146,7 +145,7 @@ octaves <- function(abundance_vector) {
 }
 
 # Question 15
-sum_vect <- function(x, y) {
+sum_vect <- function(x=c(1,3), y=c(1,0,5,2)) {
   if(length(x) < length(y)){a1<-x; a2<-y}else{a2<-x; a1<-y} ## let length(a2) always > length(a1)
   a1<-c(a1,rep(0,length(a2)-length(a1))) ## add 0 to end of shorter vector
   return(a1+a2)
@@ -351,16 +350,6 @@ draw_fern <- function()  {
 }
 
 # Question 30
-# fern2 <- function(p=c(.5,0), d=90*2*pi/360, l=.13, LR=0, tk=0, i=0, details=3){
-#   p<-turtle(p,d,ifelse(i==0,l*.1,l))
-#   d<-d+45*2*pi/360*LR
-#   l<-l*ifelse(LR==0,.87,.38)
-#   if(l>10^(-1*details)){
-#     pp<-c(0,ifelse(tk==0,1,-1))
-#     for(i in pp){fern2(p,d,l,i,(tk+1)%%2,1, details)}
-#   }
-# }
-
 fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.13, LR=1)  {
   a<-turtle(start_position,direction,length)
   if(length > 1e-3){
@@ -368,14 +357,6 @@ fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.13, LR=
     fern2(start_position = a, direction = direction+pi/4*LR, length = length*.38, LR = LR)
   }
 }
-# fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.13, details=3, LR1=0)  {
-#   a<-turtle(start_position,direction,length)
-#   if(length > 10^(-1*details)){
-#     fern2(start_position = a, direction = direction, length = length*.87, LR1=1)
-#     LR1<-ifelse(LR1==0,LR1+1,-1*LR1)
-#     fern2(start_position = a, direction = direction+pi/4*LR1, length = length*.38, LR1=1)
-#   }
-# }
 draw_fern2 <- function()  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
   plot.new()
@@ -418,31 +399,29 @@ Challenge_A <- function() {
   legend(x=50,y=max(a.h)*.9,col = c("red","blue"), legend = c("max", "min"), title = paste0(ciNum," C.I. on initial diversity"), lty = 1)
 }
 
-# Challenge question B (YET)
+# Challenge question B
 Challenge_B <- function() {
   graphics.off() # clear any existing graphs and plot your graph within the R window
-  n0<-200;sp_rate<-.1;ind<-100;ciNum<-.972 ## set parameters: burn-in generation, speciation rate, pop size, confidence interval
-  a.h<-as.data.frame(matrix(nrow = 0, ncol = n0)) ## ini df for record simulations
-  repeat{
-    ind<-sample(ind,ind, replace = TRUE) ## create random sample of unbiased population
-    a.h<-rbind(a.h,neutral_time_series_speciation(ind,sp_rate, n0)) ## simulation
-    if(dim(a.h)[1]>30 & fivenum(a.h[1:(dim(a.h)[1]-1),n0])[3]-fivenum(a.h[1:dim(a.h)[1],n0])[3]<1){break} ## break loop if sample is large enough and median is stabilized
+  sp_rate=.1 ## speciation rate
+  num_ind=100 ## number of individuals
+  cat("handling ")
+  for(i in seq(1,num_ind,by = 10)){
+    cat(paste0("sp_rich-",i,": "))
+    sp_time<-c()
+    pop=seq(1:i)
+    pop=c(pop,sample(pop,num_ind-length(pop),replace = T))
+    for(j in 1:30){
+      if(j%%10==0){cat(paste0("rep-",j,"; "))}
+      sp_time=sum_vect(sp_time,neutral_time_series_speciation(community = pop, speciation_rate = sp_rate, duration = num_ind))
+    }
+    sp_time=sp_time/j
+    if(i==1){
+      plot(c(species_richness(pop),sp_time)~seq(0:num_ind), type="l", ylim=c(0,num_ind), xlab="generation time",ylab="species richness")
+    }else{
+      suppressWarnings(lines(c(species_richness(pop),sp_time)~seq(0:num_ind), type="l", add=T))
+    }
   }
-  errh<-a.h.y<-rep(NA,n0) ## pre-allocation of recording vectors
-  xxx<-seq(n0) ## create x-axis
-  for(i in 1:n0){
-    errh[i]<-qnorm(ciNum)*sqrt(var(a.h[,i])/dim(a.h)[1]) ## calculate error values vector
-    a.h.y[i]<-median(a.h[,i]) ## calculate median values at every generation
-  }
-  a.h.eqm<-min(which(abs(a.h.y[c(1:(length(a.h.y)-10))]-a.h.y[-c(1:10)])<1)) ## extract generation of eqm
-  a.h.y<-c(a.h.y+errh,rev(a.h.y)-errh) ## create plotting y-values
-  xxx<-c(xxx,rev(xxx)) ## create plotting x-values
-  
-  plot(c(1,n0), c(0,max(a.h)), type = "n", xlab = "generations", ylab = "species richness")
-  suppressWarnings(polygon(xxx,a.h.y, col = rgb(0,0,0,.5), add=T, border = NA))
-  suppressWarnings(abline(v=a.h.eqm, col=rgb(0,.5,.5,1), add=T))
-  suppressWarnings(text(x = a.h.eqm+5,y = 0, labels = a.h.eqm, col = rgb(0,.5,.5,1), add=T))
-  suppressWarnings(text(x = 100,y = max(a.h)*2/3, labels = paste0(ciNum," C.I. on varying initial diversity"), col = rgb(0,0,0,1), add=T))
+  cat("\n")
 }
 
 # Challenge question C
