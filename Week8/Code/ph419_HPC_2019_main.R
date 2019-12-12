@@ -169,7 +169,7 @@ question_16 <- function()  {
 }
 
 # Question 17
-cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, output_file_name,
+cluster_run <- function(speciation_rate=personal_speciation_rate, size=100, wall_time=.001, interval_rich=1, interval_oct=10, burn_in_generations=200, output_file_name="my_test_file_1.rda",
                         full_path="../")  {
   pop<-rep(1,size) ## create intiial min div population
   t1<-1 ## set ini generation
@@ -260,55 +260,52 @@ process_cluster_results <- function(full_path="../", dist_path="results/")  {
 # Question 21
 question_21 <- function(x.0=3, x.1=8)  {
   x<-log(x.1)/log(x.0)
-  return(cat(paste0(x,"\ndimension 1 of biggest structure contains ",x.0," repeating units, and the whole biggest structure contains ",x.1," repeating units")))
+  return(list(x,paste0("dimension 1 of biggest structure contains ",x.0," repeating units, and the whole biggest structure contains ",x.1," repeating units")))
 }
 
 # Question 22
 question_22 <- function(x.0=3, x.1=20)  {
   x<-log(x.1)/log(x.0)
-  return(cat(paste0(x,"\ndimension 1 of biggest structure contains ",x.0," repeating units, and the whole biggest structure contains ",x.1," repeating units")))
+  return(list(x,paste0("dimension 1 of biggest structure contains ",x.0," repeating units, and the whole biggest structure contains ",x.1," repeating units")))
 }
 
 # Question 23
-chaos_game <- function(x=0, y=0, colrr=rgb(0,0,0,1), xI=c(0,3,4), yI=c(0,4,1))  {
+chaos_game <- function(x=0, y=0, xI=c(0,3,4), yI=c(0,4,1), time=20)  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
-  a<-as.matrix(data.frame(xI,yI))
-  a.p<-as.data.frame(matrix(nrow = 0, ncol = 2))
-  a.p<-rbind(a.p,c(x,y))
+  a<-data.frame(xI,yI) ## source points df
+  a.p<-as.data.frame(matrix(nrow = 0, ncol = 2)) ## initiate running points df
+  a.p<-rbind(a.p,c(x,y)) ## mark first point
   
   t.0<-proc.time()[3]
   repeat{
-    r<-sample(dim(a)[1],1)
-    a.p<-rbind(a.p,c((a[r,1]+a.p[dim(a.p)[1],1])/2,(a[r,2]+a.p[dim(a.p)[1],2])/2))
-    if(proc.time()[3]-t.0>20){break}
+    r<-sample(dim(a)[1],1) ## pick a point that the marker will go towards
+    a.p<-rbind(a.p,c((a[r,1]+a.p[dim(a.p)[1],1])/2,(a[r,2]+a.p[dim(a.p)[1],2])/2)) ## mark points
+    if(proc.time()[3]-t.0>time){break} ## time's up
   }
   
-  plot(x = a.p[,1], y = a.p[,2], type = "p", xlim = c(min(a.p[,1]),max(a.p[,1])), ylim = c(min(a.p[,2]),max(a.p[,2])), xlab = "x", ylab = "y", cex=.01, pch=1, col=colrr)
-  return("a fractal triangle with three spikes at the pre-designed points")
+  plot(x = a.p[,1], y = a.p[,2], type = "p", xlim = c(min(a.p[,1]),max(a.p[,1])), ylim = c(min(a.p[,2]),max(a.p[,2])), xlab = "", ylab = "", cex=.01) ## plot all points
+  return("a fractal triangle with three vertices at pre-designed points")
 }
 
 # Question 24
 turtle <- function(start_position=c(0,0), direction=.03, length=.1)  {
   a<-c(start_position[1]+length*cos(direction),start_position[2]+length*sin(direction))
   colouring<-c(rgb(0,.7,.1,1),rgb(.5,.5,.2,1),rgb(1,0,0,1)) ## leaves, branches, tips
-  ccol<-ifelse(length>1e-2,colouring[2],ifelse(length>1e-3,colouring[1],colouring[3]))
+  ccol<-ifelse(length>2e-2,colouring[2],ifelse(length>7e-4,colouring[1],colouring[3]))
   suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), col=ccol, add=T, cex=.01))
   return(a) # you should return your endpoint here.
 }
 
 # Question 25
 elbow <- function(start_position=c(.1,.1), direction=0, length=.5)  {
-  a<-as.data.frame(matrix(nrow = 0, ncol = 2))
-  a<-rbind(a,start_position)
-  a<-rbind(a,turtle(start_position, direction, length))
-  a<-rbind(a,turtle(a[dim(a)[1],], direction+pi/4, .95*length))
-  suppressWarnings(lines(x=a[,1], y=a[,2], add=T))
+  a<-turtle(start_position, direction, length) ## plot & record
+  turtle(a, direction+pi/4, .95*length) ## call another plot
 }
 
 # Question 26
 spiral <- function(start_position=c(.15,0), direction=0, length=.45)  {
-  a<-turtle(start_position,direction,length)
-  if(length>1e-9){
+  a<-turtle(start_position,direction,length) ## plot and record
+  if(length>1e-9){ ## plot if length not too small
     spiral(start_position = a, direction = direction+pi/4, length = length*.95)
   }
 }
@@ -325,8 +322,8 @@ draw_spiral <- function()  {
 tree <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.3)  {
   a<-turtle(start_position,direction,length)
   if(length>1e-3){
-    tree(start_position = a, direction = direction+pi/4, length = length*.65)
-    tree(start_position = a, direction = direction+-pi/4, length = length*.65)
+    tree(start_position = a, direction = direction+pi/4, length = length*.65) ## left branching
+    tree(start_position = a, direction = direction-pi/4, length = length*.65) ## right branching
   }
 }
 draw_tree <- function()  {
@@ -336,11 +333,11 @@ draw_tree <- function()  {
 }
 
 # Question 29
-fern <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.13)  {
+fern <- function(start_position=c(0,0), direction=45*2*pi/360, length=.13)  {
   a<-turtle(start_position,direction,length)
   if(length > 0.005){
-    fern(start_position = a, direction = direction, length = length*.87)
-    fern(start_position = a, direction = direction+pi/4, length = length*.38)
+    fern(start_position = a, direction = direction, length = length*.87) ## straight branching
+    fern(start_position = a, direction = direction-pi/4, length = length*.38) ## diverged branching
   }
 }
 draw_fern <- function()  {
@@ -350,25 +347,28 @@ draw_fern <- function()  {
 }
 
 # Question 30
-fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.13, LR=1)  {
+fern2 <- function(start_position=c(.5,0), direction=90*2*pi/360, length=.13, LR=1, details=3)  {
   a<-turtle(start_position,direction,length)
-  if(length > 1e-3){
-    fern2(start_position = a, direction = direction, length = length*.87, LR=-LR)
-    fern2(start_position = a, direction = direction+pi/4*LR, length = length*.38, LR = LR)
+  if(length > 10^(-1*details)){
+    fern2(start_position = a, direction = direction, length = length*.87, LR=-LR, details = details) ## inverted straight brnaching
+    fern2(start_position = a, direction = direction+pi/4*LR, length = length*.38, LR = LR, details = details) ## diverged branching
   }
 }
 draw_fern2 <- function()  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
   plot.new()
-  fern2()
+  fern2(details=2)
 }
 
 # Challenge questions - these are optional, substantially harder, and a maximum of 16% is available for doing them.  
 
 # Challenge question A
-Challenge_A <- function() {
+Challenge_A <- function(burnInGen=200, sp_rate=.1, num_ind=100, ciNum=.972) {
   graphics.off() # clear any existing graphs and plot your graph within the R window
-  n0<-200;sp_rate<-.1;ind<-100;ciNum<-.972 ## set parameters: burn-in generation num, speciation rate, pop size, confidence interval
+  n0<-burnInGen ## burn-in generation
+  sp_rate<-sp_rate ## speciation rate
+  ind<-num_ind ## population size
+  ciNum<-ciNum ## confidence interval
   a.h<-a.l<-as.data.frame(matrix(nrow = 0, ncol = n0)) ## initialize recording df for both initial states
   repeat{
     a.h<-rbind(a.h,neutral_time_series_speciation(init_community_max(ind),sp_rate, n0)) ## record high diversity initial state
@@ -388,7 +388,7 @@ Challenge_A <- function() {
   a.h.y<-c(a.h.y+errh,rev(a.h.y)-errh) ## create plot polygon y values on high div ini state
   a.l.y<-c(a.l.y+errl,rev(a.l.y)-errl) ## create plot polygon y values on low div ini state
   xxx<-c(xxx,rev(xxx)) ## create x values on both ini state
-  
+
   plot(c(1,n0), c(0,max(a.h)), type = "n", xlab = "generations", ylab = "species richness")
   suppressWarnings(polygon(xxx,a.h.y, col = rgb(1,0,0,.5), add=T, border = NA))
   suppressWarnings(polygon(xxx,a.l.y, col = rgb(0,0,1,.5), add=T, border = NA))
@@ -409,14 +409,14 @@ Challenge_B <- function() {
     cat(paste0("sp_rich-",i,": "))
     sp_time<-c()
     pop=seq(1:i)
-    pop=c(pop,sample(pop,num_ind-length(pop),replace = T))
+    pop=c(pop,sample(pop,num_ind-length(pop),replace = T)) ## fill up gaps using random species on population size with fixed species richness if necessary
     for(j in 1:30){
       if(j%%10==0){cat(paste0("rep-",j,"; "))}
       sp_time=sum_vect(sp_time,neutral_time_series_speciation(community = pop, speciation_rate = sp_rate, duration = num_ind))
     }
-    sp_time=sp_time/j
+    sp_time=sp_time/j ## mean of species richness collected through j cycles
     if(i==1){
-      plot(c(species_richness(pop),sp_time)~seq(0:num_ind), type="l", ylim=c(0,num_ind), xlab="generation time",ylab="species richness")
+      plot(c(species_richness(pop),sp_time)~seq(0:num_ind), type="l", ylim=c(0,num_ind), xlab="generation time",ylab="species richness") ## plot mean species richness through time
     }else{
       suppressWarnings(lines(c(species_richness(pop),sp_time)~seq(0:num_ind), type="l", add=T))
     }
@@ -425,63 +425,63 @@ Challenge_B <- function() {
 }
 
 # Challenge question C
-Challenge_C <- function() {
+Challenge_C <- function(path="../Data/run/") {
   graphics.off() # clear any existing graphs and plot your graph within the R window
-  fList<-length(list.files("../results/", pattern = "q18"))
-  a.0<-vector(mode = "list", length = fList)
-  
+  fList<-length(list.files(path = path, pattern = "q18"))
+  ref<-c(5e2,1e3,25e2,5e3) ## population size reference
+  refLen<-rep(0,length(ref)) ## data size reference
+  LNcol<-c(rgb(1,0,0,.3),rgb(0,0,0,.3),rgb(0,1,0,.3),rgb(0,0,1,.3)) ## colour for line plotting
+  maxGen<-0 ## max generation time for plotting
+  maxSpR<-0 ## max species richness for plotting
+  a.0<-vector(mode = "list", length = length(ref))
+
+  cat("handling ")
   for(i in 1:fList){
-    load(paste0("../results/q18_",i,".rda"))
-    a.2<-rep(NA,length(abdO))
-    for(j in 1:length(abdO)){a.2[j]<-sum(abdO[[j]])}
-    a.0[[i]]<-a.2
-  }
-  
-  a.1<-as.data.frame(matrix(nrow = 0, ncol = 3))
-  for(i in 1:4){
-    for(j in 0:(length(a.0)/4-1)){
-      if(j==0){a.2<-a.0[[i+j*4]]}else{a.2<-sum_vect(a.2,a.0[[i+j*4]])}
+    if(i%%10==0){cat(paste0(i,"; "))}
+    load(paste0(path,"q18_",i,".rda"))
+    a.2<-rep(NA,length(abdO)) ## species richness vector in a time series (single run)
+    for(j in 1:length(abdO)){
+      a.2[j]<-sum(abdO[[j]]) ## species richness vector fill up
+      maxGen<-ifelse(length(a.2)>maxGen,length(a.2),maxGen) ## update plot x-limit if necessary
     }
-    a.1<-rbind(a.1,data.frame(seq(1,length(a.2))-1,i,a.2))
+       maxSpR<-ifelse(max(a.2)>maxSpR,max(a.2),maxSpR) ## update plot y-limit if necessary
+   a.0[[which(size==ref)]]<-sum_vect(a.0[[which(size==ref)]],a.2) ## collect species richness along time series
+    refLen[which(size==ref)]<-refLen[which(size==ref)]+1 ## collect number of run for later mean calculation
   }
-  a.1[,2]<-ifelse(a.1[,2]<3, ifelse(a.1[,2]<2,5e2,1e3), ifelse(a.1[,2]>3,5e3,25e2))
-  
-  plot(a.1[,3]/3~a.1[,1], type = "n", xlab = "generation", ylab = "species richness", pch=3)
-  lines(a.1[which(a.1[,2]==5e2),3]/3~a.1[which(a.1[,2]==5e2),1], col=rgb(1,0,0,.3))
-  lines(a.1[which(a.1[,2]==1e3),3]/3~a.1[which(a.1[,2]==1e3),1], col=rgb(0,0,0,.3))
-  lines(a.1[which(a.1[,2]==25e2),3]/3~a.1[which(a.1[,2]==25e2),1], col=rgb(0,1,0,.3))
-  lines(a.1[which(a.1[,2]==5e3),3]/3~a.1[which(a.1[,2]==5e3),1], col=rgb(0,0,1,.3))
-  legend(x=1.7e4, y=70, lty = 1, col = c(rgb(1,0,0,1),rgb(0,0,0,1),rgb(0,1,0,1),rgb(0,0,1,1)), legend = c(5e2,1e3,25e2,5e3), title = "Community size")
+  cat("Plotting\n")
+  plot(y=c(0,maxSpR), x=c(0,maxGen), type = "n", xlab = "generation", ylab = "mean species richness") ## initialize plot area
+  for(i in 1:length(a.0)){
+    suppressWarnings(lines(a.0[[i]]/refLen[i] ~ seq(length(a.0[[i]])), col=LNcol[i])) ## plot lines
+  }
+  legend(x=maxGen/2, y=maxSpR*.9, lty=1, col=LNcol, legend = ref, title = "Community size")
 }
 
 # Challenge question D
-Challenge_D <- function() {
+Challenge_D <- function(num_reps=1e2, samplesize=c(5e2,1e3,25e2,5e3)) {
   timing<-unname(proc.time()[3])
   graphics.off() # clear any existing graphs and plot your graph within the R window
-  cat("handling ")
+  cat("handling rep: ")
   a.05<-a.10<-a.25<-a.50<-c()
-  samplesize<-c(5e2,1e3,25e2,5e3)
   set.seed(99999)
-  num_reps<-1e3
   for(i in 1:num_reps){
-    cat(paste0(i,"; "))
-    j<-N<-ifelse(i%%4==0,samplesize[4],samplesize[i%%4])
+    if(i%%1e3==0){cat(paste0(i/1e3,"K; "))}
+    j<-N<-ifelse(i%%4==0,samplesize[4],samplesize[i%%4]) ## set ref sample size
     v<-personal_speciation_rate
-    pop<-rep(1,j)
+    pop<-rep(1,j) ## initialize assuming all idividuals from different species
     abd<-c()
     th<-v*(j-1)/(1-v)
     repeat{
-      chg<-sample(N,1)
+      chg<-sample(N,1) ## choose individual to be identity-changed
       if(runif(1)<th/(th+N-1)){
-        abd<-c(abd, pop[chg])
+        abd<-c(abd, pop[chg]) ## new sp found; extract out from community
       }else{
         tmp<-seq(N)
-        tmp<-tmp[which(tmp!=chg)]
-        tmp<-sample(tmp,1)
-        pop[tmp]<-pop[tmp]+pop[chg]
+        tmp<-tmp[which(tmp!=chg)] ## ensure choosing individual not overlapping changing one
+        tmp<-sample(tmp,1) ## choose sp in community to merge with
+        pop[tmp]<-pop[tmp]+pop[chg] ## coalescence
       }
-      pop<-pop[-chg]
-      if(N>1){N<-N-1}else{break}
+      pop<-pop[-chg] ## removed merged individual separate position in community
+      if(N>1){N<-N-1}else{break} ## continue coalescence only when number of remaining known species identity > 1
     }
     if(i%%4==1){
       a.05<-sum_vect(a.05,octaves(abd))
@@ -494,10 +494,11 @@ Challenge_D <- function() {
     }
   }
   cat(paste0("\nPlotting...\n"))
-  oc.05<-a.05/(num_reps/4)
-  oc.10<-a.10/(num_reps/4)
-  oc.25<-a.25/(num_reps/4)
-  oc.50<-a.50/(num_reps/4)
+  ## calculate overall octaves
+  oc.05<-a.05/(num_reps/length(samplesize))
+  oc.10<-a.10/(num_reps/length(samplesize))
+  oc.25<-a.25/(num_reps/length(samplesize))
+  oc.50<-a.50/(num_reps/length(samplesize))
   
   ## plots
   yyl<-"abundance"
@@ -507,13 +508,13 @@ Challenge_D <- function() {
   try(barplot(oc.10~seq(1:length(oc.10)), xlab=paste0(xxl,samplesize[2]), ylab=yyl, ylim=c(0,max(oc.10)*1.2)), silent = T)
   try(barplot(oc.25~seq(1:length(oc.25)), xlab=paste0(xxl,samplesize[3]), ylab=yyl, ylim=c(0,max(oc.25)*1.2)), silent = T)
   try(barplot(oc.50~seq(1:length(oc.50)), xlab=paste0(xxl,samplesize[4]), ylab=yyl, ylim=c(0,max(oc.50)*1.2)), silent = T)
-  return(cat(paste0("The coalescence simulation has done ",num_reps," trials used ",(unname(proc.time()[3])-timing)/60^2," hours\nThe reason is because vectors storing temporary data would not getting larger like forward simulations.  This saved space for the computer to run faster.\n")))
+  return(cat(paste0("The coalescence simulation has done ",num_reps/1e3,"K trials used approx ",round((unname(proc.time()[3])-timing)/60^2,2)," hours with 1 CPU\nThe reason is because vectors storing temporary data would not getting larger like forward simulations.  This saved more and more space for the computer to run increasingly faster.\n")))
 }
 
 # Challenge question E
-Challenge_E <- function(x=1, y=0, colrr=rgb(1,0,0,1), xI=c(0,2,1), yI=c(0,0,sqrt(3/4))) {
+Challenge_E <- function(x=1, y=0, xI=c(0,2,1), yI=c(0,0,sqrt(3/4)), time=20) {
   graphics.off() # clear any existing graphs and plot your graph within the R window
-  chaos_game(x,y,colrr, xI, yI)
+  chaos_game(x,y, xI, yI, time)
   return("initial points has no effect on resultant plot")
 }
 
