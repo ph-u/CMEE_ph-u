@@ -1,0 +1,4 @@
+handling rep: 1K; 2K; 3K; 4K; 5K; 6K; 7K; 8K; 9K; 10K; 11K; 12K; 13K; 14K; 15K; 16K; 17K; 18K; 19K; 20K; 21K; 22K; 23K; 24K; 25K; 26K; 27K; 28K; 29K; 30K; 31K; 32K; 33K; 34K; 35K; 36K; 37K; 38K; 39K; 40K; 41K; 42K; 43K; 44K; 45K; 46K; 47K; 48K; 49K; 50K; 51K; 52K; 53K; 54K; 55K; 56K; 57K; 58K; 59K; 60K; 61K; 62K; 63K; 64K; 65K; 66K; 67K; 68K; 69K; 70K; 71K; 72K; 73K; 74K; 75K; 76K; 77K; 78K; 79K; 80K; 81K; 82K; 83K; 84K; 85K; 86K; 87K; 88K; 89K; 90K; 91K; 92K; 93K; 94K; 95K; 96K; 97K; 98K; 99K; 100K; 
+Plotting...
+The coalescence simulation has done 100K trials used approx 4.48 hours with 1 CPU
+The reason is because vectors storing temporary data would not getting larger like forward simulations.  This saved more and more space for the computer to run increasingly faster.
