@@ -28,5 +28,5 @@ p=function(x=.5,y=0,d=pi/2,l=.1,r=-1,t=3,col=1){
 			p(a,b,d,l*.9,-r,t,col)	
 			p(a,b,d-.8*r,l*.4,r,t,col)
 		}}
-for(i in c(1:4,1)){p(col=i)};rm(i)
 text(x=.15,y=.9,label="Merry Christmas 2019\nAnd a Happy New Year!")
+for(i in c(1,1:4,1)){p(col=i)};rm(i)
