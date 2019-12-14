@@ -125,8 +125,8 @@ question_12 <- function()  {
   b0<-abs(a0-a1) ## calculate absolute population differences between the two intiial populations
   
   plot(a0~seq(1:n0), pch=3, xlab="generation", ylab = "species richness", type="l", col="red") ## plot species richness 
-  suppressWarnings(lines(a1~seq(1:n0), pch=3, xlab="generation", ylab = "species richness", type="l", col="blue", add=T))
-  legend(x=150,y=65,col = c("red","blue"), legend = c("max", "min"), title = "initial diversity", lty = 1)
+  lines(a1~seq(1:n0), pch=3, xlab="generation", ylab = "species richness", type="l", col="blue")
+  legend(x=n0/2,y=65,col = c("red","blue"), legend = c("max", "min"), title = "initial diversity", lty = 1)
   
   return(cat(paste0("Throughout ",n0," generations,\nIQR of species richness difference is ",IQR(b0),", from ",fivenum(b0)[2]," to ",fivenum(b0)[4],";\nIQR of high species diversity goup is from ",fivenum(a0)[2]," to ",fivenum(a0)[4],";\nIQR of low species diversity goup is from ",fivenum(a1)[2]," to ",fivenum(a1)[4],"\nReason of this pattern is due to the introduction of speciation with rate ",sp_rate,", which new mutations are hard to get rid of but diversity is easy to be reduced\nSo initial states have no observable effect on the final result\n"))) ## analysis summary
 }
@@ -169,8 +169,7 @@ question_16 <- function()  {
 }
 
 # Question 17
-cluster_run <- function(speciation_rate=personal_speciation_rate, size=100, wall_time=.001, interval_rich=1, interval_oct=10, burn_in_generations=200, output_file_name="my_test_file_1.rda",
-                        full_path="../")  {
+cluster_run <- function(speciation_rate=personal_speciation_rate, size=100, wall_time=.001, interval_rich=1, interval_oct=10, burn_in_generations=200, output_file_name="my_test_file_1.rda")  {
   pop<-rep(1,size) ## create intiial min div population
   t1<-1 ## set ini generation
   sppR<-rep(NA,burn_in_generations) ## pre-allocate spp-richness vector
@@ -194,22 +193,22 @@ cluster_run <- function(speciation_rate=personal_speciation_rate, size=100, wall
   cat("\nSaving file...\n")
   
   ## output
-  save(popB, abdO, pop, tE, speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, file = paste0(full_path,"results/",output_file_name))
+  save(popB, abdO, pop, tE, speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, file = output_file_name)
   # save(popB, abdO, pop, tE, speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, file =output_file_name)
 }
 
 # Questions 18 and 19 involve writing code elsewhere to run your simulations on the cluster
 
 # Question 20 
-process_cluster_results <- function(full_path="../", dist_path="results/")  {
+process_cluster_results <- function()  {
   graphics.off() # clear any existing graphs and plot your graph within the R window
   r.0<-c(5e2,1e3,2.5e3,5e3) ## ref vec
-  a.0<-list.files(path = paste0(full_path,dist_path), pattern = ".rda")
+  a.0<-list.files(pattern = "q18")
   a.1<-as.data.frame(matrix(nrow = length(a.0), ncol = 4)) ## rda num summary
   a.05<-a.10<-a.25<-a.50<-0
   cat("handling ")
   for(i in 1:length(a.0)){cat(paste0(i,"; "))
-    a<-try(load(paste0(full_path, dist_path, "q18_",i,".rda")), silent = T)
+    a<-try(load(paste0("q18_",i,".rda")), silent = T)
     if(class(a)!="try-error"){
       a.1[i,]<-c(i,size,length(abdO),burn_in_generations) ## collect descriptive info
       a.2<-which(r.0==size) ## id which abundance dump should the data be saved to
@@ -241,7 +240,7 @@ process_cluster_results <- function(full_path="../", dist_path="results/")  {
   a.25<-a.25/a.25b
   a.50<-a.50/a.50b
   
-  pdf(paste0(full_path,"results/abundances.pdf"))
+  pdf("abundances.pdf")
   ## plot
   par(mfrow=c(2,2))
   try(barplot(a.05~seq(1,length(a.05)), xlab = paste0("octave for ",round(a.05b/1e3),"K generations"), ylab = "abundance", ylim = c(0,max(a.05)*1.3)), silent = T)
@@ -252,8 +251,8 @@ process_cluster_results <- function(full_path="../", dist_path="results/")  {
   dev.off()
   
   combined_results <- list(a.05, a.10, a.25, a.50) #create your list output here to return
-  save(combined_results,file = "../results/ph419_cx1_results.rda")
-  write.csv(a.1,"../results/ph419_cx1_summary.csv", row.names = F, quote = F)
+  save(combined_results,file = "ph419_cx1_results.rda")
+  write.csv(a.1,"ph419_cx1_summary.csv", row.names = F, quote = F)
   return(combined_results)
 }
 
@@ -283,7 +282,7 @@ chaos_game <- function(x=0, y=0, xI=c(0,3,4), yI=c(0,4,1), time=20)  {
     if(proc.time()[3]-t.0>time){break} ## time's up
   }
   
-  plot(x = a.p[,1], y = a.p[,2], type = "p", xlim = c(min(a.p[,1]),max(a.p[,1])), ylim = c(min(a.p[,2]),max(a.p[,2])), xlab = "", ylab = "", cex=.01) ## plot all points
+  plot(x = a.p[,1], y = a.p[,2], type = "p", xlim = c(min(a.p[,1]),max(a.p[,1])), ylim = c(min(a.p[,2]),max(a.p[,2])), xlab = "x-cood", ylab = "y-cood", cex=.01) ## plot all points
   return("a fractal triangle with three vertices at pre-designed points")
 }
 
@@ -292,7 +291,7 @@ turtle <- function(start_position=c(0,0), direction=.03, length=.1)  {
   a<-c(start_position[1]+length*cos(direction),start_position[2]+length*sin(direction))
   colouring<-c(rgb(0,.7,.1,1),rgb(.5,.5,.2,1),rgb(1,0,0,1)) ## leaves, branches, tips
   ccol<-ifelse(length>2e-2,colouring[2],ifelse(length>7e-4,colouring[1],colouring[3]))
-  suppressWarnings(lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), col=ccol, add=T, cex=.01))
+  lines(x=c(start_position[1],a[1]), y=c(start_position[2],a[2]), col=ccol, cex=.01)
   return(a) # you should return your endpoint here.
 }
 
@@ -390,12 +389,12 @@ Challenge_A <- function(burnInGen=200, sp_rate=.1, num_ind=100, ciNum=.972) {
   xxx<-c(xxx,rev(xxx)) ## create x values on both ini state
 
   plot(c(1,n0), c(0,max(a.h)), type = "n", xlab = "generations", ylab = "species richness")
-  suppressWarnings(polygon(xxx,a.h.y, col = rgb(1,0,0,.5), add=T, border = NA))
-  suppressWarnings(polygon(xxx,a.l.y, col = rgb(0,0,1,.5), add=T, border = NA))
-  suppressWarnings(abline(v=a.h.eqm, col=rgb(1,0,0,1), add=T))
-  suppressWarnings(text(x = a.h.eqm+5,y = 0, labels = a.h.eqm, col = rgb(1,0,0,1), add=T))
-  suppressWarnings(abline(v=a.l.eqm, col=rgb(0,0,1,1), add=T))
-  suppressWarnings(text(x = a.l.eqm+5,y = 5, labels = a.l.eqm, col = rgb(0,0,1,1), add=T))
+  polygon(xxx,a.h.y, col = rgb(1,0,0,.5), border = NA)
+  polygon(xxx,a.l.y, col = rgb(0,0,1,.5), border = NA)
+  abline(v=a.h.eqm, col=rgb(1,0,0,1))
+  text(x = a.h.eqm+5,y = 0, labels = a.h.eqm, col = rgb(1,0,0,1))
+  abline(v=a.l.eqm, col=rgb(0,0,1,1))
+  text(x = a.l.eqm+5,y = 5, labels = a.l.eqm, col = rgb(0,0,1,1))
   legend(x=50,y=max(a.h)*.9,col = c("red","blue"), legend = c("max", "min"), title = paste0(ciNum," C.I. on initial diversity"), lty = 1)
 }
 
@@ -425,9 +424,9 @@ Challenge_B <- function() {
 }
 
 # Challenge question C
-Challenge_C <- function(path="../Data/run/") {
+Challenge_C <- function() {
   graphics.off() # clear any existing graphs and plot your graph within the R window
-  fList<-length(list.files(path = path, pattern = "q18"))
+  fList<-length(list.files(pattern = "q18"))
   ref<-c(5e2,1e3,25e2,5e3) ## population size reference
   refLen<-rep(0,length(ref)) ## data size reference
   LNcol<-c(rgb(1,0,0,.3),rgb(0,0,0,.3),rgb(0,1,0,.3),rgb(0,0,1,.3)) ## colour for line plotting
@@ -438,7 +437,7 @@ Challenge_C <- function(path="../Data/run/") {
   cat("handling ")
   for(i in 1:fList){
     if(i%%10==0){cat(paste0(i,"; "))}
-    load(paste0(path,"q18_",i,".rda"))
+    load(paste0("q18_",i,".rda"))
     a.2<-rep(NA,length(abdO)) ## species richness vector in a time series (single run)
     for(j in 1:length(abdO)){
       a.2[j]<-sum(abdO[[j]]) ## species richness vector fill up
@@ -451,7 +450,7 @@ Challenge_C <- function(path="../Data/run/") {
   cat("Plotting\n")
   plot(y=c(0,maxSpR), x=c(0,maxGen), type = "n", xlab = "generation", ylab = "mean species richness") ## initialize plot area
   for(i in 1:length(a.0)){
-    suppressWarnings(lines(a.0[[i]]/refLen[i] ~ seq(length(a.0[[i]])), col=LNcol[i])) ## plot lines
+    lines(a.0[[i]]/refLen[i] ~ seq(length(a.0[[i]])), col=LNcol[i]) ## plot lines
   }
   legend(x=maxGen/2, y=maxSpR*.9, lty=1, col=LNcol, legend = ref, title = "Community size")
 }
