@@ -25,6 +25,19 @@ ref<-data.frame("num"=c("ve","go","ba","bu","qu","cu"),"nam"=c("Verhulst (classi
 a.md<-a[which(a[,2]=="Model"),-1] ## extract "best model" data
 
 a.md<-as.data.frame(table(a.md))[,-1] ## count "best model" occurrences for each model
-for(i in 1:dim(a.md)[1]){a.md[i,3]<-ref[which(a.md[i,1]==ref[,1]),2]};rm(i)
-barplot(a.md[,2]~a.md[,3], ylab = "best-model occurrence", xlab = "Model") ## plot best model occurrence
-kruskal.test(a.md[,2]~a.md[,3]) ## non-sig result of difference
+
+ref[,3]<-0 ## pre-allocate for plotting
+for(i in 1:dim(ref)[1]){ ## run through ref table
+  if(isTRUE(any(a.md[,1]==ref[i,1]))){ ## fill the table if match token
+    ref[i,3]<-a.md[which(ref[i,1]==a.md[,1]),2]
+  }
+};rm(i)
+
+pdf("../results/barplot_BestModel.pdf", width = 10)
+barplot(ref[,3]~ref[,2], ylab = "best-model occurrence", xlab = "Model")  ## plot best model occurrence
+kt<-kruskal.test(ref[,3]~ref[,2]) ## non-sig result of difference
+text(x=dim(ref)[1]/2,y=max(a.md[,2])*.8, labels = paste0("Kruskal-Wallis Test\nX^2 = ",kt$statistic,"\ndf = ",kt$parameter,"\np-val = ",round(kt$p.value,2)))
+dev.off()
+
+## write table for report
+write.table(c(kt$method,kt$statistic,kt$parameter,round(kt$p.value,2)),file = "../data/ttt_stat.txt", quote = F, col.names = F, row.names = F)

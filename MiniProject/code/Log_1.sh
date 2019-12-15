@@ -12,7 +12,8 @@ a0=`wc -l ../data/Log_Uq.txt|tr -s " "|sed 's/^ *//g'|cut -f 1 -d " "` ## get nu
 
 echo -e "start data subset analysis"
 for i in `seq 1 $((${a0} -1))`;do ## parallel data subset processing
-	nohup ./Log_1_c.sh ${i} 1e2 &
+	./Log_1_c.sh ${i} 1e2
+	#nohup ./Log_1_c.sh ${i} 1e2 &
 done
 
 i2=5

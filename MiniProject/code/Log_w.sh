@@ -14,6 +14,14 @@ a3=`echo ${a1}|cut -f 1 -d "_"`
 
 ## Writing
 cp $1 ${a3}_r.tex
+countRES=1
+for i in `grep -n insert_num_here Log_w.tex |cut -f 1 -d ":"`;do
+	head -n $((${i}-1)) ${a3}_r.tex > tmp
+	head -n ${countRES} ../results/Log_total.txt | tail -n 1 >> tmp
+	tail -n +$((${i}+1)) ${a3}_r.tex >> tmp
+	mv tmp ${a3}_r.tex
+	countRES=$((${countRES}+1))
+done
 
 ## spacialize for *_r.tex
 head -n 3 ${a3}_r.tex > tmp
