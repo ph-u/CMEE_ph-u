@@ -27,7 +27,7 @@ Writing readme.md for each week was mainly automated, followed by manual modific
 
 ## Dominant Focus / Foci
 
-`MiniProject`: bash, R, LaTeX  
+`MiniProject`: bash, R, python3, LaTeX  
 `Week1`: bash, git, LaTeX  
 `Week2`: python3  
 `Week3`: R  
