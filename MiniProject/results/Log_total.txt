@@ -2,3 +2,6 @@ Kruskal-Wallis rank sum test
 5
 5
 0.42
+48.2
+51.8
+56

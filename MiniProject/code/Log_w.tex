@@ -95,6 +95,7 @@ style       = nature
 	Only AIC\autocite{johnson2004model,akaike1998information,burnhamdr} was used to select for optimal parameter values within each \pml\ and best model between the six candidates for a data subset.  Reasons would be listed in Discussion section.  For models with more than one parameter sets as sharing the lowest AIC value, the first set of values from the random sampling trials were used for downstream analyses.  AIC tolerance threshold was expanded to min(AIC)+2\autocite{burnham2004multimodel} to incorporate more accepted models for analyses.
 	
 	\subsection*{Statistical analysis}
+	Kruskal test was used for identify the best-fit model among all included model because the count was categorical and not assumed being normally-distributed.  Pairwise Nemenyi comparisons would be carried out to identify the best test if p-value of the above test was significant.
 	
 	\subsection*{Main Assumptions}
 	\begin{itemize}
@@ -118,6 +119,13 @@ style       = nature
 			%% insert_num_here
 		}\label{barPT} %% numbers need automation later
 	\end{figure}
+	Among all \pms, only \fve\ was identified being the best model (Fig.\ref{barPT}).  Polynomials were being the ``best-fit" model for 
+	%% insert_num_here
+	\% cases while \fve\ alone was identified for 
+	%% insert_num_here
+	\% cases (out of 
+	%%insert_num_here
+	 cases, all percentages rounded to nearest integer).
 	
 	\section*{Discussion}
 	%% AIC vs BIC <https://www.methodology.psu.edu/resources/AIC-vs-BIC/>

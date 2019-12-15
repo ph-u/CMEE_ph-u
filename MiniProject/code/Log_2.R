@@ -34,10 +34,20 @@ for(i in 1:dim(ref)[1]){ ## run through ref table
 };rm(i)
 
 pdf("../results/barplot_BestModel.pdf", width = 10)
-barplot(ref[,3]~ref[,2], ylab = "best-model occurrence", xlab = "Model")  ## plot best model occurrence
+barplot(ref[,3]~ref[,2], ylab = "best-model occurrence", xlab = "Model", ylim=c(0,max(ref[,3])*1.2))  ## plot best model occurrence
 kt<-kruskal.test(ref[,3]~ref[,2]) ## non-sig result of difference
 text(x=dim(ref)[1]/2,y=max(a.md[,2])*.8, labels = paste0("Kruskal-Wallis Test\nX^2 = ",kt$statistic,"\ndf = ",kt$parameter,"\np-val = ",round(kt$p.value,2)))
 dev.off()
 
+## calculate percents of identify as best model
+perc_poly<-round((ref[which(ref[,1]=="qu"),3]+ref[which(ref[,1]=="cu"),3])/sum(ref[,3]),3)
+
 ## write table for report
-write.table(c(kt$method,kt$statistic,kt$parameter,round(kt$p.value,2)),file = "../data/ttt_stat.txt", quote = F, col.names = F, row.names = F)
+write.table(c(kt$method,
+              kt$statistic,
+              kt$parameter,
+              round(kt$p.value,2),
+              perc_poly*100,
+              (1-perc_poly)*100,
+              sum(ref[,3])
+              ),file = "../data/ttt_stat.txt", quote = F, col.names = F, row.names = F)

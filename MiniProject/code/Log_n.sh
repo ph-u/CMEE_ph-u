@@ -9,6 +9,7 @@
 # Date: Dec 2019
 
 echo -e "number collection for report"
+rm ../results/Log_total.txt 2>nohup.out
 cd ../data
 touch ../results/Log_total.txt
 

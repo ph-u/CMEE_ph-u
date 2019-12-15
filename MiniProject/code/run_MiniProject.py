@@ -23,7 +23,7 @@ import subprocess
 ## workflow
 subprocess.Popen("Rscript Log_0.R 2> nohup.out", shell=True).wait() ## Raw data handling
 subprocess.Popen("./Log_1.sh 2> nohup.out", shell=True).wait() ## main data analysis & model-fitting
-subprocess.Popen("./Log_2.sh 2> nohup.out", shell=True).wait() ## statistical analysis
+subprocess.Popen("Rscript Log_2.R 2> nohup.out", shell=True).wait() ## statistical analysis
 subprocess.Popen("./Log_n.sh 2> nohup.out", shell=True).wait() ## collect dispersed number for report
 subprocess.Popen("./Log_c.sh 2> nohup.out", shell=True).wait() ## report writing and compile
 subprocess.Popen("./hk_readme.sh 2> nohup.out", shell=True).wait() ## README production
