@@ -108,7 +108,8 @@ style       = nature
 	
 	\section*{Results}
 	\begin{figure}[h]
-		\includegraphics[width=\linewidth]{../results/barplot_BestModel.pdf}
+		\centering
+		\includegraphics[width=.8\linewidth]{../results/barplot_BestModel.pdf}
 		\caption{Barplot showing the number of ``best model" identification under AIC model-selection methods with ``
 			%%insert_num_here
 			" statistic $X^{2}$ = 
@@ -136,16 +137,23 @@ style       = nature
 	 %%insert_num_here
 	  respectively with 
 	 %% insert_num_here
-	 datasets calling both models ``best-fit".
+	 datasets calling both models ``best-fit".  The only outstanding performance was from \fgo, which 
+	 %% insert_num_here
+	  datasets were called it as ``best-fit".
 	
 	\section*{Discussion}
 	%% AIC vs BIC <https://www.methodology.psu.edu/resources/AIC-vs-BIC/>
 	%% AIC <https://en.wikipedia.org/wiki/Akaike_information_criterion#Comparison_with_BIC>
 	%% BIC <https://en.wikipedia.org/wiki/Bayesian_information_criterion>
-	Model fitness to real data and simplistic mathematics were favoured by both AIC\autocite{johnson2004model,akaike1998information,burnhamdr} and BIC\autocite{johnson2004model,turchin2003complex}.  Apart from that, BIC also takes account of sample size effect\autocite{johnson2004model,turchin2003complex}.\\
-	comparisons in different fields\autocite{kuha2004aic,aho2014model,yang2005can,vrieze2012model,wang2006comparison,acquah2010comparison}
+	%Model fitness to real data and simplistic mathematics were favoured by both AIC\autocite{johnson2004model,akaike1998information,burnhamdr} and BIC\autocite{johnson2004model,turchin2003complex}.  Apart from that, BIC also takes account of sample size effect\autocite{johnson2004model,turchin2003complex}.\\
+	%comparisons in different fields\autocite{kuha2004aic,aho2014model,yang2005can,vrieze2012model,wang2006comparison,acquah2010comparison}\\
+	
+	AIC is considered the most suitable model-selection approach within model and between models in this project.  Unlike BIC, AIC are more accurate with small sample sizes\autocite{acquah2010comparison,kuha2004aic} and sparse data\autocite{kuha2004aic}.  AIC did not assume a ``true model" was under examination\autocite{aho2014model,vrieze2012model,yang2005can}.  Since candidate models were not ``nested model", BIC is not a better choice than AIC\autocite{wang2006comparison}.  Hence the use of only AIC as model-selection criterion should be justified.\\
+	
+	k
 	
 	\section*{Conclusion}
+	Published \pms\ were data-specific, which none of them were found significantly performing better than the others in general.
 	
 	\section*{Code and Data Availability}
 	All \href{https://github.com/ph-u/CMEECourseWork_pmH/tree/master/MiniProject/code}{scripts} and \href{https://github.com/ph-u/CMEECourseWork_pmH/tree/master/MiniProject/data}{data} used for this report were publicity available at GitHub.
