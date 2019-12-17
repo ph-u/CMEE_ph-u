@@ -1,10 +1,10 @@
 #!/bin/env Rscript
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
-# Script: Log_0.R
-# Desc: Raw data handling -- `LogisticGrowthMetaData.csv` and identify unique datasets
-# Input: ```Rscript Log_0.R```
-# Output: 1. cleaned data (.txt); 2. unique dataset tabular list (.txt)
+# Script: Log_2.R
+# Desc: Is one or more model(s) stand out from the rest?
+# Input: ```Rscript Log_2.R```
+# Output: 1. useful numbers for report (.txt); 2. barplot (.pdf)
 # Arguments: 0
 # Date: Nov 2019
 
@@ -19,7 +19,7 @@
 library(PMCMR)
 
 ## input
-a<-read.table("../data/Log_t1_data.txt", stringsAsFactors = F, header = T)
+a<-read.table("../data/Log_t1_data.txt", stringsAsFactors = F, header = F)
 a<-a[which(!is.na(a[,2])),1:2]
 a[,3]<-substr(tolower(a[,1]),1,2)
 for(i in 1:dim(a)[1]){if(a[i,3]=="mo"){a[i,3]<-"go"}};rm(i) ## synchronize model abbreviation

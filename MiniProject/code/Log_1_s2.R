@@ -111,17 +111,18 @@ colnames(v.2)=c("Verhulst_(classical)","modified_Gompertz","Baranyi","Buchanan",
 row.names(v.2)=c("AIC",seq(1:(dim(v.2)[1]-1)))
 for(i in 1:dim(v.2)[2]){
   if(i<5){
-    v.2[1,i]<-ifelse(length(a.0[which(is.na(a.0[,i+4])),(i+4)])==dim(a.0)[1],NA,min(a.0[,i+4], na.rm = T))
+    v.2[1,i]<-ifelse(length(a.0[which(is.na(a.0[,i+4])),(i+4)])==dim(a.0)[1],NA,min(a.0[,i+4], na.rm = T)) ## select min AIC per phenological model -- a.0[,i+4]: AIC; length(): count num of successful trials
   }else if(i>5){
     v.2[1,i]<-ifelse(is.na(i.cu),NA,i.cu)
   }else{v.2[1,i]<-ifelse(is.na(i.qu),NA,i.qu)}
   
   if(!is.na(v.2[1,i])){
-    if(i<5){
+    if(i<5){ ## extract all deducible parameters, not all used in phenological model functions
       i.1<-as.data.frame(a.0[which(a.0[,i+4]==min(a.0[,i+4], na.rm = T)),1:4])
     v.2[,i]<-c(v.2[1,i],as.numeric(i.1[1,]))
     }else
-    if(i==5){v.2[,i]<-c(v.2[1,i],as.numeric(coef(i.qul)),NA)}else{v.2[,i]<-c(v.2[1,i],as.numeric(coef(i.cul)))}
+    if(i==5){v.2[,i]<-c(v.2[1,i],as.numeric(coef(i.qul)),NA)}
+    else{v.2[,i]<-c(v.2[1,i],as.numeric(coef(i.cul)))}
   }
 };rm(i)
 
