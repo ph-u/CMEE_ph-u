@@ -13,7 +13,7 @@ rm ../results/Log_total.txt 2>nohup.out
 cd ../data
 touch ../results/Log_total.txt
 
-for i in ttt_stat.txt;do
+for i in ttt_stat.txt ttt_PCA.txt;do
 	cat ${i} >> ../results/Log_total.txt
 	rm ${i}
 done

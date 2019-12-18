@@ -20,7 +20,7 @@
 \newcommand{\pms}{phenological models}
 \newcommand{\Pml}{Phenological model}
 \newcommand{\Pms}{Phenological models}
-\newcommand{\ReportTitle}{\Pms\ on microbial growth -- which model is better and why?} %% <https://stackoverflow.com/questions/1211888/is-there-any-way-i-can-define-a-variable-in-latex>
+\newcommand{\ReportTitle}{Modeling microbial growth -- which is better and why?} %% <https://stackoverflow.com/questions/1211888/is-there-any-way-i-can-define-a-variable-in-latex>
 \newcommand{\ReportAuthor}{PokMan HO}
 \newcommand{\ReportAffil}{Department of Life Sciences, Faculty of Natural Sciences,\\Imperial College London}
 \newcommand{\Disclaim}{\textbf{A Mini-project submitted in partial fulfilment of the requirements for the degree of Master of Research at Imperial College London\\\\Formatted in the journal style of the \textit{Nature} Journal\\Submitted for the MRes in Computational Methods of Ecology and Evolution}}
@@ -81,7 +81,7 @@ style       = nature
 	Some raw data were recorded in minutes (instead of hour).  This record artifact was not corrected because of two reasons: 1. shape of curves were the main concern instead of independent variable's scale; and 2. the unit was consistent within each data subset.
 	
 	\subsection*{Model assessment}
-	Six candidate models were assessed, four phenological and two polynomial equations.  They were ``\fve"\autocite{mckendrick1912xlv}, ``\fgo"\autocite{GIL200689}, ``\fba"\autocite{baranyi1993modeling}, ``\fbu"\autocite{buchanan1993differentiation}, ``\fqu" and ``\fcu". NLLS was used only on the four \pms\ and linear model-fitting was done on the two polynomials.  Starting values selection (for \pms\ only) was described below:\\
+	Six candidate models were assessed, four phenological and two polynomial equations.  They were ``\fve"\autocite{mckendrick1912xlv}, ``\fgo"\autocite{GIL200689}, ``\fba"\autocite{baranyi1993modeling}, ``\fbu"\autocite{buchanan1993differentiation}, ``\fqu" and ``\fcu". Non-linear least square (NLLS) approach was used only on the four \pms\ and linear model-fitting was done on the two polynomials.  Starting values selection (for \pms\ only) was described below:\\
 	Initial (N0) and final (K) \pps\ were selected to be the minimum and maximum values of each data subset respectively.  Maximum growth rate (r.max) was selected by linear model through a recursive manner.  For every iteration, \pop\ data from the top 5\% independent variable values were excluded from the linear model calculation.  The data and slope would only be recorded if it was positive, higher adjusted R$^{2}$ value and larger slope than the recorded ``best slope" value.  After scanning from the maximum side, the best slope and its respective data were taken out and screened from the minimum side.  Final best slope and x-intercept were regarded as the r.max and relative time lag (t.lag) of the population (in the source experiment) respectively.  Time which this linear model intersected with K was regarded as the time achieving carrying capacity (t.K).  Population data was then classified into three groups (gx) according to the time: g1 $\leq$ t.lag $<$ g2 $<$ t.K $\leq$ g3.  5\% was chosen as the scanning threshold because I assumed this resolution was fine enough for achieving good starting values for NLLS fitting.  Inputs for \pms were listed below (popn \& time were the dependent and independent variables respectively):\\
 	\begin{tabular}{rl}
 		\fve: & popn = $f$(N0, K, r.max, time)\\
@@ -95,16 +95,18 @@ style       = nature
 	Only AIC\autocite{johnson2004model,akaike1998information,burnhamdr} was used to select for optimal parameter values within each \pml\ and best model between the six candidates for a data subset.  Reasons would be listed in Discussion section.  For models with more than one parameter sets as sharing the lowest AIC value, the first set of values from the random sampling trials were used for downstream analyses.  AIC tolerance threshold was expanded to min(AIC)+2\autocite{burnham2004multimodel} to incorporate more accepted models for analyses.
 	
 	\subsection*{Statistical analysis}
-	Kruskal test was used for identify the best-fit model among all included model because the count was categorical and not assumed being normally-distributed.  Pairwise Nemenyi comparisons would be carried out to identify the best test if p-value of the above test was significant.
+	Kruskal test was used for identify the best-fit model among all included model because the count was categorical and not assumed being normally-distributed.  Pairwise Nemenyi comparisons would be carried out to identify the best test if p-value of the above test was significant.\\
+	
+	Using principal component analysis (PCA), parameter weights could be observed across \pms.  \Pms\ would be positively-correlating with a parameter if dataset observations were concentrated towards the positive side of the factor and vice versa.  It was expected that datasets would cluster together (or being on similar positions) if parameter(s) were representing the observed data.
 	
 	\subsection*{Main Assumptions}
 	\begin{itemize}
 		\item there was no negative population growth (i.e. starting population was always lower than carrying capacity), so negative population growth data were set to zeros;
-		\item estimated parameter estimates would always result in a global optimal status in parameter space through the non-linear least squares method (NLLS)
+		\item estimated parameter estimates would always result in a global optimal status in parameter space through the NLLS method.
 	\end{itemize}
 	
 	\subsection*{Computing tools}
-	R (ver 3.6.0)\autocite{Rcore} was used with ``minpack.lm"\autocite{minpacklm} for computing non-linear least square statistics for model comparisons. ``PMCMR"\autocite{PMCMR} was used for carrying out statistical analyses.
+	R (ver 3.6.0)\autocite{Rcore} was used with ``minpack.lm"\autocite{minpacklm} for computing non-linear least square statistics for model comparisons. ``PMCMR"\autocite{PMCMR} was used for carrying out Kruskal test and ``stats"\autocite{Rcore} was used for PCA analysis.
 	
 	\section*{Results}
 	\begin{figure}[h]
@@ -140,11 +142,35 @@ style       = nature
 	 datasets calling both models ``best-fit".  The only outstanding performance was from \fgo, which 
 	 %% insert_num_here
 	  datasets were called it as ``best-fit".\\
+	  
 	 \begin{figure}[h]
 	 	\centering
 	 	\includegraphics[width=.7\linewidth]{../results/Log_PCA.pdf}
-	 	\caption{Biplot of Principal Component Analysis (PCA) comparing \pms\ on estimated parameter values with minimal AIC evaluations.}\label{biptPCA}
+	 	\caption{Biplot of Principal Component Analysis (PCA) comparing \pms\ using estimated parameter values with ``minimal AIC +2" evaluations.}\label{biptPCA}
 	 \end{figure}
+ In Fig.\ref{biptPCA}, principal component 1 (PC1) was capturing 
+ %% insert_num_here
+ \% variability.  It was composed approximately by 
+ %% insert_num_here
+  N0, 
+ %%insert_num_here
+  K, 
+ %% insert_num_here
+  r.max and 
+ %% insert_num_here
+  t.lag.  PC2 was capturing 
+  %%insert_num_here
+  \% variability.  It was composed approximately by 
+ %% insert_num_here
+  N0, 
+ %%insert_num_here
+  K, 
+ %% insert_num_here
+  r.max and 
+ %% insert_num_here
+  t.lag.\\
+  
+ 	From Fig.\ref{biptPCA}, \fve\ was having no observable patterns.  Since \fgo\ was not a ``best-fit" candidate from any dataset, it could not be shown on the PCA analysis.  \fba\ was generally observed being positively-correlated with r.max but negatively relating to N0, K and t.lag.  \fbu\ was observed being positively correlated with all four parameters.
 	
 	\section*{Discussion}
 	%% AIC vs BIC <https://www.methodology.psu.edu/resources/AIC-vs-BIC/>
@@ -158,7 +184,7 @@ style       = nature
 	k
 	
 	\section*{Conclusion}
-	Published \pms\ were data-specific, which none of them were found significantly performing better than the others in general.
+	Published \pms\ were data-specific, which none of them were found significantly performing better than the others in general.  Parameters defined by these \pms\ were appropriate, which none of them were having observable domination nor negligible weights on the function calculations.
 	
 	\section*{Code and Data Availability}
 	All \href{https://github.com/ph-u/CMEECourseWork_pmH/tree/master/MiniProject/code}{scripts} and \href{https://github.com/ph-u/CMEECourseWork_pmH/tree/master/MiniProject/data}{data} used for this report were publicity available at GitHub.

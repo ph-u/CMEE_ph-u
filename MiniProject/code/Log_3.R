@@ -18,6 +18,7 @@
 ## library
 cbp <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#0072B2", "#D55E00", "#CC79A7", "#e79f00", "#9ad0f3", "#F0E442", "#999999", "#cccccc", "#6633ff", "#00FFCC", "#0066cc")## colour-blind friendly palette
 
+cat("PCA analysis on model parameters\n")
 ## input
 a<-read.table("../data/Log_t1_data.txt", stringsAsFactors = F, header = F)
 a<-a[which(!is.na(a[,2])),]
@@ -44,7 +45,7 @@ plot(a.pca$x[,2]~a.pca$x[,1],
 abline(v=0,lty=2, col="grey50") ## add vert ref
 abline(h=0,lty=2, col="grey50") ## add hori ref
 
-a.pcL<-a.pca$rotation[,1:2]*2 ## magnify arrow size
+a.pcL<-a.pca$rotation[,1:2] ## magnify arrow size (risky)
 
 arrows(x0 = 0, x1 = a.pcL[,1], y0 = 0, y1 = a.pcL[,2], col = "grey30", length = .15)
 
@@ -56,3 +57,6 @@ legend("topleft", legend = c("Verhulst (classical)", "modified Gompertz", "Baran
 dev.off()
 
 ## data export for report
+a.expt<-c(round(a.pcS$importance[2],2)*100,round(a.pca$rotation[,1],2),round(a.pcS$importance[5],2)*100,round(a.pca$rotation[,2],2))
+# a.expt<-round(c(a.pca$rotation[,1:2]),2)
+write.table(a.expt, "../data/ttt_PCA.txt", quote = F, col.names = F, row.names = F)

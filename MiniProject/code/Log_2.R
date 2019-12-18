@@ -18,6 +18,7 @@
 ## library
 library(PMCMR)
 
+cat("Statistical analysis on 'best' model collection\n")
 ## input
 a<-read.table("../data/Log_t1_data.txt", stringsAsFactors = F, header = F)
 a<-a[which(!is.na(a[,2])),1:2]
