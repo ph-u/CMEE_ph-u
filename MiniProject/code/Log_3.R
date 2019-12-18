@@ -20,7 +20,7 @@ cbp <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#0072B2", "#D55E00", "#CC7
 
 cat("PCA analysis on model parameters\n")
 ## input
-a<-read.table("../data/Log_t1_data.txt", stringsAsFactors = F, header = F)
+a<-read.table("../data/Log_t1_daFa.txt", stringsAsFactors = F, header = F)
 a<-a[which(!is.na(a[,2])),]
 a[,dim(a)[2]+1]<-substr(tolower(a[,1]),1,2)
 for(i in 1:dim(a)[1]){if(a[i,dim(a)[2]]=="mo"){a[i,dim(a)[2]]<-"go"}};rm(i) ## synchronize model abbreviation

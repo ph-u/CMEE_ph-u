@@ -16,7 +16,8 @@
 ## i~ = temporary variables
 
 ## library
-library(minpack.lm)
+library(minpack.lm) ## NLLS
+source("Log_func.R") ## phenological models & others
 
 ## take command line order
 args=(commandArgs(T))
@@ -28,43 +29,17 @@ a<-read.table(paste0("../data/Log_",v.0,"_data.txt"),sep="\t",header = T, string
 a.u<-read.table(paste0("../data/Log_",v.0,"_para.txt"),sep="\t", header = T, stringsAsFactors = F)
 a.u$val<-as.numeric(a.u$val)
 
-## functions
-
-f.ve<-function(N0,K,r,t){
-  ## Verhulst equation / classical
-  Nt=N0*K*exp(r*t)/(K+N0*(exp(r*t)-1))
-  return(Nt)}
-
-f.go<-function(N0,K,r,t,tlag){
-  ## modified Gompertz model
-  A=log(K/N0)
-  Nt=A*exp(-exp((r*exp(1)*(tlag-t))/A+1))
-  return(Nt)}
-
-f.ba<-function(N0,K,r,t,tlag){
-  ## Baranyi model
-  h0=1/(exp(tlag*r)-1)
-  At=t+1/r*log((exp(-r*t)+h0)/(1+h0))
-  Nt=N0+r*At-log(1+(exp(r*At)-1)/exp(K-N0))
-  return(Nt)}
-
-f.bu<-function(N0,K,r,t,tlag,cst){
-  ## Buchanan model / three-phase logistic model
-  a.010=(cst-1)%%2 ## make only log phase valid in growth rate
-  a.001=ceiling(cst%%2.5%%1) ## make only final phase valid
-  Nt=N0+a.001*(K-N0)+a.010*r*(t-tlag)
-  return(Nt)}
-
-f.qu<-function(para,t){return(para[1]+para[2]*t+para[3]*t^2)} ## quadratic
-f.cu<-function(para,t){return(para[1]+para[2]*t+para[3]*t^2+para[4]*t^3)} ## cubic
+a.ref<-data.frame("model"=c("Verhulst_(classical)","modified_Gompertz","Baranyi","Buchanan","quadratic","cubic"),
+                  "abbr"=c("ve","go","ba","bu","qu","cu"), stringsAsFactors = F)
 
 ## sample starting values
 cat(paste0("start sample starting values, dataset ",v.0,"\n"))
-a.0<-data.frame("N0"=abs(rnorm(v.1, mean = a.u[1,2], sd = 1)),
-                "K"=abs(rnorm(v.1, mean = a.u[2,2], sd = 1)),
-                "r.max"=abs(rnorm(v.1, mean = a.u[3,2], sd = 1)),
-                "t.lag"=abs(rnorm(v.1, mean = a.u[4,2], sd = 1)),
-                "ve"=rep(NA,v.1),"go"=rep(NA,v.1),"ba"=rep(NA,v.1),"bu"=rep(NA,v.1))
+a.0<-matrix(nrow = v.1, ncol = nrow(a.u)-1+length(which(substr(objects(),1,2)=="f.")))
+colnames(a.0)=c("N0", "K", "r.max", "t.lag", a.ref$abbr[1:4])
+for(i in 1:4){
+  a.0[,i]<-abs(rnorm(nrow(a.0), mean = a.u[i,2], sd = 1))
+};rm(i)
+
 i.0<-1
 repeat{ ## do trials
   ## check f.ve
@@ -85,7 +60,7 @@ repeat{ ## do trials
   
   ## increase row num
   if(i.0 < dim(a.0)[1]){i.0<-i.0+1}else{break}
-}
+};rm(list=ls(pattern="i."))
 
 ## check linear models
 i.qul<-try(lm(a$Popn_Change~poly(a$Time.hr,2)), silent = T) ## quadratic
@@ -96,42 +71,54 @@ i.cu<-ifelse(class(i.cul)!="try-error",AIC(i.cul),NA)
 
 ## extract and compare models AIC
 cat(paste0("AIC calculation, dataset ",v.0,"\n"))
-a.1<-data.frame("model"=c("ve","go","ba","bu","qu","cu"), ## extract minimal AIC from NLLS trials
-                "AIC"=c(if(any(!is.na(a.0[,5]))){min(a.0[,5],na.rm = T)}else{NA},
-                        if(any(!is.na(a.0[,6]))){min(a.0[,5],na.rm = T)}else{NA},
-                        if(any(!is.na(a.0[,7]))){min(a.0[,5],na.rm = T)}else{NA},
-                        if(any(!is.na(a.0[,8]))){min(a.0[,5],na.rm = T)}else{NA},i.qu,i.cu),
+AIC<-c(rep(NA,ncol(a.0)-4),i.qu,i.cu)
+for(i in 5:8){ ## extract minimal AIC from NLLS trials
+  i.0<-suppressWarnings(min(a.0[,i], na.rm = T))
+  AIC[i-4]<-ifelse(i.0!=Inf,i.0,NA)
+};rm(i, i.0)
+a.1<-data.frame("model"=a.ref$abbr,
+                "AIC"=AIC,
                 "num"=c(5:8,0,1),
                 stringsAsFactors = F)
-a.u<-rbind(a.u, c("Model",a.1[which(a.1$AIC==min(a.1$AIC, na.rm = T)),1]))
+rm(AIC, i.cu, i.qu)
 
 ## best parameters to data
-v.2<-as.data.frame(matrix(nrow = 5, ncol = 6))
-colnames(v.2)=c("Verhulst_(classical)","modified_Gompertz","Baranyi","Buchanan","quadratic","cubic")
-row.names(v.2)=c("AIC",seq(1:(dim(v.2)[1]-1)))
-for(i in 1:dim(v.2)[2]){
-  if(i<5){
-    v.2[1,i]<-ifelse(length(a.0[which(is.na(a.0[,i+4])),(i+4)])==dim(a.0)[1],NA,min(a.0[,i+4], na.rm = T)) ## select min AIC per phenological model -- a.0[,i+4]: AIC; length(): count num of successful trials
-  }else if(i>5){
-    v.2[1,i]<-ifelse(is.na(i.cu),NA,i.cu)
-  }else{v.2[1,i]<-ifelse(is.na(i.qu),NA,i.qu)}
+v.2<-vector(mode = "list")
+for(i in 1:nrow(a.ref)){
+  v.ref<-min(a.1$AIC, na.rm = T)+2
+  if(is.na(a.1$AIC[i]) | a.1$AIC[i]>v.ref){v.2[[i]]<-NA;next} ## if model contributes nothing, skip
   
-  if(!is.na(v.2[1,i])){
-    if(i<5){ ## extract all deducible parameters, not all used in phenological model functions
-      i.1<-as.data.frame(a.0[which(a.0[,i+4]==min(a.0[,i+4], na.rm = T)),1:4])
-    v.2[,i]<-c(v.2[1,i],as.numeric(i.1[1,]))
-    }else
-    if(i==5){v.2[,i]<-c(v.2[1,i],as.numeric(coef(i.qul)),NA)}
-    else{v.2[,i]<-c(v.2[1,i],as.numeric(coef(i.cul)))}
+  if(i<5){
+    i.1<-which(colnames(a.0)==a.ref$abbr[i]) ## select col for model
+    i.0<-a.0[,c(1:4,i.1)] ## select parameters & model
+    i.0<-i.0[which(i.0[,ncol(i.0)]==a.1$AIC[i]),-ncol(i.0)] ## extract parameters with min AIC
+  }else if(i==5){
+    i.0<-unname(coef(i.qul)) ## quadratic model
+  }else{
+    i.0<-unname(coef(i.cul)) ## quadratic model
   }
-};rm(i)
+  
+  if(class(i.0)!="matrix"){ ## when 1 entry at lowest AIC / polynomials
+    v.2[[i]]<-c(a.1$AIC[i],unname(i.0))
+  }else{
+    v.2[[i]]<-c(a.1$AIC[i],unname(i.0[1,]))
+  }
+};rm(list=ls(pattern="i"))
+v.2<-as.data.frame(ls2Mtx(v.2)) ## row: a.ref$model; col: min AIC & models [N0, K, r.max, t.lag] / poly [y-int, coef]
+v.2[,ncol(v.2)+1]<-v.0  ## data attributes for vertical file combine
+row.names(v.2)=a.ref$model
 
-## data attributes for vertical file combine
-a.u$dt<-v.2[dim(v.2)[1]+1,]<-as.character(v.0)
-i.0<-which(as.numeric(v.2[1,])<min(as.numeric(v.2[1,]), na.rm = T)+2)
-for(i in 1:dim(v.2)[2]){if(!(i %in% i.0)){v.2[,i]<-NA}};rm(i, i.0)
+## collect all available data for PCA
+a.0[,5:ncol(a.0)]<-ifelse(a.0[,5:ncol(a.0)]>v.ref,NA,a.0[,5:ncol(a.0)])
+i.0<-i.1<-c();for(i in 1:(length(a.ref$abbr)-2)){
+  i.0<-c(i.0,rep(a.ref$abbr[i],nrow(a.0)))
+  i.1<-c(i.1,a.0[,i+4])
+};rm(i)
+a.2<-data.frame(a.0[,1:4], "model"=i.0, "AIC"=i.1)
+a.2<-a.2[which(!is.na(a.2$AIC)),]
+a.2$data<-v.0
 
 ## data export
-write.table(a.u[,c(3,1,2)],paste0("../data/Log_",v.0,"_para.txt"), sep = "\t", quote = F, row.names = F, col.names = F) ## model details, model numeric values
-write.table(t(v.2)[,c(6,1:5)],paste0("../data/Log_",v.0,"_data.txt"), sep = "\t", quote = F, col.names = F) ## model, AIC, para 1, para 2, para 3, para 4
+write.table(v.2[,c(6,1:5)],paste0("../data/Log_",v.0,"_data.txt"), sep = "\t", quote = F, col.names = F) ## model, AIC, para 1, para 2, para 3, para 4; for Kruskal
+write.table(a.2[,c(5,7,6,1:4)],paste0("../data/Log_",v.0,"_daFa.txt"), sep = "\t", quote = F, col.names = F) ## model, AIC, para 1, para 2, para 3, para 4; for PCA
 cat(paste0("dataset ",v.0," done\n"))

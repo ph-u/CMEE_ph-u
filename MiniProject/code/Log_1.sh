@@ -35,9 +35,11 @@ rm ../data/Log_t1_* 2> nohup.out ## <https://stackoverflow.com/questions/3131806
 echo -e "collecting scattered analysis results"
 touch ../data/Log_t1_data.txt
 touch ../data/Log_t1_para.txt
+touch ../data/Log_t1_daFa.txt
 for i in `seq 1 $((${a0} -1))`;do ## parallel data subset processing
 	cat ../data/Log_${i}_data.txt >> ../data/Log_t1_data.txt
 	cat ../data/Log_${i}_para.txt >> ../data/Log_t1_para.txt
+	cat ../data/Log_${i}_daFa.txt >> ../data/Log_t1_daFa.txt
 done
 
 for i in `ls ../data/Log_[0-9]*[tr]a.txt`;do
