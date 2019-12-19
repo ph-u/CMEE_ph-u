@@ -2,22 +2,35 @@ Kruskal-Wallis rank sum test
 5
 5
 0.42
-40
+39
 56
-35
-27
-11
-15
+33
+26
+10
+16
 17
 6
 0
-38
+37
 0.65
 0.69
-0.22
-0.21
-29
-0.13
--0.11
-0.66
--0.73
+0.24
+0.19
+28
+0.1
+-0.12
+0.64
+-0.75
+51
+23, 27, 36, 52, 53
+23&2&Staphylococcus sp&Raw Chicken Breast&1&3&CFU\\27&20&Staphylococcus sp&Raw Chicken Breast&1&3&CFU\\36&10&Spoilage&C02 Beef Striploins&1&4&N\\52&4&Weissella viridescens&MRS broth&1&7&N\\53&4&Lactobacillus sakei&MRS broth&1&7&N\\
+1&Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.\\
+2&Bernhardt, J.R., Sunday, J.M. and O’Connor, M.I., 2018. Metabolic theory and the temperature-size rule explain the temperature dependence of population carrying capacity. The American naturalist, 192(6), pp.687-697.\\
+3&Galarz, L.A., Fonseca, G.G. and Prentice, C., 2016. Predicting bacterial growth in raw, salted, and cooked chicken breast fillets during storage. Food Science and Technology International, 22(6), pp.461-474.\\
+4&Gill, C.O. and DeLacy, K.M., 1991. Growth of Escherichia coli and Salmonella typhimurium on high-pH beef packed under vacuum or carbon dioxide. International journal of food microbiology, 13(1), pp.21-30.\\
+5&Phillips, J.D. and Griffiths, M.W., 1987. The relation between temperature and growth of bacteria in dairy products. Food Microbiology, 4(2), pp.173-185.\\
+6&Roth, N.G. and Wheaton, R.B., 1962. Continuity of psychrophilic and mesophilic growth characteristics in the genus Arthrobacter. Journal of bacteriology, 83(3), pp.551-555.\\
+7&Silva, A.P.R.D., Longhi, D.A., Dalcanton, F. and Aragão, G.M.F.D., 2018. Modelling the growth of lactic acid bacteria at different temperatures. Brazilian Archives of Biology and Technology, 61.\\
+8&Sivonen, K., 1990. Effects of light, temperature, nitrate, orthophosphate, and bacteria on growth of and hepatotoxin production by Oscillatoria agardhii strains. Appl. Environ. Microbiol., 56(9), pp.2658-2666.\\
+9&Stannard, C.J., Williams, A.P. and Gibbs, P.A., 1985. Temperature/growth relationships for psychrotrophic food-spoilage bacteria. Food Microbiology, 2(2), pp.115-122.\\
+10&Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A.M. and Van't Riet, K., 1994. Modeling of bacterial growth with shifts in temperature. Appl. Environ. Microbiol., 60(1), pp.204-213.\\

@@ -9,7 +9,7 @@
 
 \documentclass[a4paper, 11pt]{article}
 \usepackage[margin=1in]{geometry}
-\usepackage{hyperref, setspace, lineno, amsmath, amssymb}
+\usepackage{hyperref, setspace, lineno, amsmath, amssymb, longtable}
 
 %% test insert graphs
 \usepackage{graphicx}
@@ -169,7 +169,17 @@ style       = nature
   r.max and 
  %% insert_num_here
   t.lag.\\
-  
+ 
+ There were 
+ %% insert_num_here
+  datasets with \pms\ fitting, although they may not be the ``best-fit" ones.  Datasets 
+ %% insert_num_here
+  were strictly limited to polynomial-fitting (Fig.\ref{lineOut}).  Among the \pms fitting datasets, \fve\ was the umbrella function, which can be fitted to most \pml-friendly datasets.\\
+ \begin{figure}[h]
+ 	\centering
+ 	\includegraphics[width=\linewidth]{../results/Log_outstanding.pdf}
+ 	\caption{Line plot of datasets restricted to polynomial fits.}\label{lineOut}
+ \end{figure}
  	%% From Fig.\ref{biptPCA}, \fve\ was having no observable patterns.  Since \fgo\ was not a ``best-fit" candidate from any dataset, it could not be shown on the PCA analysis.  \fba\ was generally observed being positively-correlated with r.max but negatively relating to N0, K and t.lag.  \fbu\ was observed being positively correlated with all four parameters.\\
 	
 	\section*{Discussion}
@@ -189,4 +199,27 @@ style       = nature
 	\section*{Code and Data Availability}
 	All \href{https://github.com/ph-u/CMEECourseWork_pmH/tree/master/MiniProject/code}{scripts} and \href{https://github.com/ph-u/CMEECourseWork_pmH/tree/master/MiniProject/data}{data} used for this report were publicity available at GitHub.
 	\nocite{*}\printbibliography
+	\clearpage
+	\section*{Appendix}
+\begin{table}
+		\caption{Table showing dataset id details for Fig.\ref{lineOut}}\label{table:source}
+	\begin{tabular}{l|llllll}
+		id&Temp ($^{o}$C)&clade&substrate&replicate&Source&Pop unit\\\hline
+		%% insert_num_here
+	\end{tabular}\\
+	``Source" column publication key:\\
+\begin{longtable}{p{.05\linewidth}p{.9\linewidth}}
+	%% insert_num_here
+	%% insert_num_here
+	%% insert_num_here
+	%% insert_num_here
+	%% insert_num_here
+	%% insert_num_here
+	%% insert_num_here
+	%% insert_num_here
+	%% insert_num_here
+	%% insert_num_here
+\end{longtable}
+\end{table}
+
 \end{document}

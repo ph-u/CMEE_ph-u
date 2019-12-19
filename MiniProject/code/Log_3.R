@@ -34,7 +34,7 @@ a.pcS<-summary(a.pca)
 
 ## PCA biplot and associated appearance modifications
 pdf("../results/Log_PCA.pdf", width = 15)
-par(mar=c(5.1,4.1,1,10))
+par(mar=c(5.1,4.1,1,12))
 
 ## <https://www.benjaminbell.co.uk/2018/02/principal-components-analysis-pca-in-r.html>
 # screeplot(a.pca,type = "l")
@@ -62,6 +62,12 @@ legend(x=4.1, y=2, legend = c("Verhulst (classical)", "modified Gompertz", "Bara
 dev.off()
 
 ## data export for report
-a.expt<-c(round(a.pcS$importance[2],2)*100,round(a.pca$rotation[,1],2),round(a.pcS$importance[5],2)*100,round(a.pca$rotation[,2],2))
+a.expt<-c(round(a.pcS$importance[2],2)*100, ## % of PC1
+          round(a.pca$rotation[,1],2), ## PC1 parameters [vec of 4]
+          round(a.pcS$importance[5],2)*100, ## % of PC2
+          round(a.pca$rotation[,2],2), ## PC2 parameters [vec of 4]
+          length(unique(a[,2])), ## num of datasets included
+          paste(setdiff(seq(56),unique(a[,2])), collapse = ", ") ## which datasets not applicable
+          )
 # a.expt<-round(c(a.pca$rotation[,1:2]),2)
 write.table(a.expt, "../data/ttt_PCA.txt", quote = F, col.names = F, row.names = F)

@@ -87,6 +87,8 @@ v.1$val<-ifelse(!is.na(v.1$val),v.1$val,0)
 
 a$Popn_Change[which(a$Popn_DataUnit=="OD_595")]<-a$Popn_Change[which(a$Popn_DataUnit=="OD_595")]/100 ## change back data to intial values
 
+# if(diff(range(a$Time.hr))>60*5){a$Time.hr/60} ## unify time unit
+
 ## write intermediate data
 cat("start writing intermediate data\n")
 write.table(v.1,paste0("../data/Log_",v.0,"_para.txt"), sep = "\t", quote = F, row.names = F)

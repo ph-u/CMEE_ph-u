@@ -205,14 +205,14 @@ process_cluster_results <- function()  {
   r.0<-c(5e2,1e3,2.5e3,5e3) ## ref vec
   a.0<-list.files(pattern = "q18")
   a.1<-as.data.frame(matrix(nrow = length(a.0), ncol = 4)) ## rda num summary
-  a.05<-a.10<-a.25<-a.50<-0
+  a.05<-a.10<-a.25<-a.50<-a.05b<-a.10b<-a.25b<-a.50b<-0
   cat("handling ")
   for(i in 1:length(a.0)){cat(paste0(i,"; "))
     a<-try(load(paste0("q18_",i,".rda")), silent = T)
     if(class(a)!="try-error"){
       a.1[i,]<-c(i,size,length(abdO),burn_in_generations) ## collect descriptive info
       a.2<-which(r.0==size) ## id which abundance dump should the data be saved to
-      for(i0 in 1:length(abdO)){ ## collect abundance vectors
+      for(i0 in (burn_in_generations/interval_oct+1):length(abdO)){ ## collect abundance vectors
         if(a.2==1){
           a.05<-sum_vect(a.05, abdO[[i0]])
         }else if(a.2==2){
@@ -223,16 +223,21 @@ process_cluster_results <- function()  {
           a.50<-sum_vect(a.50, abdO[[i0]])
         } ## save data in appropriate dump
       } ## for-loop sum vec
+      
+      ## grab total number of combined data
+      if(a.2==1){
+        a.05b<-a.05b+length(abdO)-burn_in_generations/interval_oct
+      }else if(a.2==2){
+        a.10b<-a.10b+length(abdO)-burn_in_generations/interval_oct
+      }else if(a.2==3){
+        a.25b<-a.25b+length(abdO)-burn_in_generations/interval_oct
+      }else{
+        a.50b<-a.50b+length(abdO)-burn_in_generations/interval_oct
+      }
     } ## if load not try-error
   } ## for-loop on all rda files
   colnames(a.1)=c("run","size","NumGeneration","BurnIn")
   cat("\n")
-  
-  ## grab total number of combined data
-  a.05b<-sum(a.1[which(a.1[,2]==r.0[1]),3])
-  a.10b<-sum(a.1[which(a.1[,2]==r.0[2]),3])
-  a.25b<-sum(a.1[which(a.1[,2]==r.0[3]),3])
-  a.50b<-sum(a.1[which(a.1[,2]==r.0[4]),3])
   
   ## grab mean of total abundances
   a.05<-a.05/a.05b
@@ -251,8 +256,8 @@ process_cluster_results <- function()  {
   dev.off()
   
   combined_results <- list(a.05, a.10, a.25, a.50) #create your list output here to return
-  save(combined_results,file = "ph419_cx1_results.rda")
-  write.csv(a.1,"ph419_cx1_summary.csv", row.names = F, quote = F)
+  save(combined_results,file = "ph419_cluster_results.rda")
+  # write.csv(a.1,"ph419_cx1_summary.csv", row.names = F, quote = F)
   return(combined_results)
 }
 

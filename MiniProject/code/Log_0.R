@@ -20,6 +20,9 @@
 ## data in
 a<-read.csv("../data/LogisticGrowthData.csv", header = T, stringsAsFactors = F)[,-1] ## read raw, rm random column
 
+## save citations for report
+ctt<-paste0(unique(a$Citation),"\\\\")
+
 ## data cleaning
 a$Citation<-as.numeric(as.factor(gsub(" |\t","",a$Citation))) ## remove possible mess by citation textstrings
 a<-a[,c(3,6:9,1,2,5)] ## reorganize useful raw
@@ -57,4 +60,5 @@ rm(list=ls(pattern="v."));rm(list=ls(pattern="i"))
 ## cleaned data and data library export
 write.table(a, "../data/Log_Data.txt",sep="\t", quote=F, row.names = F)
 write.table(a.0, "../data/Log_Uq.txt",sep="\t", quote=F, row.names = F)
+write.table(ctt,"../data/ttt_cite.txt", sep = "&", quote = F, col.names = F)
 cat("data cleaning and export done\n")
