@@ -33,11 +33,13 @@ a.pca<-prcomp(log(a.pm[,4:7]), scale = T) ## PCA on dataframe of parameters
 a.pcS<-summary(a.pca)
 
 ## PCA biplot and associated appearance modifications
-pdf("../results/Log_PCA.pdf")
+pdf("../results/Log_PCA.pdf", width = 15)
+par(mar=c(5.1,4.1,1,10))
+
 ## <https://www.benjaminbell.co.uk/2018/02/principal-components-analysis-pca-in-r.html>
 # screeplot(a.pca,type = "l")
-a.pm$symbol<-ifelse(a.pm$abbr=="ve",1,ifelse(a.pm$abbr=="go",2,ifelse(a.pm$abbr=="ba",3,4))) ## set biplot symbol type
-a.pm$colour<-ifelse(a.pm$abbr=="ve",cbp[1],ifelse(a.pm$abbr=="go",cbp[2],ifelse(a.pm$abbr=="ba",cbp[3],cbp[6]))) ## set biplot colour types
+a.pm$symbol<-ifelse(a.pm$abbr=="ve",20,ifelse(a.pm$abbr=="go",2,ifelse(a.pm$abbr=="ba",3,4))) ## set biplot symbol type
+a.pm$colour<-ifelse(a.pm$abbr=="ve",cbp[10],ifelse(a.pm$abbr=="go",cbp[2],ifelse(a.pm$abbr=="ba",cbp[3],cbp[4]))) ## set biplot colour types
 plot(a.pca$x[,2]~a.pca$x[,1],
      xlab=paste0("PC1 (",round(a.pcS$importance[2],2)*100,"%)"),
      ylab=paste0("PC2 (",round(a.pcS$importance[5],2)*100,"%)"),
@@ -47,12 +49,15 @@ abline(h=0,lty=2, col="grey50") ## add hori ref
 
 a.pcL<-a.pca$rotation[,1:2] ## magnify arrow size (risky)
 
-arrows(x0 = 0, x1 = a.pcL[,1], y0 = 0, y1 = a.pcL[,2], col = "grey30", length = .15)
+arrows(x0 = 0, x1 = a.pcL[,1], y0 = 0, y1 = a.pcL[,2], col = cbp[1], length = .15)
 
 a.pcT<-ifelse(a.pcL[,2]<0,1,3) ## label position
-text(x=a.pcL[,1], y=a.pcL[,2], labels = row.names(a.pca$rotation), col = "grey30", pos = a.pcT) ## plot labels
+text(x=a.pcL[,1], y=a.pcL[,2], labels = row.names(a.pca$rotation), col = cbp[1], pos = a.pcT) ## plot labels
 
-legend("topleft", legend = c("Verhulst (classical)", "modified Gompertz", "Baranyi", "Buchanan"), title = "Phenological Models", pch = 1:4, col = cbp[c(1:3,6)], pt.cex = 1.5)
+par(xpd=NA, cex=1)
+## legend pos <https://stackoverflow.com/questions/3932038/plot-a-legend-outside-of-the-plotting-area-in-base-graphics>
+## legend font size <https://stackoverflow.com/questions/36842119/change-font-size-in-legend/36842578>
+legend(x=4.1, y=2, legend = c("Verhulst (classical)", "modified Gompertz", "Baranyi", "Buchanan"), title = "Phenological Models", pch = c(20,2:4), col = cbp[c(10,2:4)], pt.cex = 1.5, bty = "n") ## no legend frame <https://stackoverflow.com/questions/10108073/plot-legends-without-border-and-with-white-background>
 
 dev.off()
 

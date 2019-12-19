@@ -39,10 +39,12 @@ touch ../data/Log_t1_daFa.txt
 for i in `seq 1 $((${a0} -1))`;do ## parallel data subset processing
 	cat ../data/Log_${i}_data.txt >> ../data/Log_t1_data.txt
 	cat ../data/Log_${i}_para.txt >> ../data/Log_t1_para.txt
-	cat ../data/Log_${i}_daFa.txt >> ../data/Log_t1_daFa.txt
+	if [ -f "../data/Log_${i}_daFa.txt" ];then ## some datasets don't fit into any published models <https://linuxize.com/post/bash-check-if-file-exists/>
+		cat ../data/Log_${i}_daFa.txt >> ../data/Log_t1_daFa.txt
+	fi
 done
 
-for i in `ls ../data/Log_[0-9]*[tr]a.txt`;do
+for i in `ls ../data/Log_[0-9]*[trF]a.txt`;do
 	rm ${i}
 done
 #rm nohup*

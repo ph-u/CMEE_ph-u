@@ -109,16 +109,17 @@ v.2[,ncol(v.2)+1]<-v.0  ## data attributes for vertical file combine
 row.names(v.2)=a.ref$model
 
 ## collect all available data for PCA
-a.0[,5:ncol(a.0)]<-ifelse(a.0[,5:ncol(a.0)]>v.ref,NA,a.0[,5:ncol(a.0)])
 i.0<-i.1<-c();for(i in 1:(length(a.ref$abbr)-2)){
-  i.0<-c(i.0,rep(a.ref$abbr[i],nrow(a.0)))
+  i.0<-c(i.0,rep(a.ref$model[i],nrow(a.0)))
   i.1<-c(i.1,a.0[,i+4])
 };rm(i)
 a.2<-data.frame(a.0[,1:4], "model"=i.0, "AIC"=i.1)
 a.2<-a.2[which(!is.na(a.2$AIC)),]
-a.2$data<-v.0
 
 ## data export
 write.table(v.2[,c(6,1:5)],paste0("../data/Log_",v.0,"_data.txt"), sep = "\t", quote = F, col.names = F) ## model, AIC, para 1, para 2, para 3, para 4; for Kruskal
-write.table(a.2[,c(5,7,6,1:4)],paste0("../data/Log_",v.0,"_daFa.txt"), sep = "\t", quote = F, col.names = F) ## model, AIC, para 1, para 2, para 3, para 4; for PCA
+if(nrow(a.2)>0){
+  a.2$data<-v.0 ## mark source dataset
+  write.table(a.2[,c(5,7,6,1:4)],paste0("../data/Log_",v.0,"_daFa.txt"), sep = "\t", quote = F, col.names = F, row.names = F) ## model, AIC, para 1, para 2, para 3, para 4; for PCA
+}
 cat(paste0("dataset ",v.0," done\n"))

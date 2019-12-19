@@ -21,7 +21,7 @@ library(PMCMR)
 cat("Statistical analysis on 'best' model collection\n")
 ## input
 a<-read.table("../data/Log_t1_data.txt", stringsAsFactors = F, header = F)
-a<-a[which(!is.na(a[,2])),1:2]
+a<-a[which(!is.na(a[,3])),1:2]
 a[,3]<-substr(tolower(a[,1]),1,2)
 for(i in 1:dim(a)[1]){if(a[i,3]=="mo"){a[i,3]<-"go"}};rm(i) ## synchronize model abbreviation
 # a<-read.table("../data/Log_t1_para.txt", stringsAsFactors = F, header = T)
@@ -40,7 +40,7 @@ for(i in 1:dim(ref)[1]){ ## run through ref table
 kt<-kruskal.test(ref[,3]~ref[,2]) ## non-sig result of difference
 
 pdf("../results/barplot_BestModel.pdf", width = 10)
-barplot(ref[,3]~ref[,2], ylab = paste0("best-model occurrence, each bar max at ",max(a[,2])), xlab = "Model", ylim=c(0,max(a[,2])), cex.lab=1.5, cex.axis=1.5)  ## plot best model occurrence
+barplot(ref[,3]~ref[,2], ylab = paste0("best-model occurrence, each bar max at ",max(a[,2])), xlab = "Model", ylim=c(0,max(ref[,3])*1.2), cex.lab=1.5, cex.axis=1.5)  ## plot best model occurrence
 #text(x=dim(ref)[1]/2,y=max(a.md[,2])*.8, labels = paste0("Kruskal-Wallis Test\nX^2 = ",kt$statistic,"\ndf = ",kt$parameter,"\np-val = ",round(kt$p.value,2)))
 dev.off()
 
