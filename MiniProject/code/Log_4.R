@@ -24,7 +24,8 @@ a<-read.table("../data/Log_Data.txt", header = T, sep = "\t", stringsAsFactors =
 
 a.u<-read.table("../data/Log_Uq.txt",sep="\t", header = T, stringsAsFactors = F) ## data identifier
 
-a.ref<-read.table("../data/ttt_PCA.txt", sep = "\n", header = F, stringsAsFactors = F)[12,] ## data selector
+a.ref<-read.table("../data/ttt_PCA.txt", sep = "\n", header = F, stringsAsFactors = F) ## data selector
+a.ref<-as.character(a.ref[nrow(a.ref),])
 a.ref<-gsub(",","",a.ref)
 a.ref<-as.integer(read.table(text = a.ref, sep = " "))
 
@@ -46,7 +47,7 @@ for(i in 1:nrow(a.u)){
 ## plot data
 pdf("../results/Log_outstanding.pdf", width = 15)
 par(mar=c(5.1,4.1,1,12))
-plot(log(a.0$Popn_Change)~a.0$Time.hr, xlab="Time (hr)", ylab = "log Population Change", pch=20, col=cbp[a.0$SymCol], cex.axis=20)
+plot(log(a.0$Popn_Change)~a.0$Time.hr, xlab="Time (hr or mins)", ylab = "log Population Change", pch=20, col=cbp[a.0$SymCol], cex.axis=2, cex.lab=2)
 for(i in 1:nrow(a.u)){
   i.0<-a.0[which(a.0$id==rownames(a.u)[i]),]
   lines(log(i.0$Popn_Change)~i.0$Time.hr, col=cbp[i.0$SymCol])

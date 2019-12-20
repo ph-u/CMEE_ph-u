@@ -16,7 +16,6 @@
 ## i~ = temporary variables
 
 ## library
-library(PMCMR)
 
 cat("Statistical analysis on 'best' model collection\n")
 ## input

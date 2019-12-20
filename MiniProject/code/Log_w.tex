@@ -20,7 +20,7 @@
 \newcommand{\pms}{phenological models}
 \newcommand{\Pml}{Phenological model}
 \newcommand{\Pms}{Phenological models}
-\newcommand{\ReportTitle}{Modeling microbial growth -- which is better and why?} %% <https://stackoverflow.com/questions/1211888/is-there-any-way-i-can-define-a-variable-in-latex>
+\newcommand{\ReportTitle}{Microbial growth models -- which is better and why?} %% <https://stackoverflow.com/questions/1211888/is-there-any-way-i-can-define-a-variable-in-latex>
 \newcommand{\ReportAuthor}{PokMan HO}
 \newcommand{\ReportAffil}{Department of Life Sciences, Faculty of Natural Sciences,\\Imperial College London}
 \newcommand{\Disclaim}{\textbf{A Mini-project submitted in partial fulfilment of the requirements for the degree of Master of Research at Imperial College London\\\\Formatted in the journal style of the \textit{Nature} Journal\\Submitted for the MRes in Computational Methods of Ecology and Evolution}}
@@ -97,7 +97,9 @@ style       = nature
 	\subsection*{Statistical analysis}
 	Kruskal test was used for identify the best-fit model among all included model because the count was categorical and not assumed being normally-distributed.  Pairwise Nemenyi comparisons would be carried out to identify the best test if p-value of the above test was significant.\\
 	
-	Using PCA, parameter weights could be observed across \pms.  All parameter values selected by ``minimal AIC +2" criteria were extracted.  The t.lag values for datasets calling \fve\ as ``best-fit" were set zero (as this model do not need this parameter).  With datasets as rows, R-way analysis was done after all parameter data was natural-logged.  \Pms\ would be positively-correlating with a parameter if dataset observations were concentrated towards the positive side of the factor and vice versa.  It was expected that datasets would cluster together (or being on similar positions) if parameter(s) were representing the observed data.
+	Using PCA, parameter weights could be observed across \pms.  All parameter values met the ``minimal AIC +2" criteria were extracted.  The t.lag values for datasets calling \fve\ as ``best-fit" were set zero (as this model do not need this parameter).  With datasets as rows, R-way analysis was done after all parameter data was natural-logged.  \Pms\ would be positively-correlating with a parameter if dataset observations were concentrated towards the positive side of the factor and vice versa.  It was expected that datasets would cluster together (or being on similar positions) if parameter(s) were representing the observed data.\\
+	
+	After that, all data used in the PCA analysis were analysed by individual factor (i.e. N0, K, r.max and t.lag).  This was done by Kruskal-Wallis test.  The data would be also analysed using post-hoc Tukey pairwise comparison if the Kruskal test showed significance.
 	
 	\subsection*{Main Assumptions}
 	\begin{itemize}
@@ -106,7 +108,7 @@ style       = nature
 	\end{itemize}
 	
 	\subsection*{Computing tools}
-	R (ver 3.6.0)\autocite{Rcore} was used with ``minpack.lm"\autocite{minpacklm} for computing non-linear least square statistics for model comparisons. ``PMCMR"\autocite{PMCMR} was used for carrying out Kruskal test and ``stats"\autocite{Rcore} was used for PCA analysis.
+	R (ver 3.6.0)\autocite{Rcore} was used with ``minpack.lm"\autocite{minpacklm} for computing non-linear least square statistics for model comparisons.  ``stats"\autocite{Rcore} was used for Kruskal test and PCA analysis.  ``PMCMR"\autocite{PMCMR} was used for carrying out Nemenyi post-hoc pairwise comparisons for Kruskal test when needed.
 	
 	\section*{Results}
 	\begin{figure}[h]
@@ -148,6 +150,43 @@ style       = nature
 	 	\includegraphics[width=\linewidth]{../results/Log_PCA.pdf}
 	 	\caption{Biplot of Principal Component Analysis (PCA) comparing \pms\ using estimated parameter values with ``minimal AIC +2" evaluations.}\label{biptPCA}
 	 \end{figure}
+ \begin{figure}[h]
+ 	\centering
+ 	\includegraphics[width=.7\linewidth]{../results/Log_PCA_kt.pdf}
+ 	\caption{P-value summary between models on the four parameters under post-hoc Tukey-Dist pairwise comparison from Kruskal-Wallis Test.  Kruskal tests for all four factors were significant (
+ 		%% insert_num_here
+ 		: $X^{2}$ =
+ 		%% insert_num_here
+ 		, df = 
+ 		%% insert_num_here
+ 		, p-value = 
+ 		%% insert_num_here
+ 		; 
+ 		%% insert_num_here
+ 		: $X^{2}$ =
+ 		%% insert_num_here
+ 		, df = 
+ 		%% insert_num_here
+ 		, p-value = 
+ 		%% insert_num_here
+ 		; 
+ 		%% insert_num_here
+ 		: $X^{2}$ =
+ 		%% insert_num_here
+ 		, df = 
+ 		%% insert_num_here
+ 		, p-value = 
+ 		%% insert_num_here
+ 		; 
+ 		%% insert_num_here
+ 		: $X^{2}$ =
+ 		%% insert_num_here
+ 		, df = 
+ 		%% insert_num_here
+ 		, p-value = 
+ 		%% insert_num_here
+ 		).}\label{pValDraw}
+ \end{figure}
  In Fig.\ref{biptPCA}, principal component 1 (PC1) was capturing 
  %% insert_num_here
  \% variability.  It was composed approximately by 
@@ -180,7 +219,7 @@ style       = nature
  	\includegraphics[width=\linewidth]{../results/Log_outstanding.pdf}
  	\caption{Line plot of datasets restricted to polynomial fits.}\label{lineOut}
  \end{figure}
- 	%% From Fig.\ref{biptPCA}, \fve\ was having no observable patterns.  Since \fgo\ was not a ``best-fit" candidate from any dataset, it could not be shown on the PCA analysis.  \fba\ was generally observed being positively-correlated with r.max but negatively relating to N0, K and t.lag.  \fbu\ was observed being positively correlated with all four parameters.\\
+From Fig.\ref{biptPCA}, \fve\ was having the widest coverage across parameter space.  However it did not have specific inclination towards any factors.  All other three models (\fgo, \fba\ and \fbu) were generally modelling subsets of the \fve\ coverage.  \fgo\ was able to model most of the data covered by the \fve.  Yet a larger successful trials were towards positive responses for N0, K and r.max.  \fba\ was a more specific model better in describing datasets with negative responses towards all parameter factors except r.max.  \fbu\ was having similar specificity comparing with \fba.  Datasets describable by this model were generally neutral responses towards all four parameters.  No models were found well-describing datasets positively correlating with t.lag while negative correlating with r.max.
 	
 	\section*{Discussion}
 	%% AIC vs BIC <https://www.methodology.psu.edu/resources/AIC-vs-BIC/>
@@ -194,12 +233,12 @@ style       = nature
 	Although \fba\ and \fbu\ were observed occupying different parameter space (Fig.\ref{biptPCA}), these differences were not statistical significant (Fig.\ref{barPT}).
 	
 	\section*{Conclusion}
-	Published \pms\ were data-specific, which none of them were found significantly performing better than the others in general.  Parameters defined by these \pms\ were appropriate, which none of them were having observable domination nor negligible weights on the function calculations.
+	Published \pms\ were data-specific, which none of them were found significantly performing better than the others in general.  Parameters defined by these \pms\ were appropriate, which none of them were having observable domination nor negligible weights on the function calculations.  There were assumptions embedded within the \pms\ which have limited its ability to describe data without a distinct sigmoid shape.
 	
 	\section*{Code and Data Availability}
 	All \href{https://github.com/ph-u/CMEECourseWork_pmH/tree/master/MiniProject/code}{scripts} and \href{https://github.com/ph-u/CMEECourseWork_pmH/tree/master/MiniProject/data}{data} used for this report were publicity available at GitHub.
 	\nocite{*}\printbibliography
-	\clearpage
+	
 	\section*{Appendix}
 \begin{table}
 		\caption{Table showing dataset id details for Fig.\ref{lineOut}}\label{table:source}

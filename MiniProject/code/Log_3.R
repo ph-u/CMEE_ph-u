@@ -16,6 +16,7 @@
 ## i~ = temporary variables
 
 ## library
+library(PMCMR)
 cbp <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#0072B2", "#D55E00", "#CC79A7", "#e79f00", "#9ad0f3", "#F0E442", "#999999", "#cccccc", "#6633ff", "#00FFCC", "#0066cc")## colour-blind friendly palette
 
 cat("PCA analysis on model parameters\n")
@@ -24,6 +25,7 @@ a<-read.table("../data/Log_t1_daFa.txt", stringsAsFactors = F, header = F)
 a<-a[which(!is.na(a[,2])),]
 a[,dim(a)[2]+1]<-substr(tolower(a[,1]),1,2)
 for(i in 1:dim(a)[1]){if(a[i,dim(a)[2]]=="mo"){a[i,dim(a)[2]]<-"go"}};rm(i) ## synchronize model abbreviation
+colnames(a)=c("model","dataset","AIC","N0","K","r.max","t.lag","abbr")
 
 a.pm<-a[which(a[,dim(a)[2]]!="cu"&a[,dim(a)[2]]!="qu"),] ## select for phenological models only
 colnames(a.pm)=c("model", "dataset", "AIC", "N0", "K", "r.max", "t.lag", "abbr") ## rename df cols to more human-friendly
@@ -43,16 +45,16 @@ a.pm$colour<-ifelse(a.pm$abbr=="ve",cbp[10],ifelse(a.pm$abbr=="go",cbp[2],ifelse
 plot(a.pca$x[,2]~a.pca$x[,1],
      xlab=paste0("PC1 (",round(a.pcS$importance[2],2)*100,"%)"),
      ylab=paste0("PC2 (",round(a.pcS$importance[5],2)*100,"%)"),
-     pch=a.pm$symbol, col=a.pm$colour)
+     pch=a.pm$symbol, col=a.pm$colour, cex.axis=2, cex.lab=2)
 abline(v=0,lty=2, col="grey50") ## add vert ref
 abline(h=0,lty=2, col="grey50") ## add hori ref
 
-a.pcL<-a.pca$rotation[,1:2] ## magnify arrow size (risky)
+a.pcL<-a.pca$rotation[,1:2]*2 ## magnify arrow size (risky)
 
 arrows(x0 = 0, x1 = a.pcL[,1], y0 = 0, y1 = a.pcL[,2], col = cbp[1], length = .15)
 
 a.pcT<-ifelse(a.pcL[,2]<0,1,3) ## label position
-text(x=a.pcL[,1], y=a.pcL[,2], labels = row.names(a.pca$rotation), col = cbp[1], pos = a.pcT) ## plot labels
+text(x=a.pcL[,1], y=a.pcL[,2], labels = row.names(a.pca$rotation), col = cbp[1], pos = a.pcT, cex = 2) ## plot labels
 
 par(xpd=NA, cex=1)
 ## legend pos <https://stackoverflow.com/questions/3932038/plot-a-legend-outside-of-the-plotting-area-in-base-graphics>
@@ -61,13 +63,76 @@ legend(x=4.1, y=2, legend = c("Verhulst (classical)", "modified Gompertz", "Bara
 
 dev.off()
 
+cat("kruskal-test per parameter\n")
+## Kruskal.test on each parameter
+a.ktRes<-as.data.frame(matrix(nrow = 4, ncol = 5))
+a.kNRes<-as.data.frame(matrix(nrow = 0, ncol = 4))
+for(i in 4:7){
+  a.kt<-kruskal.test(log(a[,i])~a$abbr)
+  a.ktRes[i-3,]<-c(colnames(a)[i],a.kt$method,round(unname(a.kt$statistic),2),unname(a.kt$parameter),round(a.kt$p.value,2))
+  if(a.kt$p.value < 0.01){
+    a.kt<-posthoc.kruskal.nemenyi.test(log(a[,i])~as.factor(a$abbr))
+    i.0=i.3=c()
+    i.2=dimnames(a.kt$p.value)[[1]]
+    i.1=dimnames(a.kt$p.value)[[2]]
+    for(j in 1:length(i.1)){
+      i.0<-c(i.0,rep(i.1[j],length(i.2)))
+      i.3<-c(i.3,unname(a.kt$p.value)[,j])
+    };rm(j)
+    tmp<-data.frame(colnames(a)[i],i.0,i.2,i.3, stringsAsFactors = F)
+    a.kNRes<-rbind(a.kNRes,tmp)
+    rm(i.0, i.1, tmp, i.2, i.3)
+  }
+};rm(i, a.kt)
+a.kNRes<-a.kNRes[which(!is.na(a.kNRes[,4])),]
+
+## drawing p.values between models
+pdf("../results/Log_PCA_kt.pdf")
+leg.col<-"white"
+plot.new()
+## draw frame
+polygon(x = c(.1,.9,.9,.1),y = c(.9,.1,.9,.1))
+lines(x = c(.1,.9), y = c(.1,.1))
+lines(x = c(.1,.9), y = c(.9,.9))
+## attach model names
+a.ptNam<-unique(a$model)
+i.0=1;for(i in c(0,.78)){
+  for(j in c(.16,.95)){
+    legend(a.ptNam[i.0],x = i,y = j,bty = "o", bg = leg.col,box.col = leg.col)
+    i.0<-i.0+1
+  }
+};rm(i,j,i.0)
+## attach p-values
+a.refpt<-data.frame("v1"=c(rep("ve",3),rep("go",2),"ba"),
+                    "v2"=c("go",rep(c("ba","bu"),2),"bu"),
+                    "x"=c(0,.4,.25,.5,.4,.75),
+                    "y"=c(.5,.25,.45,.45,1,.5),
+                    stringsAsFactors = F)
+for(p in 1:nrow(a.refpt)){
+  i=a.refpt$v1[p]
+  j=a.refpt$v2[p]
+  i.0<-a.kNRes[which(a.kNRes[,2]==i & a.kNRes[,3]==j | a.kNRes[,2]==j & a.kNRes[,3]==i),c(1,4)]
+  i.0[,2]<-round(i.0[,2],3)
+  i.1=c()
+  for(k in 1:nrow(i.0)){
+    i.1<-c(i.1,paste(i.0[k,],collapse = ": "))
+  }
+  legend(legend = i.1,x = a.refpt$x[p],y = a.refpt$y[p],box.col = leg.col, bg = leg.col,bty = "o", angle = 20)
+};rm(i,j,k,i.0,i.1,p)
+dev.off()
+
 ## data export for report
-a.expt<-c(round(a.pcS$importance[2],2)*100, ## % of PC1
+a.ktext=c()
+for(i in 1:nrow(a.ktRes)){ ## extracting kruskal test summary
+  a.ktext<-c(a.ktext,as.character(a.ktRes[i,-2]))
+};rm(i)
+a.expt<-c(a.ktext, ## kruskal test summary
+          round(a.pcS$importance[2],2)*100, ## % of PC1
           round(a.pca$rotation[,1],2), ## PC1 parameters [vec of 4]
           round(a.pcS$importance[5],2)*100, ## % of PC2
           round(a.pca$rotation[,2],2), ## PC2 parameters [vec of 4]
           length(unique(a[,2])), ## num of datasets included
           paste(setdiff(seq(56),unique(a[,2])), collapse = ", ") ## which datasets not applicable
-          )
+)
 # a.expt<-round(c(a.pca$rotation[,1:2]),2)
 write.table(a.expt, "../data/ttt_PCA.txt", quote = F, col.names = F, row.names = F)
