@@ -27,7 +27,7 @@ for j in 16 14 12 10;do
 		jj="Log-Growth"
 		ii="Log"
 	fi
-	if [ `ls|grep -o "${ii}"|wc -l` -lt 0 ];then
+	if [ `ls|grep -o "${ii}"|wc -l` -gt 0 ];then
 		echo -e "writing scripts for ${jj}"
 		for i in `ls ${ii}*|grep -v .swp`;do
 			echo >> ../readme.md

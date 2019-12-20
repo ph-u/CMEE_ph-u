@@ -2,9 +2,9 @@
 
 # Author: PokMan Ho pok.ho19@imperial.ac.uk
 # Script: Log_3.R
-# Desc: Do any parameters facours any phenological model(s)?
+# Desc: Do any parameters favours any phenological model(s)?
 # Input: ```Rscript Log_3.R```
-# Output: 1. useful numbers for report (.txt); 2. clusterplot (.pdf)
+# Output: 1. useful numbers for report (.txt); 2. cluster plot (.pdf)
 # Arguments: 0
 # Date: Nov 2019
 

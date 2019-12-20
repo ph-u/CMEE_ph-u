@@ -28,6 +28,6 @@ subprocess.Popen("Rscript Log_3.R 2> nohup.out", shell=True).wait() ## statistic
 subprocess.Popen("Rscript Log_4.R 2> nohup.out", shell=True).wait() ## graphical plot -- shape of polynomial-restricted datasets
 subprocess.Popen("./Log_n.sh 2> nohup.out", shell=True).wait() ## collect dispersed number for report
 subprocess.Popen("./Log_c.sh 2> nohup.out", shell=True).wait() ## report writing and compile
-subprocess.Popen("./hk_readme.sh 2> nohup.out", shell=True).wait() ## README production
+subprocess.Popen("./run_readme.sh 2> nohup.out", shell=True).wait() ## README production
 subprocess.Popen("rm nohup*", shell=True).wait() ## 
 #subprocess.Popen(" 2> nohup.out", shell=True).wait() ## 
