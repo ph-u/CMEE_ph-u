@@ -10,6 +10,7 @@
 \documentclass[a4paper, 11pt]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref, setspace, lineno, amsmath, amssymb, longtable}
+\usepackage{float} %% fix graphs at where they should be
 
 %% test insert graphs
 \usepackage{graphicx}
@@ -97,7 +98,7 @@ style       = nature
 	\subsection*{Statistical analysis}
 	Kruskal test was used for identify the best-fit model among all included model because the count was categorical and not assumed being normally-distributed.  Pairwise Nemenyi comparisons would be carried out to identify the best test if p-value of the above test was significant.\\
 	
-	Using PCA, parameter weights could be observed across \pms.  All parameter values met the ``minimal AIC +2" criteria were extracted.  The t.lag values for datasets calling \fve\ as ``best-fit" were set zero (as this model do not need this parameter).  With datasets as rows, R-way analysis was done after all parameter data was natural-logged.  \Pms\ would be positively-correlating with a parameter if dataset observations were concentrated towards the positive side of the factor and vice versa.  It was expected that datasets would cluster together (or being on similar positions) if parameter(s) were representing the observed data.\\
+	Using PCA, parameter weights could be observed across \pms.  All parameter values met the ``minimal AIC +2"\autocite{burnham2004multimodel} criteria were extracted.  The t.lag values for datasets calling \fve\ as ``best-fit" were set zero (as this model do not need this parameter).  With datasets as rows, R-way analysis was done after all parameter data was natural-logged.  \Pms\ would be positively-correlating with a parameter if dataset observations were concentrated towards the positive side of the factor and vice versa.  It was expected that datasets would cluster together (or being on similar positions) if parameter(s) were representing the observed data.\\
 	
 	After that, all data used in the PCA analysis were analysed by individual factor (i.e. N0, K, r.max and t.lag).  This was done by Kruskal-Wallis test.  The data would be also analysed using post-hoc Tukey pairwise comparison if the Kruskal test showed significance.
 	
@@ -111,7 +112,7 @@ style       = nature
 	R (ver 3.6.0)\autocite{Rcore} was used with ``minpack.lm"\autocite{minpacklm} for computing non-linear least square statistics for model comparisons.  ``stats"\autocite{Rcore} was used for Kruskal test and PCA analysis.  ``PMCMR"\autocite{PMCMR} was used for carrying out Nemenyi post-hoc pairwise comparisons for Kruskal test when needed.
 	
 	\section*{Results}
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=.8\linewidth]{../results/barplot_BestModel.pdf}
 		\caption{Barplot showing the number of ``best model" identification under AIC model-selection methods with ``
@@ -145,14 +146,14 @@ style       = nature
 	 %% insert_num_here
 	  datasets were called it as ``best-fit".\\
 	  
-	 \begin{figure}[h]
+	 \begin{figure}[H]
 	 	\centering
 	 	\includegraphics[width=\linewidth]{../results/Log_PCA.pdf}
-	 	\caption{Biplot of Principal Component Analysis (PCA) comparing \pms\ using estimated parameter values with ``minimal AIC +2" evaluations.}\label{biptPCA}
+	 	\caption{Biplot of Principal Component Analysis (PCA) comparing \pms\ using estimated parameter values with ``minimal AIC +2"\autocite{burnham2004multimodel} evaluations.}\label{biptPCA}
 	 \end{figure}
- \begin{figure}[h]
+ \begin{figure}[H]
  	\centering
- 	\includegraphics[width=.7\linewidth]{../results/Log_PCA_kt.pdf}
+ 	\includegraphics[width=\linewidth]{../results/Log_PCA_kt.pdf}
  	\caption{P-value summary between models on the four parameters under post-hoc Tukey-Dist pairwise comparison from Kruskal-Wallis Test.  Kruskal tests for all four factors were significant (
  		%% insert_num_here
  		: $X^{2}$ =
@@ -187,6 +188,11 @@ style       = nature
  		%% insert_num_here
  		).}\label{pValDraw}
  \end{figure}
+ \begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../results/Log_boxPerFac.pdf}
+	\caption{Boxplot of log parameter values grouped by \pms.  Statistical results were summarized in Fig.\ref{pValDraw}}
+\end{figure}
  In Fig.\ref{biptPCA}, principal component 1 (PC1) was capturing 
  %% insert_num_here
  \% variability.  It was composed approximately by 
@@ -213,8 +219,8 @@ style       = nature
  %% insert_num_here
   datasets with \pms\ fitting, although they may not be the ``best-fit" ones.  Datasets 
  %% insert_num_here
-  were strictly limited to polynomial-fitting (Fig.\ref{lineOut}).  Among the \pms fitting datasets, \fve\ was the umbrella function, which can be fitted to most \pml-friendly datasets.\\
- \begin{figure}[h]
+  were strictly limited to polynomial-fitting (Fig.\ref{lineOut}).  Among the \pms fitting datasets, \fve\ was the umbrella function, which can be fitted to most \pml-friendly datasets.
+ \begin{figure}[H]
  	\centering
  	\includegraphics[width=\linewidth]{../results/Log_outstanding.pdf}
  	\caption{Line plot of datasets restricted to polynomial fits.}\label{lineOut}

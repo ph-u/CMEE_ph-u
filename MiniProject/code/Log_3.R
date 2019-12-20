@@ -36,7 +36,7 @@ a.pcS<-summary(a.pca)
 
 ## PCA biplot and associated appearance modifications
 pdf("../results/Log_PCA.pdf", width = 15)
-par(mar=c(5.1,4.1,1,12))
+par(mar=c(5.5,4.1,1,12))
 
 ## <https://www.benjaminbell.co.uk/2018/02/principal-components-analysis-pca-in-r.html>
 # screeplot(a.pca,type = "l")
@@ -87,26 +87,27 @@ for(i in 4:7){
 a.kNRes<-a.kNRes[which(!is.na(a.kNRes[,4])),]
 
 ## drawing p.values between models
-pdf("../results/Log_PCA_kt.pdf")
+pdf("../results/Log_PCA_kt.pdf", width = 15)
 leg.col<-"white"
 plot.new()
+par(mar=c(1,1,1,1))
 ## draw frame
 polygon(x = c(.1,.9,.9,.1),y = c(.9,.1,.9,.1))
 lines(x = c(.1,.9), y = c(.1,.1))
 lines(x = c(.1,.9), y = c(.9,.9))
 ## attach model names
 a.ptNam<-unique(a$model)
-i.0=1;for(i in c(0,.78)){
+i.0=1;for(i in c(.05,.85)){
   for(j in c(.16,.95)){
-    legend(a.ptNam[i.0],x = i,y = j,bty = "o", bg = leg.col,box.col = leg.col)
+    legend(a.ptNam[i.0],x = i,y = j,bty = "o", bg = leg.col,box.col = leg.col, cex = 2)
     i.0<-i.0+1
   }
 };rm(i,j,i.0)
 ## attach p-values
 a.refpt<-data.frame("v1"=c(rep("ve",3),rep("go",2),"ba"),
                     "v2"=c("go",rep(c("ba","bu"),2),"bu"),
-                    "x"=c(0,.4,.25,.5,.4,.75),
-                    "y"=c(.5,.25,.45,.45,1,.5),
+                    "x"=c(.05,.4,.3,.6,.4,.85),
+                    "y"=c(.5,.2,.4,.4,1,.5),
                     stringsAsFactors = F)
 for(p in 1:nrow(a.refpt)){
   i=a.refpt$v1[p]
@@ -117,8 +118,26 @@ for(p in 1:nrow(a.refpt)){
   for(k in 1:nrow(i.0)){
     i.1<-c(i.1,paste(i.0[k,],collapse = ": "))
   }
-  legend(legend = i.1,x = a.refpt$x[p],y = a.refpt$y[p],box.col = leg.col, bg = leg.col,bty = "o", angle = 20)
+  legend(legend = i.1,x = a.refpt$x[p],y = a.refpt$y[p],box.col = leg.col, bg = leg.col,bty = "o", cex = 2)
 };rm(i,j,k,i.0,i.1,p)
+dev.off()
+
+## boxplot on distribution per factor
+a.bxpt<-as.data.frame(matrix(nrow = 0, ncol = 3))
+for(i in 4:7){
+  i.0<-a[,c(1,i)]
+  i.0[,3]<-colnames(a)[i]
+colnames(i.0)=c("model","data")
+    a.bxpt<-rbind(a.bxpt,i.0)
+};rm(i,i.0)
+colnames(a.bxpt)=c("model","data","parameters")
+
+pdf("../results/Log_boxPerFac.pdf", width = 15)
+par(mar=c(5.1,4.1,1,12))
+boxplot(log(a.bxpt$data)~a.bxpt$model+a.bxpt$parameters, col=cbp[2:5], at=c(1:4,6:9,11:14,16:19), xaxt="n", xlab = "parameters", ylab = "log parameter estimates", cex.axis=2, cex.lab=2) ## <https://stackoverflow.com/questions/47479522/how-to-create-a-grouped-boxplot-in-r>
+axis(side = 1, at=c(1:4,6:9,11:14,16:19), labels = c("","","N0","","","","K","","","","r.max","","","","t.lag",""), lwd.ticks=F) ## <https://stackoverflow.com/questions/50545141/r-boxplot-x-axis-without-ticks-and-complete>
+par(xpd=NA, cex=1)
+legend(x=21, y=max(log(a.bxpt$data))*.9, legend = c("Verhulst (classical)", "modified Gompertz", "Baranyi", "Buchanan"), title = "Phenological Models", fill = cbp[2:5], bty = "n") ## no legend frame <https://stackoverflow.com/questions/10108073/plot-legends-without-border-and-with-white-background>
 dev.off()
 
 ## data export for report

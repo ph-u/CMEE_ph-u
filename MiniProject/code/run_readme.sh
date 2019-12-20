@@ -52,4 +52,6 @@ done
 
 ## end
 tail -n 8 ../data/readme_tmp.md >> ../readme.md
+
+echo -e "README Done"
 exit

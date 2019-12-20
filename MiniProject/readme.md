@@ -154,7 +154,7 @@ Is one or more model(s) stand out from the rest?
 
 #### Features
 
-Do any parameters facours any phenological model(s)?
+Do any parameters favours any phenological model(s)?
 
 #### Suggested input
 
@@ -162,7 +162,7 @@ Do any parameters facours any phenological model(s)?
 
 #### Output
 
-1. useful numbers for report (.txt); 2. clusterplot (.pdf)
+1. useful numbers for report (.txt); 2. cluster plot (.pdf)
 
 *****
 
