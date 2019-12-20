@@ -70,14 +70,16 @@ style       = nature
 	
 	
 	\section*{Introduction}
-	\Pms\ are expected to fit data trends within its biological field.  Yet due to different reasons, models developed and published from one sample may not fit the others.  These reasons may be due to data variabilities, confounding factors, inaccurate assumptions or models being too-specific.  This project is aimed at compare and contrast published \pms\ on microbial \pop\ data, highlighting which is a better model under what conditions.  The hypotheses are:
+	\Pms\ are expected to fit data trends within its biological field.  Yet due to different reasons, models developed and published from one sample may not fit the others.  These reasons can be data variabilities, confounding factors, inaccurate assumptions or models being too-specific.  This data-mining project is aimed at comparing and contrasting published \pms\ on microbial \pop\ data, highlighting which is a better model under what conditions.  The hypotheses are:
 	\begin{itemize}
-		\item published \pms\ are better than polynomials in describing microbial \pop;
-		\item appropriate \pml(s) is/are identifiable through distinguishable shapes of microbial \pop; and
-		\item parameters of data under each \pml\ is clustered, similar with dataset best-described by the same model but different from those described by other models.
+		\item published \pms\ are significantly better fits than polynomials for describing microbial growths;
+		\item appropriate \pml(s) is/are identifiable through distinguishable microbial \pop\ parameter values; and
+		\item parameter values of each \pml\ from successful fits are clusters with well-defined boundaries between models.
 	\end{itemize}
 	
 	\section*{Methods}
+	Microbial \pps\ data were given from ten different publications (Table\ref{table:source}).  The collection contained different microbial clades growing at various conditions for varying times.  Also, these data were recorded using multiple time units and population units.  Some of the population data were direct counts while some were not.  
+	
 	Experimental microbial population growth data library were divided into individual data subsets through six filters (``Temperature (in $^o$C)", ``Microbial clade", ``growth substrate materials", ``experimental replicate number", ``population data recording unit" and ``data source").  Records with data unit ``OD\_595" were scaled into optical density percentages (i.e. data*100) to facilitate general analyses workflow.  Independent (or explanatory) variable was ``Time (hr)" and dependent (or response) variable was ``\pop".\\
 	Some raw data were recorded in minutes (instead of hour).  This record artifact was not corrected because of two reasons: 1. shape of curves were the main concern instead of independent variable's scale; and 2. the unit was consistent within each data subset.
 	
@@ -223,7 +225,7 @@ style       = nature
  \begin{figure}[H]
  	\centering
  	\includegraphics[width=\linewidth]{../results/Log_outstanding.pdf}
- 	\caption{Line plot of datasets restricted to polynomial fits.}\label{lineOut}
+ 	\caption{Line plot of datasets restricted to polynomial fits. Dataset details could be found in Table \ref{table:source}}\label{lineOut}
  \end{figure}
 From Fig.\ref{biptPCA}, \fve\ was having the widest coverage across parameter space.  However it did not have specific inclination towards any factors.  All other three models (\fgo, \fba\ and \fbu) were generally modelling subsets of the \fve\ coverage.  \fgo\ was able to model most of the data covered by the \fve.  Yet a larger successful trials were towards positive responses for N0, K and r.max.  \fba\ was a more specific model better in describing datasets with negative responses towards all parameter factors except r.max.  \fbu\ was having similar specificity comparing with \fba.  Datasets describable by this model were generally neutral responses towards all four parameters.  No models were found well-describing datasets positively correlating with t.lag while negative correlating with r.max.
 	
@@ -239,20 +241,23 @@ From Fig.\ref{biptPCA}, \fve\ was having the widest coverage across parameter sp
 	Although \fba\ and \fbu\ were observed occupying different parameter space (Fig.\ref{biptPCA}), these differences were not statistical significant (Fig.\ref{barPT}).
 	
 	\section*{Conclusion}
-	Published \pms\ were data-specific, which none of them were found significantly performing better than the others in general.  Parameters defined by these \pms\ were appropriate, which none of them were having observable domination nor negligible weights on the function calculations.  There were assumptions embedded within the \pms\ which have limited its ability to describe data without a distinct sigmoid shape.
+	Published \pms\ were data-specific, which none of them were found significantly performing better than the others.  Although most of the parameter values are significantly different between models, their ranges are superimposing with one another.  \Pms\ correlate with parameters differently, but the correlations are unobservable through plotting a log-linear logistic growth curve.  There were assumptions embedded within the \pms\ which have limited its ability to describe data without a distinct sigmoid shape.
 	
 	\section*{Code and Data Availability}
 	All \href{https://github.com/ph-u/CMEECourseWork_pmH/tree/master/MiniProject/code}{scripts} and \href{https://github.com/ph-u/CMEECourseWork_pmH/tree/master/MiniProject/data}{data} used for this report were publicity available at GitHub.
 	\nocite{*}\printbibliography
 	
 	\section*{Appendix}
-\begin{table}
-		\caption{Table showing dataset id details for Fig.\ref{lineOut}}\label{table:source}
-	\begin{tabular}{l|llllll}
-		id&Temp ($^{o}$C)&clade&substrate&replicate&Source&Pop unit\\\hline
+\begin{table}[H]
+		\caption{Table showing dataset id details in this project.}\label{table:source}
+\end{table}
+\begin{small}
+	\begin{longtable}{l|llllll}
+		id&T$^{o}$C&clade&substrate&replicate&Source&Pop unit\\\hline
 		%% insert_num_here
-	\end{tabular}\\
-	``Source" column publication key:\\
+	\end{longtable}
+\end{small}
+``Source" column publication key:\\
 \begin{longtable}{p{.05\linewidth}p{.9\linewidth}}
 	%% insert_num_here
 	%% insert_num_here
@@ -265,6 +270,5 @@ From Fig.\ref{biptPCA}, \fve\ was having the widest coverage across parameter sp
 	%% insert_num_here
 	%% insert_num_here
 \end{longtable}
-\end{table}
 
 \end{document}

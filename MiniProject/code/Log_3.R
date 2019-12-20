@@ -97,7 +97,7 @@ lines(x = c(.1,.9), y = c(.1,.1))
 lines(x = c(.1,.9), y = c(.9,.9))
 ## attach model names
 a.ptNam<-unique(a$model)
-i.0=1;for(i in c(.05,.85)){
+i.0=1;for(i in c(-.05,.8)){
   for(j in c(.16,.95)){
     legend(a.ptNam[i.0],x = i,y = j,bty = "o", bg = leg.col,box.col = leg.col, cex = 2)
     i.0<-i.0+1
@@ -106,8 +106,8 @@ i.0=1;for(i in c(.05,.85)){
 ## attach p-values
 a.refpt<-data.frame("v1"=c(rep("ve",3),rep("go",2),"ba"),
                     "v2"=c("go",rep(c("ba","bu"),2),"bu"),
-                    "x"=c(.05,.4,.3,.6,.4,.85),
-                    "y"=c(.5,.2,.4,.4,1,.5),
+                    "x"=c(0,.4,.2,.6,.4,.8),
+                    "y"=c(.7,.25,.55,.55,1.1,.7),
                     stringsAsFactors = F)
 for(p in 1:nrow(a.refpt)){
   i=a.refpt$v1[p]

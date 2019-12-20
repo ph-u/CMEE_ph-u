@@ -19,4 +19,7 @@ for j in stat PCA appdx cite;do
 	rm ${i}
 done
 
+sed -e "s/_/\\\\\\_/g" ../results/Log_total.txt > tmp ## modification for unstandardized raw data unit records
+mv tmp ../results/Log_total.txt
+
 exit
