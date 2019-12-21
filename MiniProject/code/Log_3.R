@@ -99,7 +99,7 @@ lines(x = c(.1,.9), y = c(.9,.9))
 a.ptNam<-unique(a$model)
 i.0=1;for(i in c(-.05,.8)){
   for(j in c(.16,.95)){
-    legend(a.ptNam[i.0],x = i,y = j,bty = "o", bg = leg.col,box.col = leg.col, cex = 2)
+    legend(gsub("_"," ",a.ptNam[i.0]),x = i,y = j,bty = "o", bg = leg.col,box.col = leg.col, cex = 2)
     i.0<-i.0+1
   }
 };rm(i,j,i.0)
