@@ -78,40 +78,42 @@ style       = nature
 	\end{itemize}
 	
 	\section*{Methods}
-	Microbial \pps\ data were given from ten different publications (Table\ref{table:source}).  The collection contained different microbial clades growing at various conditions for varying times.  Also, these data were recorded using multiple time units and population units.  Some of the population data were direct counts while some were not.  
 	
-	Experimental microbial population growth data library were divided into individual data subsets through six filters (``Temperature (in $^o$C)", ``Microbial clade", ``growth substrate materials", ``experimental replicate number", ``population data recording unit" and ``data source").  Records with data unit ``OD\_595" were scaled into optical density percentages (i.e. data*100) to facilitate general analyses workflow.  Independent (or explanatory) variable was ``Time (hr)" and dependent (or response) variable was ``\pop".\\
+	Microbial \pps\ data were given, sourced from ten different publications (Table\ref{table:source}).  The collection contained different microbial clades growing at various conditions for varying times.  Also, these data were recorded in multiple time and population units.  Some of the population data were direct counts while some were not.
+	
+	Experimental microbial population growth data library were divided into individual data subsets through six filters (``Temperature (in $^o$C)", ``Microbial clade", ``growth substrate materials", ``experimental replicate number", ``population data recording unit" and ``data source").  Records with data unit ``OD\_595" were scaled into optical density percentages (i.e. data*100) to facilitate general analyses workflow.  Independent (or explanatory) variable was ``Time (hr)" and dependent (or response) variable was ``\pop".
+	
 	Some raw data were recorded in minutes (instead of hour).  This record artifact was not corrected because of two reasons: 1. shape of curves were the main concern instead of independent variable's scale; and 2. the unit was consistent within each data subset.
 	
 	\subsection*{Model assessment}
-	Six candidate models were assessed, four phenological and two polynomial equations.  They were ``\fve"\autocite{mckendrick1912xlv}, ``\fgo"\autocite{GIL200689}, ``\fba"\autocite{baranyi1993modeling}, ``\fbu"\autocite{buchanan1993differentiation}, ``\fqu" and ``\fcu". Non-linear least square (NLLS) approach was used only on the four \pms\ and linear model-fitting was done on the two polynomials.  Starting values selection (for \pms\ only) was described below:\\
-	Initial (N0) and final (K) \pps\ were selected to be the minimum and maximum values of each data subset respectively.  Maximum growth rate (r.max) was selected by linear model through a recursive manner.  For every iteration, \pop\ data from the top 5\% independent variable values were excluded from the linear model calculation.  The data and slope would only be recorded if it was positive, higher adjusted R$^{2}$ value and larger slope than the recorded ``best slope" value.  After scanning from the maximum side, the best slope and its respective data were taken out and screened from the minimum side.  Final best slope and x-intercept were regarded as the r.max and relative time lag (t.lag) of the population (in the source experiment) respectively.  Time which this linear model intersected with K was regarded as the time achieving carrying capacity (t.K).  Population data was then classified into three groups (gx) according to the time: g1 $\leq$ t.lag $<$ g2 $<$ t.K $\leq$ g3.  5\% was chosen as the scanning threshold because the author assumed this resolution was fine enough for achieving good starting values for NLLS fitting.  Inputs for \pms were listed below (popn \& time were the dependent and independent variables respectively):\\
+	Six candidate models were assessed, four phenological and two polynomial equations.  They were ``\fve"\autocite{mckendrick1912xlv}, ``\fgo"\autocite{GIL200689}, ``\fba"\autocite{baranyi1993modeling}, ``\fbu"\autocite{buchanan1993differentiation}, ``\fqu" and ``\fcu". Non-linear least square (NLLS) method was used only on the four \pms\ and linear approach was taken on the two polynomials.  Starting values selection (for \pms\ only) was described below:
+	
+	Initial (N0) and final (K) \pps\ were selected to be the minimum and maximum values of each data subset respectively.  Maximum growth rate (r.max) and relative time lag (t.lag) were obtained through recursive linear modelling with shrinking independent range (from maximum and minimum).  In this project 5\% was chosen as the shrinking threshold assuming this resolution was sufficient for initiating NLLS fits.  The final slope value (i.e. r.max) would be a positive finite number with the highest R$^{2}$ value (i.e. best-fit slope on considered data).  The x-intercept for that slope was the t.lag.  Time which this r.max linear model intersected with K was regarded as the time achieving carrying capacity (t.K).  Population data was then classified into three groups (gx) according to the time: g1 $\leq$ t.lag $<$ g2 $<$ t.K $\leq$ g3.  Inputs for \pms were listed below (popn \& time were the dependent and independent variables respectively):
+	
 	\begin{tabular}{rl}
 		\fve: & popn = $f$(N0, K, r.max, time)\\
 		\fgo: & popn = $f$(N0, K, r.max, time, t.lag)\\
 		\fba: & popn = $f$(N0, K, r.max, time, t.lag)\\
 		\fbu: & popn = $f$(N0, K, r.max, time, t.lag, gx)
-	\end{tabular}\\
+	\end{tabular}
 	
-	All test starting values were than sampled from normal distribution with mean as the estimated value and standard deviation (sd) of 1.  The sd value was chosen because of different reasons for each parameters.  N0 and K were directly extracted from the raw experimental data, which could be assumed being an accurate estimate for that data subset (hence a small sd was logical). r.max was a guesstimated value from fitting linear models.  This process could potentially be affected by extreme values in the data and hence a large sd should be preferred.  100 trials were done as a optimal value under a trade-off between efficiency and accuracy.\\
+	All test starting values were than sampled from normal distribution with mean as the estimated value and standard deviation (sd) of 1.  The sd value was chosen because of different reasons for each parameters.  N0 and K were directly extracted from the raw experimental data.  Hence a small sd was precise assuming this extraction was an accurate estimate. r.max was a guesstimated value.  So a large sd would be sufficient for getting the ``true" value with fair accuracy.  100 trials were done as a optimal value under a trade-off between efficiency and accuracy.
 	
-	Only AIC\autocite{johnson2004model,akaike1998information,burnhamdr} was used to select for optimal parameter values within each \pml\ and best model between the six candidates for a data subset.  Reasons would be listed in Discussion section.  For models with more than one parameter sets as sharing the lowest AIC value, the first set of values from the random sampling trials were used for Kruskal-Wallis analysis.  All the available parameter sets were used to principal component analysis (PCA).  AIC tolerance threshold was expanded to min(AIC)+2\autocite{burnham2004multimodel} to incorporate more accepted models for analyses.
+	AIC\autocite{johnson2004model,akaike1998information,burnhamdr} was used to select optimal parameter values (i.e. meeting the ``minimal AIC +2"\autocite{burnham2004multimodel} criteria) within each \pml\ and best candidate model(s) for a data subset.  All available parameter sets were included in principal component analysis (PCA).  AIC tolerance threshold was expanded to min(AIC)+2\autocite{burnham2004multimodel} to incorporate more accepted models for analyses.
 	
 	\subsection*{Statistical analysis}
-	Kruskal test was used for identify the best-fit model among all included model because the count was categorical and not assumed being normally-distributed.  Pairwise Nemenyi comparisons would be carried out to identify the best test if p-value of the above test was significant.\\
+	Kruskal test was used for identify the best-fit model among all included model because the count was categorical and not assumed being normally-distributed.  Pairwise Nemenyi comparisons would be carried out to identify the best test if p-value of the test was significant.
 	
-	Using PCA, parameter weights could be observed across \pms.  All parameter values met the ``minimal AIC +2"\autocite{burnham2004multimodel} criteria were extracted.  The t.lag values for datasets calling \fve\ as ``best-fit" were set zero (as this model do not need this parameter).  With datasets as rows, R-way analysis was done after all parameter data was natural-logged.  \Pms\ would be positively-correlating with a parameter if dataset observations were concentrated towards the positive side of the factor and vice versa.  It was expected that datasets would cluster together (or being on similar positions) if parameter(s) were representing the observed data.\\
-	
-	After that, all data used in the PCA analysis were analysed by individual factor (i.e. N0, K, r.max and t.lag).  This was done by Kruskal-Wallis test.  The data would be also analysed using post-hoc Tukey pairwise comparison if the Kruskal test showed significance.
+	Parameter weights were assessed across \pms\ by PCA R-way analysis method on natural-logged parameter data.  Datasets would be expected clustering together if parameter(s) were representing the observed data.  Then with Kruskal-Wallis test, each parameter was tested for statistical differences across \pms.  Post-hoc Tukey pairwise comparisons would be carried out upon significance.
 	
 	\subsection*{Main Assumptions}
 	\begin{itemize}
-		\item there was no negative population growth (i.e. starting population was always lower than carrying capacity), so negative population growth data were set to zeros;
-		\item estimated parameter estimates would always result in a global optimal status in parameter space through the NLLS method.
+		\item there was no negative population growth throughout experiments from source publications.  Data not fitted this assumption were set to zeros;
+		\item all parameter estimates converged to global optimal using NLLS method.
 	\end{itemize}
 	
 	\subsection*{Computing tools}
-	R (ver 3.6.0)\autocite{Rcore} was used with ``minpack.lm"\autocite{minpacklm} for computing non-linear least square statistics for model comparisons.  ``stats"\autocite{Rcore} was used for Kruskal test and PCA analysis.  ``PMCMR"\autocite{PMCMR} was used for carrying out Nemenyi post-hoc pairwise comparisons for Kruskal test when needed.
+	R (ver 3.6.0)\autocite{Rcore} was used with packages ``minpack.lm"\autocite{minpacklm} (NLLS), ``stats"\autocite{Rcore} (Kruskal test and PCA) and ``PMCMR"\autocite{PMCMR} (post-hoc Nemenyi pairwise comparisons).  Python (ver 3.7.3)\autocite{py3} was used with package ``subprocess"\autocite{py3} (streamline project workflow).
 	
 	\section*{Results}
 	\begin{figure}[H]
@@ -146,7 +148,7 @@ style       = nature
 	 %% insert_num_here
 	 datasets calling both models ``best-fit".  The only outstanding performance was from \fgo, which 
 	 %% insert_num_here
-	  datasets were called it as ``best-fit".\\
+	  datasets were called it as ``best-fit".
 	  
 	 \begin{figure}[H]
 	 	\centering
@@ -193,7 +195,7 @@ style       = nature
  \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../results/Log_boxPerFac.pdf}
-	\caption{Boxplot of log parameter values grouped by \pms.  Statistical results were summarized in Fig.\ref{pValDraw}}
+	\caption{Boxplot of log parameter values grouped by \pms.  Statistical results were summarized in Fig.\ref{pValDraw}}\label{boxFac}
 \end{figure}
  In Fig.\ref{biptPCA}, principal component 1 (PC1) was capturing 
  %% insert_num_here
@@ -215,19 +217,16 @@ style       = nature
  %% insert_num_here
   r.max and 
  %% insert_num_here
-  t.lag.\\
- 
- There were 
+  t.lag.  There were 
  %% insert_num_here
   datasets with \pms\ fitting, although they may not be the ``best-fit" ones.  Datasets 
  %% insert_num_here
-  were strictly limited to polynomial-fitting (Fig.\ref{lineOut}).  Among the \pms fitting datasets, \fve\ was the umbrella function, which can be fitted to most \pml-friendly datasets.
+  were strictly limited to polynomial-fitting (Fig.\ref{lineOut}).  \fve\ was having the widest neutral coverage across parameter space (Fig.\ref{biptPCA},\ref{boxFac}).  All other three models (\fgo, \fba\ and \fbu) were generally modelling within the \fve\ coverage (Fig.\ref{boxFac}).  \fgo\ was the second widest coverage model but \fve\ was evaluated better if both equations fitted the same dataset (Fig.\ref{barPT}).  More successful trials were towards positive responses for N0, K and r.max.  \fba\ was a specific model more specified in describing datasets with negative responses towards most parameter factors (all except r.max).  \fba\ had the strictest r.max acceptance for successful NLLS modelling (Fig.\ref{boxFac}).  \fbu\ had the narrowest parameter ranges in most parameters (all except r.max, Fig.\ref{boxFac}).  Datasets describable by this model were generally neutral responses towards all four parameters (Fig.\ref{biptPCA}).  In the analysis for individual parameters, the parameter value ranges overlapping between \pms\ (Fig.\ref{boxFac}).  Hence the differences were not observable although most ``differences" were statistically significant (Fig.\ref{pValDraw}).
  \begin{figure}[H]
  	\centering
  	\includegraphics[width=\linewidth]{../results/Log_outstanding.pdf}
  	\caption{Line plot of datasets restricted to polynomial fits. Dataset details could be found in Table \ref{table:source}}\label{lineOut}
  \end{figure}
-From Fig.\ref{biptPCA}, \fve\ was having the widest coverage across parameter space.  However it did not have specific inclination towards any factors.  All other three models (\fgo, \fba\ and \fbu) were generally modelling subsets of the \fve\ coverage.  \fgo\ was able to model most of the data covered by the \fve.  Yet a larger successful trials were towards positive responses for N0, K and r.max.  \fba\ was a more specific model better in describing datasets with negative responses towards all parameter factors except r.max.  \fbu\ was having similar specificity comparing with \fba.  Datasets describable by this model were generally neutral responses towards all four parameters.  No models were found well-describing datasets positively correlating with t.lag while negative correlating with r.max.
 	
 	\section*{Discussion}
 	%% AIC vs BIC <https://www.methodology.psu.edu/resources/AIC-vs-BIC/>
@@ -236,7 +235,7 @@ From Fig.\ref{biptPCA}, \fve\ was having the widest coverage across parameter sp
 	%Model fitness to real data and simplistic mathematics were favoured by both AIC\autocite{johnson2004model,akaike1998information,burnhamdr} and BIC\autocite{johnson2004model,turchin2003complex}.  Apart from that, BIC also takes account of sample size effect\autocite{johnson2004model,turchin2003complex}.\\
 	%comparisons in different fields\autocite{kuha2004aic,aho2014model,yang2005can,vrieze2012model,wang2006comparison,acquah2010comparison}\\
 	
-	AIC is considered the most suitable model-selection approach within model and between models in this project.  Unlike BIC, AIC are more accurate with small sample sizes\autocite{acquah2010comparison,kuha2004aic} and sparse data\autocite{kuha2004aic}.  AIC did not assume a ``true model" was under examination\autocite{aho2014model,vrieze2012model,yang2005can}.  Since candidate models were not ``nested model", BIC is not a better choice than AIC\autocite{wang2006comparison}.  Hence the use of only AIC as model-selection criterion should be justified.\\
+	AIC is considered the most suitable model-selection approach within model and between models in this project.  Unlike BIC, AIC are more accurate with small sample sizes\autocite{acquah2010comparison,kuha2004aic} and sparse data\autocite{kuha2004aic}.  AIC did not assume a ``true model" was under examination\autocite{aho2014model,vrieze2012model,yang2005can}.  Since candidate models were not ``nested model", BIC is not a better choice than AIC\autocite{wang2006comparison}.  Hence the use of only AIC as model-selection criterion should be justified.
 	
 	Although \fba\ and \fbu\ were observed occupying different parameter space (Fig.\ref{biptPCA}), these differences were not statistical significant (Fig.\ref{barPT}).
 	

@@ -36,7 +36,7 @@ a.pcS<-summary(a.pca)
 
 ## PCA biplot and associated appearance modifications
 pdf("../results/Log_PCA.pdf", width = 15)
-par(mar=c(5.5,4.1,1,12))
+par(mar=c(5,6,1,12))
 
 ## <https://www.benjaminbell.co.uk/2018/02/principal-components-analysis-pca-in-r.html>
 # screeplot(a.pca,type = "l")
@@ -133,11 +133,11 @@ colnames(i.0)=c("model","data")
 colnames(a.bxpt)=c("model","data","parameters")
 
 pdf("../results/Log_boxPerFac.pdf", width = 15)
-par(mar=c(5.1,4.1,1,12))
+par(mar=c(5,6,1,12))
 boxplot(log(a.bxpt$data)~a.bxpt$model+a.bxpt$parameters, col=cbp[2:5], at=c(1:4,6:9,11:14,16:19), xaxt="n", xlab = "parameters", ylab = "log parameter estimates", cex.axis=2, cex.lab=2) ## <https://stackoverflow.com/questions/47479522/how-to-create-a-grouped-boxplot-in-r>
-axis(side = 1, at=c(1:4,6:9,11:14,16:19), labels = c("","","N0","","","","K","","","","r.max","","","","t.lag",""), lwd.ticks=F) ## <https://stackoverflow.com/questions/50545141/r-boxplot-x-axis-without-ticks-and-complete>
+axis(side = 1, at=c(1:4,6:9,11:14,16:19), labels = c("","","K","","","","N0","","","","r.max","","","","t.lag",""), lwd.ticks=F) ## <https://stackoverflow.com/questions/50545141/r-boxplot-x-axis-without-ticks-and-complete>
 par(xpd=NA, cex=1)
-legend(x=21, y=max(log(a.bxpt$data))*.9, legend = c("Verhulst (classical)", "modified Gompertz", "Baranyi", "Buchanan"), title = "Phenological Models", fill = cbp[2:5], bty = "n") ## no legend frame <https://stackoverflow.com/questions/10108073/plot-legends-without-border-and-with-white-background>
+legend(x=21, y=max(log(a.bxpt$data))*.9, legend = c("Baranyi", "Buchanan", "modified Gompertz", "Verhulst (classical)"), title = "Phenological Models", fill = cbp[2:5], bty = "n") ## no legend frame <https://stackoverflow.com/questions/10108073/plot-legends-without-border-and-with-white-background>
 dev.off()
 
 ## data export for report
