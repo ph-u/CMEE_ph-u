@@ -57,3 +57,42 @@ ls2Mtx<-function(Rlist){
   }
   return(lst)
 }
+
+phoc.kruskal.nemenyi<-function(y, x1, x2, threshold){
+  ## Extract posthoc.kruskal.nemenyi.test / pairwise.wilcox.test sig p-value
+  ## construction date(s): 20180628, 20191029
+  library(PMCMR)
+  ppp<-posthoc.kruskal.nemenyi.test(y~interaction(x1,x2))$p.value
+  ppp[ppp>threshold]<-NA
+  if(sum(is.na(ppp))==dim(ppp)[1]*dim(ppp)[2]){knplist<-0;print(knplist);rm(ppp)}else{
+    if(dim(ppp)[1]<=2 && dim(ppp)[2]<=2){knplist<-ppp;rm(ppp)}else{
+      i<-1;repeat{
+        if(sum(is.na(ppp[,i]))==dim(ppp)[1]){
+          ppp<-ppp[,-i]
+          if(i==(dim(ppp)[2]+1)){break}
+          if(is.data.frame(ppp)==F){break}
+        }else{
+          i<-i+1
+          if(i==(dim(ppp)[2]+1)){break}}}
+      i<-1;repeat{
+        if(sum(is.na(ppp[i,]))==dim(ppp)[2]){
+          ppp<-ppp[-i,]
+          if(i==(dim(ppp)[1]+1)){break}
+          if(is.data.frame(ppp)==F){break}
+        }else{
+          i<-i+1
+          if(i==(dim(ppp)[1]+1)){break}}}
+      pppL<-row.names(ppp)
+      pppC1<-colnames(ppp)
+      pppC2<-0;for(i in 1:length(pppC1)){
+        pppC2<-c(pppC2,rep(pppC1[i],length(pppL)))
+      };pppC2<-pppC2[-1]
+      pppppp<-0;for(i in 1:dim(ppp)[2]){
+        pppppp<-c(pppppp,ppp[,i])
+      };pppppp<-pppppp[-1]
+      knplist<-data.frame(pppL,pppC2,pppppp)
+      colnames(knplist)=c("f1","f2","p.val")
+      knplist<-knplist[which(!is.na(knplist[,3])),]}}
+}
+
+cbp <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#0072B2", "#D55E00", "#CC79A7", "#e79f00", "#9ad0f3", "#F0E442", "#999999", "#cccccc", "#6633ff", "#00FFCC", "#0066cc")## colour-blind friendly palette

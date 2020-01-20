@@ -182,6 +182,22 @@ plot of polynomial-restricted raw data (.pdf)
 
 *****
 
+### Log_5.R
+
+#### Features
+
+biological questions - do species correlate with model / parameter range?
+
+#### Suggested input
+
+```Rscript Log_5.R```
+
+#### Output
+
+statistical analysis report (.txt)
+
+*****
+
 ### Log_c.sh
 
 #### Features

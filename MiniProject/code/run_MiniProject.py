@@ -26,6 +26,7 @@ subprocess.Popen("./Log_1.sh 2> nohup.out", shell=True).wait() ## main data anal
 subprocess.Popen("Rscript Log_2.R 2> nohup.out", shell=True).wait() ## statistical analysis -- is one or more model(s) stand out from the rest?
 subprocess.Popen("Rscript Log_3.R 2> nohup.out", shell=True).wait() ## statistical analysis -- do any parameters favours any phenological model(s)?
 subprocess.Popen("Rscript Log_4.R 2> nohup.out", shell=True).wait() ## graphical plot -- shape of polynomial-restricted datasets
+subprocess.Popen("Rscript Log_5.R 2> nohup.out", shell=True).wait() ## biological question -- is species identity relate to anything?
 subprocess.Popen("./Log_n.sh 2> nohup.out", shell=True).wait() ## collect dispersed number for report
 subprocess.Popen("./Log_c.sh 2> nohup.out", shell=True).wait() ## report writing and compile
 subprocess.Popen("./run_readme.sh 2> nohup.out", shell=True).wait() ## README production

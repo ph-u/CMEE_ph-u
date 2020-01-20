@@ -13,7 +13,7 @@ rm ../results/Log_total.txt 2>nohup.out
 cd ../data
 touch ../results/Log_total.txt
 
-for j in stat PCA appdx cite;do
+for j in stat PCA bio appdx cite;do
 	i=`echo -e "ttt_${j}.txt"`
 	cat ${i} >> ../results/Log_total.txt
 	rm ${i}

@@ -67,7 +67,7 @@ style       = nature
 	
 	\maketitle
 	\section*{Abstract}
-	\Pms\ have different features, assumptions and explanatory uses.  Hence choosing the correct and fittest model for your experimental data is crucial.  This project has used published microbial \pps\ data from ten papers to do non-parametric categorical analyses (Kruskal tests) and parameter evaluations (PCA).  The result shows that \fve\ and \fgo\ are general models while \fba\ and \fbu\ are specific ones.  They have unobservable yet statistical differences in parameter responses.  Although \pms\ are not significantly better than polynomials on data descriptions, choosing the right model can potentially help discussing the data properties in microbial population of interest.
+	\Pms\ have different features, assumptions and explanatory uses.  Hence choosing the correct and fittest model for your experimental data is crucial.  This project has used published microbial \pps\ data from ten papers to do non-parametric categorical analyses (i.e. Kruskal tests) and parameter evaluations (with PCA).  The result shows that \fve\ and \fgo\ are general models while \fba\ and \fbu\ are specific ones.  They have unobservable yet statistical differences in parameter responses.  Although \pms\ are not significantly better than polynomials on data descriptions, choosing the right model can potentially help discussing the data properties in microbial population of interest.
 	
 	\section*{Introduction}
 	\Pms\ for microbial growth are expected to fit microbial population data.  Yet due to different reasons, models developed and published from one sample may not fit the others.  These reasons can be data variabilities, confounding factors, inaccurate assumptions or models being too-specific.  This data-mining project is aimed at comparing and contrasting published \pms\ on microbial \pop\ data, highlighting which is a better model under what conditions.  The hypotheses are:
@@ -78,8 +78,8 @@ style       = nature
 	\end{itemize}
 	Also, two biological hypotheses will be put forward:
 	\begin{itemize}
-		\item Microbial species is correlate with the model (any of the six) with optimal AIC values (i.e. meeting the ``minimal AIC +2"\autocite{burnham2004multimodel} criteria); and
-		\item Microbial species has its own parameter range for the ``best" model.
+		\item Microbial species combine with growth media is correlate with the AIC-optimal model (i.e. meeting the ``minimal AIC +2"\autocite{burnham2004multimodel} criteria); and
+		\item Microbial species combine with growth media has its own parameter range for the optimal \pms.
 	\end{itemize}
 	
 	\section*{Methods}
@@ -107,9 +107,11 @@ style       = nature
 	AIC\autocite{johnson2004model,akaike1998information,burnhamdr} was used to select optimal parameter values within each \pml\ and best candidate model(s) for a data subset.  All available parameter sets were included in principal component analysis (PCA).  AIC tolerance threshold was expanded to min(AIC)+2\autocite{burnham2004multimodel} to incorporate more accepted models for analyses.
 	
 	\subsection*{Statistical analysis}
-	Kruskal test was used for identify the best-fit model among all included model because the count was categorical and not assumed being normally-distributed.  The test was also used for the two biological hypotheses.  Pairwise Nemenyi comparisons would be carried out to identify the best test if p-value of the test was significant.
+	Kruskal test was used for identify the best-fit model among all included model because the count was categorical and not assumed being normally-distributed.  Pairwise Nemenyi comparisons would be carried out to identify the best test if p-value of the test was significant.
 	
 	Parameter weights were assessed across \pms\ by PCA R-way analysis method on natural-logged parameter data.  Datasets would be expected clustering together if parameter(s) were representing the observed data.  Then with Kruskal-Wallis test, each parameter was tested for statistical differences across \pms.  Post-hoc Tukey pairwise comparisons would be carried out upon significance.
+	
+	Kruskal test was used to determine whether factors ``microbial clade" and ``growing media type" can be separated.  Since it was not (p-val < 0.01), Kruskal test on whether ``microbial clade was having specific type of optimal model" was using ``optimal model(s)" as response variable and the combined factors of ``microbial clade" and ``growing media type" was the independent variable.  Each parameter (i.e. N0, K, rmax and tlag) was also tested using Kruskal test on the combined independent variable to test significance.
 	
 	\subsection*{Main Assumptions}
 	\begin{itemize}
@@ -232,6 +234,46 @@ style       = nature
  	\includegraphics[width=\linewidth]{../results/Log_outstanding.pdf}
  	\caption{Line plot of datasets restricted to polynomial fits. Dataset details could be found in Table \ref{table:source}}\label{lineOut}
  \end{figure}
+
+	Using Kruskal test, microbial clade was significantly correlated with the experimental growth media ($X^{2}$ =
+	%% insert_num_here
+	, df = 
+	%% insert_num_here
+	, p-value = 
+	%% insert_num_here
+	).  Hence downstream analyses had taken both factors as a combined independent variable.  Based on the combined factor, Kruskal test were done using dependent variable of ``optimal model type" ($X^{2}$ =
+	%% insert_num_here
+	, df = 
+	%% insert_num_here
+	, p-value = 
+	%% insert_num_here
+	), ``N0" ($X^{2}$ =
+	%% insert_num_here
+	, df = 
+	%% insert_num_here
+	, p-value = 
+	%% insert_num_here
+	), ``K" ($X^{2}$ =
+	%% insert_num_here
+	, df = 
+	%% insert_num_here
+	, p-value = 
+	%% insert_num_here
+	), ``r.max" ($X^{2}$ =
+	%% insert_num_here
+	, df = 
+	%% insert_num_here
+	, p-value = 
+	%% insert_num_here
+	) and ``t.lag" ($X^{2}$ =
+	%% insert_num_here
+	, df = 
+	%% insert_num_here
+	, p-value = 
+	%% insert_num_here
+	).  Among the parameters, r.max was the only factor without significance.  However posthoc Nemenyi test showed that none of the factor pairs (out of 
+	%% insert_num_here
+	pairs) were statistically significant although the Kruskal test showed otherwise.
 	
 	\section*{Discussion}
 	%% AIC vs BIC <https://www.methodology.psu.edu/resources/AIC-vs-BIC/>
@@ -246,8 +288,10 @@ style       = nature
 	
 	Between \pms, some of them may be highly specific (e.g. \fba\ and \fbu) or general (e.g. \fve\ and \fgo).  Although PCA result shows significant separation of model properties (Fig.\ref{biptPCA},\ref{pValDraw},\ref{boxFac}), these differences are not observable in the data (Fig.\ref{boxFac}).  The clustering of NLLS parameter estimates is also not having defined boundaries (Fig.\ref{biptPCA}), increasing the difficulty of choosing the most appropriate \pml\ for a newly-generated microbial \pps\ dataset.  Due to the different \pml\ properties towards their own parameters (Fig.\ref{biptPCA}), the PCA graph can be a reference for determining the best \pml\ on those new data in the future.  However Fig.\ref{biptPCA} can only be used literally when the experimental temperature, substrate and population unit of the microbial clades all fall within the categories or ranges listed in Table \ref{table:source}.  If not, the same methodology can be used with suitable published data to generate the PCA result for reference.  Generally speaking, \fve\ will be sufficient to explain most behaviours of the population.  \fgo\ can be used when authors want to incorporate t.lag into description, although this factor may be redundant (Fig.\ref{barPT}).  Using Fig.\ref{biptPCA} as reference, one can pinpoint the data response to the parameters and refine their model-of-choice to a more specific one if necessary.
 	
+	On biological side, the analyses show that microbial identity and the growth media are statistically significant as expected.  Hence they should be analysed as one factor because there is no method to isolate one from the other.  Yet this combined factor does not have statistically significant indicative number on their initial, climax population size, their maximum growth rate nor the lag phase duration.
+	
 	\section*{Conclusion}
-	Published \pms\ were data-specific, which none of them were found significantly performing better than the others.  Although most of the parameter values are significantly different between models, their ranges are superimposing with one another.  \Pms\ correlate with parameters differently, but the correlations are unobservable through plotting a log-linear logistic growth curve.  There were assumptions embedded within \pms\ which have limited its ability to describe data without a distinct sigmoid shape.
+	Published \pms\ were data-specific, which none of them were found significantly performing better than the others.  Although most of the parameter values are significantly different between models, their ranges are superimposing with one another.  \Pms\ correlate with parameters differently, but the correlations are unobservable through plotting a log-linear logistic growth curve.  There were assumptions embedded within \pms\ which have limited its ability to describe data without a distinct sigmoid shape.  Biologically, microbial identity has no indication on how they grow in laboratory conditions.  Hence these parameters, if needed for researches, have to be measured case-by-case.
 	
 	\section*{Code and Data Availability}
 	All \href{https://github.com/ph-u/CMEECourseWork_pmH/tree/master/MiniProject/code}{scripts} and \href{https://github.com/ph-u/CMEECourseWork_pmH/tree/master/MiniProject/data}{data} used for this report were publicity available at GitHub.

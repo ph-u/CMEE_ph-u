@@ -17,7 +17,7 @@
 
 ## library
 library(PMCMR)
-cbp <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#0072B2", "#D55E00", "#CC79A7", "#e79f00", "#9ad0f3", "#F0E442", "#999999", "#cccccc", "#6633ff", "#00FFCC", "#0066cc")## colour-blind friendly palette
+source("Log_func.R")
 
 cat("PCA analysis on model parameters\n")
 ## input
