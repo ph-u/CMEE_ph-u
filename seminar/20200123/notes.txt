@@ -1,0 +1,18 @@
+Skewed distribution of sensitivity, some super tolerant
+Boltzmann-Arrihenieus plot
+Same thermal constraints across lineages
+Ecoinformatics data collection: plot digitization
+0.65 global average on thermal sensitivity
+Bacteria and archaea have higher than normal average
+Thermal sensitivity of respiration: higher in dense microbe
+Linking short-long term TPC: higher better (mesophiles) / equalisation (extremophiles) / weak biochemical adaptation; cut off at 45C
+Species thermo-sorting in environment have community effect?
+200gen E.coli adapt +7C temperature change
+Thermal change lead to lineage adaptation or species composition changes? -> restorable microbial community
+Quick shock of temperature: env change independent from evolution
+Ecosystem impacts -> ecosystem respiration [flux] (autotrophic [eukaryotes + plants] + heterotrophic eukaryotes + heterotrophic prokaryotes): unit = eV
+Hard to parametrize
+High T_pk = Firmucutes
+Firmucutes: r-specislist
+Proteobacteria: K-specialist
+Exp't warning studies: v alpha-ptbact; ^ Firmucutes
