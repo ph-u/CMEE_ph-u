@@ -1,0 +1,6 @@
+4	N0	0
+4	K	0.661079099004735
+4	r.max	0
+4	t.lag	0
+4	t.K	Inf
+4	Model	qu
