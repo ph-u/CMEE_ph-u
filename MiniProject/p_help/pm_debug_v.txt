@@ -1,0 +1,14 @@
+Landslide site: logic error
+
+lib: useless lib called
+
+functions: clear
+
+write NLLS as functions: logic error
+1. lm only need one per dataset -- no need parameters, model according data points, no errorbars needed
+2. nlsLM is a test function, no need to be called within a function
+3. Hence this section should be lower than getting starting values section
+
+get starting values: logic error + warning
+- resultant plot are log-lin graphs
+- eliminate recursively the max y-axis is computationally correect but logically unsupportive
