@@ -1,0 +1,35 @@
+predict glob biodiv using glob mechanistic model & neutral model
+Lucas
+
+constituent parts, interact following mechanisms
+simplicity vs realistic
+causal effect invested for emergent patterns
+disect vs understand as a whole
+Madingly model
+- earth in grid
+- heterotrophic life in 19 func groups: realm, feeding mode, rep strategy, tthermoreg
+- data: env, ocean current, NPP
+- periodic N-S motion of biomass
+- prediction only right for few locations
+- what are important factors not yet in the model?
+- no sp-level, eco pattern global scale
+
+neutral model as alt mechanistic model
+- neighbour reproduction, speciation, dispersal, extrapiration
+- dynamical eqm of spp richness
+- good rep patterns from: relativwe sp abund, sp-area relationship
+- null model in macroecology
+- id assign to individual, not realistic
+
+coupling up two models
+- body size guides
+- speciation rate as free parameters (high: 10^-5)
+- model features linked to discrepancy?
+- longevity: off from empirial estimates
+- body mass: quite close
+- get better estimates on parameters?
+- simulating more realistic speciation rates?
+- optimize model useful?
+- new method for calculating speciation rate?
+
+good model get wrong in right ways
