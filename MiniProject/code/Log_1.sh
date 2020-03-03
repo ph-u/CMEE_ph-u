@@ -22,8 +22,8 @@ sleep ${i2} ## allow some time to run slave scripts before loading CPU for check
 
 ## hault control script for intermediate data collection
 i1=2
-while [ $((`ps aux|grep slave|grep R|wc -l`)) -gt 0 ];do
-	echo -e "analysis process remaining: `ps aux|grep slave|grep R|wc -l`; sleep ${i1} sec"
+while [ $((`ps aux|grep slave|grep Rgrep -v IRkernel|wc -l`)) -gt 0 ];do
+	echo -e "analysis process remaining: `ps aux|grep slave|grep R|grep -v IRkernel|wc -l`; sleep ${i1} sec"
 	sleep ${i1}
 done
 
