@@ -10,9 +10,26 @@ Apache-2.0
 
 ## Language versions and packages
 
-R 3.6.0: minpack.lm (v1.2.1), stats (v.3.6.0), PMCMR (v4.3)  
-python 3.7.3: subprocess (v3.7.3)  
-TeX2019: geometry (v5.9), hyperref (v7.00d), setspace (v6.7a), lineno (v4.41), amsmath (v2.17e), amssymb (v3.01), longtable (v4.13), float (v1.3d), graphicx (v1.2a), biblatex (v0.99d)
+R 3.6.0:  
+
+* minpack.lm (v1.2.1): model-fitting  
+* stats (v.3.6.0): statstical analyses  
+* PMCMR (v4.3): post-hoc comparisons  
+
+python 3.7.3:  
+* subprocess (v3.7.3): streamline workflow  
+
+TeX2019:  
+* geometry (v5.9): margin size  
+* hyperref (v7.00d): citations, figures and tables links  
+* setspace (v6.7a): line space  
+* lineno (v4.41): line numbers  
+* amsmath (v2.17e): math symbols  
+* amssymb (v3.01): math symbols  
+* longtable (v4.13): tables that cross pages  
+* float (v1.3d): better graphics location control  
+* graphicx (v1.2a): insert graphics  
+* biblatex (v0.99d): bibliography
 
 ## Guides
 

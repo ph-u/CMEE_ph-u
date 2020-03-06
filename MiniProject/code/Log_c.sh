@@ -31,7 +31,7 @@ rm ${a3}_r.tex
 
 ## Cleanup
 echo -e "cleaning rubbish"
-for i in aux dvi nav out snm toc bbl bcf blg run.xml synctex.gz log;do
+for i in aux dvi log nav out snm toc bbl bcf blg run.xml synctex.gz;do
 if [ `ls|grep -c ${i}` -gt 0 ];then
 rm *.${i}
 fi
