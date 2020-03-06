@@ -10,8 +10,8 @@ Apache-2.0
 
 ## Language versions and packages
 
-R 3.6.0: minpack.lm (v1.2.1), stats (v.3.6.0), PMCMR (v4.3)
-python 3.7.3: subprocess (v3.7.3)
+R 3.6.0: minpack.lm (v1.2.1), stats (v.3.6.0), PMCMR (v4.3)  
+python 3.7.3: subprocess (v3.7.3)  
 TeX2019: geometry (v5.9), hyperref (v7.00d), setspace (v6.7a), lineno (v4.41), amsmath (v2.17e), amssymb (v3.01), longtable (v4.13), float (v1.3d), graphicx (v1.2a), biblatex (v0.99d)
 
 ## Guides
