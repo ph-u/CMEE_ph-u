@@ -9,7 +9,7 @@
 # Date: Nov 2019
 
 ## start
-head -n 15 ../data/readme_tmp.md > ../readme.md
+head -n 21 ../data/readme_tmp.md > ../readme.md ## "All scripts are in..."
 
 ## General scripts
 for j in 16 14 12 10;do

@@ -8,6 +8,12 @@ Three non-linear model-fitting questions for selection
 
 Apache-2.0
 
+## Language versions and packages
+
+R 3.6.0: minpack.lm (v1.2.1), stats (v.3.6.0), PMCMR (v4.3)
+python 3.7.3: subprocess (v3.7.3)
+TeX2019: geometry (v), hyperref (v), setspace (v), lineno (v), amsmath (v), amssymb (v), longtable (v), float (v), graphicx (v), biblatex (v0.99d)
+
 ## Guides
 
 Multiple scripts were coded and introduced below.  
