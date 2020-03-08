@@ -9,11 +9,11 @@ Note that:
 
 ======================================================================
 ======================================================================
-Your Git repo size this week is about 18.33 MiB on disk 
+Your Git repo size this week is about 560.34 MiB on disk 
 
 PART 1: Checking project workflow...
 
-Found the following directories in parent directory: Week6, Week1, Week7, Assessment, Week8, seminar, Week5, Week2, Week9, Week4, .git, ReadmeProg, Week3
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, Week8, seminar, Week5, Week2, Week9, Week4, .git, ReadmeProg, Week3, MiniProject
 
 Found the following files in parent directory: README.txt, LICENSE, .gitignore, readme.md
 
@@ -25,19 +25,22 @@ Printing contents of .gitignore:
 **********************************************************************
 *~ 
 *.tmp
-*.fasta
-*.csv
 ._*
-*.tmp
-*.swp
+*.sw*
 nohup*
 .Rhistory
 readme_final.md
-*.odt#
+*.*#
 *-*.pdf
 *-concordance.tex
 *.log
-*.synctex.gz**********************************************************************
+*.synctex.gz
+.Rapp.history
+*.mov
+*.mp4
+*.gif
+p_*
+**********************************************************************
 
 Found README in parent directory, named: README.txt
 
@@ -120,7 +123,7 @@ python3 align_seqs_better.py <fasta_1> <fasta_2>
 #### Output
 
 1. python interpreter output -- alignment process
-2. output best alignment(s) and its/their score(s) to a binary file in `results` subdirectory
+2. output best alignment(s) and its/their score(s) to a binary file in `Results` subdirectory
 
 *****
 
@@ -547,9 +550,7 @@ File contents are:
 # Date: Oct 2019
 
 
-"""
-python homework
-"""
+"""python homework"""
 
 __appname__="lc2.py"
 __author__="PMH"
@@ -593,12 +594,12 @@ print(rl)**********************************************************************
 Testing lc2.py...
 
 lc2.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 99
+Found no functions, but one docstring for the script, good
+
+Current Points = 100
 
 Output (only first 500 characters): 
 
@@ -612,7 +613,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.02739s
+Time consumed = 0.02679s
 
 ======================================================================
 Inspecting script file boilerplate.py...
@@ -658,9 +659,12 @@ if __name__ == "__main__":
 Testing boilerplate.py...
 
 boilerplate.py is a Python script file;
- checking for docstrings...
 
-Found one or more doctrings!
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Current Points = 100
 
 Output (only first 500 characters): 
 
@@ -687,10 +691,9 @@ File contents are:
 # Arguments: 0
 # Date: Oct 2019
 
-"""
+""" uses
 1. python interpretor read csv file and extract first element (species)
-2. copy specific column "bodymass" from testcsv.csv file to a new csv file (bodymass.csv)
-"""
+2. copy specific column "bodymass" from testcsv.csv file to a new csv file (bodymass.csv)"""
 
 __appname__="basic_csv.py"
 __author__="PMH"
@@ -729,24 +732,30 @@ g.close()
 Testing basic_csv.py...
 
 basic_csv.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 98
+Found no functions, but one docstring for the script, good
+
+Current Points = 100
 
 Output (only first 500 characters): 
 
 **********************************************************************
-
+['Species', 'Infraorder', 'Family', 'Distribution', 'Body mass male (Kg)']
+The species is Species
+['Daubentonia_madagascariensis', 'Chiromyiformes ', 'Daubentoniidae', 'Madagascar', '2.7']
+The species is Daubentonia_madagascariensis
+['Allocebus_trichotis', 'Lemuriformes', 'Cheirogaleidae', 'Madagascar', '0.1']
+The species is Allocebus_trichotis
+['Avahi_laniger', 'Lemuriformes', 'Indridae', 'America', '1.03']
+The species is Avahi_laniger
+['Avahi_occidentalis', 'Lemuriformes', 'Indridae', 'Madagasc
 **********************************************************************
 
-Encountered error (or warning):
-Traceback (most recent call last):
-  File "basic_csv.py", line 25, in <module>
-    f=open('../Data/testcsv.csv','r')
-FileNotFoundError: [Errno 2] No such file or directory: '../Data/testcsv.csv'
+Code ran without errors
+
+Time consumed = 0.03036s
 
 ======================================================================
 Inspecting script file cfexercises2.py...
@@ -763,9 +772,7 @@ File contents are:
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-loop testing with different "hello" versions
-"""
+"""loop testing with different "hello" versions"""
 
 __appname__="cfexercises2.py"
 __author__="PMH"
@@ -800,12 +807,12 @@ while z<100:
 Testing cfexercises2.py...
 
 cfexercises2.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 97
+Found no functions, but one docstring for the script, good
+
+Current Points = 100
 
 Output (only first 500 characters): 
 
@@ -837,7 +844,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.02418s
+Time consumed = 0.02591s
 
 ======================================================================
 Inspecting script file align_seqs_better.py...
@@ -850,13 +857,11 @@ File contents are:
 # Script: align_seqs_better.py
 # Desc: python homework -- genetic alignment program
 # Input: python3 align_seqs_better.py <fasta_1> <fasta_2>
-# Output: 1. python interpreter output -- alignment process; 2. output best alignment(s) and its/their score(s) to a binary file in `results` subdirectory
+# Output: 1. python interpreter output -- alignment process; 2. output best alignment(s) and its/their score(s) to a binary file in `Results` subdirectory
 # Arguments: 0 or 2
 # Date: Oct 2019
 
-"""
-python homework -- genetic alignment program
-"""
+"""python homework -- genetic alignment program"""
 
 __appname__="align_seqs_better.py"
 __author__="PMH"
@@ -915,6 +920,7 @@ else:
 # A function that computes a score by returning the number of matches starting from arbitrary startpoint (chosen by user)
 
 def calculate_score(s1, s2, l1, l2, startpoint):
+    """calculate alignment score"""
     matched = "" # to hold string displaying alignements
     score = 0
     for i in range(l2):
@@ -946,7 +952,7 @@ my_best_align = None
 my_best_score = -1
 
 print("Slave is writing your best results into binary report...")
-f=open("../results/result_b.p","wb")
+f=open("../Results/result_b.p","wb")
 
 t=[]
 for i in range(l1): # Note that you just take the last alignment with the highest score
@@ -994,19 +1000,19 @@ f.close()
 print("Slave finishes its report in binary")
 
 ## Load report in python3
-# with open("../results/result_b.p","rb") as f:
+# with open("../Results/result_b.p","rb") as f:
 #     a=pickle.load(f)
 #     for i in range(len(a)): print(a[i])**********************************************************************
 
 Testing align_seqs_better.py...
 
 align_seqs_better.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 96
+Found one or more docstrings and functions
+
+Current Points = 100
 
 Output (only first 500 characters): 
 
@@ -1016,7 +1022,7 @@ Output (only first 500 characters):
 
 Encountered error (or warning):
 Traceback (most recent call last):
-  File "align_seqs_better.py", line 30, in <module>
+  File "align_seqs_better.py", line 28, in <module>
     files=[f for f in listdir(p) if all([isfile(join(p,f)), f.startswith("4"), f.endswith(".fasta")])]
 FileNotFoundError: [Errno 2] No such file or directory: '../../Week01/Data/'
 
@@ -1035,9 +1041,7 @@ File contents are:
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-python homework -- create and print dictionary line-by-line
-"""
+"""python homework -- create and print dictionary line-by-line"""
 
 __appname__="dictionary.py"
 __author__="PMH"
@@ -1073,12 +1077,12 @@ print("Finish printing dictionary")*********************************************
 Testing dictionary.py...
 
 dictionary.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 95
+Found no functions, but one docstring for the script, good
+
+Current Points = 100
 
 Output (only first 500 characters): 
 
@@ -1087,11 +1091,11 @@ Start dictionary printing:
 
 Content in Chiroptera : {'Myotis lucifugus'} 
 
-Content in Afrosoricida : {'Microgale talazaci', 'Microgale dobsoni'} 
+Content in Rodentia : {'Mus domesticus', 'Peromyscus crinitus', 'Cleithrionomys rutilus', 'Gerbillus henleyi'} 
 
-Content in Rodentia : {'Gerbillus henleyi', 'Cleithrionomys rutilus', 'Peromyscus crinitus', 'Mus domesticus'} 
+Content in Carnivora : {'Arctocephalus gazella', 'Canis lupus', 'Lyacon pictus'} 
 
-Content in Carnivora : {'Lyacon pictus', 'Canis lupus', 'Arctocephalus gazella'} 
+Content in Afrosoricida : {'Microgale dobsoni', 'Microgale talazaci'} 
 
 Finish printing dictionary
 
@@ -1099,7 +1103,7 @@ Finish printing dictionary
 
 Code ran without errors
 
-Time consumed = 0.03116s
+Time consumed = 0.02654s
 
 ======================================================================
 Inspecting script file debugme.py...
@@ -1116,9 +1120,7 @@ File contents are:
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-testing %ipdb by creating a bug
-"""
+"""testing %ipdb by creating a bug"""
 
 __appname__="debugme.py"
 __author__="PMH"
@@ -1126,6 +1128,7 @@ __version__="0.0.1"
 __license__="None"
 
 def makeabug(x):
+    """test"""
 	y=x**4
 	z=0.
 	import ipdb; ipdb.set_trace() ## set up break point in debug mode
@@ -1137,25 +1140,24 @@ makeabug(25)
 Testing debugme.py...
 
 debugme.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 94
+Found one or more docstrings and functions
+
+Current Points = 100
 
 Output (only first 500 characters): 
 
 **********************************************************************
-]0;IPython: Week2/Code> [0;32m/home/mhasoba/Documents/Teaching/IC_CMEE/2019-20/Coursework/StudentRepos/PokManHo_PH419/Week2/Code/debugme.py[0m(24)[0;36mmakeabug[0;34m()[0m
-[0;32m     22 [0;31m        [0mz[0m[0;34m=[0m[0;36m0.[0m[0;34m[0m[0m
-[0m[0;32m     23 [0;31m        [0;32mimport[0m [0mipdb[0m[0;34m;[0m [0mipdb[0m[0;34m.[0m[0mset_trace[0m[0;34m([0m[0;34m)[0m [0;31m## set up break point in debug mode[0m[0;34m[0m[0m
-[0m[0;32m---> 24 [0;31m        [0
+
 **********************************************************************
 
-Code ran without errors
-
-Time consumed = 0.58425s
+Encountered error (or warning):
+  File "debugme.py", line 20
+    y=x**4
+         ^
+TabError: inconsistent use of tabs and spaces in indentation
 
 ======================================================================
 Inspecting script file scope.py...
@@ -1172,9 +1174,7 @@ File contents are:
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-5 blocks testing usage of global and local variable namespaces
-"""
+"""5 blocks testing usage of global and local variable namespaces"""
 
 __appname__="scope.py"
 __author__="PMH"
@@ -1188,6 +1188,7 @@ if _a_global >= 5:
 	_b_global = _a_global+5 # also a global variable
 
 def a_function():
+    """test trial 1"""
 	_a_global = 5 # a local variable
 
 	if _a_global >=5:
@@ -1211,6 +1212,7 @@ print("Outside the function, the value of _b_global is ",_b_global)
 _a_global = 10
 
 def a_function():
+    """test trial 2"""
 	_a_local=4
 
 	print("Inside the function, the value _a_local is ",_a_local)
@@ -1228,6 +1230,7 @@ print("3rd block")
 print("Outside the function, the value of _a_global is ",_a_global)
 
 def a_function():
+    """test trial 3"""
 	global _a_global
 	_a_global = 5
 	_a_local = 4
@@ -1244,8 +1247,10 @@ print("Outside the function, the value of _a_global now is ",_a_global)
 ## 4th
 print("4th block")
 def a_function():
+    """test trial 4"""
 	_a_global = 10
 	def _a_function2():
+    	"""test trial 4.1"""
 		global _a_global
 		_a_global = 20
 	print("Before calling a_function, value of _a_global is ",_a_global)
@@ -1260,7 +1265,9 @@ print("The value of a_global in main workspace / namespace is ",_a_global)
 _a_global=10
 print("5th block")
 def a_function():
+    """test trial 5"""
 	def _a_function2():
+    	"""test trial 5.1"""
 		global _a_global
 		_a_global=20
 	print("Before calling a_function, value of _a_global is ",_a_global)
@@ -1273,34 +1280,24 @@ print("The value of a_global in main workspace / namespace is ",_a_global)
 Testing scope.py...
 
 scope.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 93
+Found one or more docstrings and functions
+
+Current Points = 100
 
 Output (only first 500 characters): 
 
 **********************************************************************
-1st block
-Inside the function, the value of _a_global is  5
-Inside the function, the value of _b_global is  10
-Inside the function, the value of _a_local is  4
-Outside the function, the value of _a_global is  10
-Outside the function, the value of _b_global is  15
-2nd block
-Inside the function, the value _a_local is  4
-Inside the function, the value of _a_global is  10
-Outside the function, the value of _a_global is  10
-3rd block
-Outside the function, the value of _a_global is  10
-Inside the funct
+
 **********************************************************************
 
-Code ran without errors
-
-Time consumed = 0.02746s
+Encountered error (or warning):
+  File "scope.py", line 26
+    _a_global = 5 # a local variable
+                                   ^
+TabError: inconsistent use of tabs and spaces in indentation
 
 ======================================================================
 Inspecting script file basic_io3.py...
@@ -1317,9 +1314,7 @@ File contents are:
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-third of three basic_io.py sections -- save a python dictionary into binary file, then read and print in python interpreter
-"""
+"""third of three basic_io.py sections -- save a python dictionary into binary file, then read and print in python interpreter"""
 
 __appname__="basic_io3.py"
 __author__="PMH"
@@ -1349,12 +1344,12 @@ print(another_dictionary)
 Testing basic_io3.py...
 
 basic_io3.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 92
+Found no functions, but one docstring for the script, good
+
+Current Points = 100
 
 Output (only first 500 characters): 
 
@@ -1365,7 +1360,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.03197s
+Time consumed = 0.03003s
 
 ======================================================================
 Inspecting script file cfexercises1.py...
@@ -1382,9 +1377,7 @@ File contents are:
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-six importable and self-testable functions with logic bug at foo_3
-"""
+"""six importable and self-testable functions with logic bug at foo_3"""
 
 __appname__="cfexercises1.py"
 __author__="PMH"
@@ -1489,9 +1482,14 @@ doctest.testmod()***************************************************************
 Testing cfexercises1.py...
 
 cfexercises1.py is a Python script file;
- checking for docstrings...
 
-Found one or more doctrings!
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Missing docstring, either in one or functions and/or at the script level
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
@@ -1507,7 +1505,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.05967s
+Time consumed = 0.06051s
 
 ======================================================================
 Inspecting script file tuple.py...
@@ -1524,9 +1522,7 @@ File contents are:
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-python homework
-"""
+"""python homework"""
 
 __appname__="tuple.py"
 __author__="PMH"
@@ -1555,12 +1551,12 @@ for i in range(len(birds)):
 Testing tuple.py...
 
 tuple.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 91
+Found no functions, but one docstring for the script, good
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
@@ -1590,7 +1586,7 @@ Mass:  20.2
 
 Code ran without errors
 
-Time consumed = 0.02499s
+Time consumed = 0.02758s
 
 ======================================================================
 Inspecting script file basic_io.py...
@@ -1607,11 +1603,10 @@ File contents are:
 # Arguments: 0
 # Date: Oct 2019
 
-"""
+""" uses
 1. first of three basic_io.py sections -- output lines from txt file
 2. print a list of numbers into txt file
-3. save a python dictionary into binary file, then read and print in python interpreter
-"""
+3. save a python dictionary into binary file, then read and print in python interpreter"""
 
 __appname__="basic_io.py"
 __author__="PMH"
@@ -1674,12 +1669,12 @@ print(another_dictionary)
 Testing basic_io.py...
 
 basic_io.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 90
+Found no functions, but one docstring for the script, good
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
@@ -1706,13 +1701,13 @@ Third Line
 
 Fourth Line
 
-{'another key': 11, 'a key': 10}
+{'a key': 10, 'another key': 11}
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.03796s
+Time consumed = 0.03704s
 
 ======================================================================
 Inspecting script file lc1.py...
@@ -1729,9 +1724,7 @@ File contents are:
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-python homework
-"""
+"""python homework"""
 
 __appname__="lc1.py"
 __author__="PMH"
@@ -1774,12 +1767,12 @@ B=[str(birds[i][2]) for i in range(len(birds))];print(B) ## Q1******************
 Testing lc1.py...
 
 lc1.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 89
+Found no functions, but one docstring for the script, good
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
@@ -1795,7 +1788,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.04588s
+Time consumed = 0.03106s
 
 ======================================================================
 Inspecting script file oaks_debugme.py...
@@ -1855,6 +1848,7 @@ def is_an_oak(name):
     #   ... do things
 
 def main(argv): 
+    """main content, no input"""
     f = open('../data/TestOaksData.csv','r')
     g = open('../data/JustOaksData.csv','w')
     taxa = csv.reader(f)
@@ -1879,24 +1873,37 @@ if (__name__ == "__main__"):
 Testing oaks_debugme.py...
 
 oaks_debugme.py is a Python script file;
- checking for docstrings...
 
-Found one or more doctrings!
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
 **********************************************************************
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m~/Documents/Teaching/IC_CMEE/2019-20/Coursework/StudentRepos/PokManHo_PH419/Week2/Code/oaks_debugme.py[0m in [0;36m<module>[0;34m()[0m
-[1;32m     70[0m [0;34m[0m[0m
-[1;32m     71[0m [0;32mif[0m [0;34m([0m[0m__name__[0m [0;34m==[0m [0;34m"__main__"[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0m
-[0;32m--
+
 **********************************************************************
 
-Code ran without errors
+Encountered error (or warning):
+Traceback (most recent call last):
+  File "oaks_debugme.py", line 73, in <module>
+    status = main(sys.argv)
+  File "oaks_debugme.py", line 55, in main
+    f = open('../data/TestOaksData.csv','r')
+FileNotFoundError: [Errno 2] No such file or directory: '../data/TestOaksData.csv'
 
-Time consumed = 0.52571s
+If you suspect this is an IPython bug, please report it at:
+    https://github.com/ipython/ipython/issues
+or send an email to the mailing list at ipython-dev@python.org
+
+You can print a more detailed traceback right now with "%tb", or use "%debug"
+to interactively debug it.
+
+Extra-detailed tracebacks for bug-reporting purposes can be enabled via:
+    %config Application.verbose_crash=True
+
 
 ======================================================================
 Inspecting script file oaks.py...
@@ -1913,9 +1920,7 @@ File contents are:
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-test data output methods
-"""
+"""test data output methods"""
 
 __appname__="oaks.py"
 __author__="PMH"
@@ -1927,6 +1932,7 @@ __license__="None"
 taxa=['Quercus robur',"Fraxinus excelsior","Pinus sylvestris","Quercus cerris","Quercus petraea"]
 
 def is_an_oak(name):
+    """test oak or not"""
 	return name.lower().startswith('quercus ')
 
 ## Using for loops
@@ -1955,26 +1961,24 @@ print(oaks_lc)
 Testing oaks.py...
 
 oaks.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 88
+Found one or more docstrings and functions
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
 **********************************************************************
-{'Quercus petraea', 'Quercus robur', 'Quercus cerris'}
-{'Quercus petraea', 'Quercus robur', 'Quercus cerris'}
-{'QUERCUS PETRAEA', 'QUERCUS ROBUR', 'QUERCUS CERRIS'}
-{'QUERCUS PETRAEA', 'QUERCUS ROBUR', 'QUERCUS CERRIS'}
 
 **********************************************************************
 
-Code ran without errors
-
-Time consumed = 0.02745s
+Encountered error (or warning):
+  File "oaks.py", line 24
+    return name.lower().startswith('quercus ')
+                                             ^
+TabError: inconsistent use of tabs and spaces in indentation
 
 ======================================================================
 Inspecting script file loops.py...
@@ -1992,9 +1996,7 @@ File contents are:
 # Date: Oct 2019
 
 
-"""
-loops testing
-"""
+"""loops testing"""
 
 __appname__="loops.py"
 __author__="PMH"
@@ -2030,12 +2032,12 @@ while b:
 Testing loops.py...
 
 loops.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 87
+Found no functions, but one docstring for the script, good
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
@@ -2164,7 +2166,7 @@ GERONIMO! infinite loop! ctrl+c
 
 Code ran without errors
 
-Time consumed = 10.33444s
+Time consumed = 10.34311s
 
 ======================================================================
 Inspecting script file using_name.py...
@@ -2201,12 +2203,12 @@ else:
 Testing using_name.py...
 
 using_name.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 86
+Found no functions, but one docstring for the script, good
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
@@ -2217,7 +2219,7 @@ This program is being run by itself
 
 Code ran without errors
 
-Time consumed = 0.06265s
+Time consumed = 0.06543s
 
 ======================================================================
 Inspecting script file align_seqs.py...
@@ -2234,9 +2236,7 @@ File contents are:
 # Arguments: 0 or 2
 # Date: Oct 2019
 
-"""
-python homework -- genetic alignment module program
-"""
+"""python homework -- genetic alignment module program"""
 
 __appname__="align_seqs.py"
 __author__="PMH"
@@ -2272,6 +2272,7 @@ else:
 # A function that computes a score by returning the number of matches starting from arbitrary startpoint (chosen by user)
 
 def calculate_score(s1, s2, l1, l2, startpoint):
+    """calculate alignment scores"""
     matched = "" # to hold string displaying alignements
     score = 0
     for i in range(l2):
@@ -2328,24 +2329,56 @@ print("Slave finishes its report")**********************************************
 Testing align_seqs.py...
 
 align_seqs.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 85
+Found one or more docstrings and functions
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
 **********************************************************************
-
+Slave is writing your best results into report...
+-----*****
+CAATTCGGAT
+ATCGCCGGATTACGGG
+5
+cal: pos  0  with  5
+CAATTCGGAT
+ATCGCCGGATTACGGG
+Best score: 5
+.------*--*
+.CAATTCGGAT
+ATCGCCGGATTACGGG
+2
+cal: pos  1  with  2
+..*---------
+..CAATTCGGAT
+ATCGCCGGATTACGGG
+1
+cal: pos  2  with  1
+...--------*-
+...CAATTCGGAT
+ATCGCCGGATTACGGG
+1
+cal: pos  3  with  1
+....*---------
+....CAATTCGGAT
+ATCGCCGGATTACGGG
+1
+cal: pos  4  with  1
+.....*---*-----
+.....CAATTCGGAT
+ATCGCCGGATTACGGG
+2
+cal: pos  5  with  2
+......-
 **********************************************************************
 
-Encountered error (or warning):
-Traceback (most recent call last):
-  File "align_seqs.py", line 24, in <module>
-    f=open('../Data/seq.csv',"r")
-FileNotFoundError: [Errno 2] No such file or directory: '../Data/seq.csv'
+Code ran without errors
+
+Time consumed = 0.04878s
 
 ======================================================================
 Inspecting script file basic_io2.py...
@@ -2362,9 +2395,7 @@ File contents are:
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-second of three basic_io.py sections -- print a list of numbers into txt file
-"""
+"""second of three basic_io.py sections -- print a list of numbers into txt file"""
 
 __appname__="basic_io2.py"
 __author__="PMH"
@@ -2387,12 +2418,12 @@ f.close()**********************************************************************
 Testing basic_io2.py...
 
 basic_io2.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 84
+Found no functions, but one docstring for the script, good
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
@@ -2404,7 +2435,7 @@ job done
 
 Code ran without errors
 
-Time consumed = 0.07981s
+Time consumed = 0.02674s
 
 ======================================================================
 Inspecting script file sysargv.py...
@@ -2421,9 +2452,7 @@ File contents are:
 # Arguments: variable
 # Date: Oct 2019
 
-"""
-get familiarize with system arguments in python scripts
-"""
+"""get familiarize with system arguments in python scripts"""
 
 __appname__="sysargv.py"
 __author__="PMH"
@@ -2439,12 +2468,12 @@ print("The arguments are: ",str(sys.argv))
 Testing sysargv.py...
 
 sysargv.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 83
+Found no functions, but one docstring for the script, good
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
@@ -2457,7 +2486,7 @@ The arguments are:  ['sysargv.py']
 
 Code ran without errors
 
-Time consumed = 0.03879s
+Time consumed = 0.02717s
 
 ======================================================================
 Inspecting script file align_seqs_fasta.py...
@@ -2474,9 +2503,7 @@ File contents are:
 # Arguments: 0 or 2
 # Date: Oct 2019
 
-"""
-python homework -- genetic alignment program
-"""
+"""python homework -- genetic alignment program"""
 
 __appname__="align_seqs_fasta.py"
 __author__="PMH"
@@ -2534,6 +2561,7 @@ else:
 # A function that computes a score by returning the number of matches starting from arbitrary startpoint (chosen by user)
 
 def calculate_score(s1, s2, l1, l2, startpoint):
+    """calculate alignment score"""
     matched = "" # to hold string displaying alignements
     score = 0
     for i in range(l2):
@@ -2609,12 +2637,12 @@ print("Slave finishes its report")**********************************************
 Testing align_seqs_fasta.py...
 
 align_seqs_fasta.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 82
+Found one or more docstrings and functions
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
@@ -2624,7 +2652,7 @@ Output (only first 500 characters):
 
 Encountered error (or warning):
 Traceback (most recent call last):
-  File "align_seqs_fasta.py", line 29, in <module>
+  File "align_seqs_fasta.py", line 27, in <module>
     files=[f for f in listdir(p) if all([isfile(join(p,f)), f.startswith("4"), f.endswith(".fasta")])]
 FileNotFoundError: [Errno 2] No such file or directory: '../../Week01/Data/'
 
@@ -2692,6 +2720,7 @@ def find_all_primes(x=22):
 	return allprimes
 
 def main(argv):
+    """test"""
 	print(even_or_odd(22))
 	print(even_or_odd(33))
 	print(largest_divisor_five(120))
@@ -2709,41 +2738,24 @@ if(__name__=="__main__"):
 Testing control_flow.py...
 
 control_flow.py is a Python script file;
- checking for docstrings...
 
-Found one or more doctrings!
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
 **********************************************************************
-22 is even!
-33 is odd!
-The largest divisor of 120 is 5
-no divisor found for 121
-60 is not a prime: 2 is a divisor
-False
-59 is a prime
-True
-2 is a prime
-3 is a prime
-4 is not a prime: 2 is a divisor
-5 is a prime
-6 is not a prime: 2 is a divisor
-7 is a prime
-8 is not a prime: 2 is a divisor
-9 is not a prime: 3 is a divisor
-10 is not a prime: 2 is a divisor
-11 is a prime
-12 is not a prime: 2 is a divisor
-13 is a prime
-14 is not a prime: 2 is a divisor
-15 is not a prime: 3 is a divisor
-16 is not a pr
+
 **********************************************************************
 
-Code ran without errors
-
-Time consumed = 0.02608s
+Encountered error (or warning):
+  File "control_flow.py", line 61
+    print(even_or_odd(22))
+                         ^
+TabError: inconsistent use of tabs and spaces in indentation
 
 ======================================================================
 Inspecting script file test_control_flow.py...
@@ -2792,7 +2804,8 @@ def even_or_odd(x=0): ## if not specified, x should take value 0
 	return "%d is Odd!" %x
 
 # def main(argv):
-#     	print(even_or_odd(22))
+#     """test"""
+#     print(even_or_odd(22))
 # 	print(even_or_odd(33))
 # 	return 0
 
@@ -2804,9 +2817,12 @@ def even_or_odd(x=0): ## if not specified, x should take value 0
 Testing test_control_flow.py...
 
 test_control_flow.py is a Python script file;
- checking for docstrings...
 
-Found one or more doctrings!
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
@@ -2816,7 +2832,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.06260s
+Time consumed = 0.05887s
 
 ======================================================================
 Inspecting script file basic_io1.py...
@@ -2833,9 +2849,7 @@ File contents are:
 # Arguments: 0
 # Date: Oct 2019
 
-"""
-first of three basic_io.py sections -- output lines from txt file
-"""
+"""first of three basic_io.py sections -- output lines from txt file"""
 
 __appname__="basic_io1.py"
 __author__="PMH"
@@ -2866,12 +2880,12 @@ f.close()**********************************************************************
 Testing basic_io1.py...
 
 basic_io1.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 81
+Found no functions, but one docstring for the script, good
+
+Current Points = 99.5
 
 Output (only first 500 characters): 
 
@@ -2903,19 +2917,19 @@ Fourth Line
 
 Code ran without errors
 
-Time consumed = 0.02759s
+Time consumed = 0.02525s
 
 ======================================================================
 ======================================================================
 Finished running scripts
 
-Ran into 5 errors
+Ran into 8 errors
 
 ======================================================================
 ======================================================================
 
 FINISHED WEEKLY ASSESSMENT
 
-Current Points for the Week = 81
+Current Points for the Week = 99.5
 
 NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!

@@ -9,7 +9,7 @@ Note that:
 
 ======================================================================
 ======================================================================
-Your Git repo size this week is about 365.01 MiB on disk 
+Your Git repo size this week is about 560.34 MiB on disk 
 
 PART 1: Checking project workflow...
 
@@ -36,6 +36,10 @@ readme_final.md
 *.log
 *.synctex.gz
 .Rapp.history
+*.mov
+*.mp4
+*.gif
+p_*
 **********************************************************************
 
 Found README in parent directory, named: README.txt
@@ -422,7 +426,7 @@ terminal output
 [01]:https://docs.readme.com/docs/best-practices
 [02]:https://github.com/jehna/readme-best-practices/blob/master/README-default.md**********************************************************************
 
-Found following files in results directory: LV3_model2.pdf, LV2_model2.pdf, LV4_model1.pdf, LV1_model1.pdf, LV4_model2.pdf, LV2_model1.pdf, LV3_model1.pdf, LV1_model2.pdf...
+Found following files in results directory: LV3_model2.pdf, LV2_model2.pdf, LV5_model2.pdf, LV5_model1.pdf, LV4_model1.pdf, LV1_model1.pdf, LV4_model2.pdf, LV2_model1.pdf, LV3_model1.pdf, LV1_model2.pdf...
 ideally, Results directory should be empty other than, perhaps, a readme. 
 
 Found 21 code files: TestR.py, regexs.py, LV3.py, profileme2.py, timeitme.py, blackbirds.py, simply_trial.ipynb, Nets.py, TestR.R, profileme.py, LV4.py, fmr.R, using_os.py, LV1.py, LV5.py, DrawFW.py, run_fmr_R.py, run_LV.py, LV2.py, simply_trial-checkpoint.ipynb, Data_in_python3-checkpoint.ipynb
@@ -476,7 +480,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.12802s
+Time consumed = 0.13570s
 
 ======================================================================
 Inspecting script file regexs.py...
@@ -580,34 +584,12 @@ Current Points = 100
 Output (only first 500 characters): 
 
 **********************************************************************
-Samraat Pawar, s.pawar@imperial.ac.uk, Systems biology and ecology theory
-Samraat Pawar
-s.pawar@imperial.ac.uk
-Systems biology and ecology theory
- s.pawar@imperial.ac.uk
- a-academic@imperial.ac.uk
- y.a_academic@imperial.ac.uk
-Dr Arkhat Abzhanov
-Dr Chris Wilson
-Dr Cristina Banks
-Dr David Orme
-Dr James Rosindell
-Dr Joseph Tobias
-Dr Julia Schroeder
-Dr Lauren Cator
-Dr Magda Charalambous
-Dr Martin Bidartondo
-Dr Martin Brazeau
-Dr Matteo Fumagalli
-Dr Michael Themis
-Dr Mike Tristem
-Dr Oliver Windram
-Dr P
+
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.44347s
+Time consumed = 10.00660s
 
 ======================================================================
 Inspecting script file LV3.py...
@@ -639,13 +621,13 @@ import matplotlib.pylab as p
 ## sys argv imput
 if len(sys.argv) < 4:
     print("not enough inputs, using defaults")
-    print("r=1.  a=0.1  z=1.5  e=0.75")
+    print("r=1  a=0.1  z=1.5  e=0.75")
     r=1.;a=.1;z=1.5;e=.75
 else:
-    r=float(sys.argv[1])
-    a=float(sys.argv[2])
-    z=float(sys.argv[3])
-    e=float(sys.argv[4])
+    r=float(sys.argv[1]) ## intrinsic (per-capita) growth rate
+    a=float(sys.argv[2]) ## per-capita "search-rate" for resource
+    z=float(sys.argv[3]) ## mortality rate
+    e=float(sys.argv[4]) ## consumer's efficiency for resource -> biomass
 
 def LV():
     """adaptation for cProfile"""
@@ -662,9 +644,9 @@ def LV():
 
     ## set initial start parameters
     t=sc.linspace(0,15,1e3)
-    K=33 ## max 40
+    K=33 ## max 40, carrying capacity
     pops=sc.zeros(((len(t)),2))
-    pops[0,:]=[10,5]
+    pops[0,:]=[10,5] ## initial population of resource & consumers
     for i in range(1,len(t)):
         pops[i,:]=dCR_dt(pops[(i-1),:],t[i])
         if pops[i,0] > K:
@@ -728,7 +710,7 @@ Output (only first 500 characters):
 
 **********************************************************************
 not enough inputs, using defaults
-r=1.  a=0.1  z=1.5  e=0.75
+r=1  a=0.1  z=1.5  e=0.75
 final Consumer population: 3.94 individuals / units at time 15.0
 final Resource population: 20.0 individuals / units at time 15.0
 
@@ -736,7 +718,7 @@ final Resource population: 20.0 individuals / units at time 15.0
 
 Code ran without errors
 
-Time consumed = 0.96532s
+Time consumed = 1.00923s
 
 ======================================================================
 Inspecting script file profileme2.py...
@@ -801,7 +783,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 6.09066s
+Time consumed = 6.00074s
 
 ======================================================================
 Inspecting script file timeitme.py...
@@ -870,7 +852,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 10.00455s
+Time consumed = 10.00497s
 
 ======================================================================
 Inspecting script file blackbirds.py...
@@ -949,7 +931,7 @@ Species Agelaius assimilis
 
 Code ran without errors
 
-Time consumed = 0.03116s
+Time consumed = 0.03043s
 
 ======================================================================
 Inspecting script file simply_trial.ipynb...
@@ -1356,7 +1338,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.09455s
+Time consumed = 0.09582s
 
 ======================================================================
 Inspecting script file profileme.py...
@@ -1423,7 +1405,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 6.44229s
+Time consumed = 6.44466s
 
 ======================================================================
 Inspecting script file LV4.py...
@@ -1456,13 +1438,13 @@ import matplotlib.pylab as p
 ## sys argv imput
 if len(sys.argv) < 4:
     print("not enough inputs, using defaults")
-    print("r=1.  a=0.1  z=1.5  e=0")
-    r=1.;a=.1;z=1.5;e=0
+    print("r=1  a=0.1  z=0.1  e=0.1")
+    r=1.;a=.1;z=.1;e=.1
 else:
-    r=float(sys.argv[1])
-    a=float(sys.argv[2])
-    z=float(sys.argv[3])
-    e=float(sys.argv[4])
+    r=float(sys.argv[1]) ## intrinsic (per-capita) growth rate
+    a=float(sys.argv[2]) ## per-capita "search-rate" for resource
+    z=float(sys.argv[3]) ## mortality rate
+    e=float(sys.argv[4]) ## consumer's efficiency for resource -> biomass
 
 def LV():
     """adaptation for cProfile"""
@@ -1471,7 +1453,7 @@ def LV():
         """Lotka-Volterra model, discrete time"""
         R=pop[0]
         C=pop[1]
-        ep=float(stats.norm.rvs(size=1))
+        ep=float(stats.norm.rvs(size=1, scale=.05)) ## stochasticity
         R1=R*(1+(r+ep)*(1-R/K)-a*C)
         C1=C*(1-z+e*a*R)
         ## dimension analysis required (unit balance)
@@ -1480,9 +1462,9 @@ def LV():
 
     ## set initial start parameters
     t=sc.linspace(0,15,1e3)
-    K=5 ## max 5
+    K=50 ## carrying capacity
     pops=sc.zeros(((len(t)),2))
-    pops[0,:]=[6,5]
+    pops[0,:]=[10,5] ## initial population of resource & consumers
     for i in range(1,len(t)):
         pops[i,:]=dCR_dt(pops[(i-1),:],t[i])
         if pops[i,0] > K:
@@ -1546,15 +1528,15 @@ Output (only first 500 characters):
 
 **********************************************************************
 not enough inputs, using defaults
-r=1.  a=0.1  z=1.5  e=0
-final Consumer population: 0.0 individuals / units at time 15.0
-final Resource population: 5.0 individuals / units at time 15.0
+r=1  a=0.1  z=0.1  e=0.1
+final Consumer population: 8.13 individuals / units at time 15.0
+final Resource population: 10.08 individuals / units at time 15.0
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 1.15947s
+Time consumed = 1.19734s
 
 ======================================================================
 Inspecting script file fmr.R...
@@ -1580,7 +1562,7 @@ cat("Reading CSV\n")
 nagy <- read.csv('../Data/NagyEtAl1999.csv', stringsAsFactors = FALSE)
 
 cat("Creating graph\n")
-pdf('../Results/fmr_plot.pdf', 11, 8.5)
+pdf('../results/fmr_plot.pdf', 11, 8.5)
 col <- c(Aves='purple3', Mammalia='red3', Reptilia='green3')
 plot(log10(nagy$M.g), log10(nagy$FMR.kJ.day.1), pch=19, col=col[nagy$Class], 
      xlab=~log[10](M), ylab=~log[10](FMR))
@@ -1600,13 +1582,15 @@ Output (only first 500 characters):
 **********************************************************************
 Reading CSV
 Creating graph
+null device 
+          1 
+Finished in R!
 
 **********************************************************************
 
-Encountered error (or warning):
-Error in pdf("../Results/fmr_plot.pdf", 11, 8.5) : 
-  cannot open file '../Results/fmr_plot.pdf'
-Execution halted
+Code ran without errors
+
+Time consumed = 0.17831s
 
 ======================================================================
 Inspecting script file using_os.py...
@@ -1724,12 +1708,12 @@ timeitme.py
 using_os.py
 
 []
-/home/mhasoba/['ExpanDrive', '.dbus', '.remmina', '.zoom', 'Music', '.VirtualBox', '.ssh', '.mume', '.jupyter', '.vscode', '.nano', '.mozilla', '.ipynb_checkpoints', '.fontconfig', '.dropbox', '.unison', '.Skype', '.gnome', '.pylint.d', '.QtWebEngineProcess', '.julia', '.aspnet', '.sage', '.
+/home/mhasoba/['.dbus', '.remmina', '.zoom', 'Music', '.VirtualBox', '.ssh', '.mume', '.jupyter', '.vscode', '.nano', '.mozilla', '.ipynb_checkpoints', '.fontconfig', '.dropbox', '.unison', '.Skype', '.gnome', '.pylint.d', '.QtWebEngineProcess', '.julia', '.aspnet', '.sage', '.gphoto', 'Desk
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 1.85994s
+Time consumed = 1.85591s
 
 ======================================================================
 Inspecting script file LV1.py...
@@ -1772,8 +1756,13 @@ def LV():
         return sc.array([dRdt, dCdt])
 
     ## set initial start parameters
-    r=1.;a=.1;z=1.5;e=.75;t=sc.linspace(0,15,1e3)
-    R0=10;C0=5;RC0=sc.array([R0,C0])
+    r=1. ## intrinsic (per-capita) growth rate
+    a=.1 ## per-capita "search-rate" for resource
+    z=1.5 ## mortality rate
+    e=.75 ## consumer's efficiency for resource -> biomass
+    t=sc.linspace(0,15,1e3)
+    R0=10;C0=5 ## initial population of resource & consumers
+    RC0=sc.array([R0,C0])
     pops, infodict=integrate.odeint(dCR_dt, RC0, t, full_output=True);pops
 
     f1=p.figure(num=1);f1
@@ -1797,7 +1786,8 @@ def LV():
     f1.savefig("../results/LV1_model1.pdf")
     f2.savefig("../results/LV1_model2.pdf")
 
-LV()**********************************************************************
+LV()
+**********************************************************************
 
 Testing LV1.py...
 
@@ -1817,7 +1807,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.78541s
+Time consumed = 0.79039s
 
 ======================================================================
 Inspecting script file LV5.py...
@@ -1850,13 +1840,13 @@ import matplotlib.pylab as p
 ## sys argv imput
 if len(sys.argv) < 4:
     print("not enough inputs, using defaults")
-    print("r=1.  a=0.1  z=1.5  e=0")
-    r=100.;a=.1;z=1.5;e=0
+    print("r=1  a=0.1  z=0.1  e=0.1")
+    r=1.;a=.1;z=.1;e=.1
 else:
-    r=float(sys.argv[1])
-    a=float(sys.argv[2])
-    z=float(sys.argv[3])
-    e=float(sys.argv[4])
+    r=float(sys.argv[1]) ## intrinsic (per-capita) growth rate
+    a=float(sys.argv[2]) ## per-capita "search-rate" for resource
+    z=float(sys.argv[3]) ## mortality rate
+    e=float(sys.argv[4]) ## consumer's efficiency for resource -> biomass
 
 def LV():
     """adaptation for cProfile"""
@@ -1865,7 +1855,7 @@ def LV():
         """Lotka-Volterra model, discrete time"""
         R=pop[0]
         C=pop[1]
-        ep=float(stats.norm.rvs(size=1))
+        ep=float(stats.norm.rvs(size=1, scale=.01)) ## stochasticity
         R1=R*(2+r+ep-R/K-a*C)
         C1=C*(1-z+ep+e*a*R)
         ## dimension analysis required (unit balance)
@@ -1874,9 +1864,9 @@ def LV():
 
     ## set initial start parameters
     t=sc.linspace(0,15,1e3)
-    K=50
+    K=50 ## carrying capacity
     pops=sc.zeros(((len(t)),2))
-    pops[0,:]=[10,5]
+    pops[0,:]=[10,5] ## initial population of resource & consumers
     for i in range(1,len(t)):
         pops[i,:]=dCR_dt(pops[(i-1),:],t[i])
         if pops[i,0] > K:
@@ -1941,15 +1931,15 @@ Output (only first 500 characters):
 
 **********************************************************************
 not enough inputs, using defaults
-r=1.  a=0.1  z=1.5  e=0
-final Consumer population: 0.0 individuals / units at time 15.0
-final Resource population: 50.0 individuals / units at time 15.0
+r=1  a=0.1  z=0.1  e=0.1
+final Consumer population: 19.08 individuals / units at time 15.0
+final Resource population: 8.95 individuals / units at time 15.0
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 1.16644s
+Time consumed = 1.16765s
 
 ======================================================================
 Inspecting script file DrawFW.py...
@@ -1999,10 +1989,10 @@ def GenRdmAdjList(N = 2, C = .5):
 ## L = potential number of links in a network
 ## N = size of network / number of nodes
 
-MaxN = 30
-C = .75
+MaxN = 30 ## max number of players
+C = .75 ## probability of establishing a link
 
-AdjL = sc.array(GenRdmAdjList(MaxN, C))
+AdjL = sc.array(GenRdmAdjList(MaxN, C)) ## construct adjacent list
 Sps = sc.unique(AdjL) ## get species ids 
 SizRan = ([-10,10]) ## use log10 scale
 Sizs = sc.random.uniform(SizRan[0], SizRan[1], MaxN)
@@ -2092,13 +2082,16 @@ Output (only first 500 characters):
 **********************************************************************
 Reading CSV
 Creating graph
-python3 announcement: unsuccessful run
+null device 
+          1 
+Finished in R!
+python3 announcement: successful run
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.18013s
+Time consumed = 0.20782s
 
 ======================================================================
 Inspecting script file run_LV.py...
@@ -2150,6 +2143,9 @@ cProfile.run('LV3.LV()', sort="tottime")
 
 import LV4
 cProfile.run('LV4.LV()', sort="tottime")
+
+import LV5
+cProfile.run('LV5.LV()', sort="tottime")
 **********************************************************************
 
 Testing run_LV.py...
@@ -2165,20 +2161,20 @@ Current Points = 100
 Output (only first 500 characters): 
 
 **********************************************************************
-         100719 function calls (97806 primitive calls) in 0.166 seconds
+         100723 function calls (97810 primitive calls) in 0.126 seconds
 
    Ordered by: internal time
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-      142    0.009    0.000    0.009    0.000 {method 'set_text' of 'matplotlib.ft2font.FT2Font' objects}
-      512    0.007    0.000    0.007    0.000 {method 'load_char' of 'matplotlib.ft2font.FT2Font' objects}
-2196/1224    0.007    0.000    0.014    0.000 backend_pdf.py:141(pdfRepr)
-     2787    0.006    0.000    0.006   
+      142    0.007    0.000    0.007    0.000 {method 'set_text' of 'matplotlib.ft2font.FT2Font' objects}
+      512    0.006    0.000    0.006    0.000 {method 'load_char' of 'matplotlib.ft2font.FT2Font' objects}
+2196/1224    0.006    0.000    0.011    0.000 backend_pdf.py:141(pdfRepr)
+     2787    0.005    0.000    0.005   
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 2.90889s
+Time consumed = 3.76386s
 
 ======================================================================
 Inspecting script file LV2.py...
@@ -2213,13 +2209,13 @@ def LV():
     ## sys argv imput
     if len(sys.argv) < 4:
         print("not enough inputs, using defaults")
-        print("r=1.  a=0.1  z=1.5  e=0.75")
+        print("r=1  a=0.1  z=1.5  e=0.75")
         r=1.;a=.1;z=1.5;e=.75
     else:
-        r=float(sys.argv[1])
-        a=float(sys.argv[2])
-        z=float(sys.argv[3])
-        e=float(sys.argv[4])
+        r=float(sys.argv[1]) ## intrinsic (per-capita) growth rate
+        a=float(sys.argv[2]) ## per-capita "search-rate" for resource
+        z=float(sys.argv[3]) ## mortality rate
+        e=float(sys.argv[4]) ## consumer's efficiency for resource -> biomass
 
     ## function
     def dCR_dt(pops, t=0):
@@ -2234,8 +2230,9 @@ def LV():
 
     ## set initial start parameters
     t=sc.linspace(0,15,1e3)
-    K=37
-    R0=10;C0=5;RC0=sc.array([R0,C0])
+    K=37 ## carrying capacity
+    R0=10;C0=5 ## initial population of resource & consumers
+    RC0=sc.array([R0,C0])
     pops, infodict=integrate.odeint(dCR_dt, RC0, t, full_output=True);pops
 
     f1=p.figure(num=1);f1
@@ -2273,7 +2270,8 @@ def LV():
     print("final Consumer population:",round(pops[(pops.shape[0]-1),1], 2), "individuals / units at time",t[len(t)-1])
     print("final Resource population:",round(pops[(pops.shape[0]-1),0], 2), "individuals / units at time",t[len(t)-1])
 
-LV()**********************************************************************
+LV()
+**********************************************************************
 
 Testing LV2.py...
 
@@ -2289,7 +2287,7 @@ Output (only first 500 characters):
 
 **********************************************************************
 not enough inputs, using defaults
-r=1.  a=0.1  z=1.5  e=0.75
+r=1  a=0.1  z=1.5  e=0.75
 final Consumer population: 4.7 individuals / units at time 15.0
 final Resource population: 19.9 individuals / units at time 15.0
 
@@ -2297,7 +2295,7 @@ final Resource population: 19.9 individuals / units at time 15.0
 
 Code ran without errors
 
-Time consumed = 1.00209s
+Time consumed = 1.01890s
 
 ======================================================================
 Inspecting script file simply_trial-checkpoint.ipynb...
@@ -2570,7 +2568,7 @@ Testing Data_in_python3-checkpoint.ipynb...
 ======================================================================
 Finished running scripts
 
-Ran into 3 errors
+Ran into 2 errors
 
 ======================================================================
 ======================================================================

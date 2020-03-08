@@ -1,0 +1,1283 @@
+Starting weekly assessment for Pok Man, Week4
+
+Current Points = 100
+
+Note that: 
+(1) Major sections begin with a double "====" line 
+(2) Subsections begin with a single "====" line 
+(3) Code output or text file content are printed within single "*****" lines 
+
+======================================================================
+======================================================================
+Your Git repo size this week is about 560.34 MiB on disk 
+
+PART 1: Checking project workflow...
+
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, Week8, seminar, Week5, Week2, Week9, Week4, .git, ReadmeProg, Week3, MiniProject
+
+Found the following files in parent directory: README.txt, LICENSE, .gitignore, readme.md
+
+Checking for key files in parent directory...
+
+Found .gitignore in parent directory, great! 
+
+Printing contents of .gitignore:
+**********************************************************************
+*~ 
+*.tmp
+._*
+*.sw*
+nohup*
+.Rhistory
+readme_final.md
+*.*#
+*-*.pdf
+*-concordance.tex
+*.log
+*.synctex.gz
+.Rapp.history
+*.mov
+*.mp4
+*.gif
+p_*
+**********************************************************************
+
+Found README in parent directory, named: README.txt
+
+Printing contents of README.txt:
+**********************************************************************
+PokMan Ho CMEE Coursework Repository
+Do I like this better?
+**********************************************************************
+
+======================================================================
+Looking for the weekly directories...
+
+Found 9 weekly directories: Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week8, Week9
+
+The Week4 directory will be assessed 
+
+======================================================================
+======================================================================
+PART 2: Checking weekly code and workflow...
+
+======================================================================
+Assessing WEEK4...
+
+Found the following directories: Code, Data, Sandbox, results
+
+Found the following files: readme.md
+
+Checking for readme file in weekly directory...
+
+Found README in parent directory, named: readme.md
+
+Printing contents of readme.md:
+**********************************************************************
+![alt text](https://unichoices.co.uk/wp-content/uploads/2015/09/Imperial-College-London.jpg)
+
+# 2019 PokMan HO MRes CMEE Coursework Week4
+
+This week's focus was on: R 
+
+## License
+
+Apache-2.0
+
+## Guides
+
+Multiple scripts were coded and introduced below in filename alphabetical order.  
+All scripts are in `Code` directory
+
+### SparrowsAnalysis.R
+
+#### Features
+
+statistical analysis of sparrow tarsus data
+
+#### Suggested input
+
+```
+Rscript SparrowsAnalysis.R
+```
+
+#### Output
+
+R terminal output
+*****
+
+### StatsWithSparrows1.R
+
+#### Features
+
+minimal R function with two in-script tests
+
+#### Suggested input
+
+```
+none -- run in R console line-by-line
+```
+
+#### Output
+
+R terminal output
+*****
+
+### StatsWithSparrows10.R
+
+#### Features
+
+minimal R function with two in-script tests
+
+#### Suggested input
+
+```
+none -- run in R console line-by-line
+```
+
+#### Output
+
+R terminal output
+*****
+
+### StatsWithSparrows13.R
+
+#### Features
+
+minimal R function with two in-script tests
+
+#### Suggested input
+
+```
+none -- run in R console line-by-line
+```
+
+#### Output
+
+R terminal output
+*****
+
+### StatsWithSparrows15.R
+
+#### Features
+
+minimal R function with two in-script tests
+
+#### Suggested input
+
+```
+none -- run in R console line-by-line
+```
+
+#### Output
+
+R terminal output
+*****
+
+### StatsWithSparrows18.R
+
+#### Features
+
+minimal R function with two in-script tests
+
+#### Suggested input
+
+```
+none -- run in R console line-by-line
+```
+
+#### Output
+
+R terminal output
+*****
+
+### StatsWithSparrows2.R
+
+#### Features
+
+minimal R function with two in-script tests
+
+#### Suggested input
+
+```
+none -- run in R console line-by-line
+```
+
+#### Output
+
+R terminal output
+*****
+
+### StatsWithSparrows4.R
+
+#### Features
+
+minimal R function with two in-script tests
+
+#### Suggested input
+
+```
+none -- run in R console line-by-line
+```
+
+#### Output
+
+R terminal output
+*****
+
+### StatsWithSparrows5.R
+
+#### Features
+
+minimal R function with two in-script tests
+
+#### Suggested input
+
+```
+none -- run in R console line-by-line
+```
+
+#### Output
+
+R terminal output
+*****
+
+### StatsWithSparrows6.R
+
+#### Features
+
+minimal R function with two in-script tests
+
+#### Suggested input
+
+```
+none -- run in R console line-by-line
+```
+
+#### Output
+
+R terminal output
+*****
+
+### StatsWithSparrows9.R
+
+#### Features
+
+minimal R function with two in-script tests
+
+#### Suggested input
+
+```
+none -- run in R console line-by-line
+```
+
+#### Output
+
+R terminal output
+*****
+
+### rodents.R
+
+#### Features
+
+data analysis of rodent dataset
+
+#### Suggested input
+
+```
+none -- run in R console line-by-line
+```
+
+#### Output
+
+R terminal output
+*****
+
+## Reference
+
+[https://docs.readme.com/docs/best-practices][01]  
+[https://github.com/jehna/readme-best-practices/blob/master/README-default.md][02]  
+
+[01]:https://docs.readme.com/docs/best-practices
+[02]:https://github.com/jehna/readme-best-practices/blob/master/README-default.md**********************************************************************
+
+Found following files in results directory: rodents.pdf...
+
+Found 12 code files: StatsWithSparrows15.R, StatsWithSparrows10.R, StatsWithSparrows5.R, StatsWithSparrows9.R, StatsWithSparrows1.R, rodents.R, SparrowsAnalysis.R, StatsWithSparrows18.R, StatsWithSparrows13.R, StatsWithSparrows4.R, StatsWithSparrows6.R, StatsWithSparrows2.R
+
+======================================================================
+Testing script/code files...
+
+======================================================================
+Inspecting script file StatsWithSparrows15.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: StatsWithSparrows15.R
+# Desc: minimal R function with two in-script tests
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+# setwd("/Volumes/HPM-000/Academic/Masters/ICL_CMEE/00_course/CMEECourseWork_pmH/Week4/Code/")
+a<-read.delim("../Data/daphnia.txt")
+summary(a)
+
+par(mfrow=c(1,2))
+plot(a$Growth.rate~a$Detergent)
+plot(a$Growth.rate~a$Daphnia)
+
+library(dplyr)
+a%>%group_by(Detergent)%>%summarise(variance=var(Growth.rate))
+a%>%group_by(Daphnia)%>%summarise(variance=var(Growth.rate))
+par(mfrow=c(1,1));hist(a$Growth.rate)
+
+seFun<-function(x){
+  sqrt(var(x)/length(x))
+}
+
+detMean<-with(a,tapply(a$Growth.rate,INDEX = a$Detergent,FUN = mean))
+detSEM<-with(a,tapply(a$Growth.rate,INDEX = a$Detergent,FUN = seFun))
+cloneMean<-with(a,tapply(a$Growth.rate,INDEX = a$Daphnia,FUN = mean))
+cloneSEM<-with(a,tapply(a$Growth.rate,INDEX = a$Daphnia,FUN = seFun))
+
+par(mfrow=c(2,1),mar=c(4,4,1,1))
+barMids<-barplot(detMean, xlab = "Detergent type", ylab = "Population growth rate", ylim = c(0,5));arrows(barMids,detMean-detSEM, barMids, detMean + detSEM, code = 3, angle = 90)
+barMids<-barplot(cloneMean, xlab = "Daphnia clone", ylab = "Population growth rate", ylim = c(0,5));arrows(barMids,cloneMean-cloneSEM, barMids, cloneMean + cloneSEM, code = 3, angle = 90)
+
+dapLM<-lm(a$Growth.rate~a$Daphnia+a$Detergent)
+anova(dapLM)
+summary(dapLM)
+detMean-detMean[1]
+cloneMean-cloneMean[1]
+dapAOV<-aov(a$Growth.rate~a$Daphnia+a$Daphnia)
+summary(dapAOV)
+dapHSD<-TukeyHSD(dapAOV);dapHSD
+par(mfrow=c(2,2));plot(dapLM)
+t<-read.delim("../Data/timber.txt");summary(t)
+par(mfrow=c(2,2));boxplot(t$volume);boxplot(t$girth);boxplot(t$height)
+for(i in 1:dim(t)[2]){
+  print(paste(colnames(t)[i],":",var(t[,i])))
+}
+
+t2<-as.data.frame(subset(t,!is.na(t$volume)))
+t2$z.girth<-scale(t$girth)
+t2$z.height<-scale(t$height)
+var(t2$z.girth)
+var(t2$z.height)
+plot(t2)
+par(mfrow=c(2,2));hist(t2$volume);hist(t2$girth);hist(t2$height)
+
+pairs(t)
+cor(t)
+summary(lm(t$girth~t$height))
+VIF<-1/(1-.27);VIF
+sqrt(VIF)
+pairs(t)
+cor(t)
+pairs(t2)
+
+tMod<-lm(t$volume~t$girth+t$height)
+anova(tMod)
+summary(tMod)
+plot(tMod)
+
+pGrowth<-read.delim("../Data/ipomopsis.txt")
+summary(pGrowth)
+**********************************************************************
+
+Testing StatsWithSparrows15.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+  Growth.rate     Water     Detergent    Daphnia  
+ Min.   :1.762   Tyne:36   BrandA:18   Clone1:24  
+ 1st Qu.:2.797   Wear:36   BrandB:18   Clone2:24  
+ Median :3.788             BrandC:18   Clone3:24  
+ Mean   :3.852             BrandD:18              
+ 3rd Qu.:4.807                                    
+ Max.   :6.918                                    
+# A tibble: 4 x 2
+  Detergent variance
+  <fct>        <dbl>
+1 BrandA        1.51
+2 BrandB        1.09
+3 BrandC        1.78
+4 BrandD        2.38
+
+**********************************************************************
+
+Encountered error (or warning):
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+======================================================================
+Inspecting script file StatsWithSparrows10.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: StatsWithSparrows10.R
+# Desc: minimal R function with two in-script tests
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+# setwd("/Volumes/HPM-000/Academic/Masters/ICL_CMEE/00_course/CMEECourseWork_pmH/Week4/Code/")
+d<-read.table("../Data/SparrowSize.txt",sep = "\t",header = T)
+plot(d$Mass~d$Tarsus, ylab = "Mass (g)", xlab="Tarsus (mm)", pch=19, cex=.4, ylim=c(-5,38), xlim=c(0,22))
+d1<-d[which(!is.na(d$Mass)),]
+d2<-d[which(!is.na(d$Tarsus)),]
+length(d2$Tarsus)
+m1<-lm(d2$Mass~d2$Tarsus)
+summary(m1)
+hist(m1$residuals)
+head(m1$residuals)
+d2$z.Tarsus<-scale(d2$Tarsus)
+m3<-lm(d2$Mass~d2$z.Tarsus)
+plot(d2$Mass~d2$z.Tarsus, pch=19, cex=.4)
+abline(v=0, lty="dotted")
+head(d)
+str(d)
+d$Sex<-as.numeric(d$Sex)
+par(mfrow=c(1,2))
+plot(d$Wing~d$Sex.1, ylab = "Wing (mm)")
+plot(d$Wing~d$Sex, xlab="Sex", xlim=c(-.1,1.1), ylab = "")
+abline(lm(d$Wing~d$Sex), lwd=2)
+text(.15,76,"intercept")
+text(.9,77.5,"slope", col = "red")
+
+d4<-d[which(!is.na(d$Wing)),]
+m4<-lm(d4$Wing~d4$Sex)
+t4<-t.test(d4$Wing~d4$Sex, var.equal=T)
+summary(m4)
+t4
+par(mfrow=c(2,2));plot(m3)
+par(mfrow=c(2,2));plot(m4)
+
+## exercise
+par(mfrow=c(1,1))
+plot(d$Wing~d$Sex.1)
+plot(d$Tarsus~d$Sex.1)
+plot(d$Mass~d$Sex.1)
+
+a.0<-summary(lm(d$Mass~d$Bill))
+paste("number of sparrows:",dim(d)[1]) 
+paste("explanatory var: bill width (mm)")
+paste("response var: mass (g)")
+
+{i<-d$Tarsus
+  print(mean(i, na.rm = T))
+  print(length(!is.na(i)))
+  print(sd(i, na.rm = T))
+  print(min(i, na.rm = T))
+  print(max(i, na.rm = T))}
+
+**********************************************************************
+
+Testing StatsWithSparrows10.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+[1] 1685
+
+Call:
+lm(formula = d2$Mass ~ d2$Tarsus)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.7271 -1.2202 -0.1302  1.1592  7.5036 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  5.83246    0.98195    5.94 3.48e-09 ***
+d2$Tarsus    1.18466    0.05295   22.37  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.841 on 1642 degrees of freedom
+  (41 observations deleted due to missingness)
+Multiple R
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.32008s
+
+======================================================================
+Inspecting script file StatsWithSparrows5.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: StatsWithSparrows5.R
+# Desc: minimal R function with two in-script tests
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+oo<-read.table("../Data/SparrowSize.txt", sep = "\t", header = T)
+o.0<-subset(oo, oo$Year==2001)
+t.test(o.0$Tarsus,mu=mean(oo$Tarsus,na.rm = T),na.rm=T)
+t.test(o.0$Tarsus~o.0$Sex.1,na.rm=T)
+ 
+## HW
+library(ggplot2)
+boxplot(oo$Mass~oo$Sex.1, col=c("red","blue"), ylab = "Body mass (g)") ## always show description of data (i.e. plot) BEFORE doing any analyses
+t.test(oo$Mass~oo$Sex.1)
+
+ggplot()+xlab("Mass (g)")+
+  geom_density(aes(x=na.omit(oo$Mass[which(oo$Sex.1=="male")])),colour="blue")+
+  geom_density(aes(x=na.omit(oo$Mass[which(oo$Sex.1=="female")])),colour="red")+
+  geom_vline(xintercept = mean(oo$Mass[which(oo$Sex.1=="male")],na.rm = T),colour="blue")+
+  geom_vline(xintercept = mean(oo$Mass[which(oo$Sex.1=="female")],na.rm = T),colour="red")
+
+d1<-as.data.frame(head(oo,50))
+length(d1$Mass)
+t.test(d1$Mass~d1$Sex.1)
+
+t.test(o.0$Wing, mu=mean(oo$Wing,na.rm = T),na.rm=T)
+t.test(o.0$Wing~o.0$Sex.1,na.rm=T)
+t.test(o.0$Wing[which(o.0$Sex.1=="male")], mu=mean(oo$Wing[which(o.0$Sex.1=="male")],na.rm = T),na.rm=T)
+t.test(o.0$Wing[which(o.0$Sex.1=="female")], mu=mean(oo$Wing[which(o.0$Sex.1=="female")],na.rm = T),na.rm=T)
+
+boxplot(oo$Tarsus~oo$Year)
+t.test(o.0$Tarsus, mu=mean(oo$Tarsus,na.rm = T),na.rm=T)
+t.test(o.0$Tarsus~o.0$Sex.1,na.rm=T)
+t.test(o.0$Tarsus[which(o.0$Sex.1=="male")], mu=mean(oo$Tarsus[which(o.0$Sex.1=="male")],na.rm = T),na.rm=T)
+t.test(o.0$Tarsus[which(o.0$Sex.1=="female")], mu=mean(oo$Tarsus[which(o.0$Sex.1=="female")],na.rm = T),na.rm=T)
+
+oo.p<-oo
+oo.p$Year<-"overall"
+oo.p<-rbind(oo.p,oo[which(oo$Year==2001),])
+boxplot(oo.p$Tarsus~oo.p$Year,col=c("red","blue"))
+t.test(oo.p$Tarsus~oo.p$Year, na.rm=T)
+
+## t-test assumptions
+## variance equal
+## normally-distributed**********************************************************************
+
+Testing StatsWithSparrows5.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+	One Sample t-test
+
+data:  o.0$Tarsus
+t = -4.2712, df = 94, p-value = 4.65e-05
+alternative hypothesis: true mean is not equal to 18.52335
+95 percent confidence interval:
+ 17.87853 18.28779
+sample estimates:
+mean of x 
+ 18.08316 
+
+
+	Welch Two Sample t-test
+
+data:  o.0$Tarsus by o.0$Sex.1
+t = 0.34403, df = 81.954, p-value = 0.7317
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.3484762  0.4942085
+sample estimates:
+mean in group female   mean i
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 1.44760s
+
+======================================================================
+Inspecting script file StatsWithSparrows9.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: StatsWithSparrows9.R
+# Desc: minimal R function with two in-script tests
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+a<-data.frame(c(1,2,3,4,8),c(4,3,5,7,9))
+a<-data.frame(runif(1e6,.5,1.5),runif(1e6,.5,1.5))
+m1<-lm(a[,2]~a[,1])
+summary(m1) ## est +/- 2 se include 0 -> not quite stat sig
+anova(m1)
+resid(m1)
+cov(a[,1],a[,2])
+var(a[,1])
+plot(a[,2]~a[,1])
+**********************************************************************
+
+Testing StatsWithSparrows9.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+Call:
+lm(formula = a[, 2] ~ a[, 1])
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.50033 -0.25010  0.00013  0.24970  0.50058 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 0.9989112  0.0010403 960.240   <2e-16 ***
+a[, 1]      0.0009634  0.0009992   0.964    0.335    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2885 on 999998 degrees of freedom
+Multiple R-squared:  9.297e-07,	Adjusted R-squared:  -
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 8.62229s
+
+======================================================================
+Inspecting script file StatsWithSparrows1.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: StatsWithSparrows1.R
+# Desc: minimal R function with two in-script tests
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+2*2+1
+2*(2+1)
+12/2^3
+(12/2)^3
+x<-5
+y<-2
+x2<-x^2
+a<-x2+x
+y2<-y^2
+z2<-x2+y2
+z<-sqrt(z2)
+3>2
+3>=3
+4<2
+myNumericVector<-c(1.3,2.5,1.9,3.4,5.6,1.4,3.1,2.9)
+myCharacterVector<-c(rep("low",4),rep("high",4))
+myLogicalVector<-c(rep(c(rep(T,2),rep(F,2)),2))
+myMixedVector<-c(1,T,F,3,"help",1.2,T,"notwhatIplanned")
+sqrt(4);4^.5;log(0);log(1);log(10);log(Inf)
+
+oo<-read.table("../Data/SparrowSize.txt", sep = "\t", header = T)
+str(oo)
+**********************************************************************
+
+Testing StatsWithSparrows1.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+[1] 5
+[1] 6
+[1] 1.5
+[1] 216
+[1] TRUE
+[1] TRUE
+[1] FALSE
+[1] 2
+[1] 2
+[1] -Inf
+[1] 0
+[1] 2.302585
+[1] Inf
+'data.frame':	1770 obs. of  8 variables:
+ $ BirdID: int  1 2 2 2 2 2 2 2 2 2 ...
+ $ Year  : int  2002 2001 2002 2003 2004 2004 2004 2004 2004 2005 ...
+ $ Tarsus: num  16.9 16.8 17.2 17.5 17.8 ...
+ $ Bill  : num  NA NA NA 13.5 13.4 ...
+ $ Wing  : num  76 76 76 76 77 78 77 77 77 77 ...
+ $ Mass  : num  23.6 27.5 28.1 27.8 26.5 ...
+ $ Sex   : int  0 1 1 1 1 1 1 1 1 1 ...
+ $ Sex.1 : Factor w/ 2 leve
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.12853s
+
+======================================================================
+Inspecting script file rodents.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: rodents.R
+# Desc: data analysis of rodent dataset
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+## lib
+library(car)
+library(PMCMR)
+library(dplyr)
+
+{## data-scanning
+  # setwd("/Volumes/HPM-000/Academic/Masters/ICL_CMEE/00_course/CMEECourseWork_pmH/Week4/Code/")
+  oo<-read.csv("../Data/rodents.csv", header = T, stringsAsFactors = F)
+  oo$yr<-as.factor(oo$yr)
+  oo$mo<-as.factor(oo$mo)
+  oo$tag<-ifelse(oo$tag=="","No_Tag",oo$tag)
+  oo$tag<-as.factor(oo$tag)
+  oo$species<-as.factor(oo$species)
+  oo$sex<-ifelse(oo$sex!="M", ifelse(oo$sex !="F","No_Data","F"),"M")
+  oo$sex<-as.factor(oo$sex)
+  colnames(oo)[6]<-"hindfootLength.mm"
+  colnames(oo)[7]<-"weight.g"
+  colnames(oo)[8]<-"precipitation.mm"
+  # aa<-oo[which(oo$sex!="M" & oo$sex!="F" & oo$sex!=""),]
+  # aa<-oo[which(oo$sex=="M"),]
+}
+## data description oo[,6]
+## data description oo[,7]
+for(i in 1:5){
+  if(i!=3){
+    boxplot(oo[,7]~oo[,i])
+  }
+};rm(i)
+
+## data description oo[,8]
+for(i in 1:5){
+  if(i!=3){
+      boxplot(oo[,8]~oo[,i])
+  }
+};rm(i)
+
+## stat (only tell how reliable is the test, no need to put into publication)
+hist(log(oo$precipitation.mm))
+hist(log(oo$weight.g))
+hist(oo$hindfootLength.mm)
+qqPlot(log(oo$precipitation.mm), ylim = c(0,10))
+qqPlot(log(oo$weight.g), ylim = c(0,10))
+qqPlot(log(oo$hindfootLength.mm))
+
+## non-parametric
+cor.test(oo$weight.g,oo$precipitation.mm, method = "spearman") ## is precipitation affecting weight?
+# cor.test(log(oo$weight.g),log(oo$precipitation.mm), method = "spearman")
+kruskal.test(oo$weight.g~interaction(oo$species,oo$sex))
+posthoc.kruskal.nemenyi.test(oo$weight.g~interaction(oo$species,oo$sex))
+# a<-posthoc.kn.test(oo$weight.g,oo$species,oo$sex) ## self-function
+
+kruskal.test(oo$weight.g~oo$sex)
+posthoc.kruskal.nemenyi.test(oo$weight.g~oo$sex)
+aa<-oo[which(oo$sex!="No_Data"),]
+aa$sex<-as.factor(as.character(aa$sex))
+boxplot(aa$weight.g~aa$sex, main="Boxplot of Rodent weight against Gender", ylab = "Weight (g)", xlab = "Gender")
+
+cat(paste("Male weight median:",unname(summary(aa[which(aa$sex=="M"),7])[3]),"\nFemale weight median:",unname(summary(aa[which(aa$sex=="F"),7])[3]),"\nMedian Difference by rodent gender:",unname(summary(aa[which(aa$sex=="M"),7])[3])-unname(summary(aa[which(aa$sex=="F"),7])[3])))
+**********************************************************************
+
+Testing rodents.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+Error in library(PMCMR) : there is no package called ‘PMCMR’
+Execution halted
+
+======================================================================
+Inspecting script file SparrowsAnalysis.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: SparrowsAnalysis.R
+# Desc: statistical analysis of sparrow tarsus data
+# Input: Rscript SparrowsAnalysis.R
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+oo<-read.table("../Data/SparrowTarsus.txt", sep="\t", header = T)
+for(i in 1:dim(oo)[2]){
+  if(class(oo[,i])=="numeric"){
+    print(colnames(oo)[i])
+    if(shapiro.test(oo[,i])$p.value > .05){
+      print(shapiro.test(oo[,i]))
+    }
+  }
+};rm(i)
+**********************************************************************
+
+Testing SparrowsAnalysis.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+[1] "Tarsus"
+
+	Shapiro-Wilk normality test
+
+data:  oo[, i]
+W = 0.98339, p-value = 0.0659
+
+[1] "BillWidth"
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.13178s
+
+======================================================================
+Inspecting script file StatsWithSparrows18.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: StatsWithSparrows18.R
+# Desc: minimal R function with two in-script tests
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+a<-read.table("../Data/ObserverRepeatability.txt", header = T)
+library(dplyr)
+a %>% group_by(StudentID) %>% summarise(count=length(StudentID))
+a %>% group_by(StudentID) %>% summarise(count=length(StudentID)) %>% summarise(length(StudentID))
+a %>% group_by(StudentID) %>% summarise(count=length(StudentID)) %>% summarise(sum(count))
+length(a$StudentID)
+a %>% group_by(StudentID) %>% summarise(count=length(StudentID)) %>% summarise(sum(count^2))
+mod<-lm(a$Tarsus~a$StudentID)
+mod<-lm(a$Tarsus~a$Leg+a$Handedness+a$StudentID)
+anova(mod)
+library(lme4)
+lmm<-lmer(a$Tarsus~a$Leg+a$Handedness+(1|a$StudentID))
+summary(lmm)
+var(a$Tarsus)
+**********************************************************************
+
+Testing StatsWithSparrows18.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+# A tibble: 80 x 2
+   StudentID count
+   <fct>     <int>
+ 1 AF151093      3
+ 2 AH2912        2
+ 3 Ak70593       1
+ 4 AK70593       1
+ 5 AL0109        1
+ 6 AR0408        2
+ 7 AR1310        1
+ 8 ASR0312       2
+ 9 BC1603        1
+10 cd1302        2
+# … with 70 more rows
+# A tibble: 1 x 1
+  `length(StudentID)`
+                <int>
+1                  80
+# A tibble: 1 x 1
+  `sum(count)`
+         <int>
+1          151
+[1] 151
+# A tibble: 1 x 1
+  `sum(count^2)`
+           <dbl>
+1            333
+Analysis
+**********************************************************************
+
+Encountered error (or warning):
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: Matrix
+Loading required package: methods
+
+Attaching package: ‘lme4’
+
+The following object is masked from ‘package:stats’:
+
+    sigma
+
+Warning message:
+'rBind' is deprecated.
+ Since R version 3.2.0, base's rbind() should work fine with S4 objects 
+
+======================================================================
+Inspecting script file StatsWithSparrows13.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: StatsWithSparrows13.R
+# Desc: minimal R function with two in-script tests
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+d<-read.table("../Data/SparrowSize.txt", header = T)
+d.1<-d[which(!is.na(d$Wing)),]
+hist(d.1$Wing)
+m.1<-lm(d.1$Wing~d.1$Sex.1)
+summary(m.1)
+boxplot(d.1$Wing~d.1$Sex.1)
+anova(m.1)
+t.test(d.1$Wing~d.1$Sex.1, var.equal=T)
+boxplot(d.1$Wing~d.1$BirdID, ylab = "Wing length (mm)")
+
+library(dplyr)
+tbl_df(d.1)
+# glimpse(d.1)
+d$Mass %>% cor.test(d$Tarsus, na.rm=T)
+d.1 %>% group_by(BirdID) %>% summarise(count=length(BirdID))
+count(d.1, BirdID)
+d.1 %>% group_by(BirdID) %>% summarise(count=length(BirdID)) %>% count(count)
+count(d.1, d.1$BirdID) %>% count(count)
+m.3<-lm(d.1$Wing~as.factor(d.1$BirdID))
+anova(m.3)
+boxplot(d$Mass~d$Year)
+m.2<-lm(d$Mass~as.factor(d$Year))
+anova(m.2)
+summary(m.2)
+t(model.matrix(m.2))
+
+## exercise
+d.2<-d[which(d$Year!=2000),]
+mm.1<-anova(lm(d.2$Mass~d.2$Sex.1)) ## more useful
+aov(d.2$Mass~d.2$Sex.1)
+aov(lm(d.2$Mass~d.2$Sex.1)) ## same as above
+mm.1;summary(mm.1)
+**********************************************************************
+
+Testing StatsWithSparrows13.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+Call:
+lm(formula = d.1$Wing ~ d.1$Sex.1)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-16.0961  -1.0961  -0.0961   1.3683   5.3683 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   76.09611    0.07175 1060.50   <2e-16 ***
+d.1$Sex.1male  2.53562    0.09998   25.36   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 2.057 on 1693 degrees of freedom
+Multiple R-squared:  0.2753,	Adjusted R-squared: 
+**********************************************************************
+
+Encountered error (or warning):
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Error: Column `count` is unknown
+Execution halted
+
+======================================================================
+Inspecting script file StatsWithSparrows4.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: StatsWithSparrows4.R
+# Desc: minimal R function with two in-script tests
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+oo<-read.table("../Data/SparrowSize.txt", sep = "\t", header = T)
+o.0<-subset(oo, is.na(oo$Tarsus)==F)
+seTarsus<-sqrt(var(o.0$Tarsus)/length(o.0$Tarsus))
+o.2001<-subset(o.0,o.0$Year==2001)
+seTarsus2001<-sqrt(var(o.2001$Tarsus)/length(o.2001$Tarsus))
+for(i in c(3:6)){
+  print(colnames(o.2001)[i])
+  print(paste("N:",length(oo[which(is.na(oo[,i])==F),i])))
+  x<-sqrt(var(o.2001[,i],na.rm = T)/length(o.2001[,i]))
+  print(paste0("se of 2001 column ",i,": ",x))
+  print(paste0("0.95CI: ",mean(o.2001[,i]-1.96*x,na.rm = T),"   ",mean(o.2001[,i]+1.96*x,na.rm = T)))
+};rm(i)
+
+## hw
+**********************************************************************
+
+Testing StatsWithSparrows4.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+[1] "Tarsus"
+[1] "N: 1685"
+[1] "se of 2001 column 3: 0.103062320454735"
+[1] "0.95CI: 17.8811556626456   18.2851599588281"
+[1] "Bill"
+[1] "N: 1140"
+[1] "se of 2001 column 4: NA"
+[1] "0.95CI: NaN   NaN"
+[1] "Wing"
+[1] "N: 1695"
+[1] "se of 2001 column 5: 0.221856374881628"
+[1] "0.95CI: 77.2177930841794   78.0874700737154"
+[1] "Mass"
+[1] "N: 1704"
+[1] "se of 2001 column 6: 0.16915776486267"
+[1] "0.95CI: 27.2854720473585   27.9485704856202"
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.14234s
+
+======================================================================
+Inspecting script file StatsWithSparrows6.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: StatsWithSparrows6.R
+# Desc: minimal R function with two in-script tests
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+oo<-read.table("../Data/SparrowSize.txt", sep = "\t", header = T)
+
+library(pwr)
+pwr.t.test(d=5/sd(oo$Wing,na.rm = T),sig.level = .05,power = .8)
+**********************************************************************
+
+Testing StatsWithSparrows6.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+Error in library(pwr) : there is no package called ‘pwr’
+Execution halted
+
+======================================================================
+Inspecting script file StatsWithSparrows2.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: StatsWithSparrows2.R
+# Desc: minimal R function with two in-script tests
+# Input: none -- run in R console line-by-line
+# Output: R terminal output
+# Arguments: 0
+# Date: Oct 2019
+
+oo<-read.table("../Data/SparrowSize.txt", sep = "\t", header = T)
+str(oo)
+names(oo)
+head(oo)
+length(oo$Tarsus)
+hist(oo$Tarsus)
+mean(oo$Tarsus, na.rm=T)
+median(oo$Tarsus, na.rm = T)
+mode(oo$Tarsus)
+a<-as.data.frame(table(oo$Tarsus))
+a[,1]<-as.numeric(as.character(a[,1]))
+a[which(a[,2]==max(a[,2])),]
+
+mode<-function(NumericCol){
+  ## input numeric column
+  ## output mode of the column and frequency
+  a<-as.data.frame(table(NumericCol))
+  a[,1]<-as.numeric(as.character(a[,1]))
+  return(a[which(a[,2]==max(a[,2])),])
+}
+## variance equation
+## hedging for imprecision: df=n-1
+## square of data --> give more weight for outliers to separate from the rest
+######################
+
+par(mfrow=c(2,2))
+hist(oo$Tarsus, breaks = 3, col = "grey")
+hist(oo$Tarsus, breaks = 10, col = "grey")
+hist(oo$Tarsus, breaks = 30, col = "grey")
+hist(oo$Tarsus, breaks = 100, col = "grey")
+
+## lec hw
+var(oo$Bill, na.rm = T)
+sqrt(var(oo$Bill, na.rm = T))
+mean(oo$Bill, na.rm = T)
+
+var(oo$Mass, na.rm = T)
+sqrt(var(oo$Mass, na.rm = T))
+mean(oo$Mass, na.rm = T)
+
+var(oo$Wing, na.rm = T)
+sqrt(var(oo$Wing, na.rm = T))
+mean(oo$Wing, na.rm = T)
+
+## standardize data column <https://stackoverflow.com/questions/15215457/standardize-data-columns-in-r>
+
+o.0<-subset(oo,is.na(oo$Tarsus)!=T)
+length(oo$Tarsus)
+library(lme4)
+## mlv(o.0$Tarsus)
+mean(oo$Tarsus, na.rm=T)
+median(oo$Tarsus, na.rm = T)
+range(oo$Tarsus, na.rm = T)
+range(o.0$Tarsus)
+var(oo$Tarsus, na.rm = T)
+var(o.0$Tarsus)
+sum((o.0$Tarsus-mean(o.0$Tarsus))^2/(length(o.0$Tarsus)-1))
+sqrt(var(o.0$Tarsus))
+sqrt(0.74)
+sd(o.0$Tarsus)
+zTarsus<-(o.0$Tarsus-mean(o.0$Tarsus))/sd(o.0$Tarsus)
+var(zTarsus)
+sd(zTarsus)
+par(mfrow=c(1,1))
+hist(zTarsus)
+set.seed(123)
+znormal<-rnorm(1e6)
+hist(znormal, breaks = 100)
+summary(znormal)
+qnorm(c(.025, .975))
+pnorm(.Last.value)
+par(mfrow=c(1,2))
+hist(znormal, breaks = 100)
+abline(v=qnorm(c(.25,.5,.75)), lwd=2)
+abline(v=qnorm(c(.025, .975)), lty="dotted", col="black")
+plot(density(znormal))
+abline(h=0, lwd=3, col="blue")
+text(2,.3,"1.96",col = "red",adj = 0)
+text(-2,.3,"-1.96",col = "red",adj = 1)
+
+boxplot(oo$Tarsus~oo$Sex.1, col=c("red","blue"), ylab = "Tarsus length (mm)")
+**********************************************************************
+
+Testing StatsWithSparrows2.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+'data.frame':	1770 obs. of  8 variables:
+ $ BirdID: int  1 2 2 2 2 2 2 2 2 2 ...
+ $ Year  : int  2002 2001 2002 2003 2004 2004 2004 2004 2004 2005 ...
+ $ Tarsus: num  16.9 16.8 17.2 17.5 17.8 ...
+ $ Bill  : num  NA NA NA 13.5 13.4 ...
+ $ Wing  : num  76 76 76 76 77 78 77 77 77 77 ...
+ $ Mass  : num  23.6 27.5 28.1 27.8 26.5 ...
+ $ Sex   : int  0 1 1 1 1 1 1 1 1 1 ...
+ $ Sex.1 : Factor w/ 2 levels "female","male": 1 2 2 2 2 2 2 2 2 2 ...
+[1] "BirdID" "Year"   "Tarsus" "Bill"   "Wing"   "Mass"   "S
+**********************************************************************
+
+Encountered error (or warning):
+Loading required package: Matrix
+Loading required package: methods
+
+Attaching package: ‘lme4’
+
+The following object is masked from ‘package:stats’:
+
+    sigma
+
+
+======================================================================
+======================================================================
+Finished running scripts
+
+Ran into 6 errors
+
+======================================================================
+======================================================================
+
+FINISHED WEEKLY ASSESSMENT
+
+Current Points for the Week = 100
+
+NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!

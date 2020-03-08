@@ -9,7 +9,7 @@ Note that:
 
 ======================================================================
 ======================================================================
-Your Git repo size this week is about 54.10 MiB on disk 
+Your Git repo size this week is about 560.34 MiB on disk 
 
 PART 1: Checking project workflow...
 
@@ -26,16 +26,21 @@ Printing contents of .gitignore:
 *~ 
 *.tmp
 ._*
-*.tmp
-*.swp
+*.sw*
 nohup*
 .Rhistory
 readme_final.md
-*.odt#
+*.*#
 *-*.pdf
 *-concordance.tex
 *.log
-*.synctex.gz**********************************************************************
+*.synctex.gz
+.Rapp.history
+*.mov
+*.mp4
+*.gif
+p_*
+**********************************************************************
 
 Found README in parent directory, named: README.txt
 
@@ -703,7 +708,8 @@ Exponential<-function(N0=1,r=1,generations=10){
   }
   return(N)
 }
-plot(Exponential(),type="1",main="Exponential growth")**********************************************************************
+plot(Exponential(),type="l",main="Exponential growth")
+**********************************************************************
 
 Testing browse.R...
 
@@ -730,10 +736,9 @@ debug: browser()
 
 **********************************************************************
 
-Encountered error (or warning):
-Error in plot.xy(xy, type, ...) : invalid plot type '1'
-Calls: plot -> plot.default -> plot.xy
-Execution halted
+Code ran without errors
+
+Time consumed = 0.15093s
 
 ======================================================================
 Inspecting script file PP_Regress.R...
@@ -899,26 +904,28 @@ print("%s" %(round(time.time()-start,3)))***************************************
 Testing Vectorize2.py...
 
 Vectorize2.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 99
+Found one or more docstrings and functions
+
+Missing docstring, either in one or functions and/or at the script level
+
+Current Points = 99.0
 
 Output (only first 500 characters): 
 
 **********************************************************************
 My Vectorized Stochastic Ricker takes:
-0.467
+0.449
 Vectorized Stochastic Ricker takes:
-0.433
+0.448
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 1.03447s
+Time consumed = 1.04043s
 
 ======================================================================
 Inspecting script file apply1.R...
@@ -955,18 +962,18 @@ Testing apply1.R...
 Output (only first 500 characters): 
 
 **********************************************************************
- [1]  0.54949102 -0.17949934 -0.25631161  0.12089742 -0.32624769 -0.80738879
- [7]  0.09308028  0.03800986 -0.56918928 -0.24469422
- [1] 1.3459131 2.0907093 0.8110047 1.1165169 2.4429553 1.0222074 0.2262165
- [8] 1.8495236 1.3294276 1.9546467
- [1]  0.29246099 -0.55022408  0.13763249  0.06828885 -0.05503500  0.14854573
- [7] -0.64116955 -0.43253977 -0.43364940 -0.11616261
+ [1] -0.11553882  0.13230505 -0.70681798 -0.02365477  0.52920498  0.20670393
+ [7] -0.63808179 -0.08333873 -0.15210571  0.35748845
+ [1] 0.7347942 0.6027746 1.1122326 1.9714384 1.6312896 0.5597470 0.6106570
+ [8] 0.9109878 0.9675156 1.0009687
+ [1] -0.29825211 -0.20148370 -0.18678310 -0.22370784  0.16628427  0.08033848
+ [7] -0.03748038 -0.38714834  0.48100856  0.11338878
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.06553s
+Time consumed = 0.10747s
 
 ======================================================================
 Inspecting script file sample.R...
@@ -1049,25 +1056,25 @@ Output (only first 500 characters):
 **********************************************************************
 [1] "The loopy, non-preallocation approach takes:"
    user  system elapsed 
-  0.044   0.000   0.045 
+  0.052   0.008   0.045 
 [1] "The loopy, preallocation approach takes:"
    user  system elapsed 
-  0.016   0.000   0.015 
+  0.012   0.000   0.013 
 [1] "The loopy, non-preallocation approach takes:"
    user  system elapsed 
-  0.012   0.000   0.015 
+  0.012   0.000   0.014 
 [1] "The vectorized sapply approach takes:"
    user  system elapsed 
-  0.012   0.000   0.013 
+  0.012   0.000   0.011 
 [1] "The vectorized lapply approach takes:"
    user  system elapsed 
-  0.008   0.000   0.010 
+  0.012   0.000   0.009 
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.22837s
+Time consumed = 0.25374s
 
 ======================================================================
 Inspecting script file control_flow.R...
@@ -1130,6 +1137,7 @@ Output (only first 500 characters):
 
 **********************************************************************
 [1] "a is TRUE"
+[1] "less than a half"
 [1] "1 squared is 1"
 [1] "2 squared is 4"
 [1] "3 squared is 9"
@@ -1150,13 +1158,12 @@ Output (only first 500 characters):
 [1] "18 squared is 324"
 [1] "19 squared is 361"
 [1] "20 squared is 400"
-[1] "21 squared is 441"
-[1
+[1]
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.10307s
+Time consumed = 0.13581s
 
 ======================================================================
 Inspecting script file run_get_TreeHeight.sh...
@@ -1173,6 +1180,13 @@ File contents are:
 # Arguments: 1
 # Date: Oct 2019
 
+if [ -z "$1" ];then
+
+echo -e "INPUT REQUIRED"
+exit
+
+fi
+
 Rscript get_TreeHeight.R $1
 python3 get_TreeHeight.py $1
 **********************************************************************
@@ -1182,16 +1196,13 @@ Testing run_get_TreeHeight.sh...
 Output (only first 500 characters): 
 
 **********************************************************************
+INPUT REQUIRED
 
 **********************************************************************
 
-Encountered error (or warning):
-Error in setwd(dirname(args[1])) : missing value is invalid
-Execution halted
-Traceback (most recent call last):
-  File "get_TreeHeight.py", line 37, in <module>
-    os.chdir(os.path.dirname(sys.argv[1]))
-IndexError: list index out of range
+Code ran without errors
+
+Time consumed = 0.00689s
 
 ======================================================================
 Inspecting script file get_TreeHeight.py...
@@ -1233,13 +1244,18 @@ def TreeHeight(deg,dist):
 
 ## workflow
 
+## if no sys.argv
+if len(sys.argv)>1:
+
 ## working directory orientation issue
-os.chdir(os.path.dirname(sys.argv[1]))
-bn=os.path.basename(sys.argv[1]).split(".")[0]
+    os.chdir(os.path.dirname(sys.argv[1]))
+    bn=os.path.basename(sys.argv[1]).split(".")[0]
 
 ## read csv
-f_0=list(csv.reader(open(sys.argv[1],"r")))
-# f_0=list(csv.reader(open("../Data/trees.csv","r")))
+    f_0=list(csv.reader(open(sys.argv[1],"r")))
+else:
+    f_0=list(csv.reader(open("../Data/trees.csv","r")))
+    bn="trees"
 
 ## calculation -- rubbish python core on data handling (https://stackoverflow.com/questions/44360162/how-to-access-a-column-in-a-list-of-lists-in-python)
 for i in range(len(f_0)):
@@ -1254,12 +1270,14 @@ with open(str("../Results/"+bn+"_treeheights.csv"),"w") as csvfile:
 Testing get_TreeHeight.py...
 
 get_TreeHeight.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 98
+Found one or more docstrings and functions
+
+Missing docstring, either in one or functions and/or at the script level
+
+Current Points = 98.5
 
 Output (only first 500 characters): 
 
@@ -1267,11 +1285,9 @@ Output (only first 500 characters):
 
 **********************************************************************
 
-Encountered error (or warning):
-Traceback (most recent call last):
-  File "get_TreeHeight.py", line 37, in <module>
-    os.chdir(os.path.dirname(sys.argv[1]))
-IndexError: list index out of range
+Code ran without errors
+
+Time consumed = 0.03365s
 
 ======================================================================
 Inspecting script file GPDD_Data.R...
@@ -1291,7 +1307,7 @@ File contents are:
 ## key ref <https://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html>
 
 ## library
-library(maps);library(ggmap)
+library(maps)
 library(ggplot2)
 
 load("../Data/GPDDFiltered.RData")
@@ -1303,7 +1319,8 @@ map(database = "world")
 m<-map_data("world")
 # pdf("../Sandbox/MappedMap.pdf",width = 15)
 ggplot()+xlab("longitude")+ylab("latitude")+
-  geom_map(data = m,map = m,aes(map_id=m$region,x=m$long,y=m$lat),fill="brown")+
+  xlim(c(min(m$long),max(m$long)))+ylim(c(min(m$lat),max(m$lat)))+
+  geom_map(data = m,map = m,aes(map_id=m$region),fill="brown")+
   geom_point(aes(x=gpdd$long,y=gpdd$lat))
 # dev.off()
 
@@ -1317,9 +1334,9 @@ Output (only first 500 characters):
 
 **********************************************************************
 
-Encountered error (or warning):
-Error in library(ggmap) : there is no package called ‘ggmap’
-Execution halted
+Code ran without errors
+
+Time consumed = 2.12037s
 
 ======================================================================
 Inspecting script file boilerplate.R...
@@ -1361,7 +1378,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.10236s
+Time consumed = 0.12116s
 
 ======================================================================
 Inspecting script file TreeHeight.R...
@@ -1419,7 +1436,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.08679s
+Time consumed = 0.11544s
 
 ======================================================================
 Inspecting script file PP_Lattice.R...
@@ -1509,7 +1526,7 @@ null device
 
 Code ran without errors
 
-Time consumed = 4.70255s
+Time consumed = 4.45224s
 
 ======================================================================
 Inspecting script file next.R...
@@ -1547,7 +1564,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.08139s
+Time consumed = 0.11717s
 
 ======================================================================
 Inspecting script file Ricker.R...
@@ -1586,7 +1603,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.12169s
+Time consumed = 0.16539s
 
 ======================================================================
 Inspecting script file Girko.R...
@@ -1645,7 +1662,7 @@ null device
 
 Code ran without errors
 
-Time consumed = 1.38598s
+Time consumed = 1.48205s
 
 ======================================================================
 Inspecting script file Vectorize1.R...
@@ -1687,7 +1704,7 @@ Output (only first 500 characters):
 
 **********************************************************************
 Using loops, the time taken is:
-0.084
+0.088
 Using the built vectorized function, the time taken is:
 0
 
@@ -1695,7 +1712,7 @@ Using the built vectorized function, the time taken is:
 
 Code ran without errors
 
-Time consumed = 0.21885s
+Time consumed = 0.26479s
 
 ======================================================================
 Inspecting script file break.R...
@@ -1753,7 +1770,7 @@ i equals 19
 
 Code ran without errors
 
-Time consumed = 0.08403s
+Time consumed = 0.12227s
 
 ======================================================================
 Inspecting script file plotLin.R...
@@ -1806,7 +1823,7 @@ null device
 
 Code ran without errors
 
-Time consumed = 1.27772s
+Time consumed = 1.36974s
 
 ======================================================================
 Inspecting script file basic_io.R...
@@ -1826,7 +1843,7 @@ File contents are:
 ## a simple script to illustrate R input-output
 ## run line by line and check inputs outputs to understand what is happening
 
-MyData<-read.csv("../data/trees.csv",header = T)## import with headers
+MyData<-read.csv("../Data/trees.csv",header = T)## import with headers
 write.csv(MyData,"../Results/MyData.csv")## write it out as a new file
 write.table(MyData[1,],"../Results/MyData.csv",append=T)## append to it
 write.csv(MyData,"../Results/MyData.csv",row.names = T)## write row names
@@ -1841,12 +1858,9 @@ Output (only first 500 characters):
 **********************************************************************
 
 Encountered error (or warning):
-Error in file(file, "rt") : cannot open the connection
-Calls: read.csv -> read.table -> file
-In addition: Warning message:
-In file(file, "rt") :
-  cannot open file '../data/trees.csv': No such file or directory
-Execution halted
+Warning message:
+In write.table(MyData[1, ], "../Results/MyData.csv", append = T) :
+  appending column names to file
 
 ======================================================================
 Inspecting script file Vectorize1.py...
@@ -1902,26 +1916,28 @@ print("%s" %(round(time.time()-start,3)))***************************************
 Testing Vectorize1.py...
 
 Vectorize1.py is a Python script file;
- checking for docstrings...
 
-Found no doctrings!
-1 pt deducted
+checking for docstrings...
 
-Current Points = 97
+Found one or more docstrings and functions
+
+Missing docstring, either in one or functions and/or at the script level
+
+Current Points = 98.0
 
 Output (only first 500 characters): 
 
 **********************************************************************
 Using loops, the time taken is:
-0.07
+0.069
 Using the built vectorized function, the time taken is:
-0.023
+0.024
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.35907s
+Time consumed = 0.36895s
 
 ======================================================================
 Inspecting script file try.R...
@@ -1976,23 +1992,20 @@ Testing try.R...
 Output (only first 500 characters): 
 
 **********************************************************************
-[1] "Mean of this sample was: -0.117666625298962"
-[1] "Mean of this sample was: 0.180147921352735"
-[1] "Mean of this sample was: -0.247802264179739"
-[1] "Mean of this sample was: 0.0130361957838687"
-[1] "Mean of this sample was: 0.150999906211647"
-[1] "Mean of this sample was: -0.240400800650698"
+[1] "Mean of this sample was: 0.160673752423022"
+[1] "Mean of this sample was: -0.0377229557739714"
+[1] "Mean of this sample was: -0.0981683731500447"
+[1] "Mean of this sample was: 0.0332846191829659"
+[1] "Mean of this sample was: -0.173823145250873"
+[1] "Mean of this sample was: 0.113711082170299"
 that's enough
-[1] "Mean of this sample was: -0.163638754260471"
-[1] "Mean of this sample was: -0.130590375617346"
-[1] "Mean of this sample was: -0.0439412097043316"
-[1] "Mean of this sample was: 0.131818
+[1] "Mean of this sample was: 0.169707205808482"
+[1] "Mean of this sample was: 0.09833606269512"
+[1] "Mean of this sample was: -0.0250652670285819"
+[1] "Mean of this sample was: 0.0222749
 **********************************************************************
 
 Encountered error (or warning):
-Error in doit(x) : Couldn't calculate mean: too few unique points!
-Error in doit(x) : Couldn't calculate mean: too few unique points!
-Error in doit(x) : Couldn't calculate mean: too few unique points!
 Error in doit(x) : Couldn't calculate mean: too few unique points!
 Error in doit(x) : Couldn't calculate mean: too few unique points!
 Error in doit(x) : Couldn't calculate mean: too few unique points!
@@ -2029,18 +2042,18 @@ Testing apply2.R...
 Output (only first 500 characters): 
 
 **********************************************************************
-              [,1]         [,2]       [,3]        [,4]       [,5]       [,6]
- [1,] -1.787418981  0.582219331   33.67638 -0.27256445  0.3666109 -1.7534788
- [2,]  0.319098536 -3.560605324  -12.69575  0.49560377 -1.0341685 -2.1326702
- [3,] -1.034321010 -0.746557621  -44.84024 -0.84426227 -0.9168279 -0.7098575
- [4,]  0.143274161 -0.298452062  -19.98675 -0.02416721  0.1035164  0.6464236
- [5,]  0.827702534  0.064867497   38.25994 -1.52414427  1.0490633  1.1915261
- [6,] -0.590644950  0.442302620 -116.92
+            [,1]       [,2]       [,3]        [,4]        [,5]        [,6]
+ [1,]  1.1826822  138.59093   65.35790  -94.311073  0.24634389  -23.630261
+ [2,] -0.0639780 -128.84595   23.27218 -167.961365 -0.62216947  161.889751
+ [3,] -1.4096104  117.56883 -113.58720   23.939952 -1.07107815   13.152496
+ [4,] -0.7641143   61.24845  124.22141   43.976028  0.06880548  -73.721659
+ [5,] -0.9559735  213.59618   84.31917   25.351183 -0.12135937  -41.441872
+ [6,]  0.5284883 -122.10844  140.59798  -94.992062 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.08417s
+Time consumed = 0.12960s
 
 ======================================================================
 Inspecting script file get_TreeHeight.R...
@@ -2079,6 +2092,9 @@ TreeHeight <- function(degrees, distance){
 
 ## R homework
 args=(commandArgs(T))
+if(length(args)==0){
+  args<-"../Data/trees.csv"
+}
 setwd(dirname(args[1]))
 bn<-as.character(read.table(text=basename(args[1]),sep=".")[1,1])
 # a<-read.csv("../Data/trees.csv",header = T)
@@ -2096,9 +2112,9 @@ Output (only first 500 characters):
 
 **********************************************************************
 
-Encountered error (or warning):
-Error in setwd(dirname(args[1])) : missing value is invalid
-Execution halted
+Code ran without errors
+
+Time consumed = 0.11804s
 
 ======================================================================
 Inspecting script file TAutoCorr.R...
@@ -2185,13 +2201,13 @@ Testing TAutoCorr.R...
 Output (only first 500 characters): 
 
 **********************************************************************
-[1] 4e-04
+[1] 1e-04
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 6.25903s
+Time consumed = 6.43652s
 
 ======================================================================
 Inspecting script file Vectorize2.R...
@@ -2303,13 +2319,13 @@ Output (only first 500 characters):
 My Vectorized Stochastic Ricker takes:
 0.012
 Looped Stochastic Ricker takes:
-0.228
+0.244
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.32084s
+Time consumed = 0.37230s
 
 ======================================================================
 Inspecting script file DataWrangTidy.R...
@@ -2350,11 +2366,18 @@ tbl_df(TempData)## head(TempData)
 MyWrangledData<-gather(TempData,"Species","Count",5:dim(TempData)[2])
 tbl_df(MyWrangledData);tbl_df(MyWrangledData[(dim(MyWrangledData)[1]-5):dim(MyWrangledData)[1],]);## head(MyWrangledData);tail(MyWrangledData)
 
-MyWrangledData[,"Cultivation"]<-as.factor(MyWrangledData[,"Cultication"])
-MyWrangledData[,"Block"]<-as.factor(MyWrangledData[,"Block"])
-MyWrangledData[,"Plot"]<-as.factor(MyWrangledData[,"Plot"])
-MyWrangledData[,"Quadrat"]<-as.factor(MyWrangledData[,"Quadrat"])
-MyWrangledData[,"Count"]<-as.integer(MyWrangledData[,"Count"])
+for(i in 1:dim(MyWrangledData)[2]){
+  if(i<dim(MyWrangledData)[2]){
+    MyWrangledData[,i]<-as.factor(MyWrangledData[,i])
+  }else{
+    MyWrangledData[,i]<-as.numeric(MyWrangledData[,i])
+  }
+}
+# MyWrangledData[,"Cultivation"]<-as.factor(MyWrangledData[,"Cultication"])
+# MyWrangledData[,"Block"]<-as.factor(MyWrangledData[,"Block"])
+# MyWrangledData[,"Plot"]<-as.factor(MyWrangledData[,"Plot"])
+# MyWrangledData[,"Quadrat"]<-as.factor(MyWrangledData[,"Quadrat"])
+# MyWrangledData[,"Count"]<-as.integer(MyWrangledData[,"Count"])
 # glimpse(MyWrangledData) ## str(MyWrangledData)
 
 tbl_df(MyWrangledData) ## like head(), but nicer! <https://github.com/r-lib/vctrs/issues/487>
@@ -2390,10 +2413,6 @@ The following objects are masked from ‘package:base’:
 
     intersect, setdiff, setequal, union
 
-Error in `[.data.frame`(MyWrangledData, , "Cultication") : 
-  undefined columns selected
-Calls: as.factor -> is.factor -> [ -> [.data.frame
-Execution halted
 
 ======================================================================
 Inspecting script file preallocate.R...
@@ -2440,17 +2459,17 @@ Output (only first 500 characters):
 [1] "Not pre-allocated:"
 40048 bytes
    user  system elapsed 
-  0.184   0.000   0.185 
+  0.160   0.004   0.154 
 [1] "Pre-allocated:"
 40040 bytes
    user  system elapsed 
-  0.008   0.000   0.008 
+  0.004   0.000   0.004 
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.29081s
+Time consumed = 0.28773s
 
 ======================================================================
 Inspecting script file PP_Regress_loc.R...
@@ -2541,8 +2560,10 @@ Output (only first 500 characters):
 **********************************************************************
 
 Encountered error (or warning):
-Warning message:
-In summary.lm(lm(log(a.1$Predator.mass) ~ log(a.1$Prey.mass))) :
+Warning messages:
+1: In summary.lm(lm(log(a.1$Predator.mass) ~ log(a.1$Prey.mass))) :
+  essentially perfect fit: summary may be unreliable
+2: In summary.lm(lm(log(a.1$Predator.mass) ~ log(a.1$Prey.mass))) :
   essentially perfect fit: summary may be unreliable
 
 ======================================================================
@@ -2577,7 +2598,7 @@ rownames(TempData)<-NULL
 head(TempData)
 
 library(reshape2)
-MyWrangledData<-melt(TempData,id=c("Cultivation","Block","Plot","Quadrat"),variable.name = "Species",value.name = "Count")
+MyWrangledData<-melt(TempData,id=c("Cultivation","Block","Plot","Quadrat"),variable.name = "Species",value.name = "Count") ## <https://stackoverflow.com/questions/25688897/reshape2-melt-warning-message>
 head(MyWrangledData);tail(MyWrangledData)
 
 for(i in 1:dim(MyWrangledData)[2]){
@@ -2696,20 +2717,20 @@ Output (only first 500 characters):
 
         runtime for (sec) |	py	R	|py-R
 -----------------------------------------------------
-Vectorize1,     self-code |	0.072	0.084	|-.012
-Vectorize1,      built-in |	0.025	0	|.025
-Vectorize2,      modified |	0.449	0.012	|.437
-Vectorize2,       initial |	0.438	0.264	|.174
+Vectorize1,     self-code |	0.073	0.084	|-.011
+Vectorize1,      built-in |	0.024	0	|.024
+Vectorize2,      modified |	0.484	0.012	|.472
+Vectorize2,       initial |	0.472	0.248	|.224
 -----   ----   -----   ---------   ------   ---   ---
-Vectorize1,  self-BuiltIn |	.047	.084	|
-Vectorize2,   mod-initial |	.011	-.252	|
+Vectorize1,  self-BuiltIn |	.049	.084	|
+Vectorize2,   mod-initial |	.012	-.236	|
 
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 2.02779s
+Time consumed = 2.10314s
 
 ======================================================================
 Inspecting script file MyBars.R...
@@ -2873,13 +2894,13 @@ Testing autocorrelation.tex...
 ======================================================================
 Finished running scripts
 
-Ran into 12 errors
+Ran into 7 errors
 
 ======================================================================
 ======================================================================
 
 FINISHED WEEKLY ASSESSMENT
 
-Current Points for the Week = 97
+Current Points for the Week = 98.0
 
 NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!

@@ -1,0 +1,567 @@
+Starting weekly assessment for Pok Man, Week5
+
+Current Points = 100
+
+Note that: 
+(1) Major sections begin with a double "====" line 
+(2) Subsections begin with a single "====" line 
+(3) Code output or text file content are printed within single "*****" lines 
+
+======================================================================
+======================================================================
+Your Git repo size this week is about 560.34 MiB on disk 
+
+PART 1: Checking project workflow...
+
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, Week8, seminar, Week5, Week2, Week9, Week4, .git, ReadmeProg, Week3, MiniProject
+
+Found the following files in parent directory: README.txt, LICENSE, .gitignore, readme.md
+
+Checking for key files in parent directory...
+
+Found .gitignore in parent directory, great! 
+
+Printing contents of .gitignore:
+**********************************************************************
+*~ 
+*.tmp
+._*
+*.sw*
+nohup*
+.Rhistory
+readme_final.md
+*.*#
+*-*.pdf
+*-concordance.tex
+*.log
+*.synctex.gz
+.Rapp.history
+*.mov
+*.mp4
+*.gif
+p_*
+**********************************************************************
+
+Found README in parent directory, named: README.txt
+
+Printing contents of README.txt:
+**********************************************************************
+PokMan Ho CMEE Coursework Repository
+Do I like this better?
+**********************************************************************
+
+======================================================================
+Looking for the weekly directories...
+
+Found 9 weekly directories: Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week8, Week9
+
+The Week5 directory will be assessed 
+
+======================================================================
+======================================================================
+PART 2: Checking weekly code and workflow...
+
+======================================================================
+Assessing WEEK5...
+
+Found the following directories: Code, Data, Sandbox, results
+
+Found the following files: readme.md
+
+Checking for readme file in weekly directory...
+
+Found README in parent directory, named: readme.md
+
+Printing contents of readme.md:
+**********************************************************************
+![alt text](https://unichoices.co.uk/wp-content/uploads/2015/09/Imperial-College-London.jpg)
+
+# 2019 PokMan HO MRes CMEE Coursework Week5
+
+This week's focus was on: R 
+
+## License
+
+Apache-2.0
+
+## Guides
+
+Multiple scripts were coded and introduced below in filename alphabetical order.  
+All scripts are in `Code` directory
+
+### Abundances.R
+
+#### Features
+
+classwork for Abundances section
+
+#### Suggested input
+
+```
+Rscript Abundances.R
+```
+
+#### Output
+
+R terminal output
+*****
+
+### AedesAegyptiFecundity.R
+
+#### Features
+
+classwork for Fecundity section
+
+#### Suggested input
+
+```
+Rscript AedesAdgyptiFecundity.R
+```
+
+#### Output
+
+R terminal output
+*****
+
+### AlbatrossChickenGrowth.R
+
+#### Features
+
+classwork for Albatross Chicken Growth section
+
+#### Suggested input
+
+```
+Rscript AlbatrossChickenGrowth.R
+```
+
+#### Output
+
+R terminal output
+*****
+
+### AllometricTraitsScaling.R
+
+#### Features
+
+classwork for Allometric Traits section
+
+#### Suggested input
+
+```
+Rscript AllometricTraitsScaling.R
+```
+
+#### Output
+
+R terminal output
+*****
+
+## Reference
+
+[https://docs.readme.com/docs/best-practices][01]  
+[https://github.com/jehna/readme-best-practices/blob/master/README-default.md][02]  
+
+[01]:https://docs.readme.com/docs/best-practices
+[02]:https://github.com/jehna/readme-best-practices/blob/master/README-default.md**********************************************************************
+
+Found following files in results directory: ppt_trans_NG.pdf...
+
+Found 4 code files: Abundances.R, AllometricTraitsScaling.R, AedesAegyptiFecundity.R, AlbatrossChickenGrowth.R
+
+Found the following extra files: Rplots.pdf
+0.5 pt deducted per extra file
+
+Current Points = 99.5
+
+======================================================================
+Testing script/code files...
+
+======================================================================
+Inspecting script file Abundances.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: Abundances.R
+# Desc: classwork for Abundances section
+# Input: Rscript Abundances.R
+# Output: R terminal output
+# Arguments: 0
+# Date: Nov 2019
+
+library(ggplot2)
+library(minpack.lm)
+
+time<-c(0,2,4,6,8,10,12,16,20,24) ## timepoints, in hours
+log_cells<-c(3.62, 3.62, 3.63, 4.14, 5.23, 6.27, 7.57, 8.38, 8.70, 8.69) # logged cell counts - more on this below
+set.seed(1234) ## set seed to ensure you always get the same random seq if fluctuates
+data<-data.frame(time, log_cells+rnorm(length(time), sd=.1)) ## add some random error
+names(data)<-c("t", "LogN")
+
+ggplot(data, aes(x=t, y=LogN))+geom_point()
+baranyi_model<-function(t, r_max, N_max, N_0, t_lag){ ## bayanyi model (Baranyi 1993)
+  return(N_max+log10((-1+exp(r_max*t_lag) +exp(r_max*t))/(exp(r_max*t)-1 +exp(r_max*t_lag) *10^(N_max-N_0))))
+}
+
+buchanan_model<-function(t, r_max, N_max, N_0, t_lag){ ## Buchanan model -- three phase logistic (Buchanan 1997)
+  return(N_0+(t>=t_lag) * (t<=(t_lag+(N_max-N_0)*log(10)/r_max)) *r_max*(t-t_lag)/log(10) +(t>=t_lag) * (t>(t_lag+(N_max-N_0)*log(10)/r_max)) * (N_max-N_0))
+}
+
+gompertz_model<-function(t, r_max, N_max, N_0, t_lag){ ## Modified gompertz growth model (Zwietering 1990)
+  return(N_0 + (N_max-N_0) * exp(-exp(r_max * exp(1) * (t_lag-t)/((N_max-N_0) *log(10))+1)))
+}
+
+N_0_start<-min(data$LogN)
+N_max_start<-max(data$LogN)
+t_lag_start<-data$t[which.max(diff(diff(data$LogN)))]
+r_max_start<-max(diff(data$LogN))/mean(diff(data$t))
+
+fit_baranyi<-nlsLM(data$LogN~baranyi_model(t=t, r_max, N_max, N_0, t_lag), data, list(t_lag=t_lag_start, r_max=r_max_start, N_0=N_0_start, N_max=N_max_start))
+fit_buchanan<-nlsLM(data$LogN~buchanan_model(t=t, r_max, N_max, N_0, t_lag), data, list(t_lag=t_lag_start, r_max=r_max_start, N_0=N_0_start, N_max=N_max_start))
+fit_gompertz<-nlsLM(data$LogN~gompertz_model(t=t, r_max, N_max, N_0, t_lag), data, list(t_lag=t_lag_start, r_max=r_max_start, N_0=N_0_start, N_max=N_max_start))
+
+summary(fit_baranyi)
+summary(fit_buchanan)
+summary(fit_gompertz)
+
+timepoints<-seq(0,24,.1)
+baranyi_points<-baranyi_model(t=timepoints, r_max = coef(fit_baranyi)["r_max"], N_max = coef(fit_baranyi)["N_max"], N_0 = coef(fit_baranyi)["N_0"], t_lag = coef(fit_baranyi)["t_lag"])
+buchanan_points<-buchanan_model(t=timepoints, r_max = coef(fit_buchanan)["r_max"], N_max = coef(fit_buchanan)["N_max"], N_0 = coef(fit_buchanan)["N_0"], t_lag = coef(fit_buchanan)["t_lag"])
+gompertz_points<-gompertz_model(t=timepoints, r_max = coef(fit_gompertz)["r_max"], N_max = coef(fit_gompertz)["N_max"], N_0 = coef(fit_gompertz)["N_0"], t_lag = coef(fit_gompertz)["t_lag"])
+
+df1<-data.frame(timepoints, baranyi_points)
+df1$model<-"Baranyi"
+names(df1)<-c("t","LogN","model")
+df2<-data.frame(timepoints, buchanan_points)
+df2$model<-"Buchanan"
+names(df2)<-c("t","LogN","model")
+df3<-data.frame(timepoints, gompertz_points)
+df3$model<-"Gompertz"
+names(df3)<-c("t","LogN","model")
+
+model_frame<-rbind(df1, df2, df3)
+ggplot(data, aes(x=t, y=LogN))+
+  geom_point(size=3)+
+  geom_line(data=model_frame, aes(x=t, y=LogN, col=model), size=1)
+**********************************************************************
+
+Testing Abundances.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+Formula: data$LogN ~ baranyi_model(t = t, r_max, N_max, N_0, t_lag)
+
+Parameters:
+      Estimate Std. Error t value Pr(>|t|)    
+t_lag  5.52751    0.34869   15.85 4.00e-06 ***
+r_max  1.41823    0.09356   15.16 5.20e-06 ***
+N_0    3.59209    0.08646   41.55 1.30e-08 ***
+N_max  8.52886    0.08352  102.12 5.94e-11 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.143 on 6 degrees of freedom
+
+Number of iterations to convergence: 10 
+Achieved convergenc
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 2.10558s
+
+======================================================================
+Inspecting script file AllometricTraitsScaling.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: AllometricTraitsScaling.R
+# Desc: classwork for Allometric Traits section
+# Input: Rscript AllometricTraitsScaling.R
+# Output: R terminal output
+# Arguments: 0
+# Date: Nov 2019
+
+library(repr)
+#options(repr.plot.width = 4, repr.plot.height = 4) ## change plot sizes (in cm) in Jupyter notebook
+library(minpack.lm)
+powMod<-function(x, a, b){
+  return(a*x^b)
+}
+MyData<-read.csv("../Data/GenomeSize.csv")
+head(MyData)
+Data2Fit<-MyData[which(MyData$Suborder=="Anisoptera" & !is.na(MyData$TotalLength)),]
+Data2Fit<-MyData[which(MyData$Suborder=="Zygoptera" & !is.na(MyData$TotalLength)),]
+
+plot(Data2Fit$TotalLength, Data2Fit$BodyWeight)
+library(ggplot2)
+ggplot(Data2Fit,aes(x=Data2Fit$TotalLength, y=Data2Fit$BodyWeight))+geom_point(size=(3), colour="red")+theme_bw()+labs(y="Body mass (mg)", x="Wing length (mm)")
+
+PowFit<-nlsLM(Data2Fit$BodyWeight~powMod(Data2Fit$TotalLength, a, b), data = Data2Fit, start = list(a=.01, b=.01)) ## {Ani: a=.1, b=.1}, {Dy: a=.01, b=.01}
+summary(PowFit)
+
+Lengths<-seq(min(Data2Fit$TotalLength), max(Data2Fit$TotalLength), len=200)
+coef(PowFit)["a"]
+coef(PowFit)["b"]
+Predic2PlotPow<-powMod(Lengths, coef(PowFit)["a"], coef(PowFit)["b"])
+plot(Data2Fit$TotalLength, Data2Fit$BodyWeight)
+lines(Lengths, Predic2PlotPow, col="blue", lwd=2.5)
+confint(PowFit)
+
+## exercise
+ggplot()+geom_point(aes(x=Data2Fit$TotalLength, y=Data2Fit$BodyWeight))+geom_smooth(aes(x=Lengths, y=Predic2PlotPow), se=F)+geom_text(aes(label="Weight = 3.94*10^-6 * Length^2.59",x=30,y=.02)) ## (a)
+a<-lm(log(Data2Fit$BodyWeight)~log(Data2Fit$TotalLength))
+unname(exp(coef(a)[1]))-unname(coef(PowFit)[1])
+unname(coef(a)[2])-unname(coef(PowFit)[2])
+
+## num of rows not matching, not working
+QuaFit<-lm(Data2Fit$BodyWeight~poly(Data2Fit$TotalLength,degree = 2))
+# Predic2PlotQua<-predict.lm(QuaFit, data.frame(TotalLength=Lengths)) ## https://stackoverflow.com/questions/27464893/getting-warning-newdata-had-1-row-but-variables-found-have-32-rows-on-pred
+
+plot(Data2Fit$TotalLength, Data2Fit$BodyWeight)
+lines(Lengths, Predic2PlotPow, col="blue", lwd=2.5)
+# lines(Lengths, Predic2PlotQua, col="red", lwd=2.5)
+
+RSS_Pow<-sum(residuals(PowFit)^2) ## residual sum of sq
+TSS_Pow<-sum((Data2Fit$BodyWeight-mean(Data2Fit$BodyWeight))^2) ## total sum of sq
+RSq_Pow<-1-(RSS_Pow/TSS_Pow) ## R^2
+
+RSS_Qua<-sum(residuals(QuaFit)^2) ## res sum of sq
+TSS_Qua<-sum((Data2Fit$BodyWeight-mean(Data2Fit$BodyWeight))^2) ## total sum of sq
+RSq_Qua<-1-(RSS_Qua/TSS_Qua) ## R^2
+RSq_Pow;RSq_Qua
+
+## model selection
+n<-nrow(Data2Fit) ## set sample size
+pPow<-length(coef(PowFit)) ## get number of parameters in power law model
+pQua<-length(coef(QuaFit)) ## get number of parameters in quadratic model
+
+AIC_Pow<-n+2 +n*log(2*pi/n) +n*log(RSS_Pow) +2*pPow
+AIC_Qua<-n+2 +n*log(2*pi/n) +n*log(RSS_Qua) +2*pQua
+AIC_Pow-AIC_Qua
+AIC(PowFit)-AIC(QuaFit) ## lm vs lm
+
+## exercise
+BIC(PowFit)-BIC(QuaFit)
+{i<--.0224;m<-.001 ## test for best abline: {Anisoptera: i<--.185;m<-.006}; {Zygoptera: i<--.0224;m<-.001}
+  plot(Data2Fit$TotalLength, Data2Fit$BodyWeight)
+  lines(Lengths, Predic2PlotPow, col="blue", lwd=2.5)
+  abline(i,m, col="hotpink")
+  text(paste0("straight line\nintercept: ",i,"\nslope: ",m),x=35,y=.025, col="hotpink")
+  
+  a<-ifelse(Data2Fit$BodyWeight<m*Data2Fit$TotalLength+i,0,1)
+  sum(a)
+}
+**********************************************************************
+
+Testing AllometricTraitsScaling.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+    Suborder    Family              Species GenomeSize GenomeSE GenomeN
+1 Anisoptera Aeshnidae    Aeshna canadensis       2.20       NA       1
+2 Anisoptera Aeshnidae    Aeshna constricta       1.76     0.06       4
+3 Anisoptera Aeshnidae       Aeshna eremita       1.85       NA       1
+4 Anisoptera Aeshnidae Aeshna tuberculifera       1.78     0.10       2
+5 Anisoptera Aeshnidae       Aeshna umbrosa       2.00       NA       1
+6 Anisoptera Aeshnidae    Aeshna verticalis       1.59       NA      
+**********************************************************************
+
+Encountered error (or warning):
+Waiting for profiling to be done...
+`geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+======================================================================
+Inspecting script file AedesAegyptiFecundity.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: AedesAdgyptiFecundity.R
+# Desc: classwork for Fecundity section
+# Input: Rscript AedesAdgyptiFecundity.R
+# Output: R terminal output
+# Arguments: 0
+# Date: Nov 2019
+
+library(ggplot2)
+library(minpack.lm)
+
+aedes<-read.csv("../Data/aedes_fecund.csv")
+par(mfrow=c(1,1))
+plot(aedes$T, aedes$EFD, xlab = "temperature (C)", ylab = "Eggs/day")
+quad1<-function(T, T0, Tm, c){
+  c*(T-T0)*(T-Tm)*as.numeric(T<Tm)*as.numeric(T>T0)
+}
+briere<-function(T, T0, Tm, c){
+  c*T*(T-T0)*(abs(Tm-T)^.5)*as.numeric(T<Tm)*as.numeric(T>T0)
+}
+
+scale<-20
+aed.lin<-lm(aedes$EFD/scale~aedes$T)
+aed.quad<-nlsLM(aedes$EFD/scale~quad1(T, T0, Tm, c), start = list(T0=10, Tm=40, c=.01), data = aedes)
+aed.br<-nlsLM(aedes$EFD/scale~briere(T, T0, Tm, c), start = list(T0=10, Tm=40, c=.01), data = aedes)
+
+j<-list(aed.lin, aed.quad, aed.br);for(i in 1:3){
+  k<-(i+1)%%3
+  if(k==0){k<-3}
+  print(paste(i,"vs",k))
+  p<-round(AIC(j[[i]])-AIC(j[[k]]),2)
+  if(p<0){o<-paste(k,"better")}else if(p==0){o<-"equal"}else{o<-paste(i,"better")}
+  print(paste("AIC:",p,";",o))
+  p<-round(BIC(j[[i]])-BIC(j[[k]]),2)
+  if(p<0){o<-paste(k,"better")}else if(p==0){o<-"equal"}else{o<-paste(i,"better")}
+  print(paste("BIC:",p,";",o))
+};rm(i,j,k,p)
+AIC(aed.br)/AIC(aed.lin)
+AIC(aed.br)/AIC(aed.quad)
+
+## ggplot
+ggplot()+theme_bw()+geom_point(aes(y=aedes$EFD, x=aedes$T))
+**********************************************************************
+
+Testing AedesAegyptiFecundity.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+[1] "1 vs 2"
+[1] "AIC: 4.23 ; 1 better"
+[1] "BIC: 2.83 ; 1 better"
+[1] "2 vs 3"
+[1] "AIC: -4.6 ; 3 better"
+[1] "BIC: -4.6 ; 3 better"
+[1] "3 vs 1"
+[1] "AIC: 0.37 ; 3 better"
+[1] "BIC: 1.77 ; 3 better"
+[1] 1.049826
+[1] 2.471127
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 1.43238s
+
+======================================================================
+Inspecting script file AlbatrossChickenGrowth.R...
+
+File contents are:
+**********************************************************************
+#!/bin/env Rscript
+
+# Author: PokMan Ho pok.ho19@imperial.ac.uk
+# Script: AlbatrossChickenGrowth.R
+# Desc: classwork for Albatross Chicken Growth section
+# Input: Rscript AlbatrossChickenGrowth.R
+# Output: R terminal output
+# Arguments: 0
+# Date: Nov 2019
+
+library(ggplot2)
+library(minpack.lm) ## nlsLM cannot generate data out of source df scope
+alb<-read.csv("../Data/albatross_grow.csv")
+alb<-alb[which(!is.na(alb$wt)),]
+plot(alb$age, alb$wt, xlab = "age (days)", ylab = "weight (g)", xlim = c(0,100))
+logis.1<-function(t, r, k, N0){
+  N0*k*exp(r*t)/(k+N0*(exp(r*t)-1))
+}
+vonbert.w<-function(t, Winf, c, k){
+  Winf*(1-exp(-k*t)+c*exp(-k*t))^3
+}
+scale<-4e3
+alb.lin<-lm(wt/scale~age, data = alb)
+alb.log<-nlsLM(alb$wt/scale~logis.1(alb$age, r, k, N0), start = list(k=1, r=.1, N0=.1), data = alb)
+alb.vb<-nlsLM(alb$wt/scale~vonbert.w(alb$age, Winf, c, k), start = list(Winf=.75, c=.01, k=.01), data = alb)
+
+ages<-seq(0,100, length=93)
+pred.lin<-predict(alb.lin, newdata = list(age=ages))*scale
+pred.log<-predict(alb.log, newdata = list(age=ages))*scale
+pred.vb<-predict(alb.vb, newdata = list(age=ages))*scale
+
+plot(alb$age, alb$wt, xlab = "age (days)", ylab = "weight (g)", xlim = c(0,100));lines(ages, pred.lin, col=2, lwd=2);lines(ages, pred.log, col=3, lwd=2);lines(ages, pred.vb, col=4, lwd=2);legend("topleft", legend = c("linear", "logistic", "Von Bert"), lwd = 2, lty = 1, col = 2:4)
+
+# ggplot()+theme_bw()+geom_point(aes(x=alb$age, y=alb$wt))+geom_line(aes(y=pred.lin, x=ages, colour="red"))+geom_line(aes(y=pred.log, x=ages, colour="green"))+geom_line(aes(y=pred.vb, x=ages, colour="blue"))+xlab("age.days")+ylab("weight.g")+scale_colour_manual(name="type", values = c("red","green","blue"), labels=c("linear", "logistic", "Von Bert")) ## ggplot2 version
+
+par(mfrow=c(3,1), bty="n")
+plot(alb$age, resid(alb.lin), main = "LM resids", xlim = c(0,100))
+plot(alb$age, resid(alb.log), main = "Logistic resids", xlim = c(0,100))
+plot(alb$age, resid(alb.vb), main = "VB resids", xlim = c(0,100))
+
+n<-length(alb$wt)
+list(lin=signif(sum(resid(alb.lin)^2)/(n-2*2), 3), log=signif(sum(resid(alb.log)^2)/(n-2*2), 3), vb=signif(sum(resid(alb.vb)^2)/(n-2*2), 3))
+
+a<-list(alb.lin, alb.log, alb.vb);for(i in 1:3){
+  j<-(i+1)%%3
+  if(j==0){j<-3}
+  print(paste(i,j))
+  k<-AIC(a[[i]])-AIC(a[[j]])
+  if(k<0){p<-paste(i,"better")}else if(k==0){p<-paste(i,"=",j)}else{p<-paste(j,"better")}
+  print(paste("AIC:",round(k,2),";",p))
+  
+  k<-BIC(a[[i]])-BIC(a[[j]])
+  if(k<0){p<-paste(i,"better")}else if(k==0){p<-paste(i,"=",j)}else{p<-paste(j,"better")}
+  print(paste("BIC:",round(k,2),";",p))
+};rm(a,i,j,k,p)
+
+ggp<-data.frame("fac"=c(rep("alb.lin",length(resid(alb.lin))),rep("alb.log",length(resid(alb.log))),rep("alb.vb",length(resid(alb.vb)))),"x"=c(names(resid(alb.lin)),names(resid(alb.log)),names(resid(alb.vb))),"data"=c(unname(resid(alb.lin)),unname(resid(alb.log)),unname(resid(alb.vb))))
+ggplot(data = ggp, aes(y=ggp$data, x=as.numeric(ggp$x)))+theme_bw()+
+  facet_grid(ggp$fac ~.)+
+  geom_point()+geom_smooth(se=F)
+
+**********************************************************************
+
+Testing AlbatrossChickenGrowth.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+$lin
+[1] 0.00958
+
+$log
+[1] 0.00548
+
+$vb
+[1] 0.00614
+
+[1] "1 2"
+[1] "AIC: 50.01 ; 2 better"
+[1] "BIC: 47.48 ; 2 better"
+[1] "2 3"
+[1] "AIC: -10.67 ; 2 better"
+[1] "BIC: -10.67 ; 2 better"
+[1] "3 1"
+[1] "AIC: -39.34 ; 3 better"
+[1] "BIC: -36.81 ; 3 better"
+
+**********************************************************************
+
+Encountered error (or warning):
+`geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+======================================================================
+======================================================================
+Finished running scripts
+
+Ran into 2 errors
+
+======================================================================
+======================================================================
+
+FINISHED WEEKLY ASSESSMENT
+
+Current Points for the Week = 99.5
+
+NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!
