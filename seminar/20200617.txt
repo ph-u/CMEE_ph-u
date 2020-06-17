@@ -1,0 +1,55 @@
+"ATP synthase in pathogenic bacteria - Structural investigations into a novel drug target"
+Julis Demmer, (Meier lab) Imperial College
+
+rise of Ab-resis bacteria
+priority pathogen list for R&D - WHO
+bedaquiline binding to ATP synthase F0 subunit: specific to prokaryotes
+Acinetobacter baumanii
+fragile mambrane protein: purification difficult
+culture expression > purification > activity assay & inhibitor screening > negative stain TEM > ... > 3D model
+plasmid design & expression
+- native purification
+- limit amount
+- solubilisation challenging
+- only transiently stable
+- pBBR-MCS3
+- affinity Tag purification
+peptidisc reconstitution: more stable protein via detergent treatment
+rotational / conformational states
+120-deg rotation sub-states
+
+ATP synthase hydrolysis activity assay & inhibitor screening
+DCCD <> c subunit as inhibitor (known)
+NaAz <> alpha subunit as inhibitor (known)
+
+autoinhibition by subunit epsilon
+opening & closing of beta subunit by rotational conformation change
+open, false-open, close position for beta-subunit in the clockwise-rotating from top (synthesis; anti-clockwise for hydrolysis, naturally inhibited by epsilon subunit)
+ligand binding
+Cryo-CM structure with bound inhibitor
+
+chloroplast ATP synthase a bit different in mechanism
+distinguish in cryo-em map between peptidisc & protein structure -> no artifact
+
+@@@@@@@
+
+"Understanding how gut microbiota-mediated colonisation resistance prevents intestinal colonisation by pathogens"
+Julie McDonald, Lecturer CMBI Imperial College
+
+colonisation-resistance
+- production of metabolites: SCFAs (short-chain fatty acids)
+- outcompete
+- bactericides
+- modify metabolites (weaponisation)
+
+gut as reservoir for MDROs (multidrug-resistant organisms)
+restore microbiota of healthy people
+FMT: faecal microbiota transplantation
+current solely relying on FMT donors
+
+aim: novel therapy
+Ab-treated people has super high (40%) Enterobactericeae than healthy ppl (0-0.5%)
+Ab change a lot in metabolites from microbiota
+Ab have no effect on colonisation; FMT has eqm impact in microbiota on population of pathogens
+succinate as general indicator of invasion: high when invaded
+
