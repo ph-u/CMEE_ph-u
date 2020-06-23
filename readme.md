@@ -1,4 +1,4 @@
-![alt text](http://www.h2fcsupergen.com/wp-content/uploads/2013/02/logo_imperial_college_london-1024x269.png)
+![alt text](http://www.imperial.ac.uk/ImageCropToolT4/imageTool/uploaded-images/Blue-on-white--tojpeg_1495792235526_x1.jpg)
 
 # 2019 PokMan HO's MRes CMEE Coursework
 
