@@ -1,8 +1,8 @@
 ![alt text](http://www.imperial.ac.uk/ImageCropToolT4/imageTool/uploaded-images/Blue-on-white--tojpeg_1495792235526_x1.jpg)
 
-# 2019 PokMan HO's MRes CMEE Coursework
+# 2019 MRes Computational Methods in Ecology and Evolution
 
-This repository is the collection of scripts, programs and classwork files during lecture months.
+This repository is the collection of scripts, programs and classwork files during lecture months (Sep-Dec 2019).
 
 ## License
 
