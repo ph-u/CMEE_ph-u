@@ -1,4 +1,4 @@
-![alt text](https://unichoices.co.uk/wp-content/uploads/2015/09/Imperial-College-London.jpg)
+![alt text](http://www.h2fcsupergen.com/wp-content/uploads/2013/02/logo_imperial_college_london-1024x269.png)
 
 # 2019 PokMan HO's MRes CMEE Coursework
 
