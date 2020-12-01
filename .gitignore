@@ -18,3 +18,9 @@ sandbox
 Sandbox
 *.[eo]*
 *.png
+__pycache__
+Part*
+*.Rout
+.ipynbcheckpoints
+reference
+ph419*
