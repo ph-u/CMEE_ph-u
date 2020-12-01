@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Author: PokMan HO (pok.ho19@imperial.ac.uk)
+# Author: ph-u
 # Script: write_readme.sh
 # Desc: Write README.md in each Week's directory
 # Arguments: 0

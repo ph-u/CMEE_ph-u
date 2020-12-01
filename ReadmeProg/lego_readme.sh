@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Author: PokMan HO (pok.ho19@imperial.ac.uk)
+# Author: ph-u
 # Script: lego_readme.sh
 # Desc: automate README.mh formulation through template provided in the same directory
 # Arguments: 0
@@ -16,7 +16,7 @@ if [ -z "$1" ];then ## if this script was run with no other input, show the foll
 	echo "within this program's directory"
 	echo "Sampe input: ./lego_readme.sh <FirstName> <LastName> <year> <MSc/MRes>"
 	echo
-	echo "Scripted by: PokMan HO in 2019"
+	echo "Scripted by: ph-u in 2019"
 	echo
 	exit
 fi
