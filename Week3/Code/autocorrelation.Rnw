@@ -1,0 +1,110 @@
+%% Author: ph-u
+%% Script: autocorrelation.Rnw
+%% Desc: pdf report creation for an annual temperature `Rdata` dataset
+%% Input: None -- need to "Compile PDF" within RStudio.app
+%% Output: pdf report in `Code` subdirectory (and other auto-generated files)
+%% Arguments: 0
+%% Date: Oct 2019
+
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,hyperref}
+
+\title{Question: Autocorrelation in weather}
+\author{ph-u (CID: 01786076)}
+\date{}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\maketitle
+\begin{center}
+  Hypothesis: Annual temperature ($^o$C) is influenced by the previous year.
+\end{center}
+\section{Load \textbf{KeyWestAnnualMeanTemperature.Rdata}}
+<<>>=
+load("../Data/KeyWestAnnualMeanTemperature.RData");ls()
+@
+<<echo=F>>=
+## libraries
+library(ggplot2)
+library(knitr)
+@
+
+\section{Examine correlation coefficient of data\label{osp}}
+<<>>=
+print(b<-unlist(cor(ats,method = "spearman"))[1,2])
+@
+
+\section{Plot data\label{plot}}
+<<echo=F,fig=TRUE,height=3>>=
+## ini plot
+ggplot()+
+  geom_smooth(aes(x=ats[,1],y=ats[,2]),method="lm")+
+  geom_point(aes(x=ats[,1],y=ats[,2]))+
+  xlab("year")+ylab("temperature.C")+
+  labs(caption="Annual temperature of Key West, Florida for the 20th century")+
+  theme(plot.caption = element_text(hjust=0.5, size=rel(1.2)))
+@
+\\
+Pairing annual temperature by shifting yearly data by 1\\
+<<>>=
+ats.0<-data.frame(ats[,2][1:dim(ats)[1]-1],ats[,2][2:dim(ats)[1]])
+@
+\clearpage
+And plot the paired data\\
+<<echo=F,fig=TRUE,height=3>>=
+## ini T[y-1] vs T[y]
+ggplot()+
+  geom_smooth(aes(x=ats[,2][1:dim(ats)[1]-1],y=ats[,2][2:dim(ats)[1]]),method="lm")+
+  geom_point(aes(x=ats[,2][1:dim(ats)[1]-1],y=ats[,2][2:dim(ats)[1]]))+
+  xlab("temperature.C | t-1")+ylab("temperature.C | t")+
+  labs(caption="Linear Model of an annual temperature against its previous year")+
+  theme(plot.caption = element_text(hjust=0.5, size=rel(1.2)))
+@
+
+\section{Sample Spearman correlation 10K times by random shuffles\label{ssp}}
+<<>>=
+dm<-1e4
+a<-rep(NA,dm)
+i<-1
+for(x in 1:dm){
+  
+  ## shuffle data into random pairs
+  ats.0<-sample(ats[,2],dim(ats)[1],replace = F)
+  ats.0<-data.frame(ats.0[1:length(ats.0)-1],ats.0[2:length(ats.0)])
+  
+  ## Spearman correlation on newly-shuffled pairs
+  a[i]<-unlist(cor(ats.0,method = "spearman"))[1,2]
+  i<-i+1
+}
+@
+<<echo=F>>=
+rm(x,i)
+@
+With Spearman correlation coefficient mean (from sampling) calculated as:\\
+<<>>=
+mean(a)
+@
+\section{Fraction of sampling $>$ overall coefficient (approx. p.val)\label{pval}}
+<<echo=F,fig=TRUE>>=
+## normal distribution curve with threshold
+ggplot()+theme_bw()+
+  geom_density(aes(x=a))+
+  geom_vline(xintercept = b,colour="blue")+
+  geom_text(aes(x=0,y=.5,label=paste(dm,"random iteration\nof T|yr vs T|yr-1\ncorrelation coefficient")))+
+  geom_text(aes(x=(b-.02),y=2,angle=90,label=paste("overall Spearman coefficient (measured data):",round(b,4))),colour="blue")+
+  xlab("Spearman Correlation Coefficient")+
+  labs(caption="Density function of randomized Temperature correlation\nwith real Spearman coefficient indicated")+
+  theme(plot.caption = element_text(hjust=0.5, size=rel(1.2)))
+@
+<<>>=
+length(a[which(a>b)])/length(a)
+@
+\section{Discussion}
+Correlation coefficient from overall (Sec.\ref{osp}) and sampled (Sec.\ref{ssp}) were different with strong statistical significance (Sec.\ref{pval}, p$<<$0.01).  It showed that the current year temperature is influenced/correlated with previous year's.
+%Correlation coefficient from both overall (Sec.\ref{osp}) and sampled (Sec.\ref{ssp}) were only in medium levels.  The approximated p-value (Sec.\ref{pval}) is falsifying the hypothesis (p$>>$0.05).\\\\
+%The results showed that time (i.e. year) is not a statistically-significant factor for the annual temperature for Florida in the twentieth century.  Hence the ``best-fitted" curve in the plot (Sec.\ref{plot}) was a mis-interpretation.  Other factors (including but not limited to atmospheric carbon dioxide levels, atmospheric sulphur dioxide levels and suspended particulates level) should also be considered in future analyses.
+
+\end{document}
