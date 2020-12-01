@@ -21,6 +21,6 @@ Sandbox
 __pycache__
 Part*
 *.Rout
-.ipynbcheckpoints
+.ipynb_checkpoints
 reference
 ph419*
